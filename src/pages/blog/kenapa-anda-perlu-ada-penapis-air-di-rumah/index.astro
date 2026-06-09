@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "5 Sebab Anda Perlu Ada Penapis Air (Water Purifier) Di Rumah",
+  description: "Kami ingin kongsikan mengapa anda perlu ada penapis air (Water Purifier) di rumah anda. Ramai orang ambil ringan 5 sebab ini",
+  canonical: "https://www.cuckoonano.com/blog/kenapa-anda-perlu-ada-penapis-air-di-rumah/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2017-06-21";
+const modifiedDate = "2025-11-30";
+
+const articleTitle = "Kenapa Anda Perlu Ada Penapis Air Di Rumah?";
+const articleDescription = "Kami ingin kongsikan mengapa anda perlu ada penapis air (Water Purifier) di rumah anda. Ramai orang ambil ringan 5 sebab ini";
+const featuredImage = "/assets/images/gambar-produk/kepentingan-memiliki-penapis-air.png";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      Dalam artikel kali ini, kami dari Cuckoo Nano ingin kongsikan mengapa anda perlu ada penapis air (Water Purifier) di rumah anda. Berikut 5 sebab anda perlu ada penapis air Cuckoo di rumah anda sekarang!
+      
+      
+      <ol>
+       	<li><strong>MUDAH</strong>
+      <ul>
+       	<li>Tak perlu masak air</li>
+       	<li>Tak perlu beli air mineral di pasar raya</li>
+       	<li>Ringankan kerja isteri di rumah, tak perlu masak air masak lagi</li>
+      </ul>
+      </li>
+       	<li><strong>KESIHATAN</strong>
+      <ul>
+       	<li>Air yang tercemar boleh jadi punca penyakit</li>
+       	<li>Bahan merbahaya seperti klorin dan logam yang <strong>tidak dapat</strong> ditapis oleh penapis air biasa</li>
+       	<li>Air tidak bertapis boleh terdedah kepada pencemaran</li>
+       	<li><em>Water Purifier </em>Cuckoo bukan sekadar menapis, malah kaya dengan mineral dan beralkali ringan pada pH 7.5</li>
+       	<li>Sihat dan selamat untuk seisi keluarga</li>
+      </ul>
+      </li>
+       	<li><strong>KESELAMATAN</strong>
+      <ul>
+       	<li>Risiko keselamatan dapat dikurangkan</li>
+       	<li>Tidak perlu masak air guna cerek dan cerek elektronik</li>
+       	<li>Selamat untuk anak-anak, walaupun ketika ada di dapur</li>
+       	<li>Ada fungsi <em>Child Lock </em><em>Safety Feature </em>selamat untuk keluarga</li>
+      </ul>
+      </li>
+       	<li><strong>TENAGA &amp; MASA</strong>
+      <ul>
+       	<li>Jimat masa – tak perlu ke supermarket atau tunggu di dapur hingga air masak</li>
+       	<li>Jimat tenaga – tak perlu angkat air mineral berkotak-kotak daripada supermarket ke rumah. Sangat memenatkan!</li>
+      </ul>
+      </li>
+       	<li><strong>JIMAT</strong>
+      <ul>
+       	<li>Jimat perbelanjaan
+      <ul>
+       	<li>Jika beli air mineral seminggu 3 kotak, 1 bulan 12 kotak</li>
+       	<li>12 kotak x RM12 = RM144</li>
+       	<li>Tapi masih penat nak ke kedai dan angkat kotak-kotak tersebut</li>
+      </ul>
+      </li>
+       	<li>Beli air penapis Cuckoo, kos bermula hanya sebanyak RM60 sahaja sebulan</li>
+      </ul>
+      </li>
+      </ol>
+      
+      
+       Klik <a href="https://www.cuckoonano.com"><strong>SINI</strong> </a>untuk dapatkan senarai penapis air Cuckoo bersama kami.
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

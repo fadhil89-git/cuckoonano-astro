@@ -1,0 +1,151 @@
+{
+  "changedItems": [
+    {
+      "id": "xcel-2",
+      "image": "/assets/images/Gambar%20Produk%20png/xcel-2.png"
+    },
+    {
+      "id": "king-top-2",
+      "image": "/assets/images/Gambar%20Produk%20png/king-top-2.png"
+    },
+    {
+      "id": "warrior",
+      "image": "/assets/images/Gambar%20Produk%20png/warrior.png"
+    },
+    {
+      "id": "glamour",
+      "image": "/assets/images/Gambar%20Produk%20png/glamour-front.png"
+    },
+    {
+      "id": "grande",
+      "image": "/assets/images/Gambar%20Produk%20png/grande.png"
+    },
+    {
+      "id": "titan",
+      "image": "/assets/images/Gambar%20Produk%20png/titan.png"
+    },
+    {
+      "id": "flo-stand",
+      "image": "/assets/images/Gambar%20Produk%20png/flo.png"
+    },
+    {
+      "id": "ace",
+      "image": "/assets/images/Gambar%20Produk%20png/ace-undersink.png"
+    },
+    {
+      "id": "kiut",
+      "image": "/assets/images/Gambar%20Produk%20png/kiut.png"
+    },
+    {
+      "id": "l-model",
+      "image": "/assets/images/Gambar%20Produk%20png/l-model-main.png"
+    },
+    {
+      "id": "u-model",
+      "image": "/assets/images/Gambar%20Produk%20png/u-model.png"
+    },
+    {
+      "id": "r-model",
+      "image": "/assets/images/Gambar%20Produk%20png/cuckoo-c-model.jpg"
+    },
+    {
+      "id": "k-model",
+      "image": "/assets/images/Gambar%20Produk%20png/k-model.png"
+    },
+    {
+      "id": "c-plus-humidifier",
+      "image": "/assets/images/Gambar%20Produk%20png/cuckoo-c-plus.png"
+    },
+    {
+      "id": "d-model",
+      "image": "/assets/images/Gambar%20Produk%20png/d-model-1.png"
+    },
+    {
+      "id": "vita-5tar",
+      "image": "/assets/images/Gambar%20Produk%20png/vita-5tar.png"
+    },
+    {
+      "id": "samsung-bespoke-ai-laundry-combo-12-7kg",
+      "image": "/assets/images/products/washer-dryer/washer-dryer-cuckoo-knight-mesin-basuh-pengering-1.jpg"
+    },
+    {
+      "id": "samsung-bespoke-ai-laundry-combo-12-7kg",
+      "image": "/assets/images/products/washer-dryer/washer-dryer-cuckoo-knight-mesin-basuh-pengering-1.jpg"
+    },
+    {
+      "id": "65-mini-led-m1eh-4k-samsung-vision-smart-tv",
+      "image": "/assets/images/Gambar%20Produk%20png/m1eh-4k-tv-1.png"
+    },
+    {
+      "id": "galaxy-tab-s10-fe-plus",
+      "image": "/assets/images/Gambar%20Produk%20png/samsung-s10fe-1.png"
+    },
+    {
+      "id": "bespoke-2",
+      "image": "/assets/images/Gambar%20Produk%20png/cuckoo-bespoke-2-1.png"
+    },
+    {
+      "id": "bespoke-massage-lounger",
+      "image": "/assets/images/Gambar%20Produk%20png/bespoke-massage-lounger.png"
+    },
+    {
+      "id": "a-lite",
+      "image": "/assets/images/Gambar%20Produk%20png/aluxe.png"
+    },
+    {
+      "id": "a-luxe",
+      "image": "/assets/images/Gambar%20Produk%20png/a-luxe-mattress.png"
+    },
+    {
+      "id": "inductwo",
+      "image": "/assets/images/products/induction/kelebihan-multicooker-cuckoo-induction-heating.png"
+    },
+    {
+      "id": "inductrio",
+      "image": "/assets/images/products/induction/kelebihan-multicooker-cuckoo-induction-heating.png"
+    },
+    {
+      "id": "p10",
+      "image": "/assets/images/Gambar%20Produk%20png/p10-1.png"
+    },
+    {
+      "id": "ch10",
+      "image": "/assets/images/Gambar%20Produk%20png/p10-4.png"
+    },
+    {
+      "id": "treadmill",
+      "image": "/assets/images/Gambar%20Produk%20png/b-fit.png"
+    }
+  ],
+  "updatedPages": [
+    "/products/water-purifier/xcel-2/",
+    "/products/water-purifier/king-top-2/",
+    "/products/water-purifier/warrior/",
+    "/products/water-purifier/glamour/",
+    "/products/water-purifier/grande/",
+    "/products/water-purifier/titan/",
+    "/products/water-purifier/flo-stand/",
+    "/products/water-purifier/ace/",
+    "/products/water-purifier/kiut/",
+    "/products/air-purifier/l-model/",
+    "/products/air-purifier/u-model/",
+    "/products/air-purifier/r-model/",
+    "/products/air-purifier/k-model/",
+    "/products/air-purifier/c-plus-humidifier/",
+    "/products/air-purifier/d-model/",
+    "/products/washer-dryer/samsung-bespoke-ai-laundry-combo-12-7kg/",
+    "/products/samsung/samsung-bespoke-ai-laundry-combo-12-7kg/",
+    "/products/samsung/65-mini-led-m1eh-4k-samsung-vision-smart-tv/",
+    "/products/samsung/galaxy-tab-s10-fe-plus/",
+    "/products/massage-chair/bespoke-2/",
+    "/products/massage-chair/bespoke-massage-lounger/",
+    "/products/mattress/a-lite/",
+    "/products/mattress/a-luxe/",
+    "/products/induction/inductwo/",
+    "/products/induction/inductrio/",
+    "/products/pressure-cooker/p10/",
+    "/products/pressure-cooker/ch10/",
+    "/products/treadmill/treadmill/"
+  ],
+  "missing": []
+}

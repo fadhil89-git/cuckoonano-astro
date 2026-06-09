@@ -1,0 +1,660 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import WaterHalalSection from '../../../../components/WaterHalalSection.astro';
+import FreeGiftSection from '../../../../components/FreeGiftSection.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
+import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
+import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
+import WaterPurifierServiceSection from '../../../../components/WaterPurifierServiceSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+import WhyChooseCuckooWaterPurifiers from '../../../../components/water-purifier/WhyChooseCuckooWaterPurifiers.astro';
+
+const whatsappVividUrl =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20promo%20CUCKOO%20VIVID.%20Boleh%20bantu%20saya%3F';
+
+const vividImageBase = '/assets/images/products/water-purifier/vivid';
+
+const meta = {
+  title: 'CUCKOO VIVID Malaysia | Penapis Air Panas Tangki Besar',
+  description:
+    'CUCKOO VIVID penapis air panas untuk keluarga dengan hot water tank 5.3L, warm water 1.3L, 6-stage Nano Positive Filtration, Child Lock dan servis CUCKOO.',
+  canonical: 'https://www.cuckoonano.com/products/water-purifier/vivid/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/products/water-purifier/vivid/cuckoo-vivid-water-purifier-hero.webp',
+  ogType: 'website'
+};
+
+const quickBenefits = [
+  {
+    title: 'Tangki Air Panas 5.3L',
+    copy: 'Lebih sesuai untuk keluarga yang kerap guna air panas untuk susu, teh, kopi dan bancuhan harian.'
+  },
+  {
+    title: 'Warm Water 1.3L',
+    copy: 'Air suam tersedia untuk minum harian tanpa perlu tunggu lama atau campur manual.'
+  },
+  {
+    title: 'Antibacterial Stainless-Steel Tank',
+    copy: 'Tangki stainless-steel antibakteria membantu menjaga kualiti simpanan air dalam mesin.'
+  },
+  {
+    title: 'Child Lock Safety Feature',
+    copy: 'Fungsi keselamatan penting untuk rumah yang ada anak kecil dan penggunaan keluarga.'
+  }
+];
+
+const specHighlights = [
+  ['5.3L', 'Hot Water Tank'],
+  ['1.3L', 'Warm Water Tank'],
+  ['7.9kg', 'Berat'],
+  ['6-Stage', 'Sistem Tapisan']
+];
+
+const featureStories = [
+  {
+    eyebrow: 'Family Hot Water',
+    title: 'Hot Water Tank Besar Untuk Kegunaan Seisi Rumah',
+    copy: 'VIVID direka untuk keluarga yang perlukan bekalan air panas harian dengan kapasiti hot water tank 5.3L dan warm water 1.3L.',
+    image: `${vividImageBase}/cuckoo-vivid-hot-water-family-section.png`,
+    alt: 'CUCKOO VIVID hot water tank besar untuk keluarga'
+  },
+  {
+    eyebrow: 'Tank Safety',
+    title: 'Antibacterial Stainless-Steel Water Tank',
+    copy: 'Tangki stainless-steel antibakteria membantu menjadikan VIVID pilihan praktikal untuk penggunaan berulang di rumah keluarga.',
+    image: `${vividImageBase}/cuckoo-vivid-feature-antibacterial-tank.png`,
+    alt: 'Antibacterial stainless-steel water tank CUCKOO VIVID'
+  },
+  {
+    eyebrow: 'Hot Water Control',
+    title: '3 Hot Water Level Indicator',
+    copy: 'Indikator 3 paras air panas memudahkan anda nampak status air panas sebelum guna, terutama bila ramai ahli keluarga menggunakan mesin.',
+    image: `${vividImageBase}/cuckoo-vivid-feature-hot-water-indicator.png`,
+    alt: '3 hot water level indicator CUCKOO VIVID'
+  },
+  {
+    eyebrow: 'Safety Feature',
+    title: 'Child Lock Safety Feature',
+    copy: 'Child Lock membantu kurangkan risiko tersalah tekan air panas dan memberi lebih ketenangan untuk rumah yang ada anak kecil.',
+    image: `${vividImageBase}/cuckoo-vivid-feature-child-lock.png`,
+    alt: 'Child Lock Safety Feature CUCKOO VIVID'
+  }
+];
+
+const filtrationSteps = [
+  {
+    stage: 'Stage 1',
+    title: 'Sediment Filter',
+    replacement: 'Tukar setiap 4 bulan',
+    copy: 'Membantu menapis partikel besar seperti pasir, karat dan bendasing kasar daripada sumber air.'
+  },
+  {
+    stage: 'Stage 2',
+    title: 'Pre-Carbon Block 2.0 Filter',
+    replacement: 'Tukar setiap 8 bulan',
+    copy: 'Membantu mengurangkan klorin, bau dan bahan organik tertentu untuk rasa air yang lebih baik.'
+  },
+  {
+    stage: 'Stage 3',
+    title: 'Natural 2.0 Filter',
+    replacement: 'Tukar setiap 12 bulan',
+    copy: 'Membantu mengekalkan mineral semula jadi dan menghasilkan air minuman yang lebih seimbang.'
+  },
+  {
+    stage: 'Stage 4',
+    title: 'Nano Positive Filter',
+    replacement: 'Tukar setiap 12 bulan',
+    copy: 'Membantu menapis partikel halus, bakteria, virus dan heavy metals untuk air minuman harian.'
+  }
+];
+
+const pricingPlans = [
+  {
+    tier: 'Tier 1',
+    title: 'Rental Plan 5 Tahun',
+    price: 'RM77',
+    suffix: '/bulan',
+    badge: 'Best Seller',
+    copy: 'Tahun 1-3 dari RM77/bulan, kemudian tahun 4-5 dari RM72/bulan.',
+    details: ['Free 5-year service & warranty', 'Sesuai untuk keluarga yang mahu komitmen lebih pendek'],
+    featured: true
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Rental Plan 7 Tahun',
+    price: 'RM66',
+    suffix: '/bulan',
+    badge: 'Bayaran rendah',
+    copy: 'Tahun 1-5 dari RM66/bulan, kemudian tahun 6-7 dari RM61/bulan.',
+    details: ['Free 7-year service & warranty', 'Pilihan bulanan lebih rendah untuk jangka panjang'],
+    featured: false
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Outright',
+    price: 'RM3,360',
+    suffix: '',
+    badge: '',
+    copy: 'Pilihan beli terus untuk pelanggan yang mahu miliki VIVID tanpa komitmen bulanan.',
+    details: ['Free 1-year service & warranty', 'Semak stok dan terma servis semasa'],
+    featured: false
+  }
+];
+
+const specRows = [
+  ['Model', 'CUCKOO VIVID'],
+  ['Jenis', 'Large hot water tank purifier'],
+  ['Sesuai Untuk', '4-8 ahli keluarga'],
+  ['Hot Water Tank', '5.3L'],
+  ['Warm Water Tank', '1.3L'],
+  ['Filtration', '6-Stage Filtration System'],
+  ['Filter Utama', 'Sediment, Pre-Carbon Block 2.0, Natural 2.0, Nano Positive'],
+  ['Berat', '7.9kg'],
+  ['Power Consumption', 'Warm Water 100W, Hot Water 800W'],
+  ['Servis', 'Filter replacement mengikut jadual servis CUCKOO']
+];
+
+const galleryItems = [
+  {
+    image: `${vividImageBase}/cuckoo-vivid-gallery-01.png`,
+    title: 'CUCKOO VIVID Gallery 1',
+    copy: 'Rujukan gambar CUCKOO VIVID untuk lihat reka bentuk dan kesesuaian di dapur rumah.',
+    alt: 'Gambar CUCKOO VIVID water purifier untuk dapur moden gallery 1'
+  },
+  {
+    image: `${vividImageBase}/cuckoo-vivid-gallery-02.png`,
+    title: 'CUCKOO VIVID Gallery 2',
+    copy: 'Visual produk VIVID untuk pelanggan yang mahu penapis air panas tangki besar.',
+    alt: 'Gambar CUCKOO VIVID penapis air panas tangki besar gallery 2'
+  },
+  {
+    image: `${vividImageBase}/cuckoo-vivid-gallery-03.png`,
+    title: 'CUCKOO VIVID Gallery 3',
+    copy: 'Lihat suasana dan detail CUCKOO VIVID untuk kegunaan keluarga harian.',
+    alt: 'Gambar CUCKOO VIVID water purifier untuk keluarga gallery 3'
+  },
+  {
+    image: `${vividImageBase}/cuckoo-vivid-hq-product.png`,
+    title: 'CUCKOO VIVID Product',
+    copy: 'Rujukan produk rasmi CUCKOO VIVID dengan rekaan premium dan kemas.',
+    alt: 'Produk rasmi CUCKOO VIVID large hot water tank purifier'
+  },
+  {
+    image: `${vividImageBase}/cuckoo-vivid-promo-rm66-water-purifier.jpeg`,
+    title: 'CUCKOO VIVID Promo',
+    copy: 'Rujukan visual promo CUCKOO VIVID tertakluk kepada kempen dan stok semasa.',
+    alt: 'Promo CUCKOO VIVID water purifier harga rental RM66'
+  }
+];
+
+const faqItems = [
+  {
+    q: 'Apa kelebihan utama CUCKOO VIVID?',
+    a: 'CUCKOO VIVID sesuai untuk keluarga yang perlukan penapis air panas dengan hot water tank besar 5.3L, warm water 1.3L, Child Lock dan 6-stage Nano Positive Filtration.'
+  },
+  {
+    q: 'Adakah CUCKOO VIVID ada air sejuk?',
+    a: 'VIVID fokus kepada air panas dan air suam. Jika anda perlukan air panas, sejuk dan suhu bilik, model seperti XCEL 2 atau Grande lebih sesuai.'
+  },
+  {
+    q: 'Berapa kapasiti tangki CUCKOO VIVID?',
+    a: 'CUCKOO VIVID mempunyai hot water tank 5.3L dan warm water tank 1.3L.'
+  },
+  {
+    q: 'Apa sistem tapisan CUCKOO VIVID?',
+    a: 'VIVID menggunakan 6-Stage Filtration System dengan Sediment Filter, Pre-Carbon Block 2.0 Filter, Natural 2.0 Filter dan Nano Positive Filter.'
+  },
+  {
+    q: 'Berapa harga CUCKOO VIVID?',
+    a: 'Rujukan harga VIVID ialah rental 5 tahun dari RM77/bulan, rental 7 tahun dari RM66/bulan dan outright RM3,360. Harga tertakluk kepada promo semasa.'
+  },
+  {
+    q: 'VIVID sesuai untuk siapa?',
+    a: 'VIVID sesuai untuk keluarga 4-8 orang, terutama rumah yang kerap gunakan air panas untuk susu, kopi, teh, oat atau bancuhan harian.'
+  },
+  {
+    q: 'Adakah CUCKOO VIVID ada servis berkala?',
+    a: 'Ya. Pakej rental termasuk servis dan warranty mengikut tempoh pelan, tertakluk kepada terma CUCKOO semasa.'
+  },
+  {
+    q: 'Macam mana nak semak promo VIVID?',
+    a: 'Klik butang WhatsApp dan saya akan bantu semak promo VIVID, bayaran bulanan, dokumen, kelayakan dan slot pemasangan.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO VIVID Water Purifier',
+  image: [
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/vivid/cuckoo-vivid-water-purifier-hero.webp',
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/vivid/cuckoo-vivid-hq-product.png'
+  ],
+  url: 'https://www.cuckoonano.com/products/water-purifier/vivid/',
+  sku: 'CUCKOO-VIVID',
+  category: 'Water Purifier',
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  description:
+    'CUCKOO VIVID ialah penapis air panas tangki besar untuk keluarga dengan hot water tank 5.3L, warm water 1.3L, Child Lock dan 6-stage Nano Positive Filtration.',
+  offers: [
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/vivid/#harga',
+      priceCurrency: 'MYR',
+      price: '66',
+      availability: 'https://schema.org/InStock',
+      description: 'Rental CUCKOO VIVID 7 tahun dari RM66/bulan tertakluk kepada promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/vivid/#harga',
+      priceCurrency: 'MYR',
+      price: '3360',
+      availability: 'https://schema.org/InStock',
+      description: 'Outright purchase rujukan RM3,360 tertakluk kepada promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+---
+
+<BaseLayout {...meta}>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .gold-line { background: linear-gradient(90deg, transparent, rgba(216,166,74,.8), transparent); }
+    .product-blob { background: radial-gradient(circle at 35% 30%, rgba(216,166,74,.24), transparent 38%), radial-gradient(circle at 70% 62%, rgba(122,14,35,.14), transparent 42%), linear-gradient(145deg, #fff8f2, #ffffff); }
+    .accent-ring { box-shadow: 0 30px 80px rgba(20,20,20,.14); }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+    <section id="hero" class="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-start lg:gap-10">
+        <div class="order-1 lg:col-start-1 lg:row-start-1">
+          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Free Installation</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Servis Berkala</span>
+          </div>
+
+          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
+            <span class="text-sm font-black sm:text-base">Rental dari RM66/bulan</span>
+          </div>
+
+          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            CUCKOO VIVID — Penapis Air Panas Tangki Besar Untuk Keluarga
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
+            Hot water tank 5.3L, warm water 1.3L, 6-stage Nano Positive Filtration dan Child Lock dalam rekaan premium untuk keluarga yang kerap guna air panas.
+          </p>
+        </div>
+
+        <div class="order-2 rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="product-blob accent-ring relative overflow-hidden rounded-[1.7rem] p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">Large Hot Tank</span>
+              <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">4-8 Family Members</span>
+            </div>
+
+            <div class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/80 to-white/35 p-5 sm:min-h-[390px] lg:min-h-[470px]">
+              <div class="absolute bottom-12 h-16 w-[72%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+              <img
+                src={`${vividImageBase}/cuckoo-vivid-water-purifier-hero.webp`}
+                alt="CUCKOO VIVID penapis air panas tangki besar untuk keluarga"
+                class="relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[455px]"
+              />
+            </div>
+
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-black text-red-700">Hot Tank 5.3L</span>
+              <span class="rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-xs font-black text-amber-800">Warm Tank 1.3L</span>
+              <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">Nano Positive</span>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Child Lock</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">6-Stage Filter</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Stainless Tank</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Servis Berkala</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappVividUrl}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Promo VIVID
+            </a>
+
+            <a
+              href="#harga"
+              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
+            >
+              Lihat Pelan Harga
+            </a>
+          </div>
+
+          <div class="mt-7 rounded-[1.75rem] border border-brand/10 bg-white/80 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+            <div class="grid gap-3 sm:grid-cols-[1fr_1fr] sm:items-stretch">
+              <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+                <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Rental Plan</p>
+                <p class="mt-2 text-4xl font-black leading-none">
+                  RM66<span class="text-sm font-black">/bulan</span>
+                </p>
+                <p class="mt-1 text-xs font-bold text-white/75">Pelan 7 tahun</p>
+              </div>
+
+              <a
+                href="#harga"
+                class="rounded-[1.35rem] border border-brand/10 bg-brand-cream px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25"
+              >
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Harga VIVID</p>
+                <p class="mt-2 text-xl font-black text-brand">RM77 / RM66 sebulan</p>
+                <p class="mt-2 text-sm font-bold text-brand-muted">Outright RM3,360 -></p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 pb-8 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+        <img
+          src={`${vividImageBase}/cuckoo-vivid-hq-banner.png`}
+          alt="CUCKOO VIVID large hot water tank purifier banner rasmi"
+          loading="lazy"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </section>
+
+    <section id="ciri-ciri" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Ciri-Ciri Utama</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Apa Yang Buat VIVID Sesuai Untuk Keluarga</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Feature disusun supaya customer cepat faham kenapa VIVID praktikal untuk rumah yang mahukan air panas dan suam setiap hari.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {quickBenefits.map((item) => (
+            <article class="rounded-3xl bg-white p-6 shadow-soft ring-1 ring-brand/10">
+              <h3 class="text-lg font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:gap-7">
+          {featureStories.map((item, index) => (
+            <article class="group flex min-h-full flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-premium ring-1 ring-brand/10 transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+              <div class="bg-[linear-gradient(180deg,#fff8f2_0%,#fff2ea_100%)] p-3 sm:p-4">
+                <div class="relative aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-white shadow-soft ring-1 ring-white/70">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
+                  />
+                  <div class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-brand/5"></div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <div class="flex items-start gap-4">
+                  <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-cream text-xs font-black text-brand-gold ring-1 ring-brand/10">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <p class="text-[11px] font-black uppercase tracking-[.18em] text-brand-gold">{item.eyebrow}</p>
+                    <h3 class="mt-1 text-xl font-black leading-tight text-brand-ink sm:text-2xl">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+                <p class="mt-4 flex-1 text-sm leading-7 text-brand-muted">
+                  {item.copy}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="filtration" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-5 shadow-premium sm:p-8 lg:p-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Filtration System</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Sistem Tapisan 6 Peringkat Dengan 4 Filter</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            VIVID menggunakan sistem tapisan Nano Positive yang membantu menapis bakteria dan bahan berbahaya, sambil mengekalkan mineral bermanfaat dalam air. Hasilnya, air minuman harian lebih bersih dan sesuai untuk kegunaan keluarga.
+          </p>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] bg-brand-cream">
+          <img
+            src="/public/assets/images/filter/filter-cuckoo-desktop.webp"
+            class="hidden w-full md:block"
+            alt="Sistem tapisan CUCKOO VIVID desktop"
+            loading="lazy"
+          />
+          <img
+            src="/public/assets/images/filter/filter-cuckoo-mobile.webp"
+            class="block w-full md:hidden"
+            alt="Sistem tapisan CUCKOO VIVID mobile"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-4">
+          {filtrationSteps.map((item) => (
+            <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5">
+              <h3 class="font-black">{item.title}</h3>
+              <p class="text-xs font-bold text-brand-gold">{item.stage}</p>
+              <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga CUCKOO VIVID</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Pilih Pelan Yang Sesuai Dengan Bajet Rumah</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Harga di bawah ialah rujukan. Promo, stok, kawasan servis dan kelayakan tertakluk kepada kempen semasa.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <article class={`rounded-[2rem] p-6 shadow-premium ring-1 ring-brand/10 sm:p-8 ${plan.featured ? 'bg-brand text-white' : 'bg-white text-brand-ink'}`}>
+              <div class="flex items-center justify-between gap-3">
+                <p class={`text-xs font-black uppercase tracking-[.22em] ${plan.featured ? 'text-brand-gold' : 'text-brand-gold'}`}>{plan.tier}</p>
+                {plan.badge && (
+                  <span class={`rounded-full px-3 py-1 text-[11px] font-black ${plan.featured ? 'bg-white/15 text-white' : 'bg-brand-soft text-brand'}`}>{plan.badge}</span>
+                )}
+              </div>
+              <h3 class="mt-6 text-2xl font-black">{plan.title}</h3>
+              <div class={`mt-6 rounded-[1.5rem] px-5 py-5 ${plan.featured ? 'bg-white/12' : 'bg-brand-cream'}`}>
+                <p class={`text-5xl font-black leading-none ${plan.featured ? 'text-white' : 'text-brand'}`}>
+                  {plan.price}<span class="text-base">{plan.suffix}</span>
+                </p>
+              </div>
+              <p class={`mt-6 leading-8 ${plan.featured ? 'text-white/80' : 'text-brand-muted'}`}>{plan.copy}</p>
+              <ul class="mt-6 space-y-3">
+                {plan.details.map((detail) => (
+                  <li class={`text-sm font-bold ${plan.featured ? 'text-white/85' : 'text-brand-muted'}`}>✓ {detail}</li>
+                ))}
+              </ul>
+              <a
+                href={whatsappVividUrl}
+                class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+              >
+                <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+                WhatsApp Semak
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <PromoBannerSection
+      whatsappHref={whatsappVividUrl}
+    />
+
+    <section id="spesifikasi" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Specifications</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">
+            Spesifikasi & Dimensi VIVID
+          </h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
+            Direka untuk keluarga yang mahukan penapis air panas tangki besar dengan servis berkala CUCKOO.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div class="self-start overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.14),transparent_32%),linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)] p-6 shadow-premium sm:p-8">
+            <img
+              src={`${vividImageBase}/cuckoo-vivid-specification.png`}
+              alt="Spesifikasi dan dimensi rasmi CUCKOO VIVID water purifier"
+              loading="lazy"
+              class="h-auto w-full object-contain"
+            />
+            <p class="mt-4 text-center text-sm text-white/70">
+              Dimensi rasmi CUCKOO VIVID
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              {specHighlights.map(([value, label]) => (
+                <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                  <p class="text-3xl font-black text-brand">{value}</p>
+                  <p class="mt-1 text-sm font-bold text-brand-muted">{label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium">
+              {specRows.map(([label, value]) => (
+                <div class="grid grid-cols-2 border-b border-brand/10 last:border-b-0">
+                  <div class="p-5 font-black text-brand-ink">{label}</div>
+                  <div class="p-5 text-brand-muted">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ProductGallerySlider
+      id="gallery"
+      eyebrow="Gallery VIVID"
+      title="Gambar Produk CUCKOO VIVID"
+      description="Swipe atau klik gambar untuk lihat rupa CUCKOO VIVID dengan lebih jelas. Gallery ini sesuai untuk customer semak design sebelum buat keputusan."
+      items={galleryItems}
+    />
+
+    <WaterPurifierServiceSection
+      productName="CUCKOO VIVID"
+      productImage={`${vividImageBase}/cuckoo-vivid-water-purifier-hero.webp`}
+      productAlt="CUCKOO VIVID penapis air panas dengan servis berkala CUCKOO"
+    />
+
+    <WhyChooseCuckooWaterPurifiers />
+   
+
+    <WaterHalalSection productName="CUCKOO VIVID" />
+    <FreeGiftSection
+      title="Free Gift Untuk Tempahan CUCKOO VIVID"
+      whatsappLink={whatsappVividUrl}
+    />
+    <CustomerProofSection productName="CUCKOO VIVID" whatsappUrl={whatsappVividUrl} />
+
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">
+            Soalan Lazim CUCKOO VIVID
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
+            Jawapan ringkas sebelum anda pilih plan atau semak promo VIVID.
+          </p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProductCategorySection />
+    <AgentSection productName="CUCKOO VIVID" whatsappUrl={whatsappVividUrl} />
+
+    <a
+      href={whatsappVividUrl}
+      class="fixed bottom-4 right-4 z-50 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-4 text-base font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.35)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D] sm:px-6"
+      aria-label="WhatsApp semak promo CUCKOO VIVID"
+    >
+      <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-6 w-6" />
+      <span>WhatsApp</span>
+    </a>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</BaseLayout>

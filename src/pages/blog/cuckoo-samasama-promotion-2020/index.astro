@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Cuckoo SAMASAMA Promotion 2020 | FREE Cuckoo Air Q (RM600)",
+  description: "Get 1 free Cuckoo Air Q worth RM600 with purchase of selected Cuckoo products, pair with your freinds and family. Dua dua beli, dua dua dapat percuma!",
+  canonical: "https://www.cuckoonano.com/blog/cuckoo-samasama-promotion-2020/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2020-01-21";
+const modifiedDate = "2020-01-21";
+
+const articleTitle = "Cuckoo SAMASAMA Promotion 2020";
+const articleDescription = "Get 1 free Cuckoo Air Q worth RM600 with purchase of selected Cuckoo products, pair with your freinds and family. Dua dua beli, dua dua dapat percuma!";
+const featuredImage = "/assets/images/gambar-produk/promosi-cuckoo-goood-combo.jpeg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      <p>Let’s SAMASAMA enjoy the SAMASAMA promotion from CUCKOO!</p>
+      
+      <p>Purchase selected CUCKOO products, either with your family or a friend, and you both will receive a portable air purifier, Air Q worth RM600 EACH!</p>
+      
+      <p>You just need to purchase any 2 of the following products:<br>Air Purifier: C Model<br>Water Purifier: XCEL<br>Outdoor Filter: Prime X1<br>Multi-cookers: CH10, Black HN10, JHT10, Q10<br>Kitchen &amp; Others: Inductrio, Inductwo &amp; Inductwo Plus </p>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <figure></figure>
+      
+      <p>*While stocks last *Terms &amp; conditions apply</p>
+      
+      <figure>
+      https://www.youtube.com/watch?v=54LkN69c6hM
+      </figure>
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

@@ -1,0 +1,696 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import WaterHalalSection from '../../../../components/WaterHalalSection.astro';
+import FreeGiftSection from '../../../../components/FreeGiftSection.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
+import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
+import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
+import WaterPurifierServiceSection from '../../../../components/WaterPurifierServiceSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+import WhyChooseCuckooWaterPurifiers from '../../../../components/water-purifier/WhyChooseCuckooWaterPurifiers.astro';
+
+const whatsappWarriorUrl =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20promo%20CUCKOO%20Warrior.%20Boleh%20bantu%20saya%3F';
+
+const meta = {
+  title: 'CUCKOO Warrior Water Purifier | Harga, Spec & Promo Terkini',
+  description:
+    'CUCKOO Warrior mild alkaline water purifier dengan Nano Positive Filtration, tangki besar 5.2L, faucet sterilisation, air panas, sejuk dan suhu bilik. Semak harga rental, outright dan promo terkini.',
+  canonical: 'https://www.cuckoonano.com/products/water-purifier/warrior/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/Gambar%20Produk%20png/warrior.webp',
+  ogType: 'website'
+};
+
+const highlights = [
+  {
+    icon: '💧',
+    title: 'Tangki Besar 5.2L',
+    copy: 'Sesuai untuk rumah keluarga yang kerap guna air panas, sejuk dan suhu bilik.'
+  },
+  {
+    icon: '🧬',
+    title: 'Nano Positive',
+    copy: 'Sistem tapisan CUCKOO untuk air minuman harian yang lebih bersih.'
+  },
+  {
+    icon: '🔥❄️',
+    title: 'Hot • Cold • Room',
+    copy: 'Tiga pilihan suhu air dalam satu penapis air mekanikal.'
+  },
+  {
+    icon: '🛡️',
+    title: 'Faucet Sterilisation',
+    copy: 'Fungsi steril pada faucet untuk bantu penjagaan kebersihan jangka panjang.'
+  },
+  {
+    icon: '👨‍👩‍👧‍👦',
+    title: 'Untuk 4-8 Ahli Keluarga',
+    copy: 'Kapasiti lebih besar untuk penggunaan harian seisi rumah.'
+  },
+  {
+    icon: '🚚',
+    title: 'Free Delivery & Installation',
+    copy: 'Penghantaran dan pemasangan asas mengikut terma semasa CUCKOO.'
+  }
+];
+
+const featureCards = [
+  {
+    title: 'Faucet Sterilisation Function',
+    copy: 'Warrior ialah model mekanikal dengan fungsi faucet sterilisation untuk bantu jaga kebersihan outlet air.',
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-penapis-air-features-1.png',
+    alt: 'Faucet sterilisation function pada CUCKOO Warrior water purifier'
+  },
+  {
+    title: '6-Stage Filtration System',
+    copy: 'Gabungan Sediment Filter, Pre-Carbon Block 2.0, Natural 2.0 dan Nano Positive Filter untuk air minuman harian.',
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-penapis-air-features-2.png',
+    alt: 'Sistem tapisan 6 peringkat CUCKOO Warrior water purifier'
+  },
+  {
+    title: 'High-Capacity Stainless-Steel Tank',
+    copy: 'Tangki stainless steel antibakteria dengan jumlah kapasiti 5.2L untuk kegunaan keluarga.',
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-penapis-air-features-3.png',
+    alt: 'Tangki besar stainless steel antibakteria CUCKOO Warrior'
+  },
+  {
+    title: 'Instant Hot & Cold Water Output',
+    copy: 'Air panas, sejuk dan suhu bilik tersedia bila diperlukan untuk minuman harian.',
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-penapis-air-features-4.png',
+    alt: 'Instant hot cold and room water output CUCKOO Warrior'
+  },
+  {
+    title: '21cm Extra Outlet Space',
+    copy: 'Ruang outlet tinggi memudahkan anda isi tumbler, botol air dan jug kecil tanpa rasa sempit.',
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-penapis-air-features-6.png',
+    alt: 'Ruang outlet 21cm CUCKOO Warrior untuk isi tumbler dan botol air'
+  },
+  {
+    title: 'Mechanical Child Safety Lock',
+    copy: 'Lapisan keselamatan tambahan untuk penggunaan air panas di rumah keluarga.',
+    image: '/assets/images/products/water-purifier/cara-guna-penapis-air-cuckoo-warrior-3-how-to-use-cuckoo-warrior.png',
+    alt: 'Mechanical child safety lock pada CUCKOO Warrior water purifier'
+  }
+];
+
+const galleryItems = [
+  {
+    image: '/assets/images/Gambar%20Produk%20png/warrior.webp',
+    title: 'CUCKOO Warrior Product',
+    copy: 'Rupa utama CUCKOO Warrior dengan rekaan tangki besar untuk keluarga.',
+    alt: 'Gambar utama CUCKOO Warrior water purifier'
+  },
+  {
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-water-purifier-1.jpg',
+    title: 'Paparan Warrior Di Rumah',
+    copy: 'Lihat rupa Warrior dalam suasana penggunaan sebenar di dapur.',
+    alt: 'Gambar CUCKOO Warrior water purifier di dapur rumah'
+  },
+  {
+    image: '/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-water-purifier-4.jpg',
+    title: 'Sudut Produk Warrior',
+    copy: 'Rujukan sudut produk untuk bayangkan saiz dan kemasan.',
+    alt: 'Gambar sudut CUCKOO Warrior water purifier'
+  },
+  {
+    image: '/assets/images/products/water-purifier/cara-guna-penapis-air-cuckoo-warrior-1-how-to-use-cuckoo-warrior.png',
+    title: 'Cara Guna Nozel',
+    copy: 'Warrior menggunakan kawalan mekanikal yang mudah difahami seisi keluarga.',
+    alt: 'Cara guna nozel CUCKOO Warrior water purifier'
+  },
+  {
+    image: '/assets/images/products/water-purifier/cara-guna-penapis-air-cuckoo-warrior-2-how-to-use-cuckoo-warrior.png',
+    title: 'Kawalan Mekanikal',
+    copy: 'Kawalan praktikal untuk air panas, sejuk dan suhu bilik.',
+    alt: 'Kawalan mekanikal CUCKOO Warrior water purifier'
+  },
+  {
+    image: '/assets/images/gambar-produk/penapis-air-cuckoo-warrior-water-purifier-promotion-ejen-cuckoo-5.jpg',
+    title: 'Contoh Pemasangan Customer',
+    copy: 'Rujukan pemasangan sebenar untuk lihat kesesuaian ruang.',
+    alt: 'Contoh pemasangan CUCKOO Warrior di rumah customer'
+  },
+  {
+    image: '/assets/images/gambar-produk/penapis-air-cuckoo-warrior-water-purifier-rm90-sebulan-15.jpg',
+    title: 'Rujukan Saiz Warrior',
+    copy: 'Gambar tambahan untuk bantu bandingkan saiz produk.',
+    alt: 'Rujukan saiz CUCKOO Warrior water purifier'
+  }
+];
+
+const faqItems = [
+  {
+    q: 'Apa itu CUCKOO Warrior?',
+    a: 'CUCKOO Warrior ialah mild alkaline water purifier dengan tangki besar 5.2L, Nano Positive Filtration, air panas, sejuk dan suhu bilik.'
+  },
+  {
+    q: 'Warrior sesuai untuk berapa orang?',
+    a: 'Warrior sesuai untuk keluarga sekitar 4-8 ahli kerana kapasiti keseluruhan tangki ialah 5.2L.'
+  },
+  {
+    q: 'Berapa harga bulanan Warrior?',
+    a: 'Pelan 5 tahun ialah RM105/bulan untuk tahun 1-3 dan RM100/bulan untuk tahun 4-5. Pelan 7 tahun ialah RM95/bulan untuk tahun 1-5 dan RM90/bulan untuk tahun 6-7. Harga tertakluk kepada promo semasa.'
+  },
+  {
+    q: 'Adakah Warrior ada faucet sterilisation?',
+    a: 'Ya. Warrior mempunyai fungsi faucet sterilisation untuk bantu penjagaan kebersihan outlet air.'
+  },
+  {
+    q: 'Berapa kapasiti tangki Warrior?',
+    a: 'Warrior mempunyai Room Tank 1.0L, Cold Tank 2.8L dan Hot Tank 1.4L, jumlah keseluruhan 5.2L.'
+  },
+  {
+    q: 'Adakah Warrior ada child lock?',
+    a: 'Ya. Warrior mempunyai mechanical child safety lock sebagai lapisan keselamatan tambahan untuk penggunaan air panas.'
+  },
+  {
+    q: 'Apa beza Warrior dengan XCEL 2?',
+    a: 'Warrior lebih fokus kepada kapasiti tangki besar dan penggunaan keluarga. XCEL 2 lebih premium dari segi rekaan moden dan touch panel digital.'
+  },
+  {
+    q: 'Macam mana nak semak promo terkini?',
+    a: 'Klik butang WhatsApp dan saya akan bantu semak promo Warrior, bayaran permulaan, pelan bulanan, dokumen dan kelayakan order.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO Warrior Water Purifier',
+  image: [
+    'https://www.cuckoonano.com/assets/images/Gambar%20Produk%20png/warrior.webp',
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/penapis-air-cuckoo-warrior-water-purifier-1.jpg'
+  ],
+  url: 'https://www.cuckoonano.com/products/water-purifier/warrior/',
+  sku: 'CUCKOO-WARRIOR',
+  category: 'Water Purifier',
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  description:
+    'Mild alkaline water purifier dengan Nano Positive Filtration, tangki besar 5.2L, faucet sterilisation, child safety lock dan air panas, sejuk serta suhu bilik.',
+  offers: [
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/warrior/#harga',
+      priceCurrency: 'MYR',
+      price: '90',
+      availability: 'https://schema.org/InStock',
+      description: 'Pelan 7 tahun Warrior dari RM90/bulan pada tahun 6-7 tertakluk kepada promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/warrior/#harga',
+      priceCurrency: 'MYR',
+      price: '3400',
+      availability: 'https://schema.org/InStock',
+      description: 'Outright purchase rujukan RM3,400 tertakluk kepada promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+---
+
+<BaseLayout {...meta}>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .gold-line { background: linear-gradient(90deg, transparent, rgba(216,166,74,.8), transparent); }
+    .product-blob { background: radial-gradient(circle at 40% 35%, rgba(216,166,74,.28), transparent 38%), radial-gradient(circle at 65% 58%, rgba(122,14,35,.18), transparent 42%), linear-gradient(145deg, #fff8f2, #ffffff); }
+    .accent-ring { box-shadow: 0 30px 80px rgba(20,20,20,.16); }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+    <section id="hero" class="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-start lg:gap-10">
+        <div class="order-1 lg:col-start-1 lg:row-start-1">
+          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Free Installation</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Servis Berkala</span>
+          </div>
+
+          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
+            <span class="text-sm font-black sm:text-base">RM12/bulan untuk 6 bulan pertama</span>
+          </div>
+
+          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            CUCKOO Warrior — Penapis Air Tangki Besar Untuk Keluarga
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
+            Mild alkaline water purifier dengan Nano Positive Filtration, tangki stainless steel 5.2L, faucet sterilisation serta air panas, sejuk dan suhu bilik untuk kegunaan harian keluarga.
+          </p>
+        </div>
+
+        <div class="order-2 rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="product-blob accent-ring relative overflow-hidden rounded-[1.7rem] p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">Tangki Besar</span>
+              <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">Family Model</span>
+            </div>
+
+            <div class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/80 to-white/35 p-5 sm:min-h-[390px] lg:min-h-[470px]">
+              <div class="absolute bottom-12 h-16 w-[72%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+              <img
+                src="/assets/images/Gambar%20Produk%20png/warrior.webp"
+                alt="CUCKOO Warrior water purifier dengan tangki besar untuk keluarga"
+                class="relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[455px]"
+              />
+            </div>
+
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">Cold Tank 2.8L</span>
+              <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">Room Tank 1.0L</span>
+              <span class="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-black text-red-700">Hot Tank 1.4L</span>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Total 5.2L</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Nano Positive</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Faucet Sterilisation</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Child Safety Lock</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappWarriorUrl}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Promo Warrior
+            </a>
+
+            <a
+              href="#harga"
+              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
+            >
+              Lihat Pelan Harga
+            </a>
+          </div>
+
+          <div class="mt-7 rounded-[1.75rem] border border-brand/10 bg-white/80 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+            <div class="grid gap-3 sm:grid-cols-[1fr_1fr] sm:items-stretch">
+              <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+                <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Promo Terkini</p>
+                <p class="mt-2 text-4xl font-black leading-none">
+                  RM12<span class="text-sm font-black">/bulan</span>
+                </p>
+                <p class="mt-1 text-xs font-bold text-white/75">6 bulan pertama</p>
+              </div>
+
+              <a
+                href="#harga"
+                class="rounded-[1.35rem] border border-brand/10 bg-brand-cream px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25"
+              >
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">
+                  Pelan Bulanan & Outright
+                </p>
+                <p class="mt-2 text-xl font-black text-brand">
+                  5 Tahun | 7 Tahun | Outright
+                </p>
+                <p class="mt-2 text-sm font-bold text-brand-muted">
+                  Lihat detail harga →
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-10 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {highlights.map((item) => (
+          <article class="rounded-3xl bg-white p-6 shadow-soft">
+            <div class="mb-4 text-2xl">{item.icon}</div>
+            <h3 class="font-black">{item.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+
+
+    <section id="ciri-ciri" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Family Protection</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Ciri-Ciri Warrior Untuk Rumah Keluarga</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Warrior sesuai untuk rumah yang mahukan penapis air lengkap, tangki besar, kawalan mekanikal mudah dan fungsi keselamatan untuk kegunaan berulang setiap hari.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {featureCards.map((item) => (
+            <article class="overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-brand/10">
+              <div class="aspect-[4/3] bg-brand-cream">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  loading="lazy"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-black">{item.title}</h3>
+                <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="filtration" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-5 shadow-premium sm:p-8 lg:p-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Filtration System</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">6-Stage Filtration Dengan Nano Positive</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Warrior menggunakan sistem tapisan CUCKOO yang membantu menghasilkan air minuman lebih bersih untuk seisi keluarga, sambil mengekalkan fungsi air panas, sejuk dan suhu bilik.
+          </p>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] bg-brand-cream">
+          <img src="/assets/images/filter/filter-cuckoo-desktop.webp" class="hidden w-full md:block" alt="Sistem tapisan Nano Positive Filtration CUCKOO Warrior versi desktop">
+          <img src="/assets/images/filter/filter-cuckoo-mobile.webp" class="block w-full md:hidden" alt="Sistem tapisan Nano Positive Filtration CUCKOO Warrior versi mobile">
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-4">
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5">
+            <h3 class="font-black">Sediment Filter</h3>
+            <p class="text-xs font-bold text-brand-gold">Stage 1</p>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Menapis partikel besar, karat dan bendasing terapung.</p>
+          </article>
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5">
+            <h3 class="font-black">Pre-Carbon Block 2.0</h3>
+            <p class="text-xs font-bold text-brand-gold">Stage 2-3</p>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Membantu menapis klorin dan sebatian organik.</p>
+          </article>
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5">
+            <h3 class="font-black">Natural 2.0 Filter</h3>
+            <p class="text-xs font-bold text-brand-gold">Stage 4-5</p>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Mengandungi mineral dan membantu mengurangkan bau.</p>
+          </article>
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5">
+            <h3 class="font-black">Nano Positive Filter</h3>
+            <p class="text-xs font-bold text-brand-gold">Stage 6</p>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Membantu menapis kuman, virus, partikel dan heavy metals.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-8 rounded-[2rem] bg-white p-6 shadow-premium lg:grid-cols-[.9fr_1.1fr] lg:p-10">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Lifestyle Fit</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Sesuai Untuk Keluarga Besar, Pantry & Homestay</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Kapasiti 5.2L membantu bila ramai orang guna air dalam satu masa: bancuh minuman panas, isi botol sekolah, sediakan susu anak atau ambil air sejuk selepas balik kerja.
+          </p>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Rumah keluarga 4-8 orang</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Dapur harian</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Condo & apartment</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Pantry pejabat</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Homestay / ruang menunggu</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Keluarga yang kerap isi botol</div>
+        </div>
+      </div>
+    </section>
+
+    <ProductGallerySlider
+      id="gallery"
+      title="Lihat CUCKOO Warrior Dengan Lebih Dekat"
+      description="Gambar produk, cara guna dan contoh pemasangan Warrior supaya anda lebih mudah bayangkan saiz, ruang outlet dan kesesuaian di rumah."
+      items={galleryItems}
+    />
+
+    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Specifications</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi Warrior</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
+            Dimensi, kapasiti tangki dan spesifikasi utama Warrior untuk semakan sebelum pilih pelan.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div class="self-start overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.14),transparent_32%),linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)] p-6 shadow-premium sm:p-8">
+            <div class="flex min-h-[360px] items-center justify-center rounded-[1.5rem] bg-white/90 p-6">
+              <img
+                src="/assets/images/Gambar%20Produk%20png/warrior.webp"
+                alt="Spesifikasi CUCKOO Warrior water purifier"
+                class="h-[330px] w-auto object-contain drop-shadow-2xl sm:h-[420px]"
+              />
+            </div>
+            <p class="mt-4 text-center text-sm text-white/70">CUCKOO Warrior mild alkaline water purifier</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">260mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Lebar</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">508mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Panjang</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">508mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Tinggi</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">14.3kg</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Berat</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+              {[
+                ['Model', 'CUCKOO Warrior'],
+                ['Filtration', 'Nano Positive Filtration'],
+                ['Sistem Tapisan', '6-Stage Filtration'],
+                ['Room Tank', '1.0L'],
+                ['Cold Tank', '2.8L'],
+                ['Hot Tank', '1.4L'],
+                ['Total Capacity', '5.2L'],
+                ['Sesuai Untuk', '4-8 ahli keluarga'],
+                ['Faucet Sterilisation', 'Ada'],
+                ['Cold Temperature Knob', '5 tahap'],
+                ['Child Safety Lock', 'Mechanical lock'],
+                ['Power Consumption', 'Hot 350W / Cold 100W']
+              ].map(([label, value], index) => (
+                <div class={`grid grid-cols-2 ${index < 11 ? 'border-b border-brand/10' : ''}`}>
+                  <div class="px-5 py-4 font-black text-brand-ink">{label}</div>
+                  <div class="px-5 py-4 text-brand-muted">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+            Pilih Plan Warrior Yang Sesuai Dengan Keluarga Anda
+          </h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            Warrior sesuai jika anda mahu kapasiti besar, fungsi lengkap dan servis berkala CUCKOO.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="relative rounded-[2rem] border-2 border-brand bg-white p-7 shadow-glow">
+            <div class="absolute -top-4 left-7 rounded-full bg-brand px-5 py-2 text-xs font-black uppercase tracking-[.14em] text-white shadow-soft">
+              Family Choice
+            </div>
+            <p class="mt-3 text-sm font-black uppercase tracking-[.16em] text-brand-gold">Tempoh lebih pendek</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">Pelan 5 Tahun</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">
+              Sesuai untuk pelanggan yang mahu kontrak lebih pendek dan servis percuma sehingga 5 tahun.
+            </p>
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <p class="text-4xl font-black text-brand">
+                RM105<span class="text-base font-black text-brand-muted">/bulan</span>
+              </p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Tahun 1-3</p>
+
+              <div class="my-4 h-px bg-brand/10"></div>
+
+              <p class="text-3xl font-black text-brand">
+                RM100<span class="text-base font-black text-brand-muted">/bulan</span>
+              </p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Tahun 4-5</p>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li>✓ Kontrak lebih pendek</li>
+              <li>✓ Servis percuma hingga 5 tahun</li>
+              <li>✓ Sesuai untuk keluarga yang mahu tangki besar</li>
+            </ul>
+            <a href={whatsappWarriorUrl}
+              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Pelan 5 Tahun
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-brand/10 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Bulanan lebih rendah</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">Pelan 7 Tahun</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">
+              Sesuai untuk pelanggan yang mahu bayaran bulanan lebih rendah dan tempoh servis lebih panjang.
+            </p>
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <p class="text-4xl font-black text-brand">
+                RM95<span class="text-base font-black text-brand-muted">/bulan</span>
+              </p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Tahun 1-5</p>
+
+              <div class="my-4 h-px bg-brand/10"></div>
+
+              <p class="text-3xl font-black text-brand">
+                RM90<span class="text-base font-black text-brand-muted">/bulan</span>
+              </p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Tahun 6-7</p>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li>✓ Bulanan lebih rendah</li>
+              <li>✓ Servis percuma hingga 7 tahun</li>
+              <li>✓ Sesuai untuk penggunaan jangka panjang</li>
+            </ul>
+            <a href={whatsappWarriorUrl}
+              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Pelan 7 Tahun
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-brand/10 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Bayar sekali</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">Outright</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">
+              Sesuai untuk pelanggan yang tidak mahu komitmen bulanan.
+            </p>
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <p class="text-5xl font-black text-brand">RM3,400</p>
+              <p class="mt-2 text-sm font-bold text-brand-muted">Bayar sekali sahaja</p>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li>✓ Tiada bayaran bulanan</li>
+              <li>✓ Sesuai untuk pembelian terus</li>
+              <li>✓ Semak terma servis semasa</li>
+            </ul>
+            <a href={whatsappWarriorUrl}
+              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Outright
+            </a>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-white p-5 text-center text-sm font-bold leading-7 text-brand-muted shadow-soft">
+          Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak bayaran permulaan, kelayakan dan promo terkini.
+        </div>
+      </div>
+    </section>
+
+    <PromoBannerSection />
+
+    <FreeGiftSection
+      title="Free Gift Untuk Tempahan CUCKOO Warrior"
+      description="Selain menikmati penapis air CUCKOO Warrior dengan tangki besar dan servis berkala, pelanggan juga berpeluang menerima free gift semasa promo masih tersedia."
+    />
+
+    <WaterPurifierServiceSection
+      productName="Penapis Air CUCKOO Warrior"
+      productImage="/assets/images/Gambar%20Produk%20png/warrior.webp"
+      productAlt="Penapis Air CUCKOO Warrior dengan servis berkala dan penukaran filter"
+    />
+
+    <WhyChooseCuckooWaterPurifiers />
+   
+
+    <CustomerProofSection />
+    <WaterHalalSection />
+
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">
+            Soalan Lazim CUCKOO Warrior
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
+            Jawapan ringkas sebelum anda pilih plan atau semak promo Warrior.
+          </p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProductCategorySection />
+    <AgentSection />
+  </div>
+
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(schema)}
+  </script>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>

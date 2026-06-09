@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Cuckoo Aiming to shake the market in 2019 - News",
+  description: "TURNING four proved to be a winning year for Cuckoo International (M) Sdn Bhd as it charted its progress during the “Gegar with Cuckoo” fourth anniversary...",
+  canonical: "https://www.cuckoonano.com/blog/aiming-to-shake-the-market-in-2019/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2018-11-18";
+const modifiedDate = "2018-11-18";
+
+const articleTitle = "Aiming to shake the market in 2019";
+const articleDescription = "TURNING four proved to be a winning year for Cuckoo International (M) Sdn Bhd as it charted its progress during the “Gegar with Cuckoo” fourth anniversary...";
+const featuredImage = "/assets/images/gambar-produk/cuckoo-korea-headquarters.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      <p>TURNING four proved to be a winning year for Cuckoo International (M) Sdn Bhd as it charted its progress during the “Gegar with Cuckoo” fourth anniversary celebration at Wisma MBSA, Shah Alam.<br /><br />Cuckoo kicked off its celebrations with the Malaysia Book of Records Certification presentation for setting the record for the “Shortest Time For A Multi-Cooker To Cook Gaba Rice” (germinated brown rice) and “First In And Out Auto Electrolytic Sterilisation System in a Water Purifier”, awarded to Cuckoo Indonesia chief executive officer Toh Seng Lee and domestic sales director Mak Wai Hoong.<br /><br />Next, Cuckoo announced its Biasiswa Cuckoo, where it partnered with Universiti Putra Malaysia (UPM) to establish a corporate scholarship programme that allocates RM100,000 worth of scholarships for eight students.<br /><br />Cuckoo also unveiled two of its latest products, the Cuckoo Inductrio which is a hybrid induction hob designed with the patented Direct Touch Sensor and High Heat Algorithm technologies and the Cuckoo Queen Stand, a brand-new floor-standing mild-alkaline water purifier with Malaysia’s largest stainless-steel water tank in a water purifier, designed to cater to large families and corporate organisations.<br /><br />Both products can be purchased using the Cuckoo GOOOD Plan, a flexible repayment scheme that allows buyers to decide their monthly fee or repayment period, and even comes with free filter replacement (for Cuckoo water purifiers only), service and warranty.<br /><br />Cuckoo Inductrio is Malaysia’s first hybrid induction hob to be available under a repayment plan, and comes with warranty and servicing including a comprehensive eight-point check every four months.<br /><br />Meanwhile, Cuckoo’s Chinese New Year gift sets were also announced. The “Duo Happiness” set has a Cuckoo Air Q portable car air purifier and a Cuckoo Kyndell stainless-steel thermo flask, while the “Duo Prosperity” set includes two Cuckoo Kyndell stainless-steel thermo flasks.<br /><br />The company also celebrated achieving 550,000 customers with 2 million household users in its four-year presence in Malaysia while its new logo and uniform were also unveiled.<br /><br />Mak likened his journey with Cuckoo to being in an F1 team – the responsibility for success is not the driver’s alone but the entire team’s efforts as well.<br /><br />Operations director Benny Tan said everyone has been working hard since the first day and he is happy all can celebrate the anniversary together.<br /><br />Toh shared that the biggest challenge for him was introducing the then unknown Cuckoo brand to Malaysia and Indonesia, but with “teamwork, together with the products’ value and brand, sooner or later, it will shine,” he said.<br /><br />Cuckoo International (MAL) Sdn Bhd marketing director Queenie Goh said the company has empowered her as a female and moulded her into who she is today.<br /><br />Cuckoo International (Malaysia) chief executive officer KC Hoe said, “Next year is our ‘bigger’ year. And when we say bigger, it means we would like to do something different to “gegar”, to shake up the market.”<br /><br /><br />Source <a href="https://www.thestar.com.my/metro/metro-news/2018/11/17/aiming-to-shake-the-market-in-2019/#w6V2g8ITRCxXM3Ag.99">https://www.thestar.com.my/metro/metro-news/2018/11/17/aiming-to-shake-the-market-in-2019/#w6V2g8ITRCxXM3Ag.99</a></p>
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import LocationLanding from '../../../../components/location/LocationLanding.astro';
+import { locationStates } from '../../../../data/locations.js';
+
+export function getStaticPaths() {
+  return locationStates.flatMap((state) =>
+    state.locations.map((location) => ({
+      params: { state: state.slug, location: location.slug },
+      props: { state, location },
+    }))
+  );
+}
+
+const { state, location } = Astro.props;
+
+const meta = {
+  title: `Order CUCKOO ${location.name} | Ejen CUCKOO ${state.name}`,
+  description: location.description || `Order CUCKOO di ${location.name}. Tanya harga cash, rental bulanan, promo terkini dan pemasangan CUCKOO sekitar ${location.name}.`,
+  canonical: `https://www.cuckoonano.com${location.url}`,
+  ogImage: `https://www.cuckoonano.com/assets/images/uploads/cuckoo-${location.slug}-og.webp`,
+  ogType: 'website',
+};
+---
+
+<BaseLayout {...meta}>
+  <LocationLanding location={location} state={state} />
+</BaseLayout>

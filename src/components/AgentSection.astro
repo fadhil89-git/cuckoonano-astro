@@ -1,0 +1,135 @@
+---
+const agents = [
+  {
+    name: 'Fadhil',
+    role: 'Ejen CUCKOO sejak 2017',
+    image: '/assets/images/people/gambar%20ejen%20-%20fadhil.webp',
+    phone: '013-991 6967',
+    href: 'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil,%20saya%20berminat%20dengan%20produk%20CUCKOO.%20Boleh%20bantu%20saya?',
+    points: [
+      'Konsultasi produk & cadangan model',
+      'Semak harga bulanan & kelayakan',
+      'Promo terkini & pilihan terbaik'
+    ]
+  },
+  {
+    name: 'Izzah',
+    role: 'Ejen CUCKOO sejak 2017',
+    image: '/assets/images/people/gambar%20ejen%20-%20izzah.webp',
+    phone: '013-277 5539',
+    href: 'https://api.whatsapp.com/send?phone=60132775539&text=Salam%20Pn%20Izzah,%20saya%20berminat%20dengan%20produk%20CUCKOO.%20Boleh%20bantu%20saya?',
+    points: [
+      'Follow-up order & semak status',
+      'Bantuan dokumen & maklumat produk',
+      'Bantuan selepas tanya & servis'
+    ]
+  }
+];
+
+const trustPoints = [
+  ['✓', 'Ejen CUCKOO', 'sejak 2017'],
+  ['★', '2000+', 'pemasangan'],
+  ['⌂', 'Seluruh Malaysia', 'servis & sokongan']
+];
+
+const services = [
+  ['Semak promo', 'Promo terkini & bayaran awal'],
+  ['Harga bulanan', 'Plan ikut bajet anda'],
+  ['Cadangan model', 'Ikut rumah & keperluan'],
+  ['Kos pemasangan', 'Semak sebelum order'],
+  ['Bantuan servis', 'Selepas jualan']
+];
+
+const {
+  theme = 'maroon'
+} = Astro.props;
+
+const isBlue = theme === 'blue';
+const panelClass = isBlue
+  ? 'overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.12),transparent_34%),linear-gradient(135deg,#061525_0%,#0F2A4A_55%,#0EA5E9_100%)] p-6 text-white shadow-premium lg:p-10'
+  : 'overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.12),transparent_34%),linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)] p-6 text-white shadow-glow lg:p-10';
+const accentTextClass = isBlue ? 'text-sky-200' : 'text-brand-gold';
+const cardTitleClass = isBlue ? 'text-cool-blue' : 'text-brand';
+const avatarBgClass = isBlue ? 'bg-sky-50 ring-sky-100' : 'bg-brand-soft/80 ring-brand-soft/60';
+const ctaClass = isBlue
+  ? 'mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1EBE5D] hover:shadow-xl'
+  : 'mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-4 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl';
+---
+
+<section id="contact" class="px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <div class={panelClass}>
+      <div class="grid gap-8 lg:grid-cols-[1fr_.9fr] lg:items-start">
+        <div>
+          <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-black text-white/90 ring-1 ring-white/15">
+            Hubungi Ejen CUCKOO
+          </p>
+          <h2 class="mt-6 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl">
+            Masih ada soalan?<br />
+            <span class={accentTextClass}>Tanya dulu</span> sebelum order.
+          </h2>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-white/75">
+            Kami bantu semak produk, promo, harga bulanan, kelayakan dan cadangan model CUCKOO yang sesuai dengan rumah anda.
+          </p>
+        </div>
+
+        <div class="grid gap-3 rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/15 sm:grid-cols-3 lg:grid-cols-1">
+          {trustPoints.map(([icon, title, copy]) => (
+            <div class="flex items-center gap-3">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/15 text-lg">{icon}</span>
+              <p class="font-black text-white">
+                {title}<br />
+                <span class="font-medium text-white/70">{copy}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {services.map(([title, copy]) => (
+          <div class="rounded-[1.35rem] bg-white/10 p-4 ring-1 ring-white/15">
+            <p class="font-black text-white">{title}</p>
+            <p class="mt-1 text-sm text-white/65">{copy}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
+        {agents.map((agent) => (
+          <article class="rounded-[1.8rem] bg-white p-5 text-ink shadow-xl shadow-brand-dark/10 sm:p-6 lg:min-h-[350px]">
+            <div class="grid gap-6 sm:grid-cols-[210px_1fr] sm:items-center">
+              <div class={`relative mx-auto flex h-[190px] w-[190px] items-end justify-center overflow-hidden rounded-full ring-8 sm:h-[210px] sm:w-[210px] ${avatarBgClass}`}>
+                <img
+                  src={agent.image}
+                  alt={`Gambar ejen CUCKOO ${agent.name}`}
+                  loading="lazy"
+                  class="h-[190px] w-auto translate-y-2 object-contain object-bottom sm:h-[230px]"
+                />
+              </div>
+
+              <div>
+                <h3 class={`text-3xl font-black ${cardTitleClass}`}>{agent.name}</h3>
+                <p class="mt-1 text-sm font-bold text-muted">{agent.role}</p>
+                <div class="mt-4 grid gap-2 text-sm leading-6 text-muted">
+                  {agent.points.map((point) => <p>✓ {point}</p>)}
+                </div>
+                <a
+                  href={agent.href}
+                  class={ctaClass}
+                >
+                  WhatsApp {agent.name} <span>›</span>
+                </a>
+                <p class={`mt-3 text-center text-sm font-black ${isBlue ? 'text-cool-blue/70' : 'text-brand/70'}`}>{agent.phone}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="mx-auto mt-6 max-w-3xl rounded-full bg-white/10 px-5 py-3 text-center text-sm text-white/75 ring-1 ring-white/15">
+        Maklumat anda selamat dan hanya digunakan untuk tujuan konsultasi.
+      </p>
+    </div>
+  </div>
+</section>

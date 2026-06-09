@@ -1,0 +1,146 @@
+---
+// Reusable "Why Choose CUCKOO Water Purifiers" section for all water purifier product pages
+// Usage: <WhyChooseCuckooWaterPurifiers />
+
+const cards = [
+  {
+    title: 'WATER beyond STANDARDS',
+    color: '#123246',
+    icon: '/assets/images/filter/water-beyond-st.webp',
+    alt: 'CUCKOO water purifier water beyond standards',
+    benefits: [
+      'Kaya mineral asli',
+      'Bebas logam berat',
+      'Air mild alkaline*',
+      'Bacteria & virus filter: 99.99% tefilter'
+    ]
+  },
+  {
+    title: 'FILTERS beyond STANDARDS',
+    color: '#4ea594',
+    icon: '/assets/images/filter/filter-beyond.webp',
+    alt: 'CUCKOO water purifier filters beyond standards',
+    benefits: [
+      'Sistem tapisan 6-peringkat',
+      'Kekalkan mineral asli (Natural Filter)',
+      'Hapuskan logam berat (Nano Positive Filter)',
+      'Zero water wastage'
+    ]
+  },
+  {
+    title: 'SERVICE beyond STANDARDS',
+    color: '#a1756f',
+    icon: '/assets/images/filter/service-beyond.webp',
+    alt: 'CUCKOO water purifier service beyond standards',
+    benefits: [
+      'Filter replacement berkala (4-bulan sekali)',
+      'Electro & steam sterilisation',
+      'Maintenance 15-point check',
+      'Servis profesional CUCKOO+ Technical Specialist'
+    ]
+  },
+  {
+    title: 'TECHNOLOGY beyond STANDARDS',
+    color: '#c39b70',
+    icon: '/assets/images/filter/technology-beyond.webp',
+    alt: 'CUCKOO water purifier technology beyond standards',
+    benefits: [
+      'Stainless-Steel Water Tank',
+      'Electrolysis Sterilisation (Auto IN & OUT)',
+      'Berkesan di kawasan tekanan air rendah',
+      'Hot, Cold & Room Temperature Modes',
+      'Energy Saving'
+    ]
+  }
+];
+---
+
+<section class="px-4 py-14 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <!-- Section Header -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Why Choose</p>
+      <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+        CUCKOO Water Purifiers – Beyond Standards
+      </h2>
+      <p class="mt-5 text-base leading-8 text-brand-muted">
+        Pilihan terpercaya untuk keluarga Malaysia yang mahukan kualiti air, servis berkala dan teknologi terdepan.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {cards.map((card) => (
+        <article 
+          class="group overflow-hidden rounded-[1.75rem] shadow-premium transition duration-300 hover:-translate-y-1 hover:shadow-glow p-8"
+          style={`background-color: ${card.color}`}
+        >
+          <!-- Icon + Title Container -->
+          <div class="mb-6 flex items-start gap-4">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/20">
+              <img
+                src={card.icon}
+                alt={card.alt}
+                loading="lazy"
+                class="h-8 w-8 object-contain"
+              />
+            </div>
+            <h3 class="text-lg font-black leading-snug text-white">
+              {card.title}
+            </h3>
+          </div>
+
+          <!-- Benefits List -->
+          <ul class="space-y-3">
+            {card.benefits.map((benefit) => (
+              <li class="flex gap-3 text-sm leading-6">
+                <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-white/80" />
+                <span class="text-white/90">
+                  {benefit}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom Note -->
+    <div class="mt-10 rounded-[1.5rem] bg-brand-cream p-5 text-center text-xs font-bold leading-6 text-brand-muted sm:p-6">
+      *Mild alkaline water membantu menjaga keseimbangan pH tubuh. Sila semak dengan ejen CUCKOO untuk detail lebih lanjut tentang setiap fitur.
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Optional: Add subtle animation on scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    article {
+      animation: slideUp 0.6s ease-out backwards;
+    }
+
+    article:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    article:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    article:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    article:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+</style>

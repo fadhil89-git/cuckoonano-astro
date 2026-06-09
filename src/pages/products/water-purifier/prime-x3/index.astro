@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: 'CUCKOO Prime X3 Outdoor Water Purifier | Penapis Air Luar Rumah',
+  description:
+    'Semak maklumat CUCKOO Prime X3 outdoor water purifier, kegunaan untuk rumah, pemasangan dan promo terkini.',
+  canonical: 'https://www.cuckoonano.com/products/water-purifier/prime-x3/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/products/prime-x3.webp',
+  ogType: 'website'
+};
+---
+
+<BaseLayout {...meta}>
+  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="font-bold text-brand">Penapis Air Luar Rumah</p>
+        <h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">CUCKOO Prime X3</h1>
+        <p class="mt-5 text-lg leading-8 text-muted">
+          Page produk awal untuk Prime X3. Kandungan penuh, harga, spesifikasi dan gambar produk
+          boleh dikemaskini kemudian.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">
+            WhatsApp Ejen
+          </a>
+          <a href="/products/water-purifier/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">
+            Produk Penapis Air
+          </a>
+        </div>
+      </div>
+      <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+        <h2 class="text-2xl font-black">Untuk dikemaskini</h2>
+        <p class="mt-3 text-muted">
+          Masukkan detail Prime X3, filter, plan bulanan, warranty, servis dan FAQ di sini.
+        </p>
+      </div>
+    </div>
+  </section>
+  <div data-promo></div>
+  <div data-product-selector data-initial="water-purifier"></div>
+  <div data-agent-block></div>
+</BaseLayout>

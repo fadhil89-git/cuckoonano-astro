@@ -1,0 +1,780 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import WaterHalalSection from '../../../../components/WaterHalalSection.astro';
+import FreeGiftSection from '../../../../components/FreeGiftSection.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
+import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
+import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
+import WaterPurifierServiceSection from '../../../../components/WaterPurifierServiceSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+import WhyChooseCuckooWaterPurifiers from '../../../../components/water-purifier/WhyChooseCuckooWaterPurifiers.astro';
+
+const whatsappKiutUrl =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20promo%20CUCKOO%20KIUT.%20Boleh%20bantu%20saya%3F';
+
+const kiutImageBase = '/assets/images/products/water-purifier/kiut';
+const kiutProductImage = `${kiutImageBase}/cuckoo-kiut-tankless-water-purifier-hero.png`;
+
+const meta = {
+  title: 'CUCKOO KIUT Malaysia | Penapis Air Tankless Slim & Compact',
+  description:
+    'CUCKOO KIUT ialah penapis air tankless slim 135mm untuk apartment, condo dan dapur kecil. Semak harga rental, filtration 4-stage, spesifikasi dan promo terkini.',
+  canonical: 'https://www.cuckoonano.com/products/water-purifier/kiut/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/products/water-purifier/kiut/cuckoo-kiut-tankless-water-purifier-hero.png',
+  ogType: 'website'
+};
+
+const heroChips = ['Tankless Design', '135mm Slim', '4-Stage Filtration'];
+
+const panelOptions = [
+  {
+    name: 'Cool Silver',
+    image: `${kiutImageBase}/cuckoo-kiut-cool-silver-panel.png`,
+    alt: 'CUCKOO KIUT Cool Silver interchangeable colour panel',
+    swatch: '#d5d8da'
+  },
+  {
+    name: 'Calm Blue',
+    image: `${kiutImageBase}/cuckoo-kiut-calm-blue-panel.png`,
+    alt: 'CUCKOO KIUT Calm Blue interchangeable colour panel',
+    swatch: '#8fc4d8'
+  },
+  {
+    name: 'Joyful Pink',
+    image: `${kiutImageBase}/cuckoo-kiut-joyful-pink-panel.png`,
+    alt: 'CUCKOO KIUT Joyful Pink interchangeable colour panel',
+    swatch: '#ea7180'
+  }
+];
+
+const quickBenefits = [
+  {
+    title: 'Tankless & Slim 135mm',
+    copy: 'Rekaan nipis tanpa tangki besar, sesuai untuk countertop kecil, apartment, condo dan dapur moden.'
+  },
+  {
+    title: 'Mild Alkaline Water',
+    copy: 'Air room temperature yang ditapis dengan sistem 4 peringkat untuk kegunaan minum harian.'
+  },
+  {
+    title: 'Colour Panel Minimalist',
+    copy: 'Default Cool Silver dengan pilihan panel Calm Blue dan Joyful Pink untuk padankan gaya dapur.'
+  },
+  {
+    title: 'Easy Installation',
+    copy: 'Saiz compact dan pemasangan kemas membantu KIUT masuk dalam ruang dapur yang lebih terhad.'
+  }
+];
+
+const featureStories = [
+  {
+    title: 'KIUT Style, Easy Installation',
+    copy: 'KIUT direka untuk rumah moden yang mahu penapis air compact tanpa rasa mesin terlalu memenuhi countertop.',
+    media: `${kiutImageBase}/cuckoo-kiut-easy-installation.gif`,
+    alt: 'CUCKOO KIUT easy installation untuk dapur compact',
+    eyebrow: 'Compact Setup'
+  },
+  {
+    title: 'Multiple Dispensing Options',
+    copy: 'Pilih jumlah air dengan lebih mudah untuk kegunaan harian seperti gelas kecil, botol atau minum terus.',
+    media: `${kiutImageBase}/cuckoo-kiut-multiple-dispensing-option.gif`,
+    alt: 'CUCKOO KIUT multiple dispensing option',
+    eyebrow: 'Daily Convenience',
+    vertical: true
+  },
+  {
+    title: 'Simple Press, Cleaner Look',
+    copy: 'Rekaan kawalan yang ringkas membantu penggunaan lebih kemas, selari dengan identiti minimalist KIUT.',
+    media: `${kiutImageBase}/cuckoo-kiut-press-water-feature.gif`,
+    alt: 'CUCKOO KIUT press water dispensing feature',
+    eyebrow: 'Minimal Control'
+  }
+];
+
+const filtrationSteps = [
+  {
+    stage: 'Stage 1',
+    title: 'Dual Sediment Carbon Composite Filter',
+    copy: 'Membantu menapis bendasing kasar, sediment, karat, pasir, klorin, bau dan partikel halus daripada sumber air.'
+  },
+  {
+    stage: 'Stage 2 - 3',
+    title: 'Natural Plus 2.0 Filter',
+    copy: 'Membantu menghasilkan air minuman mild alkaline sambil mengekalkan mineral bermanfaat untuk kegunaan harian.'
+  },
+  {
+    stage: 'Stage 4',
+    title: 'Nano Positive Filter',
+    copy: 'Membantu menapis bakteria, virus, heavy metals, algae dan fungi untuk air yang lebih bersih dan selamat diminum.'
+  }
+];
+
+const pricingPlans = [
+  {
+    tier: 'Tier 1',
+    title: 'Rental Plan 5 Tahun',
+    price: 'RM72',
+    suffix: '/bulan',
+    badge: 'Best Seller',
+    copy: 'Tahun 1-3 dari RM72/bulan, kemudian tahun 4-5 dari RM67/bulan untuk pelanggan yang mahu komitmen bulanan rendah.',
+    details: ['Free 5-year service & warranty', 'Sesuai untuk apartment, condo dan dapur kecil'],
+    featured: true
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Bayaran Tahun 4-5',
+    price: 'RM67',
+    suffix: '/bulan',
+    badge: '',
+    copy: 'Kadar bulanan lebih rendah untuk tahun ke-4 hingga ke-5 mengikut struktur rental KIUT.',
+    details: ['Rujukan harga tertakluk kempen semasa', 'WhatsApp untuk semak kelayakan dan dokumen'],
+    featured: false
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Outright',
+    price: 'RM3,050',
+    suffix: '',
+    badge: '',
+    copy: 'Pilihan beli terus untuk pelanggan yang mahu miliki KIUT tanpa komitmen bulanan.',
+    details: ['Free 2-year service & warranty', 'Semak promo RM100 off dan colour panel semasa'],
+    featured: false
+  }
+];
+
+const specRows = [
+  ['Model', 'CUCKOO KIUT'],
+  ['Jenis', 'Tankless room-temperature water purifier'],
+  ['Warna / Panel', 'Cool Silver, Calm Blue, Joyful Pink'],
+  ['Dimensi', '135mm (W) x 388mm (D) x 364mm (H)'],
+  ['Berat', '4kg'],
+  ['Filtration', '4-Stage Filtration System'],
+  ['Filter Utama', 'Dual Sediment Carbon Composite, Natural Plus 2.0, Nano Positive'],
+  ['Temperature', 'Room Temperature'],
+  ['Power Consumption', '52W'],
+  ['Sesuai Untuk', 'Apartment, condo, studio, pantry kecil dan dapur compact'],
+  ['Servis', 'CUCKOO+ Care Service mengikut jadual servis berkala']
+];
+
+const galleryItems = [
+  {
+    image: `${kiutImageBase}/cuckoo-kiut-gallery-01.png`,
+    title: 'CUCKOO KIUT Gallery 1',
+    copy: 'Rujukan visual CUCKOO KIUT untuk lihat rupa compact dan gaya pemasangan.',
+    alt: 'Gambar CUCKOO KIUT water purifier gallery 1'
+  },
+  {
+    image: `${kiutImageBase}/cuckoo-kiut-gallery-02.png`,
+    title: 'CUCKOO KIUT Gallery 2',
+    copy: 'KIUT sesuai untuk dapur moden, apartment, condo dan ruang countertop kecil.',
+    alt: 'Gambar CUCKOO KIUT penapis air slim gallery 2'
+  },
+  {
+    image: `${kiutImageBase}/cuckoo-kiut-gallery-03.png`,
+    title: 'CUCKOO KIUT Gallery 3',
+    copy: 'Lihat detail produk, warna dan susunan KIUT dalam suasana lifestyle.',
+    alt: 'Gambar CUCKOO KIUT tankless compact gallery 3'
+  },
+  {
+    image: `${kiutImageBase}/cuckoo-kiut-gallery-04.png`,
+    title: 'CUCKOO KIUT Gallery 4',
+    copy: 'Rujukan reka bentuk KIUT untuk pelanggan yang mahu penapis air minimalist.',
+    alt: 'Gambar CUCKOO KIUT minimalist water purifier gallery 4'
+  },
+  {
+    image: `${kiutImageBase}/cuckoo-kiut-gallery-05.png`,
+    title: 'CUCKOO KIUT Gallery 5',
+    copy: 'Gambar tambahan KIUT untuk semak kesesuaian dengan ruang dapur moden.',
+    alt: 'Gambar CUCKOO KIUT water purifier untuk dapur kecil gallery 5'
+  }
+];
+
+const faqItems = [
+  {
+    q: 'Apa kelebihan utama CUCKOO KIUT?',
+    a: 'KIUT ialah penapis air tankless yang slim 135mm, compact, minimalist dan sesuai untuk apartment, condo serta dapur kecil.'
+  },
+  {
+    q: 'CUCKOO KIUT ada tangki air?',
+    a: 'KIUT ialah model tankless, jadi ia tidak menggunakan tangki simpanan besar seperti model Grande atau Glamour.'
+  },
+  {
+    q: 'KIUT keluarkan air panas atau sejuk?',
+    a: 'KIUT fokus kepada air room temperature mild alkaline. Jika anda perlukan air panas atau sejuk, model seperti XCEL 2, Grande atau Titan lebih sesuai.'
+  },
+  {
+    q: 'Apa sistem tapisan CUCKOO KIUT?',
+    a: 'KIUT menggunakan 4-Stage Filtration System dengan Dual Sediment Carbon Composite Filter, Natural Plus 2.0 Filter dan Nano Positive Filter.'
+  },
+  {
+    q: 'Berapa harga CUCKOO KIUT?',
+    a: 'Rujukan harga KIUT ialah RM72/bulan untuk tahun 1-3, RM67/bulan untuk tahun 4-5 dan outright RM3,050. Harga tertakluk kepada promo semasa.'
+  },
+  {
+    q: 'KIUT sesuai untuk siapa?',
+    a: 'KIUT sesuai untuk pelanggan yang mahu penapis air CUCKOO slim untuk apartment, condo, studio, pantry kecil atau dapur moden yang ruangnya terhad.'
+  },
+  {
+    q: 'Adakah warna panel KIUT boleh tukar?',
+    a: 'Ya. KIUT mempunyai pilihan panel Cool Silver, Calm Blue dan Joyful Pink. Default panel ialah Cool Silver, manakala panel tambahan tertakluk kepada stok dan pakej semasa.'
+  },
+  {
+    q: 'Macam mana nak semak promo KIUT?',
+    a: 'Klik butang WhatsApp dan saya akan bantu semak promo KIUT, bayaran permulaan, dokumen, kelayakan dan slot pemasangan.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO KIUT Water Purifier',
+  image: [
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/kiut/cuckoo-kiut-tankless-water-purifier-hero.png',
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/kiut/cuckoo-kiut-hero-banner-desktop.png'
+  ],
+  url: 'https://www.cuckoonano.com/products/water-purifier/kiut/',
+  sku: 'CUCKOO-KIUT',
+  category: 'Water Purifier',
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  description:
+    'Penapis air tankless slim 135mm dengan 4-stage filtration, mild alkaline room-temperature water dan interchangeable colour panel untuk apartment, condo dan dapur kecil.',
+  offers: [
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/kiut/#harga',
+      priceCurrency: 'MYR',
+      price: '72',
+      availability: 'https://schema.org/InStock',
+      description: 'Rental KIUT dari RM72/bulan tertakluk kepada promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/kiut/#harga',
+      priceCurrency: 'MYR',
+      price: '3050',
+      availability: 'https://schema.org/InStock',
+      description: 'Outright purchase rujukan RM3,050 tertakluk kepada promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+---
+
+<BaseLayout {...meta}>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .kiut-hero-glow {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(234, 113, 128, .2), transparent 34%),
+        radial-gradient(circle at 85% 28%, rgba(143, 196, 216, .22), transparent 34%),
+        linear-gradient(145deg, #fff8f2, #ffffff 54%, #fbf2f4);
+    }
+    .kiut-product-card {
+      background:
+        radial-gradient(circle at 45% 18%, rgba(234, 113, 128, .18), transparent 34%),
+        radial-gradient(circle at 70% 78%, rgba(216, 166, 74, .16), transparent 34%),
+        linear-gradient(145deg, #ffffff, #fff7f1);
+    }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+    <section id="hero" class="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-start lg:gap-10">
+        <div class="order-1 lg:col-start-1 lg:row-start-1">
+          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Free Installation</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Servis Berkala</span>
+          </div>
+
+          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
+            <span class="text-sm font-black sm:text-base">Semak pakej KIUT terkini</span>
+          </div>
+
+          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            CUCKOO KIUT — Penapis Air Tankless Slim Untuk Dapur Moden
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
+            Rekaan hanya 135mm lebar, 4-stage filtration dan air mild alkaline room temperature dalam gaya compact minimalist untuk apartment, condo dan dapur kecil.
+          </p>
+        </div>
+
+        <div class="order-2 rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="kiut-product-card relative overflow-hidden rounded-[1.7rem] p-4 shadow-[0_30px_80px_rgba(20,20,20,.14)] sm:p-6 lg:p-8">
+            <div class="flex flex-wrap gap-2">
+              {heroChips.map((chip) => (
+                <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">{chip}</span>
+              ))}
+            </div>
+
+            <div class="relative mt-5 flex min-h-[310px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/90 to-white/45 p-5 sm:min-h-[390px] lg:min-h-[470px]">
+              <div class="absolute bottom-10 h-16 w-[68%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+              <img
+                src={kiutProductImage}
+                alt="CUCKOO KIUT penapis air tankless slim untuk apartment condo dan dapur kecil"
+                class="relative z-10 h-[300px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[455px]"
+              />
+            </div>
+
+            <div class="mt-5 grid gap-2 sm:grid-cols-3">
+              <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-center text-xs font-black text-stone-700">Room Temperature</span>
+              <span class="rounded-full border border-brand/10 bg-brand-soft px-4 py-2 text-center text-xs font-black text-brand">Mild Alkaline</span>
+              <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-center text-xs font-black text-blue-700">52W Power</span>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">135mm Width</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">4kg Weight</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Nano Positive</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Colour Panel</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappKiutUrl}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              Semak Promo KIUT
+            </a>
+
+            <a
+              href="#ciri-ciri"
+              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
+            >
+              Lihat Ciri KIUT
+            </a>
+          </div>
+
+          <div class="mt-7 rounded-[1.75rem] border border-brand/10 bg-white/80 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+            <div class="grid gap-3 sm:grid-cols-[1fr_1fr] sm:items-stretch">
+              <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+                <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Rental KIUT</p>
+                <p class="mt-2 text-4xl font-black leading-none">
+                  RM72<span class="text-sm font-black">/bulan</span>
+                </p>
+                <p class="mt-1 text-xs font-bold text-white/75">tahun 1-3, kemudian RM67/bulan</p>
+              </div>
+
+              <a
+                href="#harga"
+                class="rounded-[1.35rem] border border-brand/10 bg-brand-cream px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25"
+              >
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Harga KIUT</p>
+                <p class="mt-2 text-xl font-black text-brand">Outright RM3,050</p>
+                <p class="mt-2 text-sm font-bold text-brand-muted">Semak pakej terkini →</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-10 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+        <picture>
+          <source media="(max-width: 767px)" srcset={`${kiutImageBase}/cuckoo-kiut-hero-banner-mobile.png`} />
+          <img
+            src={`${kiutImageBase}/cuckoo-kiut-hero-banner-desktop.png`}
+            alt="CUCKOO KIUT slim tankless water purifier modern lifestyle banner"
+            loading="lazy"
+            class="w-full object-cover"
+          />
+        </picture>
+      </div>
+    </section>
+
+    <section id="kenapa-kiut" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Compact Minimalist</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+              Bila Dapur Kecil, Mesin Pun Kena Bijak Pilih
+            </h2>
+            <p class="mt-5 leading-8 text-brand-muted">
+              KIUT sesuai untuk pelanggan yang mahu penapis air CUCKOO tetapi tidak mahu mesin besar mengambil banyak ruang. Fokusnya jelas: slim, tankless, clean dan mudah padan dengan rumah moden.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            {quickBenefits.map((item) => (
+              <article class="rounded-[1.5rem] bg-white p-6 shadow-soft ring-1 ring-brand/10">
+                <h3 class="text-xl font-black text-brand-ink">{item.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-brand-muted">{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="colour-panel" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#fff_0%,#fff6f7_52%,#eef8fb_100%)] p-6 shadow-premium ring-1 ring-brand/10 lg:p-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Match Your Mood</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Panel Warna Yang Padankan KIUT Dengan Gaya Dapur</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Default panel ialah Cool Silver. Calm Blue dan Joyful Pink boleh digunakan sebagai pilihan panel tambahan tertakluk kepada stok dan pakej semasa.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 lg:grid-cols-3">
+          {panelOptions.map((panel, index) => (
+            <article class="rounded-[1.75rem] bg-white p-5 text-center shadow-soft ring-1 ring-brand/10">
+              <div class="mx-auto flex h-[270px] items-center justify-center rounded-[1.35rem] bg-brand-cream p-4 sm:h-[340px]">
+                <img
+                  src={panel.image}
+                  alt={panel.alt}
+                  loading="lazy"
+                  class="h-full w-full object-contain drop-shadow-xl"
+                />
+              </div>
+              <div class="mt-5 flex items-center justify-center gap-3">
+                <span class="h-5 w-5 rounded-full ring-2 ring-white shadow-soft" style={`background:${panel.swatch}`}></span>
+                <h3 class="text-xl font-black text-brand-ink">{panel.name}</h3>
+              </div>
+              {index === 0 && (
+                <p class="mt-2 text-xs font-black uppercase tracking-[.12em] text-brand-gold">Default Panel</p>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="ciri-ciri" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">KIUT Features</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Ciri Ringkas Yang Buat KIUT Praktikal Setiap Hari</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Kita fokus pada benda yang customer cepat faham: saiz compact, pemasangan kemas, dispensing mudah dan kawalan yang minimal.
+          </p>
+        </div>
+
+        <div class="mt-10 space-y-6">
+          {featureStories.map((item, index) => {
+            const imageFirst = index % 2 === 0;
+            return (
+              <article class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10 lg:grid lg:grid-cols-2 lg:items-center">
+                <div class={`${imageFirst ? 'lg:order-1' : 'lg:order-2'} bg-brand-cream p-4 sm:p-6`}>
+                  <div class={`${item.vertical ? 'mx-auto aspect-[9/12] max-w-[360px]' : 'aspect-[4/3]'} overflow-hidden rounded-[1.5rem] bg-white shadow-soft`}>
+                    <img
+                      src={item.media}
+                      alt={item.alt}
+                      loading="lazy"
+                      class="h-full w-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div class={`${imageFirst ? 'lg:order-2' : 'lg:order-1'} p-6 sm:p-8 lg:p-12`}>
+                  <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">
+                    {item.eyebrow}
+                  </p>
+                  <h3 class="mt-3 text-2xl font-black text-brand-ink sm:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p class="mt-4 text-base leading-8 text-brand-muted">
+                    {item.copy}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section id="tankless" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#f9f3f5] shadow-premium ring-1 ring-brand/10">
+        <div class="grid gap-0 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+          <div class="p-6 sm:p-8 lg:p-10">
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Tankless Identity</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Slim Dari Sisi, Kemas Dari Depan</h2>
+            <p class="mt-4 leading-8 text-brand-muted">
+              Dengan lebar 135mm, KIUT lebih mudah diletakkan di ruang countertop yang sempit. Ini menjadikan ia pilihan natural untuk rumah bertingkat, studio, condo, apartment dan pantry kecil.
+            </p>
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">135mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Lebar</p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">4kg</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Berat</p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">388mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Kedalaman</p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">364mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Tinggi</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 sm:p-6 lg:p-8">
+            <img
+              src={`${kiutImageBase}/cuckoo-kiut-tankless-slim-feature.png`}
+              alt="CUCKOO KIUT tankless slim feature untuk ruang dapur kecil"
+              loading="lazy"
+              class="h-full w-full rounded-[1.5rem] object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="filtration" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.14),transparent_34%),linear-gradient(135deg,#4B0715_0%,#7A0E23_46%,#9A2540_100%)] shadow-premium">
+        <div class="px-5 pt-10 text-center sm:px-8 lg:px-10">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">KIUT Filtration</p>
+          <h2 class="mt-3 text-3xl font-black uppercase tracking-[.12em] text-white sm:text-4xl">
+            Sistem Tapisan 4 Peringkat
+          </h2>
+          <p class="mx-auto mt-3 max-w-3xl text-lg font-bold leading-8 text-white/75">
+            Dengan 3 filter utama untuk air room temperature yang bersih, mild alkaline dan sesuai diminum setiap hari.
+          </p>
+        </div>
+
+        <div class="px-5 py-9 sm:px-8 lg:px-10">
+          <div class="grid gap-5 lg:grid-cols-3">
+            {filtrationSteps.map((item) => (
+              <article class="overflow-hidden rounded-[1.7rem] bg-[#f7eef0] shadow-[0_24px_70px_rgba(20,0,8,.18)]">
+                <p class="bg-[linear-gradient(135deg,#B0163C_0%,#7A0E23_42%,#4B0715_100%)] px-6 py-4 text-center text-sm font-black uppercase tracking-[.16em] text-white">
+                  {item.stage}
+                </p>
+                <div class="p-6 text-center">
+                  <h3 class="text-2xl font-black text-brand">{item.title}</h3>
+                  <p class="mt-4 text-sm leading-7 text-brand-ink">{item.copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="px-5 pb-10 pt-2 sm:px-8 lg:px-10">
+          <p class="mx-auto max-w-5xl text-center text-lg leading-8 text-white/80">
+            KIUT membantu menapis bendasing, bau, bakteria dan bahan berbahaya sambil mengekalkan mineral untuk menghasilkan <strong class="text-white">air mild alkaline room temperature</strong> bagi kegunaan harian.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+        <img
+          src={`${kiutImageBase}/cuckoo-kiut-water-purifier-lifestyle.png`}
+          alt="CUCKOO KIUT minimalist lifestyle water purifier untuk rumah moden"
+          loading="lazy"
+          class="w-full object-cover"
+        />
+      </div>
+    </section>
+
+    <ProductGallerySlider
+      id="gallery"
+      title="Lihat CUCKOO KIUT Dengan Lebih Dekat"
+      description="Gambar produk, panel warna dan suasana KIUT supaya anda lebih mudah bayangkan saiz, warna dan kesesuaian pemasangan di rumah."
+      items={galleryItems}
+    />
+
+    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Specifications</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi CUCKOO KIUT</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
+            Dimensi, filter, panel warna dan spesifikasi utama KIUT untuk semakan sebelum pilih pelan.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div class="self-start overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.14),transparent_32%),linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)] p-6 shadow-premium sm:p-8">
+            <div class="flex min-h-[320px] items-center justify-center rounded-[1.5rem] bg-white/5 p-4">
+              <img
+                src={`${kiutImageBase}/cuckoo-kiut-specification-dimension.png`}
+                alt="Spesifikasi dimensi CUCKOO KIUT 135mm x 388mm x 364mm"
+                loading="lazy"
+                class="w-full object-contain drop-shadow-2xl"
+              />
+            </div>
+            <p class="mt-4 text-center text-sm text-white/70">CUCKOO KIUT slim tankless water purifier</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">135mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Lebar</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">388mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Kedalaman</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">364mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Tinggi</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">4kg</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Berat</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+              {specRows.map(([label, value], index) => (
+                <div class={`grid grid-cols-2 ${index < specRows.length - 1 ? 'border-b border-brand/10' : ''}`}>
+                  <div class="px-5 py-4 font-black text-brand-ink">{label}</div>
+                  <div class="px-5 py-4 text-brand-muted">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+            Pilih Cara Miliki CUCKOO KIUT
+          </h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            KIUT sesuai jika anda mahu penapis air CUCKOO yang lebih compact, minimalist dan mudah masuk ruang dapur kecil.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <article class={`relative rounded-[2rem] p-7 shadow-soft ${plan.featured ? 'border-2 border-brand bg-brand text-white shadow-glow' : 'border border-brand/10 bg-white'}`}>
+              {plan.badge && (
+                <div class={`absolute -top-4 left-7 rounded-full px-5 py-2 text-xs font-black uppercase tracking-[.14em] shadow-soft ${plan.featured ? 'bg-white text-brand' : 'bg-brand text-white'}`}>
+                  {plan.badge}
+                </div>
+              )}
+              <p class="mt-3 text-sm font-black uppercase tracking-[.16em] text-brand-gold">{plan.tier}</p>
+              <h3 class={`mt-4 text-2xl font-black ${plan.featured ? 'text-white' : 'text-brand-ink'}`}>{plan.title}</h3>
+              <div class={`mt-7 rounded-[1.5rem] p-5 ${plan.featured ? 'bg-white/10' : 'bg-brand-cream'}`}>
+                <p class={`text-5xl font-black ${plan.featured ? 'text-white' : 'text-brand'}`}>
+                  {plan.price}<span class={`text-base font-black ${plan.featured ? 'text-white/70' : 'text-brand-muted'}`}>{plan.suffix}</span>
+                </p>
+                <p class={`mt-2 text-xs font-black uppercase tracking-[.12em] ${plan.featured ? 'text-brand-gold' : 'text-brand-muted'}`}>
+                  {plan.suffix ? 'Harga bulanan' : 'Harga outright'}
+                </p>
+              </div>
+              <p class={`mt-5 text-sm leading-7 ${plan.featured ? 'text-white/78' : 'text-brand-muted'}`}>{plan.copy}</p>
+              <ul class={`mt-5 space-y-2 text-sm font-bold ${plan.featured ? 'text-white/85' : 'text-brand-ink'}`}>
+                {plan.details.map((detail) => (
+                  <li>✓ {detail}</li>
+                ))}
+              </ul>
+              <a href={whatsappKiutUrl}
+                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+                <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+                WhatsApp Semak
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-white p-5 text-center text-sm font-bold leading-7 text-brand-muted shadow-soft">
+          Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak bayaran permulaan, kelayakan, dokumen, stok dan promo terkini.
+        </div>
+      </div>
+    </section>
+
+    <PromoBannerSection />
+
+    <FreeGiftSection
+      title="Free Gift Untuk Tempahan CUCKOO KIUT"
+      description="Selain menikmati penapis air tankless yang slim dan compact, pelanggan juga berpeluang menerima free gift semasa promo masih tersedia."
+    />
+
+    <WaterPurifierServiceSection
+      productName="Penapis Air CUCKOO KIUT"
+      productImage={kiutProductImage}
+      productAlt="Penapis Air CUCKOO KIUT dengan servis berkala dan penukaran filter"
+    />
+
+   <WhyChooseCuckooWaterPurifiers />
+
+    <CustomerProofSection />
+    <WaterHalalSection />
+
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">
+            Soalan Lazim CUCKOO KIUT
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
+            Jawapan ringkas sebelum anda pilih plan atau semak promo KIUT.
+          </p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProductCategorySection />
+    <AgentSection />
+  </div>
+
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(schema)}
+  </script>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>

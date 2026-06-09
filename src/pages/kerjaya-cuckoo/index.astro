@@ -1,0 +1,1547 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const whatsappNumber = '60139916967';
+const whatsappRecruitmentUrl =
+  `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent('Salam Fadhil, saya berminat nak jadi Ejen CUCKOO 2026. Boleh bantu saya mula?')}`;
+
+const meta = {
+  title: 'Daftar Ejen CUCKOO 2026 | Komisyen RM200-RM500 & Bimbingan',
+  description:
+    'Daftar jadi Ejen CUCKOO 2026 secara part-time atau online. Komisyen RM200-RM500 per unit, tanpa stok, dengan skrip WhatsApp, training dan bimbingan Fadhil.',
+  canonical: 'https://www.cuckoonano.com/kerjaya-cuckoo/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/people/gambar%20ejen%20-%20fadhil%202.webp',
+  ogType: 'website',
+  showHeader: false,
+  showFooter: false,
+  showFloatingWhatsapp: false
+};
+
+const heroStats = [
+  ['2017', 'Aktif sebagai ejen dan manager'],
+  ['Marketing', 'Bahan iklan disediakan'],
+  ['Part-time', 'Tak perlu datang ofis, boleh 100% online'],
+  ['RM350/unit', 'Produk atas RM100/month bermula dari 1 unit']
+];
+
+const painPoints = [
+  {
+    title: 'Nak tambah income, tapi takut tak pandai sales',
+    copy: 'Anda minat nak cuba, cuma risau tak tahu nak approach orang, tak tahu nak mula ayat dan takut nampak memaksa.'
+  },
+  {
+    title: 'Pernah cuba jual barang, tapi margin kecil',
+    copy: 'Banyak bisnes kecil nampak mudah, tapi nak kumpul untung RM300 pun kena jual banyak unit dan ulang kerja yang sama.'
+  },
+  {
+    title: 'Takut customer tanya soalan susah',
+    copy: 'Harga, plan bulanan, servis, pemasangan dan kelayakan customer boleh buat beginner rasa tak yakin untuk reply.'
+  },
+  {
+    title: 'Tak nak mula seorang diri',
+    copy: 'Daftar ID sahaja tidak cukup. Ejen baru perlukan contoh skrip, bahan jualan dan tempat bertanya bila prospek mula masuk.'
+  }
+];
+
+const productCategories = [
+  {
+    name: 'Penapis Air',
+    imageLabel: 'Gambar Penapis Air',
+    image: '/assets/images/Gambar%20Produk%20png/xcel-2.webp',
+    copy: 'Produk paling mudah dijadikan permulaan kerana ramai keluarga sudah kenal fungsi dan keperluannya.',
+    angle: 'Angle jualan: air bersih, sewa bulanan, servis berkala dan kegunaan harian keluarga.'
+  },
+  {
+    name: 'Air Purifier',
+    imageLabel: 'Gambar Air Purifier',
+    image: '/assets/images/Gambar%20Produk%20png/l-model-main.webp',
+    copy: 'Sesuai untuk prospek yang sensitif dengan habuk, bau, udara dalam rumah atau ada anak kecil.',
+    angle: 'Angle jualan: keselesaan rumah, udara lebih bersih dan gaya hidup keluarga moden.'
+  },
+  {
+    name: 'Aircond',
+    imageLabel: 'Gambar Aircond',
+    image: '/assets/images/Gambar%20Produk%20png/aircond%20cuckoo%20vita%205tar%201%20png%20(1)-Photoroom.webp',
+    copy: 'Produk permintaan tinggi untuk rumah baru, bilik tambahan, pejabat kecil dan keluarga bekerja.',
+    angle: 'Angle jualan: keselesaan cuaca panas, pakej sewaan dan servis yang lebih tersusun.'
+  },
+  {
+    name: 'Tilam',
+    imageLabel: 'Gambar Tilam',
+    image: '/assets/images/Gambar%20Produk%20png/tilam%20cuckoo%20a%20luxe%20mattress%20napure%201.webp',
+    copy: 'Produk bernilai tinggi dengan angle keselesaan tidur, sakit badan dan kualiti rehat keluarga.',
+    angle: 'Angle jualan: tidur lebih selesa, bilik utama, ibu bapa dan pasangan muda.'
+  },
+  {
+    name: 'Washer Dryer',
+    imageLabel: 'Gambar Washer Dryer',
+    image: '/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-03.webp',
+    copy: 'Menarik untuk keluarga moden, rumah condo, rumah kecil dan mereka yang mahu jimat masa urus pakaian.',
+    angle: 'Angle jualan: basuh dan kering lebih mudah, kurang bergantung kepada cuaca.'
+  },
+  {
+    name: 'Massage Chair',
+    imageLabel: 'Gambar Massage Chair',
+    image: '/assets/images/Gambar%20Produk%20png/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp',
+    copy: 'Produk high-ticket untuk prospek yang mahu rehat di rumah atau hadiah keselesaan untuk ibu bapa.',
+    angle: 'Angle jualan: kepenatan kerja, keselesaan keluarga dan value produk premium.'
+  },
+  {
+    name: 'Treadmill',
+    imageLabel: 'Gambar Treadmill',
+    image: '/assets/images/Gambar%20Produk%20png/b-fit.webp',
+    copy: 'Sesuai untuk prospek yang mahu mula rutin sihat tanpa perlu keluar ke gym setiap hari.',
+    angle: 'Angle jualan: senaman di rumah, kesihatan dan gaya hidup aktif.'
+  },
+  {
+    name: 'Produk Rumah Lain',
+    imageLabel: 'Gambar Produk Lain',
+    image: '/assets/images/Gambar%20Produk%20png/p10-1.webp',
+    copy: 'Bergantung promo semasa, ejen boleh belajar angle jualan untuk beberapa kategori produk CUCKOO lain.',
+    angle: 'Angle jualan: satu ID ejen, banyak peluang ikut keperluan prospek.'
+  }
+];
+
+const supportItems = [
+  ['Training Produk', 'Faham kategori produk, plan rental, syarat asas dan cara explain kepada customer.'],
+  ['Skrip WhatsApp', 'Contoh ayat pembuka, reply soalan, follow-up dan closing supaya tidak mula dari kosong.'],
+  ['Content & Poster', 'Idea content, gambar promosi, caption dan bahan WhatsApp Status untuk mula cari lead.'],
+  ['Follow-Up System', 'Cara susun prospek, follow-up tanpa nampak memaksa dan tahu bila perlu close.'],
+  ['Support Group', 'Ruang bertanya, update promo dan semak kes customer bersama team.'],
+  ['FB Ads & Google Ads', 'Untuk yang mahu advance, boleh belajar asas content marketing, Google Ads dan Meta Ads.']
+];
+
+const proofGallery = [
+  {
+    title: 'Anda tak mula seorang diri',
+    copy: 'Saya akan bantu anda faham langkah pertama: produk apa nak mula, macam mana nak approach prospek dan apa perlu dibuat selepas orang bertanya.',
+    image: '/assets/images/rekrut/kerjaya-bisnes-cuckoo-Fadhil-bantu-ejen.webp',
+    alt: 'Fadhil membantu ejen baru CUCKOO'
+  },
+  {
+    title: 'Ada group untuk bertanya',
+    copy: 'Bila customer tanya pasal harga, promo, pemasangan atau servis, anda ada tempat untuk semak dan minta panduan.',
+    image: '/assets/images/rekrut/whatsapp-group-team-gerila-cuckoo-.webp',
+    alt: 'Contoh group support WhatsApp Team Gerila CUCKOO'
+  },
+  {
+    title: 'Bahan jualan disediakan',
+    copy: 'Anda tak perlu pening cari gambar produk dan reka ayat dari kosong. Ada bahan promosi untuk bantu anda mula posting dan follow-up.',
+    image: '/assets/images/rekrut/telegram-team-gerila-cuckoo.webp',
+    alt: 'Contoh bahan promosi dalam Telegram team'
+  },
+  {
+    title: 'Banyak kategori produk',
+    copy: 'Anda boleh belajar jual penapis air, air purifier, aircond, tilam, washer dryer, massage chair dan beberapa produk rumah lain mengikut promo semasa.',
+    image: '/assets/images/rekrut/semua-produk-cuckoo-2.webp',
+    alt: 'Pelbagai produk CUCKOO untuk dipromosikan oleh ejen'
+  },
+  {
+    title: 'Komisyen lebih terasa',
+    copy: 'CUCKOO bukan jualan margin kecil. Satu unit boleh beri komisyen yang berbaloi untuk masa anda belajar sales, follow-up dan closing.',
+    image: '/assets/images/rekrut/komisyen-ejen-cuckoo.001.webp',
+    alt: 'Contoh komisyen ejen CUCKOO 2026'
+  },
+  {
+    title: 'Peluang tambah income',
+    copy: 'Peluang ini sesuai untuk yang nak bina income tambahan secara part-time, dari rumah atau secara online dengan tindakan yang konsisten.',
+    image: '/assets/images/rekrut/income-cuckoo.webp',
+    alt: 'Ilustrasi income dan peluang komisyen ejen CUCKOO'
+  },
+  {
+    title: 'Ada suasana team',
+    copy: 'Bila ada komuniti dan momentum team, ejen baru lebih mudah rasa yakin untuk belajar dan terus cuba walaupun baru mula.',
+    image: '/assets/images/rekrut/kerjaya-bisnes-cuckoo-komisyen-cuckoonano.com-7.webp',
+    alt: 'Aktiviti penghargaan dan suasana team CUCKOO'
+  },
+  {
+    title: 'Sesuai untuk buat online',
+    copy: 'Anda boleh bermula dengan WhatsApp, media sosial dan content simple. Yang penting tahu cara susun mesej, follow-up dan rekod prospek.',
+    image: '/assets/images/rekrut/cara-buat-bisnes-online-1.webp',
+    alt: 'Cara buat bisnes online sebagai ejen CUCKOO'
+  },
+  {
+    title: 'Untuk yang pernah stuck income',
+    copy: 'Kalau anda rasa income sekarang belum cukup, peluang ini boleh jadi jalan untuk belajar sales produk rumah yang sudah dikenali ramai.',
+    image: '/assets/images/rekrut/empty-wallet.webp',
+    alt: 'Ilustrasi orang yang mahu tambah pendapatan'
+  },
+  {
+    title: 'Ada contoh mesej prospek',
+    copy: 'Ejen baru boleh belajar dari contoh perbualan dan cara reply supaya tidak blank bila customer mula bertanya.',
+    image: '/assets/images/rekrut/kerjaya-bisnes-cuckoo-komisyen-cuckoonano.com-1.webp',
+    alt: 'Contoh mesej dan perbualan prospek ejen CUCKOO'
+  },
+  {
+    title: 'Belajar cara jawab customer',
+    copy: 'Bukan semua prospek terus beli. Anda akan belajar cara jawab soalan, follow-up dengan sopan dan bawa customer ke langkah seterusnya.',
+    image: '/assets/images/rekrut/kerjaya-bisnes-cuckoo-komisyen-cuckoonano.com-2.webp',
+    alt: 'Contoh follow-up customer ejen CUCKOO'
+  },
+  {
+    title: 'Bahan produk lebih jelas',
+    copy: 'Bila ada bahan visual produk, lebih mudah untuk explain kepada prospek tentang pilihan model, kategori dan promosi semasa.',
+    image: '/assets/images/rekrut/kerjaya-bisnes-cuckoo-komisyen-cuckoonano.com-3.webp',
+    alt: 'Contoh bahan produk CUCKOO untuk ejen'
+  },
+  {
+    title: 'Aktiviti team dan penghargaan',
+    copy: 'Selain sales, ejen juga boleh nampak suasana team, recognition dan peluang berkembang bila prestasi semakin baik.',
+    image: '/assets/images/rekrut/kerjaya-bisnes-cuckoo-komisyen-cuckoonano.com-4.webp',
+    alt: 'Aktiviti team dan penghargaan ejen CUCKOO'
+  },
+  {
+    title: 'Fadhil sebagai rujukan',
+    copy: 'Anda boleh terus WhatsApp saya untuk semak cara daftar, faham komisyen dan mula dengan flow yang sesuai dengan situasi anda.',
+    image: '/assets/images/rekrut/gambar-fadhil-cuckoo.webp',
+    alt: 'Wan Ahmad Fadhil ejen dan manager CUCKOO'
+  }
+];
+
+const whyCuckooPillars = [
+  {
+    title: 'Income & Growth',
+    copy: 'Sesuai untuk yang mahu peluang komisyen lebih besar per closing dan ada ruang berkembang dalam sales team.',
+    bullets: ['Komisyen besar 1 unit dapat RM200-RM500', 'Peluang kenaikan pangkat', 'Peluang melancong percuma dengan CUCKOO']
+  },
+  {
+    title: 'Senang Nak Bermula',
+    copy: 'Ejen boleh fokus kepada promosi, follow-up dan closing tanpa beban operasi produk fizikal.',
+    bullets: ['Daftar ejen percuma', 'Tak perlu simpan stok', 'Tak perlu pasang dan servis']
+  },
+  {
+    title: 'Produk Mudah Jual',
+    copy: 'Produk rumah lebih mudah dibuka cerita kerana orang faham kegunaan harian dan boleh pilih bayaran bulanan.',
+    bullets: ['Produk mudah jual', 'Bayaran serendah RM61/bulan', 'Boleh 100% online']
+  },
+  {
+    title: 'Marketing & Bimbingan',
+    copy: 'Ejen baru tidak perlu mula dari kosong kerana bahan asas dan support jualan disediakan.',
+    bullets: ['Bahan marketing disediakan', 'Coaching dan training', 'Asas FB Ads & Google Ads untuk yang mahu advance']
+  }
+];
+
+const commissionHighlights = [
+  {
+    label: 'Jual 1 unit',
+    amount: 'RM350',
+    copy: 'Untuk produk rental atas RM100/month pada tier 1-4 unit. Satu closing boleh beri komisyen yang lebih terasa berbanding margin kecil biasa.'
+  },
+  {
+    label: 'Jual 5 unit',
+    amount: 'RM2,000',
+    copy: 'Jika semua produk atas RM100/month, kadar masuk tier 5-9 unit dan menjadi RM400/unit.'
+  },
+  {
+    label: 'Jual 10 unit',
+    amount: 'RM5,000',
+    copy: 'Jika semua produk atas RM100/month, kadar masuk tier 10-14 unit dan menjadi RM500/unit.'
+  },
+  {
+    label: '1 outright',
+    amount: 'RM550',
+    copy: 'Customer nak beli cash terus, komisyen bermula RM550 seunit.'
+  }
+];
+
+const rentalCommissionRows = [
+  ['1-4 unit', 'RM200/unit', 'RM350/unit'],
+  ['5-9 unit', 'RM250/unit', 'RM400/unit'],
+  ['10-14 unit', 'RM350/unit', 'RM500/unit'],
+  ['15 unit ke atas', 'RM500/unit', 'RM500/unit']
+];
+
+const outrightCommissionRows = [
+  ['1-9 unit', 'RM200/unit'],
+  ['10 unit ke atas', 'RM250/unit']
+];
+
+const newAgentSupportItems = [
+  {
+    label: 'Sokongan 1',
+    title: 'Penerangan Produk Asas',
+    copy: 'Faham kategori produk, plan bayaran dan beberapa soalan biasa yang sering ditanya customer.'
+  },
+  {
+    label: 'Sokongan 2',
+    title: 'Skrip & Idea Follow-Up',
+    copy: 'Contoh ayat WhatsApp, cara jawab pertanyaan dan idea follow-up yang lebih tersusun untuk rujukan permulaan.'
+  },
+  {
+    label: 'Sokongan 3',
+    title: 'Bahan Content & Poster',
+    copy: 'Rujukan bahan marketing seperti poster, caption dan idea posting untuk mula promosi dengan lebih mudah.'
+  },
+  {
+    label: 'Sokongan 4',
+    title: 'Ruang Bertanya & Support',
+    copy: 'Ejen boleh bertanya dan rujuk perkara asas apabila perlukan penjelasan lanjut tentang produk, promo atau cara respon customer.'
+  }
+];
+
+const suitableItems = [
+  'Anda nak tambah income secara part-time atau full-time',
+  'Anda sanggup belajar cara buat sales dengan betul',
+  'Anda boleh konsisten buat posting dan follow-up',
+  'Anda suka berurusan dan berkomunikasi dengan orang',
+  'Anda nak jual produk rumah yang memang ada permintaan',
+  'Anda perlukan team yang boleh guide dari awal',
+  'Anda nak mula bisnes tanpa perlu simpan stok'
+];
+
+const notSuitableItems = [
+  'Anda nak komisyen tanpa buat tindakan',
+  'Anda tak mahu belajar produk, promo dan skrip asas',
+  'Anda tak mahu follow-up prospek selepas mereka bertanya',
+  'Anda mudah berhenti bila belum ada result awal',
+  'Anda harap semua lead diberikan tanpa usaha sendiri',
+  'Anda tidak bersedia cuba posting, WhatsApp Status atau approach kenalan'
+];
+
+const faqItems = [
+  {
+    q: 'Macam mana nak daftar Ejen CUCKOO 2026?',
+    a: 'Anda boleh WhatsApp Fadhil atau isi borang minat di page ini. Saya akan bantu explain syarat asas, flow daftar, komisyen 2026 dan langkah mula sebagai ejen.'
+  },
+  {
+    q: 'Berapa komisyen Ejen CUCKOO 2026?',
+    a: 'Untuk rental, komisyen bermula sekitar RM200 hingga RM500 per unit bergantung kepada harga bulanan produk dan jumlah unit. Untuk outright, ada extra outright commission mengikut tier semasa.'
+  },
+  {
+    q: 'Perlu bayar untuk daftar Ejen CUCKOO?',
+    a: 'Pendaftaran ejen adalah percuma tertakluk kepada syarat dan polisi semasa. Saya akan bantu semak proses daftar apabila anda hubungi saya.'
+  },
+  {
+    q: 'Perlu simpan stok produk?',
+    a: 'Tidak perlu. Fokus ejen ialah promosi, beri penerangan, dapatkan customer dan bantu proses order. Pemasangan dan servis dibuat mengikut proses CUCKOO.'
+  },
+  {
+    q: 'Boleh jadi Ejen CUCKOO part-time dari rumah?',
+    a: 'Boleh. Ramai calon bermula secara part-time dari rumah menggunakan WhatsApp, media sosial, content online dan follow-up selepas waktu kerja.'
+  },
+  {
+    q: 'Saya tiada pengalaman sales. Boleh jadi Ejen CUCKOO?',
+    a: 'Boleh, asalkan sanggup belajar. Anda akan dibantu dengan skrip, training produk, bahan marketing dan panduan follow-up.'
+  },
+  {
+    q: 'Adakah komisyen atau income dijamin?',
+    a: 'Tidak. Semua simulasi hanyalah contoh kiraan. Hasil sebenar bergantung kepada usaha, jumlah lead, conversion, kelulusan customer, pemasangan berjaya dan terma semasa.'
+  },
+  {
+    q: 'Bila komisyen dibayar?',
+    a: 'Bayaran komisyen tertakluk kepada kelulusan customer, pemasangan berjaya, jenis produk, jumlah unit dan jadual bayaran semasa CUCKOO.'
+  },
+  {
+    q: 'Produk apa yang boleh saya jual?',
+    a: 'Antara kategori yang boleh dipelajari ialah penapis air, air purifier, aircond, tilam, washer dryer, massage chair, treadmill dan produk rumah lain mengikut promo semasa.'
+  },
+  {
+    q: 'Apa yang saya dapat selepas daftar?',
+    a: 'Anda akan dibantu untuk faham produk, masuk support, guna skrip WhatsApp, susun content dan mula cari prospek dengan langkah yang lebih jelas.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: meta.title,
+  description: meta.description,
+  url: meta.canonical,
+  inLanguage: 'ms-MY',
+  about: {
+    '@type': 'Thing',
+    name: 'Daftar Ejen CUCKOO 2026'
+  },
+  keywords: [
+    'daftar ejen CUCKOO',
+    'jadi ejen CUCKOO',
+    'komisyen ejen CUCKOO',
+    'kerjaya CUCKOO',
+    'ejen CUCKOO part-time',
+    'sales representative CUCKOO'
+  ],
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Wan Ahmad Fadhil',
+    jobTitle: 'Ejen dan Manager CUCKOO',
+    url: 'https://www.cuckoonano.com/'
+  }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.cuckoonano.com/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Daftar Ejen CUCKOO 2026',
+      item: meta.canonical
+    }
+  ]
+};
+---
+
+<BaseLayout {...meta}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="bg-brand-cream text-brand-ink">
+    <div class="bg-brand-dark px-4 py-2 text-center text-[10px] font-black uppercase tracking-[.14em] text-white sm:text-xs">
+      Pengambilan Ejen CUCKOO 2026 dibuka - training, skrip WhatsApp dan support group disediakan
+    </div>
+
+    <nav class="sticky top-0 z-40 border-b border-brand/10 bg-brand-cream/90 backdrop-blur-md">
+      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="#" class="flex items-center gap-2">
+          <span class="flex h-9 w-9 items-center justify-center bg-brand text-sm font-black text-white shadow-soft">C</span>
+          <span>
+            <span class="block text-sm font-black tracking-tight text-brand-ink sm:text-base">EJEN CUCKOO 2026</span>
+            <span class="block text-[9px] font-black uppercase tracking-[.16em] text-brand-muted">Team Bimbingan Fadhil</span>
+          </span>
+        </a>
+        <div class="hidden items-center gap-5 lg:flex">
+          <a class="text-xs font-black text-brand-muted hover:text-brand" href="#produk">Produk</a>
+          <a class="text-xs font-black text-brand-muted hover:text-brand" href="#bimbingan">Bimbingan</a>
+          <a class="text-xs font-black text-brand-muted hover:text-brand" href="#bukti-team">Bukti Team</a>
+          <a class="text-xs font-black text-brand-muted hover:text-brand" href="#komisyen">Komisyen</a>
+          <a class="text-xs font-black text-brand-muted hover:text-brand" href="#simulator">Simulator</a>
+          <a class="text-xs font-black text-brand-muted hover:text-brand" href="#daftar">Daftar</a>
+        </div>
+        <a
+          href="#daftar"
+          class="hidden rounded-none bg-brand px-5 py-3 text-xs font-black uppercase tracking-[.12em] text-white shadow-soft transition hover:bg-brand-dark sm:inline-flex"
+        >
+          Mohon ID Ejen
+        </a>
+      </div>
+    </nav>
+
+    <header class="relative overflow-hidden border-b border-brand/10 bg-[linear-gradient(135deg,#FFF8F2_0%,#FFFFFF_42%,#F8E7EA_100%)] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <div class="absolute left-1/2 top-0 -z-0 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+      <div class="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
+        <div>
+          <p class="inline-flex border border-brand/10 bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[.18em] text-brand shadow-soft">
+            Komisyen tinggi per unit, tanpa simpan stok
+          </p>
+          <h1 class="mt-5 max-w-4xl text-[2.3rem] font-black uppercase leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            Jadi Ejen CUCKOO dan belajar close produk komisyen RM200-RM500 per unit
+          </h1>
+          <p class="mt-5 max-w-2xl text-base font-semibold leading-8 text-brand-muted sm:text-lg">
+            Daftar percuma bersama Team Fadhil. Produk CUCKOO bukan jualan margin kecil RM5-RM10/unit. Anda akan belajar cara cari prospek, reply WhatsApp, follow-up customer dan buat jualan secara part-time dengan langkah yang lebih tersusun.
+          </p>
+
+          <div class="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {heroStats.map((item) => (
+              <div class="border border-brand/10 bg-white p-4 shadow-soft">
+                <p class="text-lg font-black text-brand">{item[0]}</p>
+                <p class="mt-1 text-[11px] font-bold leading-5 text-brand-muted">{item[1]}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappRecruitmentUrl}
+              data-track="click_whatsapp_recruitment_hero"
+              class="inline-flex items-center justify-center gap-2 bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-[.08em] text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Fadhil
+            </a>
+            <a
+              href="#daftar"
+              class="inline-flex items-center justify-center border-2 border-brand-ink bg-white px-7 py-4 text-sm font-black uppercase tracking-[.08em] text-brand-ink transition hover:bg-brand-cream"
+            >
+              Isi Borang Minat
+            </a>
+          </div>
+          <p class="mt-4 max-w-2xl text-xs font-bold leading-6 text-brand-muted">
+            Nota: Ini peluang jualan berasaskan komisyen. Hasil sebenar bergantung kepada usaha, follow-up, kelulusan pelanggan, pemasangan berjaya dan terma semasa.
+          </p>
+        </div>
+
+        <div class="mx-auto w-full max-w-md">
+          <div class="relative border-2 border-brand-ink bg-white p-3 shadow-[10px_10px_0_rgba(74,7,21,1)]">
+            <div class="absolute right-5 top-5 z-20 bg-brand px-3 py-1 text-[9px] font-black uppercase tracking-[.18em] text-white">
+              Aktif 2026
+            </div>
+            <div class="relative aspect-[4/5] overflow-hidden bg-brand-cream">
+              <img
+                src="/assets/images/people/gambar ejen - fadhil 2.webp"
+                alt="Wan Ahmad Fadhil ejen dan manager CUCKOO sejak 2017"
+                class="h-full w-full object-cover"
+                loading="eager"
+              />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent p-5 text-white">
+                <p class="inline-block bg-brand px-2 py-1 text-[9px] font-black uppercase tracking-[.16em] text-white">Cuckoo Branch Sales Manager</p>
+                <h2 class="mt-2 text-2xl font-black uppercase leading-tight">Wan Ahmad Fadhil</h2>
+                <p class="mt-1 text-xs font-bold text-white/75">Bimbingan ejen, sales online dan WhatsApp closing sejak 2017</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Masalah Biasa Calon Ejen</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Nak tambah income, tapi tak tahu nak mula dari mana?</h2>
+          </div>
+          <p class="text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+            Ramai orang sebenarnya boleh belajar sales. Yang buat mereka stuck ialah tiada sistem, tiada skrip, tiada bahan jualan dan tiada orang yang boleh guide bila customer mula bertanya.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {painPoints.map((item, index) => (
+            <article class="border border-brand/10 bg-brand-cream p-5 shadow-soft">
+              <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">0{index + 1}</p>
+              <h3 class="mt-4 text-xl font-black leading-tight text-brand-ink">{item.title}</h3>
+              <p class="mt-3 text-sm font-semibold leading-7 text-brand-muted">{item.copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-brand/10 bg-brand-dark px-4 py-16 text-white sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-end">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Kenapa komisyen CUCKOO menarik?</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Satu unit boleh bagi komisyen yang betul-betul rasa berbaloi</h2>
+          </div>
+          <div>
+            <p class="text-sm font-semibold leading-8 text-white/75 sm:text-base">
+              Banyak side income luar nampak mudah, tapi margin kecil. Nak kumpul RM350 mungkin perlu jual puluhan unit produk kecil. Dalam CUCKOO, satu closing produk rental atas RM100/month sahaja boleh bermula dengan komisyen RM350/unit, tertakluk kepada kelulusan dan pemasangan berjaya.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {commissionHighlights.map((item) => (
+            <article class="border border-white/15 bg-white p-5 text-brand-ink shadow-[8px_8px_0_rgba(216,166,74,.35)]">
+              <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">{item.label}</p>
+              <p class="mt-3 text-4xl font-black tracking-tight text-brand">{item.amount}</p>
+              <p class="mt-3 text-sm font-semibold leading-7 text-brand-muted">{item.copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 grid gap-4 border border-white/15 bg-white/10 p-5 md:grid-cols-[auto_1fr] md:items-center md:p-7">
+          <p class="text-3xl font-black text-brand-gold">RM10/unit vs RM350/unit</p>
+          <p class="text-sm font-semibold leading-8 text-white/75">
+            Point utama untuk calon ejen: kita bukan sekadar cari produk untuk dijual, kita cari produk yang komisyennya cukup besar untuk justify masa follow-up, belajar skrip dan buat closing dengan serius.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kenapa-cuckoo" class="border-y border-brand/10 bg-brand-cream px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
+          <div class="lg:sticky lg:top-24">
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Kenapa Jadi Ejen CUCKOO?</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Peluang yang kuat sebab produk, sistem dan support sudah ada</h2>
+            <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+              Calon ejen tak perlu fikir semua benda dari kosong. CUCKOO ada brand, produk rumah yang orang guna setiap hari, pilihan bayaran bulanan dan ruang untuk bina sales secara part-time atau lebih serius.
+            </p>
+            <div class="mt-7 border-2 border-brand-ink bg-white p-5 shadow-[8px_8px_0_rgba(74,7,21,1)]">
+              <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">Semuanya Senang!</p>
+              <p class="mt-3 text-2xl font-black leading-tight text-brand-ink">Ejen fokus pada iklan, follow-up dan closing. Jangan risau pemasangan & servis, semua tu orang Cuckoo buatkan.</p>
+            </div>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            {whyCuckooPillars.map((item, index) => (
+              <article class="border border-brand/10 bg-white p-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/30 hover:shadow-premium">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">0{index + 1}</p>
+                    <h3 class="mt-3 text-2xl font-black leading-tight text-brand-ink">{item.title}</h3>
+                  </div>
+                  <div class="h-10 w-10 shrink-0 bg-brand text-center text-lg font-black leading-10 text-white">{index + 1}</div>
+                </div>
+                <p class="mt-4 text-sm font-semibold leading-7 text-brand-muted">{item.copy}</p>
+                <div class="mt-5 grid gap-2">
+                  {item.bullets.map((bullet) => (
+                    <div class="border border-brand/10 bg-brand-cream px-3 py-2 text-xs font-black leading-5 text-brand-ink">
+                      {bullet}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-10 border-2 border-brand-ink bg-white p-6 shadow-[8px_8px_0_rgba(74,7,21,1)] md:p-8">
+          <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+            <div>
+              <h3 class="text-2xl font-black uppercase tracking-tight text-brand-ink">Mudah nak buka cerita dengan customer, barang senang jual.</h3>
+              <p class="mt-3 text-sm font-semibold leading-8 text-brand-muted">
+                Bila produk boleh dibayar secara bulanan dan bahan marketing sudah tersedia, ejen baru boleh mula dengan lebih tersusun: pilih produk pembuka, guna skrip, post bahan yang ada dan follow-up prospek ikut flow.
+              </p>
+            </div>
+            <a
+              href={whatsappRecruitmentUrl}
+              data-track="click_whatsapp_recruitment_why_cuckoo"
+              class="inline-flex items-center justify-center bg-brand px-6 py-4 text-xs font-black uppercase tracking-[.12em] text-white transition hover:bg-brand-dark"
+            >
+              Tanya Cara Mula
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="produk" class="border-y border-brand/10 bg-brand-cream px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Kategori Produk CUCKOO</p>
+          <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Satu ID ejen, banyak kategori produk rumah boleh dipelajari</h2>
+          <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+            Calon ejen tidak perlu bergantung kepada satu produk sahaja. Anda boleh belajar angle jualan mengikut keperluan prospek dan promo semasa.
+          </p>
+        </div>
+
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {productCategories.map((item) => (
+            <article class="group overflow-hidden border border-brand/10 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand/30 hover:shadow-premium">
+              <div class="relative aspect-[4/3] border-b border-brand/10 bg-[linear-gradient(135deg,#FFFFFF_0%,#FFF8F2_58%,#F4DFD8_100%)] p-4">
+                <div class="flex h-full items-center justify-center bg-white/70 p-4">
+                  <img
+                    src={item.image}
+                    alt={item.imageLabel}
+                    loading="lazy"
+                    class="h-full w-full object-contain transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div class="absolute left-4 top-4 bg-brand px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] text-white">Produk</div>
+              </div>
+              <div class="p-5">
+                <div class="mb-5 h-1 w-12 bg-brand transition group-hover:w-20"></div>
+                <h3 class="text-xl font-black text-brand-ink">{item.name}</h3>
+                <p class="mt-3 text-sm font-semibold leading-7 text-brand-muted">{item.copy}</p>
+              </div>
+              <div class="border-t border-brand/10 bg-brand-cream p-4">
+                <p class="text-[10px] font-black uppercase tracking-[.16em] text-brand-gold">Kenapa mudah approach?</p>
+                <p class="mt-2 text-xs font-bold leading-6 text-brand-muted">{item.angle}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="bimbingan" class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 lg:grid-cols-[.86fr_1.14fr] lg:items-start">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Kenapa Join Team BSM Fadhil?</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Bukan sekadar daftar ID ejen</h2>
+            <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+              Ramai orang boleh daftar ejen. Tetapi yang membezakan ialah apa yang berlaku selepas daftar. Team BSM Fadhil fokus bantu ejen baru faham tindakan asas untuk mula mencari prospek, membuat posting, follow-up dan belajar closing dengan tersusun.
+            </p>
+            <div class="mt-7 border-2 border-brand-ink bg-brand-dark p-6 text-white shadow-[8px_8px_0_rgba(216,166,74,.45)]">
+              <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">Bimbingan praktikal</p>
+              <p class="mt-3 text-2xl font-black leading-tight">Fokus kepada tindakan yang boleh dibuat, bukan teori semata-mata.</p>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            {supportItems.map((item) => (
+              <article class="border border-brand/10 bg-brand-cream p-5 shadow-soft">
+                <h3 class="text-lg font-black text-brand-ink">{item[0]}</h3>
+                <p class="mt-3 text-sm font-semibold leading-7 text-brand-muted">{item[1]}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bukti-team" class="border-y border-brand/10 bg-brand-cream px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 lg:grid-cols-[.86fr_1.14fr] lg:items-end">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Bukti & Suasana Team</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Anda akan nampak jalan untuk mula, bukan daftar kosong</h2>
+          </div>
+          <div>
+            <p class="text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+              Saya tahu ramai orang takut jadi ejen sebab risau tak pandai menjual. Sebab itu saya tunjukkan gambaran sebenar: ada bahan promosi, ada group support, ada contoh flow jualan dan ada tempat untuk anda bertanya bila baru mula.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="recruitmentProofSlider"
+          class="mt-10 border-2 border-brand-ink bg-white p-3 shadow-[8px_8px_0_rgba(74,7,21,1)] sm:p-5"
+          data-active-slide="0"
+        >
+          <div class="grid gap-5 lg:grid-cols-[1.15fr_.85fr] lg:items-stretch">
+            <div class="relative overflow-hidden bg-brand-cream lg:min-h-[620px]">
+              <div class="absolute left-4 top-4 z-20 bg-brand px-3 py-1 text-[9px] font-black uppercase tracking-[.16em] text-white">
+                Galeri Team
+              </div>
+
+              <div class="relative aspect-[4/3] sm:aspect-[16/10] lg:h-full lg:min-h-[620px] lg:aspect-auto">
+                {proofGallery.map((item, index) => (
+                  <article
+                    class:list={[
+                      'proof-slide absolute inset-0 transition duration-500',
+                      index === 0 ? 'opacity-100' : 'pointer-events-none opacity-0'
+                    ]}
+                    data-proof-slide={index}
+                    data-proof-title={item.title}
+                    data-proof-copy={item.copy}
+                    aria-hidden={index === 0 ? 'false' : 'true'}
+                  >
+                    <button
+                      type="button"
+                      class="block h-full w-full cursor-zoom-in"
+                      data-proof-open={index}
+                      aria-label={`Besarkan gambar: ${item.title}`}
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        class="h-full w-full object-contain"
+                      />
+                    </button>
+                  </article>
+                ))}
+              </div>
+
+              <div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-brand-dark/90 via-brand-dark/45 to-transparent p-4 text-white sm:p-5">
+                <div>
+                  <p id="proofSlideCount" class="text-[10px] font-black uppercase tracking-[.18em] text-brand-gold">1 / {proofGallery.length}</p>
+                  <h3 id="proofSlideTitle" class="mt-1 text-xl font-black leading-tight sm:text-2xl">{proofGallery[0].title}</h3>
+                </div>
+                <div class="flex shrink-0 gap-2">
+                  <button
+                    type="button"
+                    class="proof-prev flex h-10 w-10 items-center justify-center border border-white/20 bg-white text-lg font-black text-brand-ink transition hover:bg-brand-gold"
+                    aria-label="Gambar sebelum"
+                  >
+                    &larr;
+                  </button>
+                  <button
+                    type="button"
+                    class="proof-next flex h-10 w-10 items-center justify-center border border-white/20 bg-white text-lg font-black text-brand-ink transition hover:bg-brand-gold"
+                    aria-label="Gambar seterusnya"
+                  >
+                    &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex min-h-full flex-col justify-center bg-brand-dark p-5 text-white sm:p-7 lg:p-10">
+              <div>
+                <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Klik gambar untuk view besar</p>
+                <h3 class="mt-3 text-2xl font-black uppercase leading-tight sm:text-3xl">Bukan sekadar daftar, anda akan dibantu untuk mula</h3>
+                <p id="proofSlideCopy" class="mt-4 text-sm font-semibold leading-8 text-white/75">
+                  {proofGallery[0].copy}
+                </p>
+              </div>
+
+              <div class="mt-8 border border-white/10 bg-white/5 p-4">
+                <p class="text-[10px] font-black uppercase tracking-[.18em] text-brand-gold">Cara tengok</p>
+                <p class="mt-2 text-sm font-semibold leading-7 text-white/75">
+                  Tekan gambar untuk besarkan, atau swipe thumbnail di bawah untuk pilih visual lain.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 border-t border-brand/10 pt-5">
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <p class="text-[10px] font-black uppercase tracking-[.18em] text-brand-muted">Pilih gambar</p>
+              <p class="text-[10px] font-black uppercase tracking-[.18em] text-brand-muted">Swipe kiri / kanan</p>
+            </div>
+            <div class="proof-thumb-track flex gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {proofGallery.map((item, index) => (
+                <button
+                  type="button"
+                  class:list={[
+                    'proof-thumb h-20 w-28 shrink-0 overflow-hidden border-2 bg-white p-1 transition sm:h-24 sm:w-36 lg:h-28 lg:w-44',
+                    index === 0 ? 'border-brand-gold opacity-100' : 'border-brand/10 opacity-60 hover:opacity-100'
+                  ]}
+                  data-proof-thumb={index}
+                  aria-label={`Pilih gambar: ${item.title}`}
+                  aria-current={index === 0 ? 'true' : 'false'}
+                >
+                  <img src={item.image} alt="" loading="lazy" class="h-full w-full object-cover" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="recruitmentProofLightbox"
+          class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Paparan gambar recruitment CUCKOO"
+        >
+          <button
+            type="button"
+            class="absolute inset-0 cursor-zoom-out"
+            aria-label="Tutup gambar"
+            data-proof-lightbox-close
+          ></button>
+
+          <div class="relative z-10 w-full max-w-6xl overflow-hidden bg-white shadow-premium">
+            <button
+              type="button"
+              class="absolute right-3 top-3 z-20 flex h-11 w-11 items-center justify-center bg-white/95 text-2xl font-black text-brand shadow-soft"
+              aria-label="Tutup gambar"
+              data-proof-lightbox-close
+            >
+              x
+            </button>
+
+            <button
+              type="button"
+              class="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-white/95 text-3xl font-black text-brand shadow-soft transition hover:bg-brand-cream"
+              aria-label="Gambar sebelum"
+              data-proof-lightbox-prev
+            >
+              ‹
+            </button>
+
+            <button
+              type="button"
+              class="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-white/95 text-3xl font-black text-brand shadow-soft transition hover:bg-brand-cream"
+              aria-label="Gambar seterusnya"
+              data-proof-lightbox-next
+            >
+              ›
+            </button>
+
+            <div class="max-h-[82vh] bg-brand-cream">
+              <img src="" alt="" class="mx-auto max-h-[82vh] w-full object-contain" data-proof-lightbox-image />
+            </div>
+            <div class="grid gap-2 border-t border-brand/10 px-5 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <p class="text-sm font-black text-brand-ink" data-proof-lightbox-title></p>
+                <p class="mt-1 text-xs font-semibold leading-6 text-brand-muted" data-proof-lightbox-copy></p>
+              </div>
+              <p class="text-xs font-black text-brand-muted" data-proof-lightbox-count></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 border-2 border-brand-ink bg-white p-5 shadow-[8px_8px_0_rgba(74,7,21,1)] md:grid-cols-3 md:p-7">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">Untuk ejen baru</p>
+            <p class="mt-2 text-2xl font-black leading-tight text-brand-ink">Yang penting bukan perfect, tapi tahu langkah pertama.</p>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-sm font-semibold leading-8 text-brand-muted">
+              Saya bantu anda mula dengan produk pembuka, skrip WhatsApp, bahan content dan cara follow-up. Bila sudah ada prospek, kita susun cara jawab soalan customer satu demi satu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="komisyen" class="border-y border-brand/10 bg-brand-cream px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Struktur Komisyen Ejen CUCKOO 2026</p>
+          <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Komisyen Dikira Per Unit, Jadi Lebih Berbaloi Bila Target Meningkat</h2>
+          <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+            Fahami dahulu struktur komisyen sebelum kira target jualan anda. Untuk jualan rental, kadar komisyen dikira mengikut jumlah unit yang berjaya dipasang dalam bulan tersebut. Semakin tinggi tier unit, semakin tinggi kadar komisyen per unit.
+            <br><br>Untuk jualan outright, komisyen dikira berdasarkan komisyen SR bagi produk atas RM100/bulan, kemudian ditambah dengan Extra Outright Commission tertakluk kepada polisi dan terma semasa.
+            </p>
+        </div>
+
+        <div class="mt-10 grid gap-3 md:hidden">
+          <div class="bg-brand p-4 text-white">
+            <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Rental Commission</p>
+            <p class="mt-1 text-sm font-bold text-white/75">Kadar ikut jumlah unit rental sebulan.</p>
+          </div>
+          {rentalCommissionRows.map((row) => (
+            <article class="border border-brand/10 bg-white p-4 shadow-soft">
+              <div class="flex items-center justify-between gap-3 border-b border-brand/10 pb-3">
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Rental Units</p>
+                <p class="text-xl font-black text-brand-ink">{row[0]}</p>
+              </div>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="bg-brand-cream p-3">
+                  <p class="text-[11px] font-black uppercase leading-5 tracking-[.1em] text-brand-muted">Bawah RM100/month</p>
+                  <p class="mt-2 text-xl font-black text-brand">{row[1]}</p>
+                </div>
+                <div class="bg-brand-cream p-3">
+                  <p class="text-[11px] font-black uppercase leading-5 tracking-[.1em] text-brand-muted">Atas RM100/month</p>
+                  <p class="mt-2 text-xl font-black text-brand">{row[2]}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-10 hidden border-2 border-brand-ink bg-white shadow-[8px_8px_0_rgba(74,7,21,1)] md:block">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead class="bg-brand-dark text-white">
+              <tr>
+                <th class="px-5 py-4 font-black">Jualan Bulanan</th>
+                <th class="px-5 py-4 font-black">Produk bawah RM100/month</th>
+                <th class="px-5 py-4 font-black">Produk atas RM100/month</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand/10 font-bold">
+              {rentalCommissionRows.map((row) => (
+                <tr>
+                  <td class="px-5 py-4 font-black text-brand-ink">{row[0]}</td>
+                  <td class="px-5 py-4 text-brand">{row[1]}</td>
+                  <td class="px-5 py-4 text-brand">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-8 grid gap-3 md:hidden">
+          <div class="bg-brand-dark p-4 text-white">
+            <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Extra Outright Commission</p>
+            <p class="mt-1 text-sm font-bold text-white/75">Tambahan untuk jualan cash atau outright.</p>
+          </div>
+          {outrightCommissionRows.map((row) => (
+            <article class="flex items-center justify-between gap-4 border border-brand/10 bg-white p-4 shadow-soft">
+              <div>
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Outright Units</p>
+                <p class="mt-1 text-xl font-black text-brand-ink">{row[0]}</p>
+              </div>
+              <p class="text-xl font-black text-brand">{row[1]}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 hidden border-2 border-brand-ink bg-white shadow-[8px_8px_0_rgba(74,7,21,1)] md:block">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead class="bg-brand text-white">
+              <tr>
+                <th class="px-5 py-4 font-black">Outright Units</th>
+                <th class="px-5 py-4 font-black">Extra Outright Commission</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand/10 font-bold">
+              {outrightCommissionRows.map((row) => (
+                <tr>
+                  <td class="px-5 py-4 font-black text-brand-ink">{row[0]}</td>
+                  <td class="px-5 py-4 text-brand">{row[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-8 bg-white p-4 text-xs font-bold leading-6 text-brand-muted shadow-soft">
+          Disclaimer: Kiraan ini ialah rujukan berdasarkan Commission Plan 2026 yang diberikan. Untuk simulator, outright dianggap sebagai komisyen SR produk atas RM100/month + extra outright commission. Komisyen sebenar tertakluk kepada jenis produk, jumlah unit, kelulusan pelanggan, pemasangan berjaya dan terma semasa CUCKOO.
+        </p>
+      </div>
+    </section>
+
+    <section id="simulator" class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Income Simulator</p>
+          <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Cuba kira target komisyen anda</h2>
+          <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+            Masukkan jumlah unit yang anda sasarkan. Untuk outright, simulator ini kira komisyen SR produk atas RM100/month dan tambah extra outright commission.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-12">
+          <div class="border-2 border-brand-ink bg-white p-5 shadow-[8px_8px_0_rgba(74,7,21,1)] sm:p-7 lg:col-span-5">
+            <h3 class="text-2xl font-black uppercase text-brand-ink">Masukkan jumlah unit</h3>
+            <div class="mt-6 grid gap-5">
+              <label>
+                <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Rental produk atas RM100/month</span>
+                <input id="rentalAbove100" min="0" value="5" type="number" class="w-full border-2 border-brand-ink bg-white px-4 py-3 text-lg font-black text-brand outline-none" />
+              </label>
+              <label>
+                <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Rental produk bawah RM100/month</span>
+                <input id="rentalBelow100" min="0" value="0" type="number" class="w-full border-2 border-brand-ink bg-white px-4 py-3 text-lg font-black text-brand outline-none" />
+              </label>
+              <label>
+                <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Outright / cash purchase</span>
+                <input id="outrightUnits" min="0" value="0" type="number" class="w-full border-2 border-brand-ink bg-white px-4 py-3 text-lg font-black text-brand outline-none" />
+                <span class="mt-2 block text-xs font-bold leading-6 text-brand-muted">Outright dikira sebagai komisyen SR atas RM100 + extra outright.</span>
+              </label>
+            </div>
+
+            <div class="mt-6">
+              <p class="mb-3 text-xs font-black uppercase tracking-[.14em] text-brand-muted">Preset target</p>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" data-preset-below="0" data-preset-above="5" data-preset-outright="0" class="commission-preset border border-brand/15 bg-brand-cream px-3 py-3 text-xs font-black text-brand">RM2k</button>
+                <button type="button" data-preset-below="0" data-preset-above="10" data-preset-outright="0" class="commission-preset border border-brand/15 bg-brand-cream px-3 py-3 text-xs font-black text-brand">RM5k</button>
+                <button type="button" data-preset-below="0" data-preset-above="20" data-preset-outright="0" class="commission-preset border border-brand/15 bg-brand-cream px-3 py-3 text-xs font-black text-brand">RM10k</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-2 border-brand-ink bg-brand-dark p-5 text-white shadow-[8px_8px_0_rgba(216,166,74,.55)] sm:p-7 lg:col-span-7">
+            <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">Hasil kiraan</p>
+            <div class="mt-5 grid gap-4 sm:grid-cols-3">
+              <div class="border border-white/10 bg-white/5 p-5">
+                <p class="text-xs font-bold text-white/55">SR Tier</p>
+                <p id="rentalTierLabel" class="mt-2 text-2xl font-black">5-9 unit</p>
+              </div>
+              <div class="border border-white/10 bg-white/5 p-5">
+                <p class="text-xs font-bold text-white/55">Outright Tier</p>
+                <p id="outrightTierLabel" class="mt-2 text-2xl font-black">0 unit</p>
+              </div>
+              <div class="border border-white/10 bg-white/5 p-5">
+                <p class="text-xs font-bold text-white/55">Anggaran Total</p>
+                <p id="commissionTotal" class="mt-2 text-3xl font-black text-brand-gold">RM2,000</p>
+              </div>
+            </div>
+
+            <div class="mt-6 bg-white/5 p-5 text-sm font-bold leading-7 text-white/75">
+              <p id="rentalRateLabel">Atas RM100: RM400/unit, Bawah RM100: RM250/unit</p>
+              <p id="outrightRateLabel" class="mt-1">Outright: SR atas RM100 + extra RM0/unit</p>
+              <p id="commissionBreakdown" class="mt-3 text-white">Rental: RM2,000. Outright: RM0.</p>
+            </div>
+
+            <div class="mt-6 border border-amber-400/30 bg-amber-400/10 p-4 text-xs font-semibold leading-6 text-amber-100">
+              Ini bukan jaminan pendapatan. Ia hanya simulasi kiraan untuk bantu anda faham cara tier komisyen berubah.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-brand/10 bg-brand-cream px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Sokongan Untuk Ejen Baru</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Apa Bantuan Yang Disediakan Untuk Ejen Baru?</h2>
+            <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+              Anda tidak semestinya perlu tahu semua benda dari awal. Untuk ejen baru, team akan cuba bantu dari segi penerangan asas, bahan rujukan dan panduan permulaan supaya lebih mudah faham langkah pertama.
+            </p>
+            <div class="mt-7 border-2 border-brand-ink bg-white p-5 shadow-[8px_8px_0_rgba(74,7,21,1)]">
+              <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">Nota penting</p>
+              <p class="mt-3 text-2xl font-black leading-tight text-brand-ink">Fokus kami bukan janji result, tapi bantu anda mula dengan lebih tersusun.</p>
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {newAgentSupportItems.map((item) => (
+              <article class="border border-brand/10 bg-white p-5 shadow-soft">
+                <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">{item.label}</p>
+                <h3 class="mt-3 text-xl font-black leading-tight text-brand-ink">{item.title}</h3>
+                <p class="mt-3 text-sm font-semibold leading-7 text-brand-muted">{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto mb-10 max-w-3xl text-center">
+          <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Siapa Patut Join Jadi Ejen CUCKOO?</p>
+          <h2 class="mt-3 text-3xl font-black uppercase tracking-tight text-brand-ink sm:text-5xl">Adakah peluang ini sesuai untuk anda?</h2>
+          <p class="mt-5 text-sm font-semibold leading-8 text-brand-muted sm:text-base">
+            Section ini bukan untuk menakutkan orang. Ia membantu calon ejen tahu sama ada mereka benar-benar sesuai dengan cara kerja sales.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="border-2 border-brand-ink bg-brand-cream p-6 shadow-soft sm:p-8">
+          <h2 class="text-3xl font-black uppercase tracking-tight text-brand-ink">Sesuai untuk anda jika...</h2>
+          <div class="mt-7 grid gap-3">
+            {suitableItems.map((item) => (
+              <p class="bg-white p-4 text-sm font-black text-brand-ink shadow-soft">{item}</p>
+            ))}
+          </div>
+          </div>
+          <div class="border-2 border-brand-ink bg-brand-dark p-6 text-white shadow-soft sm:p-8">
+          <h2 class="text-3xl font-black uppercase tracking-tight">Kurang sesuai jika...</h2>
+          <div class="mt-7 grid gap-3">
+            {notSuitableItems.map((item) => (
+              <p class="border border-white/10 bg-white/5 p-4 text-sm font-black text-white/85">{item}</p>
+            ))}
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="daftar" class="border-y border-brand/10 bg-brand-cream px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:items-start">
+        <div class="lg:col-span-5">
+          <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Cara Daftar</p>
+          <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Mohon jadi Ejen CUCKOO</h2>
+          <div class="mt-8 space-y-6">
+            <div class="flex gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center bg-brand font-black text-white">1</span>
+              <div>
+                <h3 class="font-black">Isi borang ringkas</h3>
+                <p class="mt-1 text-sm font-semibold leading-7 text-brand-muted">Beritahu nama, negeri, status dan target income anda.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center bg-brand font-black text-white">2</span>
+              <div>
+                <h3 class="font-black">WhatsApp akan dibuka</h3>
+                <p class="mt-1 text-sm font-semibold leading-7 text-brand-muted">Maklumat anda akan disusun automatik sebagai mesej kepada Fadhil.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center bg-brand font-black text-white">3</span>
+              <div>
+                <h3 class="font-black">Saya follow-up</h3>
+                <p class="mt-1 text-sm font-semibold leading-7 text-brand-muted">Saya akan explain cara daftar, komisyen dan langkah mula sebagai ejen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form id="recruitmentLeadForm" class="border-2 border-brand-ink bg-white p-5 shadow-[8px_8px_0_rgba(74,7,21,1)] sm:p-8 lg:col-span-7">
+          <h3 class="text-2xl font-black uppercase text-brand-ink">Borang minat ejen</h3>
+          <p class="mt-2 text-sm font-semibold leading-7 text-brand-muted">
+            Selepas hantar, WhatsApp akan dibuka. Tekan send supaya saya boleh follow-up.
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <label>
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Nama penuh</span>
+              <input required name="name" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none" placeholder="Nama anda" />
+            </label>
+            <label>
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">No WhatsApp</span>
+              <input required name="phone" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none" placeholder="Contoh: 0139916967" />
+            </label>
+            <label>
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Negeri</span>
+              <select required name="state" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none">
+                <option value="">Pilih negeri</option>
+                <option>Selangor</option>
+                <option>Kuala Lumpur</option>
+                <option>Putrajaya</option>
+                <option>Johor</option>
+                <option>Kedah</option>
+                <option>Kelantan</option>
+                <option>Melaka</option>
+                <option>Negeri Sembilan</option>
+                <option>Pahang</option>
+                <option>Perak</option>
+                <option>Perlis</option>
+                <option>Pulau Pinang</option>
+                <option>Sabah</option>
+                <option>Sarawak</option>
+                <option>Terengganu</option>
+                <option>Labuan</option>
+              </select>
+            </label>
+            <label>
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Status sekarang</span>
+              <select name="status" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none">
+                <option>Bekerja</option>
+                <option>Bisnes sendiri</option>
+                <option>Suri rumah</option>
+                <option>Student</option>
+                <option>Seller online</option>
+                <option>Lain-lain</option>
+              </select>
+            </label>
+            <label>
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Pengalaman sales</span>
+              <select name="experience" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none">
+                <option>Belum pernah</option>
+                <option>Pernah sedikit</option>
+                <option>Ya, berpengalaman</option>
+              </select>
+            </label>
+            <label>
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Dah ada produk CUCKOO?</span>
+              <select name="ownedProduct" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none">
+                <option>Tiada</option>
+                <option>Penapis air</option>
+                <option>Air purifier</option>
+                <option>Aircond</option>
+                <option>Tilam</option>
+                <option>Washer dryer</option>
+                <option>Massage chair</option>
+                <option>Treadmill</option>
+                <option>Lain-lain / lebih dari satu produk</option>
+              </select>
+            </label>
+            <label class="sm:col-span-2">
+              <span class="mb-2 block text-xs font-black uppercase tracking-[.14em] text-brand-muted">Target income bulanan</span>
+              <select name="incomeTarget" class="w-full border-2 border-brand-ink px-4 py-3 text-sm font-bold outline-none">
+                <option>RM500 - RM1,000</option>
+                <option>RM1,000 - RM2,000</option>
+                <option>RM3,000 - RM5,000</option>
+                <option>RM5,000 - RM10,000</option>
+                <option>RM10,000 ke atas</option>
+                <option>Belum pasti, nak belajar dulu</option>
+              </select>
+            </label>
+          </div>
+          <button
+            type="submit"
+            data-track="lead_form_submit_recruitment"
+            class="mt-5 w-full bg-brand px-6 py-4 text-xs font-black uppercase tracking-[.14em] text-white transition hover:bg-brand-dark"
+          >
+            Hantar & Buka WhatsApp
+          </button>
+          <p class="mt-4 text-center text-xs font-semibold leading-6 text-brand-muted">
+            Maklumat ini akan disusun sebagai mesej WhatsApp untuk dihantar kepada Fadhil.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black uppercase tracking-tight sm:text-5xl">Soalan lazim ejen CUCKOO</h2>
+        </div>
+        <div class="mt-10 grid gap-4">
+          {faqItems.map((item) => (
+            <details class="group border border-brand/10 bg-brand-cream p-5 shadow-soft">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-black text-brand-ink">
+                {item.q}
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center bg-white text-brand transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 text-sm font-semibold leading-7 text-brand-muted">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 pb-24 pt-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_54%,#8E1830_100%)] text-white shadow-premium">
+        <div class="grid lg:grid-cols-[.92fr_1.08fr] lg:items-stretch">
+          <div class="relative min-h-[420px] bg-brand-dark">
+            <img
+              src="/assets/images/people/gambar ejen - fadhil.webp"
+              alt="Wan Ahmad Fadhil, Ejen dan Manager CUCKOO"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-contain object-bottom opacity-95"
+            />
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent p-6 sm:p-8">
+              <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Wan Ahmad Fadhil</p>
+              <p class="mt-2 text-sm font-bold text-white/80">Sales Manager CUCKOO sejak 2018</p>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 lg:p-12">
+            <p class="text-xs font-black uppercase tracking-[.22em] text-brand-gold">Contact Fadhil</p>
+            <h2 class="mt-3 text-3xl font-black uppercase leading-tight tracking-tight sm:text-5xl">Kalau anda serius nak cuba, WhatsApp saya dulu</h2>
+            <p class="mt-5 max-w-2xl text-sm font-semibold leading-8 text-white/78 sm:text-base">
+              Saya akan bantu tengok cara mula yang sesuai dengan situasi anda, sama ada part-time, dari rumah atau baru belajar sales. Kita mula dengan langkah yang simple: faham produk, pilih angle, mula posting dan follow-up.
+            </p>
+
+            <div class="mt-7 grid gap-3 sm:grid-cols-3">
+              <div class="border border-white/15 bg-white/10 p-4">
+                <p class="text-2xl font-black text-brand-gold">Sales Manager Cuckoo Sejak 2018</p>
+                <p class="mt-1 text-xs font-bold leading-5 text-white/75">Aktif sebagai ejen dan manager</p>
+              </div>
+              <div class="border border-white/15 bg-white/10 p-4">
+                <p class="text-2xl font-black text-brand-gold">Bahan Marketing</p>
+                <p class="mt-1 text-xs font-bold leading-5 text-white/75">Anda hanya perlu iklan & sharing</p>
+              </div>
+              <div class="border border-white/15 bg-white/10 p-4">
+                <p class="text-2xl font-black text-brand-gold">Saya Guide Anda</p>
+                <p class="mt-1 text-xs font-bold leading-5 text-white/75">Skrip, content dan follow-up</p>
+              </div>
+            </div>
+
+            <div class="mt-8 bg-white p-5 text-brand-ink shadow-xl sm:p-6">
+              <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">Hubungi saya sahaja untuk page ini</p>
+              <h3 class="mt-2 text-2xl font-black text-brand sm:text-3xl">Wan Ahmad Fadhil</h3>
+              <p class="mt-2 text-sm font-semibold leading-7 text-brand-muted">
+                Hantar mesej ringkas. Saya akan reply dengan langkah daftar, flow training dan cara kira komisyen 2026.
+              </p>
+              <a
+                href={whatsappRecruitmentUrl}
+                data-track="click_whatsapp_recruitment_final"
+                class="mt-5 inline-flex w-full items-center justify-center gap-2 bg-[#25D366] px-6 py-4 text-xs font-black uppercase tracking-[.1em] text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D] sm:w-auto sm:px-8"
+              >
+                <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+                WhatsApp Fadhil
+              </a>
+              <p class="mt-4 text-sm font-black text-brand/70">013 991 6967</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="fixed inset-x-0 bottom-0 z-50 border-t border-brand/10 bg-white/95 p-3 shadow-lg backdrop-blur md:hidden">
+      <a
+        href={whatsappRecruitmentUrl}
+        data-track="click_whatsapp_recruitment_mobile_sticky"
+        class="flex w-full items-center justify-center gap-2 bg-[#25D366] px-5 py-3 text-xs font-black uppercase tracking-[.1em] text-white"
+      >
+        <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+        Saya Nak Jadi Ejen CUCKOO
+      </a>
+    </div>
+  </div>
+
+  <script is:inline>
+    const formatRinggit = (value) =>
+      new Intl.NumberFormat('ms-MY', { style: 'currency', currency: 'MYR', maximumFractionDigits: 0 }).format(value);
+
+    const getRentalTier = (units) => {
+      if (units >= 15) return { label: '15 unit ke atas', belowRate: 500, aboveRate: 500 };
+      if (units >= 10) return { label: '10-14 unit', belowRate: 350, aboveRate: 500 };
+      if (units >= 5) return { label: '5-9 unit', belowRate: 250, aboveRate: 400 };
+      if (units >= 1) return { label: '1-4 unit', belowRate: 200, aboveRate: 350 };
+      return { label: '0 unit', belowRate: 0, aboveRate: 0 };
+    };
+
+    const getOutrightTier = (units) => {
+      if (units >= 10) return { label: '10 unit ke atas', rate: 250 };
+      if (units >= 1) return { label: '1-9 unit', rate: 200 };
+      return { label: '0 unit', rate: 0 };
+    };
+
+    const calculateCommission = () => {
+      const belowInput = document.getElementById('rentalBelow100');
+      const aboveInput = document.getElementById('rentalAbove100');
+      const outrightInput = document.getElementById('outrightUnits');
+      if (!belowInput || !aboveInput || !outrightInput) return;
+
+      const belowUnits = Math.max(0, Number(belowInput.value || 0));
+      const aboveUnits = Math.max(0, Number(aboveInput.value || 0));
+      const outrightUnits = Math.max(0, Number(outrightInput.value || 0));
+
+      const srUnits = belowUnits + aboveUnits + outrightUnits;
+      const rentalTier = getRentalTier(srUnits);
+      const outrightTier = getOutrightTier(outrightUnits);
+      const rentalCommission = belowUnits * rentalTier.belowRate + aboveUnits * rentalTier.aboveRate;
+      const outrightBaseCommission = outrightUnits * rentalTier.aboveRate;
+      const outrightExtraCommission = outrightUnits * outrightTier.rate;
+      const outrightCommission = outrightBaseCommission + outrightExtraCommission;
+      const total = rentalCommission + outrightCommission;
+
+      document.getElementById('rentalTierLabel').textContent = rentalTier.label;
+      document.getElementById('rentalRateLabel').textContent =
+        `Atas RM100: ${formatRinggit(rentalTier.aboveRate)}/unit, Bawah RM100: ${formatRinggit(rentalTier.belowRate)}/unit`;
+      document.getElementById('outrightTierLabel').textContent = outrightTier.label;
+      document.getElementById('outrightRateLabel').textContent =
+        `Outright: SR atas RM100 ${formatRinggit(rentalTier.aboveRate)}/unit + extra ${formatRinggit(outrightTier.rate)}/unit`;
+      document.getElementById('commissionTotal').textContent = formatRinggit(total);
+      document.getElementById('commissionBreakdown').textContent =
+        `Rental: ${formatRinggit(rentalCommission)}. Outright: ${formatRinggit(outrightBaseCommission)} + extra ${formatRinggit(outrightExtraCommission)} = ${formatRinggit(outrightCommission)}.`;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'calculate_commission',
+        rental_below_100_units: belowUnits,
+        rental_above_100_units: aboveUnits,
+        outright_units: outrightUnits,
+        sr_units: srUnits,
+        estimated_commission: total
+      });
+    };
+
+    ['rentalBelow100', 'rentalAbove100', 'outrightUnits'].forEach((id) => {
+      const input = document.getElementById(id);
+      if (input) input.addEventListener('input', calculateCommission);
+    });
+
+    document.querySelectorAll('.commission-preset').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.getElementById('rentalBelow100').value = button.dataset.presetBelow || 0;
+        document.getElementById('rentalAbove100').value = button.dataset.presetAbove || 0;
+        document.getElementById('outrightUnits').value = button.dataset.presetOutright || 0;
+        calculateCommission();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'commission_preset_click', preset_label: button.textContent.trim() });
+      });
+    });
+
+    calculateCommission();
+
+    const proofSlider = document.getElementById('recruitmentProofSlider');
+    if (proofSlider) {
+      const proofSlides = Array.from(proofSlider.querySelectorAll('[data-proof-slide]'));
+      const proofThumbs = Array.from(proofSlider.querySelectorAll('[data-proof-thumb]'));
+      const proofTitle = document.getElementById('proofSlideTitle');
+      const proofCopy = document.getElementById('proofSlideCopy');
+      const proofCount = document.getElementById('proofSlideCount');
+      const proofOpenButtons = Array.from(proofSlider.querySelectorAll('[data-proof-open]'));
+      const proofLightbox = document.getElementById('recruitmentProofLightbox');
+      const proofLightboxImage = proofLightbox?.querySelector('[data-proof-lightbox-image]');
+      const proofLightboxTitle = proofLightbox?.querySelector('[data-proof-lightbox-title]');
+      const proofLightboxCopy = proofLightbox?.querySelector('[data-proof-lightbox-copy]');
+      const proofLightboxCount = proofLightbox?.querySelector('[data-proof-lightbox-count]');
+      const proofLightboxCloseButtons = proofLightbox?.querySelectorAll('[data-proof-lightbox-close]') || [];
+      let activeProofSlide = 0;
+      let touchStartX = 0;
+      let lightboxTouchStartX = 0;
+      let lightboxTouchStartY = 0;
+
+      const setProofSlide = (nextIndex) => {
+        activeProofSlide = (nextIndex + proofSlides.length) % proofSlides.length;
+        const activeSlide = proofSlides[activeProofSlide];
+
+        proofSlides.forEach((slide, index) => {
+          const isActive = index === activeProofSlide;
+          slide.classList.toggle('opacity-100', isActive);
+          slide.classList.toggle('opacity-0', !isActive);
+          slide.classList.toggle('pointer-events-none', !isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+
+        proofThumbs.forEach((thumb, index) => {
+          const isActive = index === activeProofSlide;
+          thumb.classList.toggle('border-brand-gold', isActive);
+          thumb.classList.toggle('border-brand/10', !isActive);
+          thumb.classList.toggle('opacity-100', isActive);
+          thumb.classList.toggle('opacity-60', !isActive);
+          thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+
+        if (proofTitle) proofTitle.textContent = activeSlide.dataset.proofTitle || '';
+        if (proofCopy) proofCopy.textContent = activeSlide.dataset.proofCopy || '';
+        if (proofCount) proofCount.textContent = `${activeProofSlide + 1} / ${proofSlides.length}`;
+        proofThumbs[activeProofSlide]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      };
+
+      const showProofLightboxImage = (index) => {
+        setProofSlide(index);
+        const activeSlide = proofSlides[activeProofSlide];
+        const image = activeSlide?.querySelector('img');
+        if (!proofLightbox || !proofLightboxImage || !image) return;
+
+        proofLightboxImage.src = image.src;
+        proofLightboxImage.alt = image.alt || activeSlide.dataset.proofTitle || 'Gambar recruitment CUCKOO';
+        if (proofLightboxTitle) proofLightboxTitle.textContent = activeSlide.dataset.proofTitle || '';
+        if (proofLightboxCopy) proofLightboxCopy.textContent = activeSlide.dataset.proofCopy || '';
+        if (proofLightboxCount) proofLightboxCount.textContent = `${activeProofSlide + 1} / ${proofSlides.length}`;
+      };
+
+      const openProofLightbox = (index) => {
+        if (!proofLightbox) return;
+        showProofLightboxImage(index);
+        proofLightbox.classList.remove('hidden');
+        proofLightbox.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeProofLightbox = () => {
+        proofLightbox?.classList.add('hidden');
+        proofLightbox?.classList.remove('flex');
+        document.body.style.overflow = '';
+      };
+
+      proofSlider.querySelector('.proof-prev')?.addEventListener('click', () => setProofSlide(activeProofSlide - 1));
+      proofSlider.querySelector('.proof-next')?.addEventListener('click', () => setProofSlide(activeProofSlide + 1));
+      proofThumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => setProofSlide(Number(thumb.dataset.proofThumb || 0)));
+      });
+      proofOpenButtons.forEach((button) => {
+        button.addEventListener('click', () => openProofLightbox(Number(button.dataset.proofOpen || 0)));
+      });
+
+      proofLightbox?.querySelector('[data-proof-lightbox-prev]')?.addEventListener('click', () => showProofLightboxImage(activeProofSlide - 1));
+      proofLightbox?.querySelector('[data-proof-lightbox-next]')?.addEventListener('click', () => showProofLightboxImage(activeProofSlide + 1));
+      proofLightboxCloseButtons.forEach((button) => button.addEventListener('click', closeProofLightbox));
+
+      proofSlider.addEventListener('touchstart', (event) => {
+        touchStartX = event.touches[0]?.clientX || 0;
+      }, { passive: true });
+
+      proofSlider.addEventListener('touchend', (event) => {
+        const touchEndX = event.changedTouches[0]?.clientX || 0;
+        const distance = touchEndX - touchStartX;
+        if (Math.abs(distance) < 50) return;
+        setProofSlide(activeProofSlide + (distance < 0 ? 1 : -1));
+      }, { passive: true });
+
+      proofLightbox?.addEventListener('touchstart', (event) => {
+        lightboxTouchStartX = event.touches[0]?.clientX || 0;
+        lightboxTouchStartY = event.touches[0]?.clientY || 0;
+      }, { passive: true });
+
+      proofLightbox?.addEventListener('touchend', (event) => {
+        const touch = event.changedTouches[0];
+        if (!touch) return;
+        const deltaX = touch.clientX - lightboxTouchStartX;
+        const deltaY = touch.clientY - lightboxTouchStartY;
+        if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+        showProofLightboxImage(activeProofSlide + (deltaX < 0 ? 1 : -1));
+      }, { passive: true });
+
+      document.addEventListener('keydown', (event) => {
+        if (proofLightbox?.classList.contains('hidden')) return;
+        if (event.key === 'Escape') closeProofLightbox();
+        if (event.key === 'ArrowLeft') showProofLightboxImage(activeProofSlide - 1);
+        if (event.key === 'ArrowRight') showProofLightboxImage(activeProofSlide + 1);
+      });
+    }
+
+    document.querySelectorAll('[data-track]').forEach((element) => {
+      element.addEventListener('click', () => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: element.dataset.track });
+      });
+    });
+
+    const leadForm = document.getElementById('recruitmentLeadForm');
+    if (leadForm) {
+      leadForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(leadForm);
+        const message = [
+          'Salam Fadhil, saya berminat nak jadi Ejen CUCKOO 2026.',
+          '',
+          `Nama: ${formData.get('name') || '-'}`,
+          `No WhatsApp: ${formData.get('phone') || '-'}`,
+          `Negeri: ${formData.get('state') || '-'}`,
+          `Status: ${formData.get('status') || '-'}`,
+          `Pengalaman sales: ${formData.get('experience') || '-'}`,
+          `Dah ada produk CUCKOO: ${formData.get('ownedProduct') || '-'}`,
+          `Target income bulanan: ${formData.get('incomeTarget') || '-'}`,
+          '',
+          'Mohon info lanjut tentang cara daftar dan bimbingan team.'
+        ].join('\n');
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'lead_form_submit', lead_type: 'recruitment' });
+        window.location.href = `https://api.whatsapp.com/send?phone=60139916967&text=${encodeURIComponent(message)}`;
+      });
+    }
+  </script>
+</BaseLayout>

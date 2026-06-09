@@ -1,0 +1,839 @@
+{
+  "redirects": [
+    {
+      "source": "/king-top/",
+      "destination": "/products/water-purifier/king-top-2/",
+      "permanent": true
+    },
+    {
+      "source": "/king-top-2/",
+      "destination": "/products/water-purifier/king-top-2/",
+      "permanent": true
+    },
+    {
+      "source": "/prime-x1-outdoor-water-purifier/",
+      "destination": "/products/water-purifier/prime-x3/",
+      "permanent": true
+    },
+    {
+      "source": "/penapis-air-cuckoo/",
+      "destination": "/products/water-purifier/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-glamour/",
+      "destination": "/products/water-purifier/glamour/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-grande/",
+      "destination": "/products/water-purifier/grande/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-kiut/",
+      "destination": "/products/water-purifier/kiut/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-warrior/",
+      "destination": "/products/water-purifier/warrior/",
+      "permanent": true
+    },
+    {
+      "source": "/xcel/",
+      "destination": "/products/water-purifier/xcel-2/",
+      "permanent": true
+    },
+    {
+      "source": "/xcel-black/",
+      "destination": "/products/water-purifier/xcel-2/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-xcel-green/",
+      "destination": "/products/water-purifier/xcel-2/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-titan/",
+      "destination": "/products/water-purifier/titan/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-vivid/",
+      "destination": "/products/water-purifier/vivid/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-flo-stand/",
+      "destination": "/products/water-purifier/flo-stand/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-vita-s-x-fujiaire-air-conditioner-penghawa-dingin/",
+      "destination": "/products/air-conditioner/vita-5tar/",
+      "permanent": true
+    },
+    {
+      "source": "/kerusi-urut-cuckoo-ogawa-bespoke-massage-chair/",
+      "destination": "/products/massage-chair/ogawa-bespoke/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-knight-washer-dryer/",
+      "destination": "/products/samsung/samsung-bespoke-ai-laundry-combo-12-7kg/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-inductwo-3/",
+      "destination": "/products/induction/inductwo/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-inductrio/",
+      "destination": "/products/induction/inductrio/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-c-plus-humidifier/",
+      "destination": "/products/air-purifier/c-plus-humidifier/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-d-model/",
+      "destination": "/products/air-purifier/d-model/",
+      "permanent": true
+    },
+    {
+      "source": "/a-luxe/",
+      "destination": "/products/mattress/a-luxe/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-sungai-petani/",
+      "destination": "/locations/kedah/sungai-petani/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-besut/",
+      "destination": "/locations/terengganu/besut/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-kemaman/",
+      "destination": "/locations/terengganu/kemaman/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-kuala-terengganu/",
+      "destination": "/locations/terengganu/kuala-terengganu/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-dungun/",
+      "destination": "/locations/terengganu/dungun/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-kijal/",
+      "destination": "/locations/terengganu/kemaman/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-kota-bharu/",
+      "destination": "/locations/kelantan/kota-bharu/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-melaka/",
+      "destination": "/locations/melaka/",
+      "permanent": true
+    },
+    {
+      "source": "/mau-pasang-cuckoo-di-kota-kinabalu/",
+      "destination": "/locations/sabah/kota-kinabalu/",
+      "permanent": true
+    },
+    {
+      "source": "/mau-pasang-cuckoo-di-kuching/",
+      "destination": "/locations/sarawak/kuching/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-kuantan/",
+      "destination": "/locations/pahang/kuantan/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-penang/",
+      "destination": "/locations/pulau-pinang/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-gombak/",
+      "destination": "/locations/selangor/gombak/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-selayang/",
+      "destination": "/locations/selangor/selayang/",
+      "permanent": true
+    },
+    {
+      "source": "/ejen-cuckoo-batu-caves/",
+      "destination": "/locations/selangor/batu-caves/",
+      "permanent": true
+    },
+    {
+      "source": "/ejen-cuckoo-wangsa-maju/",
+      "destination": "/locations/kuala-lumpur/wangsa-maju/",
+      "permanent": true
+    },
+    {
+      "source": "/ejen-cuckoo-kepong/",
+      "destination": "/locations/kuala-lumpur/kepong/",
+      "permanent": true
+    },
+    {
+      "source": "/ejen-cuckoo-tangkak/",
+      "destination": "/locations/johor/tangkak/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-sentul/",
+      "destination": "/locations/kuala-lumpur/sentul/",
+      "permanent": true
+    },
+    {
+      "source": "/ejen-cuckoo-taman-melati/",
+      "destination": "/locations/kuala-lumpur/setapak/",
+      "permanent": true
+    },
+    {
+      "source": "/ejen-cuckoo-taman-melawati/",
+      "destination": "/locations/selangor/gombak/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pasang-cuckoo-di-gemas/",
+      "destination": "/locations/negeri-sembilan/tampin/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-teluk-intan/",
+      "destination": "/locations/perak/teluk-intan/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-banting/",
+      "destination": "/locations/selangor/banting/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-gerik/",
+      "destination": "/locations/perak/gerik/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-setiawangsa/",
+      "destination": "/locations/kuala-lumpur/setiawangsa/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-bangi/",
+      "destination": "/locations/selangor/bangi/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-bandar-baru-bangi/",
+      "destination": "/locations/selangor/bangi/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-mont-kiara/",
+      "destination": "/locations/kuala-lumpur/mont-kiara/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-bukit-katil/",
+      "destination": "/locations/melaka/melaka-tengah/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-sungai-buloh/",
+      "destination": "/locations/selangor/sungai-buloh/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-bukit-rahman-putra/",
+      "destination": "/locations/selangor/sungai-buloh/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-kuang/",
+      "destination": "/locations/selangor/rawang/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-desa-coalfield/",
+      "destination": "/locations/selangor/sungai-buloh/",
+      "permanent": true
+    },
+    {
+      "source": "/dropship-cuckoo/",
+      "destination": "/blog/5-kelebihan-buat-bisnes-dropship-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/10-kelebihan-cuckoo-warrior/",
+      "destination": "/blog/10-kelebihan-cuckoo-warrior/",
+      "permanent": true
+    },
+    {
+      "source": "/10-kelebihan-cuckoo-xcel-water-purifier/",
+      "destination": "/blog/10-kelebihan-cuckoo-xcel-water-purifier/",
+      "permanent": true
+    },
+    {
+      "source": "/10-sebab-kenapa-penapis-udara-cuckoo-ini-perlu-ada-di-rumah-anda/",
+      "destination": "/blog/10-sebab-kenapa-penapis-udara-cuckoo-ini-perlu-ada-di-rumah-anda/",
+      "permanent": true
+    },
+    {
+      "source": "/13-kelebihan-kerusi-urut-massage-chair-benefits/",
+      "destination": "/blog/13-kelebihan-kerusi-urut-massage-chair-benefits/",
+      "permanent": true
+    },
+    {
+      "source": "/13-kelebihan-penapis-air-cuckoo-icon-berbanding-yang-lain/",
+      "destination": "/blog/13-kelebihan-penapis-air-cuckoo-icon-berbanding-yang-lain/",
+      "permanent": true
+    },
+    {
+      "source": "/13-tips-memilih-penapis-air-untuk-rumah/",
+      "destination": "/blog/13-tips-memilih-penapis-air-untuk-rumah/",
+      "permanent": true
+    },
+    {
+      "source": "/13-tips-mudah-untuk-elak-tersilap-beli-penapis-air/",
+      "destination": "/blog/13-tips-mudah-untuk-elak-tersilap-beli-penapis-air/",
+      "permanent": true
+    },
+    {
+      "source": "/15-kelebihan-penapis-udara-cuckoo-c-air-purifier-humidifier-terbaru/",
+      "destination": "/blog/15-kelebihan-penapis-udara-cuckoo-c-air-purifier-humidifier-terbaru/",
+      "permanent": true
+    },
+    {
+      "source": "/5-kelebihan-buat-bisnes-dropship-penapis-air-cuckoo/",
+      "destination": "/blog/5-kelebihan-buat-bisnes-dropship-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/5-penapis-air-cuckoo-terbaik-di-malaysia-pilih-yang-sesuai-untuk-anda/",
+      "destination": "/blog/5-penapis-air-cuckoo-terbaik-di-malaysia-pilih-yang-sesuai-untuk-anda/",
+      "permanent": true
+    },
+    {
+      "source": "/7-kelebihan-cuckoo-yang-anda-perlu-tahu/",
+      "destination": "/blog/7-kelebihan-cuckoo-yang-anda-perlu-tahu/",
+      "permanent": true
+    },
+    {
+      "source": "/7-kelebihan-kerusi-urut-cuckoo-bespoke-massage-lounger/",
+      "destination": "/blog/7-kelebihan-kerusi-urut-cuckoo-bespoke-massage-lounger/",
+      "permanent": true
+    },
+    {
+      "source": "/7-kelebihan-penapis-air-cuckoo-king-stand/",
+      "destination": "/blog/7-kelebihan-penapis-air-cuckoo-king-stand/",
+      "permanent": true
+    },
+    {
+      "source": "/7-sebab-kenapa-penapis-air-cuckoo-iris-top-ini-sangat-berbaloi-dimiliki/",
+      "destination": "/blog/7-sebab-kenapa-penapis-air-cuckoo-iris-top-ini-sangat-berbaloi-dimiliki/",
+      "permanent": true
+    },
+    {
+      "source": "/8-tip-memilih-aircond-penghawa-dingin-terbaik-untuk-rumah/",
+      "destination": "/blog/8-tip-memilih-aircond-penghawa-dingin-terbaik-untuk-rumah/",
+      "permanent": true
+    },
+    {
+      "source": "/adakah-air-cuckoo-selamat-untuk-bayi/",
+      "destination": "/blog/adakah-air-cuckoo-selamat-untuk-bayi/",
+      "permanent": true
+    },
+    {
+      "source": "/adakah-penapis-udara-cuckoo-mengeluarkan-udara-sejuk-macam-air-cond/",
+      "destination": "/blog/adakah-penapis-udara-cuckoo-mengeluarkan-udara-sejuk-macam-air-cond/",
+      "permanent": true
+    },
+    {
+      "source": "/aiming-to-shake-the-market-in-2019/",
+      "destination": "/blog/aiming-to-shake-the-market-in-2019/",
+      "permanent": true
+    },
+    {
+      "source": "/anak-asma-dan-ekzema-5-sebab-kenapa-penapis-udara-cuckoo-pilihan-ramai-ibu-bapa/",
+      "destination": "/blog/anak-asma-dan-ekzema-5-sebab-kenapa-penapis-udara-cuckoo-pilihan-ramai-ibu-bapa/",
+      "permanent": true
+    },
+    {
+      "source": "/anak-minum-air-masak/",
+      "destination": "/blog/anak-minum-air-masak/",
+      "permanent": true
+    },
+    {
+      "source": "/apa-beza-cuckoo-icon-dengan-cuckoo-iris-top/",
+      "destination": "/blog/apa-beza-cuckoo-icon-dengan-cuckoo-iris-top/",
+      "permanent": true
+    },
+    {
+      "source": "/apa-beza-multi-cooker-cuckoo-dengan-yang-lain/",
+      "destination": "/blog/apa-beza-multi-cooker-cuckoo-dengan-yang-lain/",
+      "permanent": true
+    },
+    {
+      "source": "/bagaimana-cara-kira-kos-untuk-sewa-atau-beli-mesin-penapis-air-cuckoo/",
+      "destination": "/blog/bagaimana-cara-kira-kos-untuk-sewa-atau-beli-mesin-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/bagaimana-cuckoo-servis-penapis-air-di-rumah/",
+      "destination": "/blog/bagaimana-cuckoo-servis-penapis-air-di-rumah/",
+      "permanent": true
+    },
+    {
+      "source": "/bagaimana-nak-lindungi-penapis-air-terbakar-akibat-petir-dan-masalah-elektrikal/",
+      "destination": "/blog/bagaimana-nak-lindungi-penapis-air-terbakar-akibat-petir-dan-masalah-elektrikal/",
+      "permanent": true
+    },
+    {
+      "source": "/beza-cuckoo-iris-top-dan-king-top/",
+      "destination": "/blog/beza-cuckoo-iris-top-dan-king-top/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-beli-dan-sewa-beli-rental-penapis-air-cuckoo/",
+      "destination": "/blog/cara-beli-dan-sewa-beli-rental-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-guna-cuckoo-iris-top/",
+      "destination": "/blog/cara-guna-cuckoo-iris-top/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-guna-cuckoo-warrior/",
+      "destination": "/blog/cara-guna-cuckoo-warrior/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-guna-cuckoo-xcel/",
+      "destination": "/blog/cara-guna-cuckoo-xcel/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-guna-washer-dryer-cuckoo-knight/",
+      "destination": "/blog/cara-guna-washer-dryer-cuckoo-knight/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-penjagaan-kerusi-urut-massage-chair-yang-betul/",
+      "destination": "/blog/cara-penjagaan-kerusi-urut-massage-chair-yang-betul/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-sebenar-kira-kos-penapis-air-cuckoo/",
+      "destination": "/blog/cara-sebenar-kira-kos-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/cara-trade-in-cuckoo/",
+      "destination": "/blog/cara-trade-in-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-agent-commission/",
+      "destination": "/blog/cuckoo-agent-commission/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-b-model-vs-c-model-air-purifier/",
+      "destination": "/blog/cuckoo-b-model-vs-c-model-air-purifier/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-bespoke-massage-chair-vs-lounger/",
+      "destination": "/blog/cuckoo-bespoke-massage-chair-vs-lounger/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-kerajaan-agen/",
+      "destination": "/blog/cuckoo-kerajaan-agen/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-king-top-review/",
+      "destination": "/blog/cuckoo-king-top-review/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-king-top-vs-fusion-top/",
+      "destination": "/blog/cuckoo-king-top-vs-fusion-top/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-plus-app-cara-guna-lebih-mudah-semak-bil-servis-cuckoo/",
+      "destination": "/blog/cuckoo-plus-app-cara-guna-lebih-mudah-semak-bil-servis-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-relocation/",
+      "destination": "/blog/cuckoo-relocation/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-rm1/",
+      "destination": "/blog/cuckoo-rm1/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-samasama-promotion-2020/",
+      "destination": "/blog/cuckoo-samasama-promotion-2020/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-sasar-jual-80000-tilam/",
+      "destination": "/blog/cuckoo-sasar-jual-80000-tilam/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-vita-s-fujiaire-air-conditioner/",
+      "destination": "/blog/cuckoo-vita-s-fujiaire-air-conditioner/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-vs-coway-5-sebab-cuckoo-pilihan-lebih-berbaloi/",
+      "destination": "/blog/cuckoo-vs-coway-5-sebab-cuckoo-pilihan-lebih-berbaloi/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-xcel-jet-black-hitam-terbaru/",
+      "destination": "/blog/cuckoo-xcel-jet-black-hitam-terbaru/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-xcel-vs-king-top/",
+      "destination": "/blog/cuckoo-xcel-vs-king-top/",
+      "permanent": true
+    },
+    {
+      "source": "/gambar-dan-video-tilam-cuckoo/",
+      "destination": "/blog/gambar-dan-video-tilam-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/harga-penapis-air-cuckoo/",
+      "destination": "/blog/harga-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/harga-penapis-udara/",
+      "destination": "/blog/harga-penapis-udara/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-trade-in-cuckoo/",
+      "destination": "/blog/how-to-trade-in-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/hukum-sewa-beli-penapis-air/",
+      "destination": "/blog/hukum-sewa-beli-penapis-air/",
+      "permanent": true
+    },
+    {
+      "source": "/jangan-beli-penapis-cuckoo-yang-ada-ciri-ciri-ini/",
+      "destination": "/blog/jangan-beli-penapis-cuckoo-yang-ada-ciri-ciri-ini/",
+      "permanent": true
+    },
+    {
+      "source": "/jangan-guna-penapis-air-mahal-cara-ini-lebih-jimat/",
+      "destination": "/blog/jangan-guna-penapis-air-mahal-cara-ini-lebih-jimat/",
+      "permanent": true
+    },
+    {
+      "source": "/kebaikan-air-mineral/",
+      "destination": "/blog/kebaikan-air-mineral/",
+      "permanent": true
+    },
+    {
+      "source": "/kebaikan-keburukan-air-alkali/",
+      "destination": "/blog/kebaikan-keburukan-air-alkali/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-aircond-cuckoo-vita-s/",
+      "destination": "/blog/kelebihan-aircond-cuckoo-vita-s/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-grande/",
+      "destination": "/blog/kelebihan-cuckoo-grande/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-knight/",
+      "destination": "/blog/kelebihan-cuckoo-knight/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-multicooker/",
+      "destination": "/blog/kelebihan-cuckoo-multicooker/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-ogawa-bespoke/",
+      "destination": "/blog/kelebihan-cuckoo-ogawa-bespoke/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-prime-x3/",
+      "destination": "/blog/kelebihan-cuckoo-prime-x3/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-prince-top/",
+      "destination": "/blog/kelebihan-cuckoo-prince-top/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-cuckoo-titan/",
+      "destination": "/blog/kelebihan-cuckoo-titan/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-jadi-ejen-cuckoo/",
+      "destination": "/blog/kelebihan-jadi-ejen-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-penapis-air-cuckoo-flo-stand/",
+      "destination": "/blog/kelebihan-penapis-air-cuckoo-flo-stand/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-tilam-cuckoo-a-luxe/",
+      "destination": "/blog/kelebihan-tilam-cuckoo-a-luxe/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-tilam-cuckoo-s-lite/",
+      "destination": "/blog/kelebihan-tilam-cuckoo-s-lite/",
+      "permanent": true
+    },
+    {
+      "source": "/kelebihan-treadmill-cuckoo-b-fit/",
+      "destination": "/blog/kelebihan-treadmill-cuckoo-b-fit/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-anda-perlu-ada-penapis-air-di-rumah/",
+      "destination": "/blog/kenapa-anda-perlu-ada-penapis-air-di-rumah/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-cuckoo-logam-berat/",
+      "destination": "/blog/kenapa-cuckoo-logam-berat/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-doktor-tak-galakkan-air-ro-dr-suriyakhatun/",
+      "destination": "/blog/kenapa-doktor-tak-galakkan-air-ro-dr-suriyakhatun/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-perlu-tukar-filter/",
+      "destination": "/blog/kenapa-perlu-tukar-filter/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-ramai-pasang-penapis-air-cuckoo-di-rumah/",
+      "destination": "/blog/kenapa-ramai-pasang-penapis-air-cuckoo-di-rumah/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-rumah-cepat-berhabuk-17-tip-rumah-bebas-habuk/",
+      "destination": "/blog/kenapa-rumah-cepat-berhabuk-17-tip-rumah-bebas-habuk/",
+      "permanent": true
+    },
+    {
+      "source": "/kenapa-saya-pasang-cuckoo-bukan-coway/",
+      "destination": "/blog/kenapa-saya-pasang-cuckoo-bukan-coway/",
+      "permanent": true
+    },
+    {
+      "source": "/kesan-air-ro-reverse-osmosis-terhadap-kesihatan/",
+      "destination": "/blog/kesan-air-ro-reverse-osmosis-terhadap-kesihatan/",
+      "permanent": true
+    },
+    {
+      "source": "/kesan-minum-air-tak-bertapis-pada-kesihatan/",
+      "destination": "/blog/kesan-minum-air-tak-bertapis-pada-kesihatan/",
+      "permanent": true
+    },
+    {
+      "source": "/kilang-cuckoo-bakal-dibuka-di-malaysia/",
+      "destination": "/blog/kilang-cuckoo-bakal-dibuka-di-malaysia/",
+      "permanent": true
+    },
+    {
+      "source": "/komisyen-ejen-cuckoo-coway/",
+      "destination": "/blog/komisyen-ejen-cuckoo-coway/",
+      "permanent": true
+    },
+    {
+      "source": "/kos-pasang-cuckoo/",
+      "destination": "/blog/kos-pasang-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/latar-belakang-syarikat-cuckoo/",
+      "destination": "/blog/latar-belakang-syarikat-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/manfaat-minum-air/",
+      "destination": "/blog/manfaat-minum-air/",
+      "permanent": true
+    },
+    {
+      "source": "/masalah-reverse-osmosis/",
+      "destination": "/blog/masalah-reverse-osmosis/",
+      "permanent": true
+    },
+    {
+      "source": "/meninggal-dunia/",
+      "destination": "/blog/meninggal-dunia/",
+      "permanent": true
+    },
+    {
+      "source": "/nak-pindah-rumah-tapi-baru-pasang-cuckoo-apa-perlu-saya-buat/",
+      "destination": "/blog/nak-pindah-rumah-tapi-baru-pasang-cuckoo-apa-perlu-saya-buat/",
+      "permanent": true
+    },
+    {
+      "source": "/nombor-akaun-bank-cuckoo-jompay-cuckoo-bank-account-number/",
+      "destination": "/blog/nombor-akaun-bank-cuckoo-jompay-cuckoo-bank-account-number/",
+      "permanent": true
+    },
+    {
+      "source": "/penapis-air-cuckoo-iris-top-di-tv3/",
+      "destination": "/blog/penapis-air-cuckoo-iris-top-di-tv3/",
+      "permanent": true
+    },
+    {
+      "source": "/penapis-air-cuckoo-untuk-pejabat-syarikat-sdn-bhd-premis-perniagaan/",
+      "destination": "/blog/penapis-air-cuckoo-untuk-pejabat-syarikat-sdn-bhd-premis-perniagaan/",
+      "permanent": true
+    },
+    {
+      "source": "/penapis-udara-cuckoo-covid-influenza-omicro/",
+      "destination": "/blog/penapis-udara-cuckoo-covid-influenza-omicro/",
+      "permanent": true
+    },
+    {
+      "source": "/penapis-udara-terbaik-untuk-kucing/",
+      "destination": "/blog/penapis-udara-terbaik-untuk-kucing/",
+      "permanent": true
+    },
+    {
+      "source": "/penapis-udara-untuk-virus-bakteria/",
+      "destination": "/blog/penapis-udara-untuk-virus-bakteria/",
+      "permanent": true
+    },
+    {
+      "source": "/perbezaan-air-ro-dan-alkali/",
+      "destination": "/blog/perbezaan-air-ro-dan-alkali/",
+      "permanent": true
+    },
+    {
+      "source": "/perbezaan-kaedah-bayaran-direct-debit-dan-kad-kredit/",
+      "destination": "/blog/perbezaan-kaedah-bayaran-direct-debit-dan-kad-kredit/",
+      "permanent": true
+    },
+    {
+      "source": "/promosi-penapis-udara-jerebu/",
+      "destination": "/blog/promosi-penapis-udara-jerebu/",
+      "permanent": true
+    },
+    {
+      "source": "/resdung-hidung-gatal-kuat-bersin-5-sebab-kenapa-penapis-udara-cuckoo-pilihan-ramai/",
+      "destination": "/blog/resdung-hidung-gatal-kuat-bersin-5-sebab-kenapa-penapis-udara-cuckoo-pilihan-ramai/",
+      "permanent": true
+    },
+    {
+      "source": "/semua-mengenai-cuckoo-p10-multicooker-anda-perlu-tahu/",
+      "destination": "/blog/semua-mengenai-cuckoo-p10-multicooker-anda-perlu-tahu/",
+      "permanent": true
+    },
+    {
+      "source": "/sijil-halal-cuckoo-2018/",
+      "destination": "/blog/sijil-halal-cuckoo-2018/",
+      "permanent": true
+    },
+    {
+      "source": "/sijil-sirim-dan-sijil-halal-penapis-air-cuckoo/",
+      "destination": "/blog/sijil-sirim-dan-sijil-halal-penapis-air-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/testimoni-pengguna-cuckoo/",
+      "destination": "/blog/testimoni-pengguna-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/tilam-cuckoo-mattress/",
+      "destination": "/blog/tilam-cuckoo-mattress/",
+      "permanent": true
+    },
+    {
+      "source": "/tips-cara-memilih-agen-penapis-air/",
+      "destination": "/blog/tips-cara-memilih-agen-penapis-air/",
+      "permanent": true
+    },
+    {
+      "source": "/tips-memilih-penapis-udara/",
+      "destination": "/blog/tips-memilih-penapis-udara/",
+      "permanent": true
+    },
+    {
+      "source": "/toksik-dalam-filter-cuckoo-benarkah-ini-kenyataan-rasmi-cuckoo-korea/",
+      "destination": "/blog/toksik-dalam-filter-cuckoo-benarkah-ini-kenyataan-rasmi-cuckoo-korea/",
+      "permanent": true
+    },
+    {
+      "source": "/top-5-cuckoo-water-purifiers/",
+      "destination": "/blog/top-5-cuckoo-water-purifiers/",
+      "permanent": true
+    },
+    {
+      "source": "/recruitment/cuckoo-agent-commission/",
+      "destination": "/blog/cuckoo-agent-commission/",
+      "permanent": true
+    },
+    {
+      "source": "/recruitment/kelebihan-jadi-ejen-cuckoo/",
+      "destination": "/blog/kelebihan-jadi-ejen-cuckoo/",
+      "permanent": true
+    },
+    {
+      "source": "/recruitment/komisyen-ejen-cuckoo-coway/",
+      "destination": "/blog/komisyen-ejen-cuckoo-coway/",
+      "permanent": true
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+fail
+location
+retry = 2
+create-dirs
+
+output = "public/assets/images/Gambar Produk png/cuckoo-c-model.jpg"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2019/03/CUCKOO-C_3.jpg"
+next
+output = "public/assets/images/Gambar Produk png/d-model-1.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2019/03/D-Model_1.png"
+next
+output = "public/assets/images/Gambar Produk png/d-model-2.jpg"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2019/03/D-Model_2.jpg"
+next
+output = "public/assets/images/Gambar Produk png/cuckoo-c-plus.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2019/03/cuckoo-c-plus-01-e1555310140538.png"
+next
+output = "public/assets/images/Gambar Produk png/p10-1.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2020/03/P10_1.png"
+next
+output = "public/assets/images/Gambar Produk png/p10-4.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2020/03/P10_4.png"
+next
+output = "public/assets/images/Gambar Produk png/vivid.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2020/06/product_800_vivid.png"
+next
+output = "public/assets/images/Gambar Produk png/prime-x3.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2021/08/PRIME-X3_1.png"
+next
+output = "public/assets/images/Gambar Produk png/xcel-black.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2021/10/XCEL-Black-800x800-1.png"
+next
+output = "public/assets/images/Gambar Produk png/titan.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2022/04/Titan-WP.png"
+next
+output = "public/assets/images/Gambar Produk png/warrior.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2022/04/Warrior-WP.png"
+next
+output = "public/assets/images/Gambar Produk png/vita-s.jpg"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2022/06/Vita-S-Product-Page-1080x1080px.jpg"
+next
+output = "public/assets/images/Gambar Produk png/k-model.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2022/07/K-Model.png"
+next
+output = "public/assets/images/Gambar Produk png/king-top-2.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2023/03/King-top-2-featureimage-03-square.png"
+next
+output = "public/assets/images/Gambar Produk png/grande.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2023/09/Grande-800x800-02.png"
+next
+output = "public/assets/images/Gambar Produk png/u-model.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2023/09/U-Model-800x800-1.png"
+next
+output = "public/assets/images/Gambar Produk png/i-model.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2023/09/imodel-800x800-1.png"
+next
+output = "public/assets/images/Gambar Produk png/a-luxe-mattress.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2024/01/A-Luxe-Mattress-1000x1000-1.png"
+next
+output = "public/assets/images/Gambar Produk png/b-fit.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2024/07/B-Fit_png.png"
+next
+output = "public/assets/images/Gambar Produk png/glamour-left.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2024/07/glamour_Left.png"
+next
+output = "public/assets/images/Gambar Produk png/glamour-front.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2024/07/glamour_front.png"
+next
+output = "public/assets/images/Gambar Produk png/aluxe.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2024/11/Aluxe.png"
+next
+output = "public/assets/images/Gambar Produk png/flo.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2024/11/FLO.png"
+next
+output = "public/assets/images/Gambar Produk png/daybed-grey.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/03/Card-1-Daybed-grey_800x800.png"
+next
+output = "public/assets/images/Gambar Produk png/bespoke-massage-lounger.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/03/bespoke-massage-02-600x600-1.png"
+next
+output = "public/assets/images/Gambar Produk png/ace-undersink.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/04/ACE-Undersink_Hot_Top-View-716x716-1.png"
+next
+output = "public/assets/images/Gambar Produk png/kiut.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/04/KIUT-800x800-bgn.png"
+next
+output = "public/assets/images/Gambar Produk png/xcel-2.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/08/xcel-2-800x800_01.png"
+next
+output = "public/assets/images/Gambar Produk png/l-model-basic-angle-left.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/12/L-Model-Basic-Angle_Left.png"
+next
+output = "public/assets/images/Gambar Produk png/l-model-main.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2025/12/L-Model-main-photo.png"
+next
+output = "public/assets/images/Gambar Produk png/vita-5tar.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/02/cki-vita-5tar-img_x01.png"
+next
+output = "public/assets/images/Gambar Produk png/aquaprox-shower-head.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/03/AquaproX-shower-head-img-01-e1774494383769.png"
+next
+output = "public/assets/images/Gambar Produk png/samsung-s10fe-1.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/03/Samsung-S10FE-img-01.png"
+next
+output = "public/assets/images/Gambar Produk png/samsung-s10fe-2.jpg"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/03/Samsung-S10FE-img-02.jpg"
+next
+output = "public/assets/images/Gambar Produk png/cuckoo-bespoke-2-1.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/04/Cuckoo-Bespoke2-img-001-1.png"
+next
+output = "public/assets/images/Gambar Produk png/cuckoo-bespoke-2-2.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/04/Cuckoo-Bespoke2-img-002-1.png"
+next
+output = "public/assets/images/Gambar Produk png/m1eh-4k-tv-1.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/05/M1EH-4K-TV-img-01.png"
+next
+output = "public/assets/images/Gambar Produk png/m1eh-4k-tv-2.png"
+url = "https://www.cuckoo.com.my/wp-content/uploads/2026/05/M1EH-4K-TV-img-02.png"

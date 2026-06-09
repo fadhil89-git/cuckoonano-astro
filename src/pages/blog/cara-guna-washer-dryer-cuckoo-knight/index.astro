@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Cara Guna Washer Dryer Cuckoo Knight & Manual Penggunaan",
+  description: "Bagaimana cara menggunakan mesin basuh pengering Cuckoo Knight washer dryer? Apa fungsi setiap button yang ada?",
+  canonical: "https://www.cuckoonano.com/blog/cara-guna-washer-dryer-cuckoo-knight/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2025-01-20";
+const modifiedDate = "2025-01-20";
+
+const articleTitle = "Cara Guna Washer Dryer Cuckoo Knight & Manual Penggunaan";
+const articleDescription = "Bagaimana cara menggunakan mesin basuh pengering Cuckoo Knight washer dryer? Apa fungsi setiap button yang ada?";
+const featuredImage = "/assets/images/gambar-produk/washer-dryer-cuckoo-knight-mesin-basuh-pengering-1.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      <p>a</p>
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

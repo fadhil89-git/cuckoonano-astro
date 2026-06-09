@@ -1,0 +1,348 @@
+{
+  "before": [
+    {
+      "slug": "cuckoo-relocation",
+      "title": "Cuckoo Relocation Guide: How to Move Products to New Address",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "cara-trade-in-cuckoo",
+      "title": "Cara Trade In Penapis Air &amp; Udara Cuckoo",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "how-to-trade-in-cuckoo",
+      "title": "How to Trade In Your Cuckoo Water &amp; Air Purifier",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "cara-guna-washer-dryer-cuckoo-knight",
+      "title": "Cara Guna Washer Dryer Cuckoo Knight &amp; Manual Penggunaan",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kelebihan-tilam-cuckoo-a-luxe",
+      "title": "Kelebihan Tilam Cuckoo Napure A Luxe",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kelebihan-tilam-cuckoo-s-lite",
+      "title": "11 Kelebihan Tilam Cuckoo Napure S Lite",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "cuckoo-vita-s-fujiaire-air-conditioner",
+      "title": "CUCKOO Vita-S x Fujiaire Air Conditioner / Penghawa Dingin",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "nombor-akaun-bank-cuckoo-jompay-cuckoo-bank-account-number",
+      "title": "Nombor Akaun Bank CUCKOO & JomPay | Cuckoo Bank Account Number",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "cuckoo-sasar-jual-80000-tilam",
+      "title": "Cuckoo Sasar Jual 80,000 Tilam",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "cuckoo-samasama-promotion-2020",
+      "title": "Cuckoo SAMASAMA Promotion 2020",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "toksik-dalam-filter-cuckoo-benarkah-ini-kenyataan-rasmi-cuckoo-korea",
+      "title": "Toksik Dalam Filter Cuckoo. Benarkah? Ini Kenyataan Rasmi Cuckoo Korea",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "aiming-to-shake-the-market-in-2019",
+      "title": "Aiming to shake the market in 2019",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kenapa-cuckoo-logam-berat",
+      "title": "Kenapa Cuckoo? Antara Sebab Penting Anda Perlu Tahu...",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "nak-pasang-penapis-air-cuckoo-di-dungun",
+      "title": "Nak Pasang Penapis Air Cuckoo Di Dungun?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kenapa-ramai-pasang-penapis-air-cuckoo-di-rumah",
+      "title": "Kenapa Ramai Pasang Penapis Air Cuckoo Di Rumah?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "adakah-penapis-udara-cuckoo-mengeluarkan-udara-sejuk-macam-air-cond",
+      "title": "Adakah Penapis Udara Cuckoo Mengeluarkan Udara Sejuk Macam Air Cond?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "nak-pindah-rumah-tapi-baru-pasang-cuckoo-apa-perlu-saya-buat",
+      "title": "Panduan Relocation: Cara Pindah Produk Cuckoo Ke Rumah &amp; Lokasi Baru",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "penapis-air-cuckoo-iris-top-di-tv3",
+      "title": "Penapis Air Cuckoo Iris Top di TV3",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kesan-air-ro-reverse-osmosis-terhadap-kesihatan",
+      "title": "Kesan Air RO (Reverse Osmosis) Terhadap Kesihatan",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "bagaimana-cuckoo-servis-penapis-air-di-rumah",
+      "title": "Bagaimana Cuckoo Servis Penapis Air Di Rumah?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kenapa-doktor-tak-galakkan-air-ro-dr-suriyakhatun",
+      "title": "Kenapa Doktor Tak Galakkan Air RO? - Dr Suriyakhatun",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "adakah-air-cuckoo-selamat-untuk-bayi",
+      "title": "Adakah Air Cuckoo Selamat Untuk Bayi?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "latar-belakang-syarikat-cuckoo",
+      "title": "Latar Belakang Syarikat Cuckoo",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "cara-sebenar-kira-kos-penapis-air-cuckoo",
+      "title": "Cara Sebenar Kira Kos Penapis Air Cuckoo",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "perbezaan-kaedah-bayaran-direct-debit-dan-kad-kredit",
+      "title": "Perbezaan Kaedah Bayaran Direct Debit dan Kad Kredit",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kenapa-anda-perlu-ada-penapis-air-di-rumah",
+      "title": "Kenapa Anda Perlu Ada Penapis Air Di Rumah?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "perbezaan-penapis-air-murah-dan-mahal",
+      "title": "Perbezaan Penapis Air Murah dan Mahal",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "tips-cara-memilih-agen-penapis-air",
+      "title": "Tips Cara Memilih Agen Penapis Air",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "kenapa-perlu-tukar-filter",
+      "title": "Kenapa Perlu Tukar Filter?",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "perbezaan-cuckoo-dengan-jenama-lain",
+      "title": "Perbezaan Cuckoo Dengan Jenama Lain",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    },
+    {
+      "slug": "jangan-beli-penapis-cuckoo-yang-ada-ciri-ciri-ini",
+      "title": "Jangan Beli Penapis Air Yang Ada Ciri-Ciri Ini",
+      "previousImage": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "reason": "fallback image"
+    }
+  ],
+  "changed": [
+    {
+      "slug": "cuckoo-relocation",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/installation/cuckoo-plus-app-cara-guna-how-to-use-install-1.jpeg"
+    },
+    {
+      "slug": "cara-trade-in-cuckoo",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/promo/promosi-cuckoo-2025-water-purifier-penapis-air-promotion-offer-agent-.jpeg"
+    },
+    {
+      "slug": "how-to-trade-in-cuckoo",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/promo/promosi-cuckoo-2025-air-purifier-penapis-udara-promotion-offer-agent-trade-in.jpeg"
+    },
+    {
+      "slug": "cara-guna-washer-dryer-cuckoo-knight",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/washer-dryer/washer-dryer-cuckoo-knight-mesin-basuh-pengering-1.jpg"
+    },
+    {
+      "slug": "kelebihan-tilam-cuckoo-a-luxe",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/promo/promosi-cuckoo-2025-tilam-cuckoo-mattress-a-luxe-napure-promotion-offer-agent.jpeg"
+    },
+    {
+      "slug": "kelebihan-tilam-cuckoo-s-lite",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/promo/promosi-cuckoo-2025-tilam-cuckoo-mattress-s-lite-napure-promotion-offer-agent.jpeg"
+    },
+    {
+      "slug": "cuckoo-vita-s-fujiaire-air-conditioner",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/aircond/gambar-photo-image-aircond-cuckoo-vita-s-inveter-fujiaire-penghawa-dingin-1.jpg"
+    },
+    {
+      "slug": "nombor-akaun-bank-cuckoo-jompay-cuckoo-bank-account-number",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/misc/rsz_cuckoo_epp_easy_payment_credit_card.png"
+    },
+    {
+      "slug": "cuckoo-sasar-jual-80000-tilam",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/mattress/tilam-cuckoo-mattress-gambar-cantik.jpg"
+    },
+    {
+      "slug": "cuckoo-samasama-promotion-2020",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/promo/promosi-cuckoo-goood-combo.jpeg"
+    },
+    {
+      "slug": "toksik-dalam-filter-cuckoo-benarkah-ini-kenyataan-rasmi-cuckoo-korea",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/air-purifier/filter-penapis-udara-cuckoo-ultra-pm2.5.png"
+    },
+    {
+      "slug": "aiming-to-shake-the-market-in-2019",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/brand/cuckoo-korea-headquarters.jpg"
+    },
+    {
+      "slug": "kenapa-cuckoo-logam-berat",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/sijil-heavy-metal-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg"
+    },
+    {
+      "slug": "nak-pasang-penapis-air-cuckoo-di-dungun",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/installation/cuckoo-pasang-laju.jpg"
+    },
+    {
+      "slug": "kenapa-ramai-pasang-penapis-air-cuckoo-di-rumah",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/7-kelebihan-penapis-air-cuckoo-water-purifier-benefits-1.jpg"
+    },
+    {
+      "slug": "adakah-penapis-udara-cuckoo-mengeluarkan-udara-sejuk-macam-air-cond",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/air-purifier/cuckoo-air-purifiers-bkg.jpg"
+    },
+    {
+      "slug": "nak-pindah-rumah-tapi-baru-pasang-cuckoo-apa-perlu-saya-buat",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/installation/cuckoo-plus-app-cara-guna-how-to-use-install-7.jpeg"
+    },
+    {
+      "slug": "penapis-air-cuckoo-iris-top-di-tv3",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/iris-top.jpg"
+    },
+    {
+      "slug": "kesan-air-ro-reverse-osmosis-terhadap-kesihatan",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/penapis-air-reverse-osmosis.jpg"
+    },
+    {
+      "slug": "bagaimana-cuckoo-servis-penapis-air-di-rumah",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/service/cuckoo-service-filter-nano-positive.jpg"
+    },
+    {
+      "slug": "kenapa-doktor-tak-galakkan-air-ro-dr-suriyakhatun",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/penapis-air-reverse-osmosis.jpg"
+    },
+    {
+      "slug": "adakah-air-cuckoo-selamat-untuk-bayi",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/misc/cuckoo-baby-mode.png"
+    },
+    {
+      "slug": "latar-belakang-syarikat-cuckoo",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/brand/cuckoo-korea-headquarters.jpg"
+    },
+    {
+      "slug": "cara-sebenar-kira-kos-penapis-air-cuckoo",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/kos-servis-penapis-air-cuckoo-water-purifier-service-price-1.png"
+    },
+    {
+      "slug": "perbezaan-kaedah-bayaran-direct-debit-dan-kad-kredit",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/misc/rsz_cuckoo_epp_easy_payment_credit_card.png"
+    },
+    {
+      "slug": "kenapa-anda-perlu-ada-penapis-air-di-rumah",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/kepentingan-memiliki-penapis-air.png"
+    },
+    {
+      "slug": "perbezaan-penapis-air-murah-dan-mahal",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/penapis-air.jpg"
+    },
+    {
+      "slug": "tips-cara-memilih-agen-penapis-air",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/people/bisnesonlinecuckoo1.jpg"
+    },
+    {
+      "slug": "kenapa-perlu-tukar-filter",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/misc/cuckoo-filters.png"
+    },
+    {
+      "slug": "perbezaan-cuckoo-dengan-jenama-lain",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/analysis-of-cuckoo-filtration-system-vs-other-filter.png"
+    },
+    {
+      "slug": "jangan-beli-penapis-cuckoo-yang-ada-ciri-ciri-ini",
+      "from": "/assets/images/brand/cuckoo-ebrandstore3.png",
+      "to": "/assets/images/products/water-purifier/penapis-air-cuckoo.jpg"
+    }
+  ],
+  "after": []
+}

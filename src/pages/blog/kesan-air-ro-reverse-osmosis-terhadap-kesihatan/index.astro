@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Kesan Air RO (Reverse Osmosis) Terhadap Kesihatan | CUCKOO Malaysia",
+  description: "Info air RO (Reverse Osmosis) - Kesimpulan Artikel Dikenali sebagai air mati Air yang bersih, bebas dari kandungan logam berat dan contaminant lain....",
+  canonical: "https://www.cuckoonano.com/blog/kesan-air-ro-reverse-osmosis-terhadap-kesihatan/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2017-10-25";
+const modifiedDate = "2025-11-30";
+
+const articleTitle = "Kesan Air RO (Reverse Osmosis) Terhadap Kesihatan";
+const articleDescription = "Info air RO (Reverse Osmosis) - Kesimpulan Artikel Dikenali sebagai air mati Air yang bersih, bebas dari kandungan logam berat dan contaminant lain....";
+const featuredImage = "/assets/images/gambar-produk/penapis-air-reverse-osmosis.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      <h3>Info air RO (Reverse Osmosis) - Kesimpulan Artikel</h3>
+      <ol>
+       	<li>Dikenali sebagai air mati</li>
+       	<li>Air yang bersih, bebas dari kandungan logam berat dan contaminant lain.</li>
+       	<li>Menyingkirkan hampir kesemua bahan pencemar dan juga mineral baik.</li>
+       	<li>Ia tiada sebarang mineral baik untuk badan seperti kalsium dan magnesium.</li>
+       	<li>Boleh menyebabkan <em>diuretic effect*</em> jika digunakan dalam jangka masa panjang (WHO)</li>
+       	<li>Hasil pemerhatian penduduk Czech &amp; Slovak: <em>"Oleh kerana air RO tiada sebarang mineral, maka apabila ia masuk saja dalam tubuh, ia juga akan 'mencuri' mineral-mineral yang ada dalam tubuh kita. Ia amat merbahaya kepada orang yang telah sedia sakit. Sudahlah sakit, kehilangan mineral pula. Minum sekaadar untuk hilangkan dahaga tidak mengapa"</em></li>
+      </ol>
+      <em>* A <b>diuretic</b> is any substance that promotes <b>diuresis</b>, that is, the increased production of urine. This includes forced <b>diuresis</b>. There are several categories of <b>diuretics</b>. All<b>diuretics</b> increase the excretion of water from bodies, although each class does so in a distinct way.</em>
+      
+      <hr />
+      
+      Penapis air Cuckoo menghasilkan air bermineral dan beralkali ringan, sihat untuk seisi keluarga. Untuk pertanyaan, WhatsApp ke 0139916967 (Fadhil)
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

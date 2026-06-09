@@ -1,0 +1,383 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AgentSection from '../components/AgentSection.astro';
+
+const whatsappFadhil = 'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil,%20saya%20nak%20semak%20promo%20CUCKOO%20terkini,%20harga%20bulanan%20dan%20produk%20yang%20sesuai%20untuk%20rumah%20saya.';
+const modelWhatsapp = 'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil,%20saya%20nak%20tanya%20model%20CUCKOO%20yang%20sesuai.%20Kategori%20yang%20saya%20minat%20ialah%20____.';
+
+const meta = {
+  title: 'Produk CUCKOO Malaysia | Semak Promo & Harga Bulanan Terkini',
+  description: 'Semak produk CUCKOO seperti penapis air, aircond, washer dryer, peti sejuk, tilam dan kerusi urut. Tanya ejen CUCKOO sejak 2017 untuk cadangan model, promo dan bayaran bulanan.',
+  canonical: 'https://www.cuckoonano.com/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png',
+  ogType: 'website'
+};
+
+const categoryCards = [
+  {
+    title: 'Penapis Air CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/xcel-2.webp',
+    alt: 'Penapis air CUCKOO untuk rumah dan pejabat',
+    copy: 'Untuk rumah, pejabat dan penggunaan air minuman harian.',
+    label: 'Water Purifier',
+    anchor: '#produk-water-purifier',
+    href: '/products/water-purifier/'
+  },
+  {
+    title: 'Aircond CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/aircond%20cuckoo%20vita%205tar%201%20png%20(1)-Photoroom.webp',
+    alt: 'Aircond CUCKOO untuk bilik tidur dan ruang kerja',
+    copy: 'Untuk bilik tidur, ruang kerja atau rumah yang perlukan keselesaan harian.',
+    label: 'Air Conditioner',
+    anchor: '#produk-air-conditioner',
+    href: '/products/air-conditioner/'
+  },
+  {
+    title: 'Outdoor Filter Prime X3',
+    image: '/assets/images/products/water-purifier/cuckoo-prime-x3-water-filter-benefits.jpg',
+    alt: 'Outdoor water filter CUCKOO Prime X3 untuk air utama rumah',
+    copy: 'Untuk tapis air utama sebelum masuk ke rumah.',
+    label: 'Outdoor Filter',
+    anchor: '#produk-outdoor-filter',
+    href: '/kelebihan-cuckoo-prime-x3/'
+  },
+  {
+    title: 'Washer Dryer CUCKOO x Samsung',
+    image: '/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-03.webp',
+    alt: 'Washer dryer CUCKOO Samsung untuk keluarga dan apartment',
+    copy: 'Untuk keluarga, apartment atau rumah yang mahu rutin dobi lebih mudah.',
+    label: 'Basuh & Kering',
+    anchor: '#produk-washer-dryer',
+    href: '/products/washer-dryer/'
+  },
+  {
+    title: 'Peti Sejuk CUCKOO x Samsung',
+    image: '/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-05.webp',
+    alt: 'Peti sejuk Samsung melalui pakej CUCKOO',
+    copy: 'Untuk dapur keluarga moden yang perlukan ruang simpanan lebih teratur.',
+    label: 'Refrigerator',
+    anchor: '#produk-samsung',
+    href: '/products/samsung/'
+  },
+  {
+    title: 'Penapis Udara CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/l-model-main.webp',
+    alt: 'Penapis udara CUCKOO untuk bilik dan ruang tamu',
+    copy: 'Untuk bilik tidur, ruang tamu dan rumah yang mahu udara lebih selesa.',
+    label: 'Air Purifier',
+    anchor: '#produk-air-purifier',
+    href: '/products/air-purifier/'
+  },
+  {
+    title: 'Tilam CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/A-lite-series-With-BedFrame_Font.webp',
+    alt: 'Tilam CUCKOO untuk keselesaan tidur harian',
+    copy: 'Untuk upgrade tidur dan keselesaan harian seisi rumah.',
+    label: 'Mattress',
+    anchor: '#produk-mattress',
+    href: '/products/mattress/'
+  },
+  {
+    title: 'Kerusi Urut CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp',
+    alt: 'Kerusi urut CUCKOO untuk ruang rehat keluarga',
+    copy: 'Untuk ruang rehat, hadiah ibu bapa atau rutin relaks selepas kerja.',
+    label: 'Massage Chair',
+    anchor: '#produk-massage-chair',
+    href: '/products/massage-chair/'
+  },
+  {
+    title: 'Induction Cooker CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/cuckoo%20inductrio.webp',
+    alt: 'Induction cooker CUCKOO untuk dapur rumah',
+    copy: 'Untuk dapur moden yang mahu memasak lebih mudah, kemas dan praktikal.',
+    label: 'Kitchen',
+    anchor: '#produk-induction',
+    href: '/products/induction/'
+  },
+  {
+    title: 'Pressure Cooker CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/p10-1.webp',
+    alt: 'Pressure cooker CUCKOO untuk masakan harian',
+    copy: 'Untuk masakan keluarga yang lebih cepat, mudah dan konsisten.',
+    label: 'Multi Cooker',
+    anchor: '#produk-pressure-cooker',
+    href: '/products/pressure-cooker/'
+  },
+  {
+    title: 'Treadmill CUCKOO',
+    image: '/assets/images/Gambar%20Produk%20png/b-fit.webp',
+    alt: 'Treadmill CUCKOO untuk kecergasan di rumah',
+    copy: 'Untuk rutin sihat di rumah tanpa perlu keluar ke gym.',
+    label: 'Fitness',
+    anchor: '#produk-treadmill',
+    href: '/products/treadmill/'
+  }
+];
+
+const heroChips = [
+  ['Penapis Air', '#produk-water-purifier'],
+  ['Aircond', '#produk-air-conditioner'],
+  ['Washer Dryer', '#produk-washer-dryer'],
+  ['Peti Sejuk', '#produk-samsung'],
+  ['Penapis Udara', '#produk-air-purifier'],
+  ['Tilam', '#produk-mattress'],
+  ['Massage Chair', '#produk-massage-chair']
+];
+
+const confusionCards = [
+  ['Beza fungsi', 'Setiap model ada fungsi dan kapasiti berbeza mengikut penggunaan harian.'],
+  ['Beza saiz & kapasiti', 'Rumah kecil, keluarga besar, pejabat atau apartment mungkin perlukan pilihan berbeza.'],
+  ['Beza bayaran bulanan', 'Plan dan bayaran boleh berubah mengikut produk, tempoh dan promo semasa.'],
+  ['Beza promo', 'Promo bergantung kepada produk, stok, kawasan dan kempen semasa.']
+];
+
+const agentTrust = [
+  ['2017', 'Ejen sejak 2017', 'Berpengalaman bantu pelanggan faham produk dan proses daftar CUCKOO.'],
+  ['Model', 'Semak model sesuai', 'Kami bantu bandingkan pilihan ikut kategori, rumah dan keperluan.'],
+  ['RM', 'Semak promo & bayaran', 'Kami semak bayaran bulanan dan promo aktif untuk produk yang layak.'],
+  ['Order', 'Follow-up order', 'Kami bantu dari pertanyaan awal sehingga proses pemasangan.']
+];
+
+const valueItems = [
+  ['Terangkan beza model', 'Kami bantu explain beza model dalam kategori yang anda minat.'],
+  ['Semak bayaran bulanan', 'Kami bantu semak anggaran bayaran dan plan yang tersedia.'],
+  ['Semak promo aktif', 'Kami semak produk yang sedang ada promo dan syarat semasa.'],
+  ['Bantu proses order', 'Kami bantu dari pertanyaan awal sehingga proses daftar.'],
+  ['Follow-up pemasangan', 'Kami bantu semak status selepas permohonan dibuat.']
+];
+
+const trustBadges = [
+  ['Sijil Halal CUCKOO', 'Rujukan sijil halal dan maklumat berkaitan produk CUCKOO.', '/sijil-halal-cuckoo-2018/'],
+  ['Servis berkala', 'Servis bergantung kepada kategori produk dan plan yang dipilih.', '#contact'],
+  ['Ejen sejak 2017', 'Fadhil & Izzah bantu semak model, promo dan proses order.', '#contact']
+];
+
+const faqItems = [
+  ['Perlu slip gaji ke?', 'Untuk plan tertentu, tidak perlu slip gaji atau bank statement. Syarat boleh berbeza mengikut produk, plan dan kelayakan semasa.'],
+  ['Suri rumah boleh apply?', 'Boleh disemak bergantung kepada produk, plan dan kelayakan semasa. WhatsApp kami untuk semak pilihan yang sesuai.'],
+  ['Berapa kos permulaan?', 'Kos permulaan bergantung kepada produk dan promo semasa. Ada kempen tertentu yang menawarkan bayaran permulaan rendah untuk produk terpilih.'],
+  ['Promo RM12 untuk semua produk ke?', 'Tidak. Promo RM12 hanya untuk produk terpilih dan tertakluk kepada stok, kawasan, kempen, kelulusan dan syarat semasa.'],
+  ['Berapa lama pemasangan?', 'Tempoh pemasangan bergantung kepada stok, kawasan dan jadual pemasangan. Kami akan bantu follow-up status selepas permohonan dibuat.'],
+  ['Kalau tak pasti model, boleh tanya dulu?', 'Boleh. Beritahu kategori produk yang anda minat, bajet bulanan dan jenis rumah. Kami bantu cadangkan pilihan yang sesuai.'],
+  ['Ini website rasmi CUCKOO ke?', 'Tidak. Website ini dikendalikan oleh ejen CUCKOO individu untuk membantu pelanggan semak produk, promo dan proses order.']
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
+---
+
+<BaseLayout {...meta}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section
+  data-home-hero
+  class="relative overflow-hidden bg-[radial-gradient(circle_at_72%_52%,rgba(242,193,90,.18),transparent_30%),linear-gradient(135deg,#25030D_0%,#5E0718_46%,#92152E_100%)] text-white"
+>
+  <div class="absolute inset-x-0 top-0 h-px bg-white/10"></div>
+
+  <div
+    class="mx-auto grid max-w-7xl gap-6 px-4 pt-9 sm:px-6 sm:pt-11 lg:min-h-[620px] lg:grid-cols-[0.92fr_1.08fr] lg:items-end lg:gap-x-8 lg:px-8 lg:pt-12"
+  >
+    <!-- LEFT CONTENT -->
+    <div class="relative z-20 pb-7 sm:pb-8 lg:pb-20">
+      <p class="text-xs font-black uppercase tracking-[.26em] text-[#F2C15A]">
+        Ejen CUCKOO Malaysia
+      </p>
+
+      <h1
+        class="mt-5 max-w-3xl text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-[3.65rem]"
+      >
+        Nak Pasang CUCKOO? Kami Bantu Pilih Model Yang Sesuai.
+      </h1>
+
+      <p class="mt-5 max-w-2xl text-base font-semibold leading-8 text-white/82 sm:text-lg">
+        Pilih penapis air, aircond, washer dryer, peti sejuk, tilam atau massage chair ikut bajet,
+        keperluan rumah dan promo terkini.
+      </p>
+
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={whatsappFadhil}
+          class="inline-flex items-center justify-center rounded-full bg-[#25D366] px-7 py-4 text-center text-sm font-black text-white shadow-[0_18px_42px_rgba(37,211,102,.28)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#1EBE5D]"
+        >
+          Semak Promo di WhatsApp
+        </a>
+
+        <a
+          href="#kategori-produk"
+          class="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-center text-sm font-black text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-gold"
+        >
+          Pilih Kategori Produk
+        </a>
+      </div>
+
+      <p class="mt-6 max-w-2xl text-xs font-semibold leading-6 text-white/65">
+        Ejen individu CUCKOO • Promo tertakluk pada stok, kawasan, kempen dan syarat semasa.
+      </p>
+    </div>
+
+    <!-- RIGHT VISUAL: AGENTS ONLY -->
+    <div class="relative min-h-[390px] sm:min-h-[500px] lg:min-h-[620px]">
+      <!-- soft glow behind agents -->
+      <div class="absolute left-[52%] top-[50%] h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F2C15A]/13 blur-3xl"></div>
+      <div class="absolute left-[52%] bottom-0 h-52 w-[78%] -translate-x-1/2 rounded-full bg-black/10 blur-3xl"></div>
+
+      <!-- AGENTS -->
+      <div class="absolute inset-x-0 bottom-20 z-10 flex items-end justify-center sm:bottom-10 lg:bottom-0 lg:-translate-x-6">
+        <img
+          src="/assets/images/people/gambar%20ejen%20-%20fadhil.webp"
+          alt="Fadhil ejen CUCKOO sejak 2017"
+          loading="eager"
+          class="relative z-10 h-[330px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:h-[405px] lg:h-[570px]"
+        />
+
+        <img
+          src="/assets/images/people/gambar%20ejen%20-%20izzah.webp"
+          alt="Izzah ejen CUCKOO sejak 2017"
+          loading="eager"
+          class="relative z-10 -ml-28 h-[310px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:-ml-36 sm:h-[385px] lg:-ml-52 lg:h-[545px]"
+        />
+      </div>
+
+      <!-- NAME TAG -->
+      <div
+        class="absolute bottom-10 left-1/2 z-20 w-[min(78%,21rem)] -translate-x-1/2 rounded-full border border-brand-gold/45 bg-[#21040D]/82 px-5 py-3 text-center shadow-[0_18px_50px_rgba(0,0,0,.25)] backdrop-blur sm:w-[min(66%,23rem)] lg:bottom-12 lg:-translate-x-[56%]"
+      >
+        <p class="text-[10px] font-black uppercase tracking-[.24em] text-brand-gold sm:text-[11px]">
+          Fadhil & Izzah
+        </p>
+        <p class="mt-1 text-sm font-bold text-cream sm:text-[15px]">
+          Ejen CUCKOO sejak 2017
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+  <div id="promo" data-promo></div>
+
+  <section id="kategori-produk" class="bg-white px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <p class="font-bold text-brand">Pilih kategori dahulu</p>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Swipe dan pilih kategori yang anda minat. Kami bantu semak model, harga bulanan dan promo terkini.
+          </p>
+        </div>
+        <a href="/products/" class="hidden rounded-full border border-brand/15 bg-white px-5 py-3 text-sm font-black text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft sm:inline-flex">
+          Semua Produk
+        </a>
+      </div>
+
+      <div class="-mx-4 mt-6 flex snap-x gap-4 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [&::-webkit-scrollbar]:hidden">
+        {categoryCards.map((category) => (
+          <a href={category.anchor} class="group min-w-[170px] snap-start overflow-hidden rounded-2xl bg-cream shadow-soft ring-1 ring-brand/10 transition-all duration-300 hover:-translate-y-1 hover:ring-brand/25 sm:min-w-[195px]" aria-label={`Lihat model popular ${category.title}`}>
+            <div class="flex h-32 items-center justify-center bg-gradient-to-br from-white to-cream">
+              <img src={category.image} alt={category.alt} loading="lazy" class="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105" />
+            </div>
+            <div class="p-4">
+              <p class="text-[11px] font-black uppercase tracking-[.14em] text-brand">{category.label}</p>
+              <h3 class="mt-2 text-sm font-black leading-tight text-ink transition group-hover:text-brand sm:text-base">{category.title}</h3>
+              <div class="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-xs font-black text-brand ring-1 ring-brand/10">
+                Lihat Model
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div data-product-selector data-initial="water-purifier"></div>
+
+  <section class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-8 lg:grid-cols-[.76fr_1.24fr] lg:items-center">
+        <div>
+          <p class="font-bold text-brand">Sebelum order</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Kami Bantu Semak Perkara Penting Supaya Tak Tersalah Pilih.</h2>
+          <p class="mt-4 max-w-2xl leading-8 text-muted">
+            Dalam satu kategori pun model boleh jadi banyak. Beritahu bajet, ruang rumah dan kategori yang anda minat, kami bantu semak pilihan yang paling sesuai.
+          </p>
+          <a href={modelWhatsapp} class="mt-6 inline-flex rounded-full bg-brand px-6 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+            Tanya Model Sesuai
+          </a>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {valueItems.slice(0, 4).map(([title, copy], index) => (
+            <article class="rounded-[1.5rem] bg-cream p-5 shadow-sm ring-1 ring-brand/10">
+              <div class="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-sm font-black text-white">{index + 1}</div>
+              <h3 class="mt-4 text-lg font-black text-ink">{title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+      <div class="overflow-hidden rounded-[2rem] bg-white p-5 shadow-soft ring-1 ring-brand/10">
+        <div class="flex min-h-[300px] items-center justify-center rounded-[1.5rem] bg-brand-soft p-5">
+          <img src="/assets/images/brand/sijil-halal-cuckoo-certification-2021-2024-b.png" alt="Sijil halal CUCKOO untuk rujukan pelanggan" loading="lazy" class="max-h-[260px] w-full object-contain" />
+        </div>
+      </div>
+
+      <div>
+        <p class="font-bold text-brand">Trust & rujukan</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Sebelum order, semak juga perkara asas yang beri keyakinan.</h2>
+        <p class="mt-4 max-w-2xl leading-8 text-muted">
+          Selain harga dan promo, ramai pelanggan juga mahu tahu tentang sijil, servis berkala, waranti dan siapa yang bantu follow-up selepas permohonan dibuat.
+        </p>
+        <div class="mt-7 grid gap-4 sm:grid-cols-3">
+          {trustBadges.map(([title, copy, href]) => (
+            <a href={href} class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-brand/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft">
+              <h3 class="text-lg font-black text-brand">{title}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{copy}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-bold text-brand">Soalan biasa</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Soalan Biasa Sebelum WhatsApp Ejen</h2>
+      </div>
+
+      <div class="mt-8 grid gap-3">
+        {faqItems.map(([question, answer]) => (
+          <details class="group rounded-[1.35rem] bg-white p-5 shadow-sm ring-1 ring-brand/10">
+            <summary class="cursor-pointer list-none font-black text-ink">
+              <span class="flex items-center justify-between gap-4">
+                <span>{question}</span>
+                <span class="text-brand transition-transform duration-300 group-open:rotate-45">+</span>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm leading-7 text-muted">{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <AgentSection />
+</BaseLayout>

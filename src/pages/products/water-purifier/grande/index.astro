@@ -1,0 +1,804 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import WaterHalalSection from '../../../../components/WaterHalalSection.astro';
+import FreeGiftSection from '../../../../components/FreeGiftSection.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
+import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
+import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
+import WaterPurifierServiceSection from '../../../../components/WaterPurifierServiceSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+import WhyChooseCuckooWaterPurifiers from '../../../../components/water-purifier/WhyChooseCuckooWaterPurifiers.astro';
+
+const whatsappGrandeUrl =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20promo%20CUCKOO%20Grande.%20Boleh%20bantu%20saya%3F';
+
+const grandeImageBase = '/assets/images/products/water-purifier/grande';
+
+const meta = {
+  title: 'CUCKOO Grande Water Purifier | Harga RM115, Spec & Promo Terkini',
+  description:
+    'CUCKOO Grande penapis air digital tangki besar 7.6L dengan air panas 100°C, Nano Positive Filtration, voice navigation, smart dispensing dan promo terkini.',
+  canonical: 'https://www.cuckoonano.com/products/water-purifier/grande/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/Gambar%20Produk%20png/grande.webp',
+  ogType: 'website'
+};
+
+const smartFeatures = [
+  {
+    title: 'One-Touch Temperature Control',
+    copy: 'Pilih cold, room, warm, hot atau extra hot dengan sentuhan ringkas pada panel digital.',
+    image: `${grandeImageBase}/laptop_3829x1955__.gif`,
+    alt: 'CUCKOO Grande one touch temperature control',
+    vertical: true
+  },
+  {
+    title: 'Extra Hot 100°C',
+    copy: 'Dari 5°C hingga 100°C dengan hanya satu sentuhan. Air extra hot tersedia dalam beberapa saat untuk kopi, teh, herba dan bancuhan panas.',
+    image: `${grandeImageBase}/Cuckoo_Grande_Website_1920-low-BS_v2.1.gif`,
+    alt: 'CUCKOO Grande extra hot 100 darjah Celsius'
+  },
+  {
+    title: 'Multiple Dispensing Selection',
+    copy: 'Pilih jumlah air mengikut keperluan harian supaya isi cawan, mug atau botol jadi lebih mudah.',
+    image: `${grandeImageBase}/laptop_3829x1953_.gif`,
+    alt: 'CUCKOO Grande multiple dispensing selection',
+    vertical: true
+  },
+  {
+    title: 'Fast and Fuss-Free',
+    copy: 'Air tersedia dengan cepat dan penggunaan harian lebih lancar untuk rumah moden, pantry atau keluarga yang kerap bancuh minuman.',
+    image: `${grandeImageBase}/cuckoo-grande-features-ciri-2.webp`,
+    alt: 'CUCKOO Grande fast and fuss free feature'
+  }
+];
+
+const filtrationSteps = [
+  {
+    stage: 'Stage 1',
+    title: 'Sediment Filter',
+    copy: 'Membantu menapis debu, karat, pasir dan floating matters daripada sumber air.'
+  },
+  {
+    stage: 'Stage 2 - 4',
+    title: 'Carbon Composite Filter',
+    copy: 'Membantu mengurangkan klorin, VOCs, bau dan fine particles dalam air.'
+  },
+  {
+    stage: 'Stage 5 - 6',
+    title: 'Nano Positive Filter',
+    copy: 'Membantu menapis partikel halus, bakteria, virus dan heavy metals sambil mengekalkan mineral.'
+  }
+];
+
+const galleryItems = [
+  {
+    image: `${grandeImageBase}/penapis-air-cuckoo-grande-water-purifier4.webp`,
+    title: 'CUCKOO Grande Gallery 1',
+    copy: 'Rujukan gambar CUCKOO Grande untuk lihat rupa dan kesesuaian pemasangan di rumah.',
+    alt: 'Gambar gallery CUCKOO Grande water purifier 1'
+  }
+].concat(
+  [10, 9, 8, 7, 5, 3, 2, 1, 6].map((number, index) => ({
+    image: `${grandeImageBase}/penapis-air-cuckoo-grande-water-purifier-${number}.webp`,
+    title: `CUCKOO Grande Gallery ${index + 2}`,
+    copy: 'Rujukan gambar CUCKOO Grande untuk lihat reka bentuk, warna dan suasana pemasangan sebenar.',
+    alt: `Gambar gallery CUCKOO Grande water purifier ${index + 2}`
+  }))
+);
+
+const pricingPlans = [
+  {
+    tier: 'Tier 1',
+    title: 'Rental Plan 5 Tahun',
+    price: 'RM115',
+    suffix: '/bulan',
+    badge: 'Best Seller',
+    copy: 'Pilihan popular untuk pelanggan yang mahu Grande dengan servis berkala CUCKOO dan tempoh komitmen lebih pendek.',
+    details: ['Servis dan filter berkala CUCKOO', 'Sesuai untuk keluarga yang mahu model premium digital'],
+    featured: true
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Rental Plan 7 Tahun',
+    price: 'RM105',
+    suffix: '/bulan',
+    badge: '',
+    copy: 'Pilihan untuk pelanggan yang mahu bayaran bulanan lebih rendah dan penggunaan jangka panjang.',
+    details: ['Harga rujukan tertakluk promo semasa', 'WhatsApp untuk semak pakej dan kelayakan'],
+    featured: false
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Outright',
+    price: 'RM4,500',
+    suffix: '',
+    badge: '',
+    copy: 'Pilihan untuk pelanggan yang mahu beli terus tanpa komitmen bulanan.',
+    details: ['Bayaran sekali sahaja', 'Semak terma servis dan stok semasa'],
+    featured: false
+  }
+];
+
+const moreFeatures = [
+  {
+    number: '1',
+    title: 'Tri-lingual voice navigation',
+    copy: 'Pilihan panduan suara English, Mandarin atau Bahasa Malaysia untuk pengalaman penggunaan yang lebih intuitif.',
+    icon: `${grandeImageBase}/grande-icon-01@2x.webp`,
+    alt: 'Ikon tri-lingual voice navigation CUCKOO Grande'
+  },
+  {
+    number: '2',
+    title: 'Large 7.6-litre tank capacity',
+    copy: 'Kapasiti tangki besar 7.6L membantu memenuhi keperluan minuman harian keluarga dalam satu masa.',
+    icon: `${grandeImageBase}/grande-icon-02@2x.webp`,
+    alt: 'Ikon kapasiti tangki besar 7.6 liter CUCKOO Grande'
+  },
+  {
+    number: '3',
+    title: 'Memory function',
+    copy: 'Simpan mode dan jumlah air kegemaran supaya penggunaan harian lebih mudah dan konsisten.',
+    icon: `${grandeImageBase}/grande-icon-03@2x.webp`,
+    alt: 'Ikon memory function CUCKOO Grande'
+  }
+];
+
+const faqItems = [
+  {
+    q: 'Apa kelebihan utama CUCKOO Grande?',
+    a: 'Grande ialah penapis air digital tangki besar 7.6L dengan pilihan suhu 5°C hingga 100°C, Nano Positive Filtration, voice navigation, memory function dan fungsi sterilisation.'
+  },
+  {
+    q: 'Berapa kapasiti tangki Grande?',
+    a: 'Jumlah kapasiti Grande ialah 7.6L: Cold Tank 2.5L, Hot Tank 2.4L dan Room Tank 2.7L.'
+  },
+  {
+    q: 'Adakah Grande ada air panas 100°C?',
+    a: 'Ya. Grande mempunyai fungsi extra hot 100°C yang sesuai untuk kopi, teh, herba dan keperluan air panas segera.'
+  },
+  {
+    q: 'Berapa harga CUCKOO Grande?',
+    a: 'Rujukan harga Grande ialah dari RM115/bulan dan outright RM4,500. Harga tertakluk kepada promo dan kempen semasa.'
+  },
+  {
+    q: 'Apa sistem tapisan Grande?',
+    a: 'Grande menggunakan 6-Stage Filtration System dengan 3 filter utama: Sediment Filter, Carbon Composite Filter dan Nano Positive Filter.'
+  },
+  {
+    q: 'Adakah Grande sesuai untuk keluarga besar?',
+    a: 'Ya. Kapasiti 7.6L dan pilihan suhu lengkap menjadikan Grande sesuai untuk keluarga besar, penggunaan kerap, pantry pejabat atau ruang menunggu.'
+  },
+  {
+    q: 'Adakah Grande ada fungsi keselamatan?',
+    a: 'Ya. Grande mempunyai button lock, functional lock dan fungsi keselamatan air panas untuk membantu mengurangkan risiko tersalah tekan.'
+  },
+  {
+    q: 'Macam mana nak semak promo terkini?',
+    a: 'Klik butang WhatsApp dan saya akan bantu semak promo Grande, bayaran permulaan, dokumen, kelayakan dan slot pemasangan.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO Grande Water Purifier',
+  image: [
+    'https://www.cuckoonano.com/assets/images/Gambar%20Produk%20png/grande.webp',
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/grande/grande-feature-image-01_1@2x.webp'
+  ],
+  url: 'https://www.cuckoonano.com/products/water-purifier/grande/',
+  sku: 'CUCKOO-GRANDE',
+  category: 'Water Purifier',
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  description:
+    'Penapis air digital tangki besar 7.6L dengan pilihan suhu 5°C hingga 100°C, 6-Stage Filtration, Nano Positive Filter, voice navigation dan 100°C sterilisation.',
+  offers: [
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/grande/#harga',
+      priceCurrency: 'MYR',
+      price: '115',
+      availability: 'https://schema.org/InStock',
+      description: 'Rental Grande dari RM115/bulan tertakluk kepada promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      url: 'https://www.cuckoonano.com/products/water-purifier/grande/#harga',
+      priceCurrency: 'MYR',
+      price: '4500',
+      availability: 'https://schema.org/InStock',
+      description: 'Outright purchase rujukan RM4,500 tertakluk kepada promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+---
+
+<BaseLayout {...meta}>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .gold-line { background: linear-gradient(90deg, transparent, rgba(216,166,74,.8), transparent); }
+    .product-blob { background: radial-gradient(circle at 35% 30%, rgba(216,166,74,.28), transparent 38%), radial-gradient(circle at 70% 62%, rgba(122,14,35,.16), transparent 42%), linear-gradient(145deg, #fff8f2, #ffffff); }
+    .accent-ring { box-shadow: 0 30px 80px rgba(20,20,20,.16); }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+    <section id="hero" class="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-start lg:gap-10">
+        <div class="order-1 lg:col-start-1 lg:row-start-1">
+          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Free Installation</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Servis Berkala</span>
+          </div>
+
+          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
+            <span class="text-sm font-black sm:text-base">RM12/bulan untuk 6 bulan pertama</span>
+          </div>
+
+          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            CUCKOO Grande — Penapis Air Digital Tangki Besar Dengan Air Panas 100°C
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
+            Grande sesuai untuk keluarga yang mahukan kapasiti 7.6L, pilihan suhu 5°C hingga 100°C, smart dispensing, voice navigation dan Nano Positive Filtration dalam satu rekaan premium.
+          </p>
+        </div>
+
+        <div class="order-2 rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="product-blob accent-ring relative overflow-hidden rounded-[1.7rem] p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">Digital Premium</span>
+              <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">7.6L Capacity</span>
+            </div>
+
+            <div class="mt-4 flex justify-center gap-2" aria-label="Pilih sudut gambar CUCKOO Grande">
+              <button
+                type="button"
+                data-grande-view="front"
+                class="grande-view-btn rounded-full bg-brand px-4 py-2 text-xs font-black text-white shadow-soft"
+              >
+                Sisi 1
+              </button>
+              <button
+                type="button"
+                data-grande-view="angle"
+                class="grande-view-btn rounded-full bg-white px-4 py-2 text-xs font-black text-brand shadow-soft ring-1 ring-brand/10"
+              >
+                Sisi 2
+              </button>
+            </div>
+
+            <div class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/80 to-white/35 p-5 sm:min-h-[390px] lg:min-h-[470px]">
+              <div class="absolute bottom-12 h-16 w-[72%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+              <img
+                src={`${grandeImageBase}/Grande-800x800-02.webp`}
+                alt="CUCKOO Grande water purifier sisi hadapan"
+                class="grande-product-image relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[455px]"
+                data-grande-image="front"
+              />
+              <img
+                src={`${grandeImageBase}/grande-feature-image-01_1@2x.webp`}
+                alt="CUCKOO Grande water purifier sisi kedua"
+                class="grande-product-image relative z-10 hidden h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[455px]"
+                data-grande-image="angle"
+              />
+            </div>
+
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">Cold Tank 2.5L</span>
+              <span class="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-black text-red-700">Hot Tank 2.4L</span>
+              <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">Room Tank 2.7L</span>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">100°C Extra Hot</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Nano Positive</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Voice Navigation</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Energy Saving</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappGrandeUrl}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Promo Grande
+            </a>
+
+            <a
+              href="#harga"
+              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
+            >
+              Lihat Pelan Harga
+            </a>
+          </div>
+
+          <div class="mt-7 rounded-[1.75rem] border border-brand/10 bg-white/80 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+            <div class="grid gap-3 sm:grid-cols-[1fr_1fr] sm:items-stretch">
+              <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+                <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Promo Terkini</p>
+                <p class="mt-2 text-4xl font-black leading-none">
+                  RM12<span class="text-sm font-black">/bulan</span>
+                </p>
+                <p class="mt-1 text-xs font-bold text-white/75">6 bulan pertama</p>
+              </div>
+
+              <a
+                href="#harga"
+                class="rounded-[1.35rem] border border-brand/10 bg-brand-cream px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25"
+              >
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Harga Grande</p>
+                <p class="mt-2 text-xl font-black text-brand">Dari RM115/bulan</p>
+                <p class="mt-2 text-sm font-bold text-brand-muted">Outright RM4,500 →</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="ciri-ciri" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Smart Premium Features</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Ciri-Ciri Yang Buat Grande Rasa Lebih Premium</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Fokus pada ciri utama Grande yang customer cepat faham: kawalan suhu satu sentuhan, air extra hot 100°C, pilihan jumlah air dan penggunaan pantas tanpa serabut.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:gap-7">
+          {smartFeatures.map((item, index) => (
+            <article class="group flex min-h-full flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-premium ring-1 ring-brand/10 transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+              <div class="bg-[linear-gradient(180deg,#fff8f2_0%,#fff2ea_100%)] p-3 sm:p-4">
+                <div class="relative aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-white shadow-soft ring-1 ring-white/70">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
+                  />
+                  <div class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-brand/5"></div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-5 sm:p-6">
+                <div class="flex items-start gap-4">
+                  <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-cream text-xs font-black text-brand-gold ring-1 ring-brand/10">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <p class="text-[11px] font-black uppercase tracking-[.18em] text-brand-gold">Ciri Grande</p>
+                    <h3 class="mt-1 text-xl font-black leading-tight text-brand-ink sm:text-2xl">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+                <p class="mt-4 flex-1 text-sm leading-7 text-brand-muted">
+                  {item.copy}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-brand p-7 text-white shadow-premium sm:p-9 lg:flex lg:items-center lg:justify-between lg:gap-8">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">Semak Sekarang</p>
+            <h3 class="mt-3 text-3xl font-black">Berminat Dengan Grande?</h3>
+            <p class="mt-3 max-w-2xl leading-8 text-white/75">
+              Semak promo semasa, stok dan kelayakan pemasangan dengan ejen CUCKOO.
+            </p>
+          </div>
+          <a
+            href={whatsappGrandeUrl}
+            class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D] sm:w-auto lg:mt-0"
+          >
+            <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+            Semak Promo Grande
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="more-features" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_72%_8%,rgba(255,255,255,.12),transparent_30%),radial-gradient(circle_at_18%_72%,rgba(255,255,255,.08),transparent_36%),linear-gradient(135deg,#5B0918_0%,#7A0E23_48%,#9A2540_100%)] text-white shadow-premium">
+        <div class="relative px-5 pb-0 pt-10 sm:px-8 lg:px-12 lg:pt-12">
+          <h2 class="text-center text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+            More features, more enjoyable
+          </h2>
+
+          <div class="relative mx-auto mt-8 flex max-w-4xl justify-center lg:mt-10">
+            <img
+              src={`${grandeImageBase}/grande-feature-image-01_1@2x copy.webp`}
+              alt="CUCKOO Grande dengan callout feature voice navigation tank capacity dan memory function"
+              loading="lazy"
+              class="relative z-10 w-full max-w-[740px] object-contain drop-shadow-2xl"
+            />
+
+            
+          </div>
+        </div>
+
+        <div class="mx-auto -mt-2 max-w-5xl px-4 pb-8 sm:px-8 lg:-mt-10 lg:pb-12">
+          <div class="overflow-hidden rounded-t-[2rem] rounded-b-[1.5rem] bg-[linear-gradient(135deg,#fffefa_0%,#f6f1ec_100%)] text-brand shadow-[0_24px_80px_rgba(35,0,10,.24)] ring-1 ring-white/50">
+            {moreFeatures.map((item, index) => (
+              <article class={`grid gap-5 px-6 py-7 text-center sm:grid-cols-[90px_110px_1fr] sm:items-center sm:text-left lg:px-12 lg:py-8 ${index > 0 ? 'border-t border-brand/10' : ''}`}>
+                <p class="text-5xl font-light leading-none text-brand sm:text-3xl">{item.number}</p>
+                <img
+                  src={item.icon}
+                  alt={item.alt}
+                  loading="lazy"
+                  class="mx-auto h-20 w-20 object-contain sm:h-16 sm:w-16"
+                />
+                <div>
+                  <h3 class="text-2xl font-black leading-tight text-brand">
+                    {item.title}
+                  </h3>
+                  <p class="mt-3 text-base font-bold leading-7 text-brand-muted lg:text-lg">
+                    {item.copy}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sterilisation" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-8 rounded-[2rem] bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)] p-6 text-white shadow-premium lg:grid-cols-[1.05fr_.95fr] lg:p-10">
+        <div class="flex items-center justify-center overflow-hidden rounded-[1.5rem] p-1">
+          <img
+            src={`${grandeImageBase}/cuckoo-grande-features-ciri-1.webp`}
+            alt="Fungsi air panas dan sterilisation CUCKOO Grande"
+            loading="lazy"
+            class="max-h-[420px] w-full rounded-[1.25rem] object-cover"
+          />
+        </div>
+        <div class="self-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">100°C Sterilisation</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Bukan Sekadar Air Panas, Grande Juga Fokus Kebersihan Faucet</h2>
+          <p class="mt-5 leading-8 text-white/80">
+            Grande mempunyai fungsi hot water faucet sterilisation dan In & Out Electrolytic Sterilisation untuk bantu menjaga bahagian outlet air. Ini menjadikan Grande lebih sesuai untuk pelanggan yang mahu model premium dengan fungsi penjagaan kebersihan tambahan.
+          </p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-4 font-black ring-1 ring-white/15">Hot water faucet sterilisation</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-black ring-1 ring-white/15">In & Out sterilisation</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-black ring-1 ring-white/15">Button & functional lock</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-black ring-1 ring-white/15">Safety hot water control</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="filtration" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,.14),transparent_34%),linear-gradient(135deg,#4B0715_0%,#7A0E23_46%,#9A2540_100%)] shadow-premium">
+        <div class="px-5 pt-10 text-center sm:px-8 lg:px-10">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Grande Filtration</p>
+          <h2 class="mt-3 text-3xl font-black uppercase tracking-[.12em] text-white sm:text-4xl">
+            Sistem Tapisan 6 Peringkat
+          </h2>
+          <p class="mt-2 text-lg font-bold tracking-[.08em] text-white/75">
+            dengan 3 filter untuk air minuman bersih.
+          </p>
+          <img
+            src={`${grandeImageBase}/grande-filters-desk-01a.png.webp`}
+            class="mx-auto mt-8 w-full max-w-5xl"
+            alt="Sistem tapisan CUCKOO Grande 6 stage filtration dengan Sediment Carbon Composite dan Nano Positive Filter"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="hidden px-6 pb-8 lg:block">
+          <div class="overflow-hidden rounded-[2rem] bg-[#f5edef] shadow-[0_24px_70px_rgba(20,0,8,.22)]">
+            <div class="grid grid-cols-3 bg-[linear-gradient(135deg,#B0163C_0%,#7A0E23_42%,#4B0715_100%)] text-center text-lg font-black uppercase tracking-[.12em] text-white">
+              {filtrationSteps.map((item) => <div class="px-5 py-5">{item.stage}</div>)}
+            </div>
+            <div class="grid grid-cols-3 text-center">
+              {filtrationSteps.map((item) => (
+                <article class="px-8 py-9">
+                  <h3 class="text-3xl font-black text-brand-ink">{item.title}</h3>
+                  <p class="mt-5 text-lg leading-8 text-brand-ink">{item.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-5 px-4 pb-8 lg:hidden">
+          {filtrationSteps.map((item) => (
+            <article class="overflow-hidden rounded-[1.5rem] bg-[#f5edef] shadow-[0_18px_44px_rgba(20,0,8,.2)]">
+              <p class="w-fit rounded-br-[1.5rem] bg-[linear-gradient(135deg,#B0163C_0%,#7A0E23_42%,#4B0715_100%)] px-8 py-3 text-sm font-black uppercase tracking-[.12em] text-white">
+                {item.stage}
+              </p>
+              <div class="grid gap-3 p-6 sm:grid-cols-[.45fr_1fr] sm:items-center">
+                <h3 class="text-2xl font-black text-brand">{item.title}</h3>
+                <p class="text-base leading-7 text-brand-ink">{item.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="px-5 pb-10 pt-2 sm:px-8 lg:px-10">
+          <p class="mx-auto max-w-5xl text-center text-lg leading-8 text-white/80">
+            Membantu menapis bendasing, bakteria dan bahan berbahaya untuk menghasilkan <strong class="text-white">air bersih, selamat dan mild alkaline</strong> bagi kegunaan harian.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-8 rounded-[2rem] bg-white p-6 shadow-premium lg:grid-cols-[.9fr_1.1fr] lg:p-10">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Lifestyle Fit</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Sesuai Untuk Keluarga Besar, Pejabat & Rumah Moden</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Grande sesuai bila rumah kerap guna air panas, air sejuk dan air suhu bilik dalam jumlah banyak. Kapasiti 7.6L membantu mengurangkan rasa menunggu, terutama bila ramai pengguna.
+          </p>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Keluarga 4 orang ke atas</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Dapur moden</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Pantry pejabat</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Rumah yang kerap bancuh minuman panas</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Customer yang mahu model digital</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Homestay / ruang menunggu</div>
+        </div>
+      </div>
+    </section>
+
+    <ProductGallerySlider
+      id="gallery"
+      title="Lihat CUCKOO Grande Dengan Lebih Dekat"
+      description="Gambar produk, filtration, sudut air panas dan spesifikasi Grande supaya anda lebih mudah bayangkan saiz, fungsi dan kesesuaian pemasangan di rumah."
+      items={galleryItems}
+    />
+
+    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Specifications</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi Grande</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
+            Dimensi, kapasiti tangki dan spesifikasi utama Grande untuk semakan sebelum pilih pelan.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div class="self-start overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.14),transparent_32%),linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)] p-6 shadow-premium sm:p-8">
+            <div class="flex min-h-[360px] items-center justify-center rounded-[1.5rem] p-4">
+              <img
+                src={`${grandeImageBase}/grande-spec@2x.webp`}
+                alt="Spesifikasi rasmi CUCKOO Grande water purifier"
+                class="w-full object-contain drop-shadow-2xl"
+              />
+            </div>
+            <p class="mt-4 text-center text-sm text-white/70">CUCKOO Grande digital water purifier</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">260mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Lebar</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">527mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Kedalaman</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">506mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Tinggi</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">7.6L</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Jumlah Tangki</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+              {[
+                ['Model', 'CUCKOO Grande'],
+                ['Filtration', '6-Stage Filtration System'],
+                ['Filter Utama', 'Sediment, Carbon Composite, Nano Positive'],
+                ['Cold Tank', '2.5L'],
+                ['Hot Tank', '2.4L'],
+                ['Room Tank', '2.7L'],
+                ['Total Capacity', '7.6L'],
+                ['Temperature', '5°C hingga 100°C'],
+                ['Extra Hot', '100°C'],
+                ['Voice Navigation', 'English, Mandarin, Bahasa Malaysia'],
+                ['Smart Function', 'Memory function, mood lamp, voice volume'],
+                ['Safety', 'Button lock & functional lock'],
+                ['Power Consumption', 'Hot 450W / Cold 0.6A']
+              ].map(([label, value], index) => (
+                <div class={`grid grid-cols-2 ${index < 12 ? 'border-b border-brand/10' : ''}`}>
+                  <div class="px-5 py-4 font-black text-brand-ink">{label}</div>
+                  <div class="px-5 py-4 text-brand-muted">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+            Pilih Cara Miliki CUCKOO Grande
+          </h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            Grande sesuai jika anda mahu model premium digital dengan kapasiti besar dan fungsi smart lengkap.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <article class={`relative rounded-[2rem] p-7 shadow-soft ${plan.featured ? 'border-2 border-brand bg-brand text-white shadow-glow' : 'border border-brand/10 bg-white'}`}>
+              {plan.badge && (
+                <div class={`absolute -top-4 left-7 rounded-full px-5 py-2 text-xs font-black uppercase tracking-[.14em] shadow-soft ${plan.featured ? 'bg-white text-brand' : 'bg-brand text-white'}`}>
+                  {plan.badge}
+                </div>
+              )}
+              <p class={`mt-3 text-sm font-black uppercase tracking-[.16em] text-brand-gold`}>{plan.tier}</p>
+              <h3 class={`mt-4 text-2xl font-black ${plan.featured ? 'text-white' : 'text-brand-ink'}`}>{plan.title}</h3>
+              <p class={`mt-3 text-sm font-bold ${plan.featured ? 'text-white/70' : 'text-brand-muted'}`}>
+                {plan.title === 'Rental Plan 5 Tahun' && 'Pakej rental 5 tahun'}
+                {plan.title === 'Rental Plan 7 Tahun' && 'Pakej rental 7 tahun'}
+                {plan.title === 'Outright' && 'Bayaran sekali sahaja'}
+              </p>
+              <div class={`mt-7 rounded-[1.5rem] p-5 ${plan.featured ? 'bg-white/10' : 'bg-brand-cream'}`}>
+                <p class={`text-5xl font-black ${plan.featured ? 'text-white' : 'text-brand'}`}>
+                  {plan.price}<span class={`text-base font-black ${plan.featured ? 'text-white/70' : 'text-brand-muted'}`}>{plan.suffix}</span>
+                </p>
+                <p class={`mt-2 text-xs font-black uppercase tracking-[.12em] ${plan.featured ? 'text-brand-gold' : 'text-brand-muted'}`}>
+                  {plan.suffix ? 'Harga bulanan' : 'Harga outright'}
+                </p>
+              </div>
+              <p class={`mt-5 text-sm leading-7 ${plan.featured ? 'text-white/78' : 'text-brand-muted'}`}>{plan.copy}</p>
+              <ul class={`mt-5 space-y-2 text-sm font-bold ${plan.featured ? 'text-white/85' : 'text-brand-ink'}`}>
+                {plan.details.map((detail) => (
+                  <li>✓ {detail}</li>
+                ))}
+              </ul>
+              <a href={whatsappGrandeUrl}
+                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+                <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+                WhatsApp Semak
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-white p-5 text-center text-sm font-bold leading-7 text-brand-muted shadow-soft">
+          Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak bayaran permulaan, kelayakan, dokumen dan promo terkini.
+        </div>
+      </div>
+    </section>
+
+    <PromoBannerSection />
+
+    <FreeGiftSection
+      title="Free Gift Untuk Tempahan CUCKOO Grande"
+      description="Selain menikmati penapis air CUCKOO Grande dengan tangki besar, suhu lengkap dan servis berkala, pelanggan juga berpeluang menerima free gift semasa promo masih tersedia."
+    />
+
+    <WaterPurifierServiceSection
+      productName="Penapis Air CUCKOO Grande"
+      productImage="/assets/images/Gambar%20Produk%20png/grande.webp"
+      productAlt="Penapis Air CUCKOO Grande dengan servis berkala dan penukaran filter"
+    />
+
+    <WhyChooseCuckooWaterPurifiers />
+
+
+    <CustomerProofSection />
+    <WaterHalalSection />
+
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">
+            Soalan Lazim CUCKOO Grande
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
+            Jawapan ringkas sebelum anda pilih plan atau semak promo Grande.
+          </p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProductCategorySection />
+    <AgentSection />
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = Array.from(document.querySelectorAll('[data-grande-view]'));
+      const images = Array.from(document.querySelectorAll('[data-grande-image]'));
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const selected = button.getAttribute('data-grande-view');
+
+          images.forEach((image) => {
+            image.classList.toggle('hidden', image.getAttribute('data-grande-image') !== selected);
+          });
+
+          buttons.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle('bg-brand', active);
+            item.classList.toggle('text-white', active);
+            item.classList.toggle('bg-white', !active);
+            item.classList.toggle('text-brand', !active);
+            item.classList.toggle('ring-1', !active);
+            item.classList.toggle('ring-brand/10', !active);
+          });
+        });
+      });
+    });
+  </script>
+
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(schema)}
+  </script>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>

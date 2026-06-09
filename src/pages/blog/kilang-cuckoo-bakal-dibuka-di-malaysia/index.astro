@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Kilang Cuckoo Bakal Dibuka Di Malaysia - Astro Awani",
+  description: "SEOUL : Pengeluar penapis air terkenal, Cuckoo International Malaysia Sdn Bhd bakal membuka kilang di Malaysia tahun hadapan dengan menyasarkan lebih 20,000...",
+  canonical: "https://www.cuckoonano.com/blog/kilang-cuckoo-bakal-dibuka-di-malaysia/",
+  ogImage: "https://www.cuckoonano.com/assets/images/products/water-purifier/cuckoo-prince-top-seung-gi-cuckoonano.jpg",
+  ogType: 'article'
+};
+
+const publishedDate = "2018-05-22";
+const modifiedDate = "2018-10-24";
+
+const articleTitle = "Kilang Cuckoo Bakal Dibuka Di Malaysia";
+const articleDescription = "SEOUL : Pengeluar penapis air terkenal, Cuckoo International Malaysia Sdn Bhd bakal membuka kilang di Malaysia tahun hadapan dengan menyasarkan lebih 20,000...";
+const featuredImage = "/assets/images/gambar-produk/cuckoo-prince-top-seung-gi-cuckoonano.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      <strong>SEOUL</strong>: Pengeluar penapis air terkenal, Cuckoo International Malaysia Sdn Bhd bakal membuka kilang di Malaysia tahun hadapan dengan menyasarkan lebih 20,000 peluang pekerjaan kepada warga tempatan.
+      
+      Ketua Pegawai Eksekutifnya Hoe Kian Choon berkata, kilang pertama Cuckoo di rantau Asia itu akan dibina di sebuah kawasan Pelabuhan Klang, Selangor dengan kos RM100 juta.
+      
+      Hoe berkata, keputusan ini diambil bagi menampung jualan produk yang semakin meningkat di rantau ini termasuk periuk serbaguna dan penapis udara Cuckoo.
+      
+      “Ia juga bertujuan untuk memberi balik kepada rakyat Malaysia yang menyokong produk itu,” jelasnya dalam satu temubual ketika lawatan media ke Korea Selatan dari 4 hingga 10 Mac sempena ulang tahun ke-40 produk perkakasan rumah terkemuka itu.
+      
+      Hoe menjelaskan bahawa dalam jangka masa tiga tahun sejak penubuhan Cuckoo Malaysia pada 2014, ia berjaya merekodkan 300,000 pelanggan.
+      
+      Sementara itu, Ketua Pegawai Eksekutif Cuckoo Korea Selatan, Brian Koo Bon Hak optimis bahawa Cuckoo akan terus mempertingkatkan kehadirannya di pasaran luar negara.
+      
+      Brian juga berkata, antara strategi jangka masa panjang adalah mengembangkan sayap ke Vietnam, India dan Indonesia pada tahun ini.
+      
+      “Hasil jualan pendapatan eksport dijangka memberikan pulangan tahunan sebanyak AS$150 juta bagi tahun ini dan AS$1 bilion pendapatan global dalam tempoh lima tahun akan datang,” katanya.
+      
+      Sambutan ulangtahun Cuckoo yang ke-40 diadakan di Seoul Dragon City, dan dihadiri 526 peserta termasuk kakitangan Cuckoo Malaysia dan wakil media dari Korea Selatan, Malaysia, Brunei, Singapura dan Indonesia.
+      
+      <figure><img src="/assets/images/products/water-purifier/cuckoo-prince-top-seung-gi-cuckoonano.jpg" alt="Cuckoo Prince Top" loading="lazy" /><figcaption>Cuckoo Prince Top</figcaption></figure>
+      
+      Media diberi peluang untuk melihat penapis air beralkali ringan terbaru <em>Cuckoo-Prince Top</em> yang menampilkan sistem pensterilan elektrolisis yang mampu memberikan air panas dan sejuk tanpa tangki.
+      
+      Di majlis sama, Cuckoo turut memperkenalkan penyanyi dan pelakon terkenal negara itu, Lee Seung-gi sebagai duta jenama antarabangsanya yang terbaharu.
+      
+      Sumber: <a href="http://www.astroawani.com/berita-bisnes/cuckoo-bakal-buka-kilang-di-malaysia-169970">Astro Awani</a>
+      
+      &nbsp;
+      
+      ______
+      
+      Update Oktober 2018
+      
+      <a href="/assets/images/brand/kilang-cuckoo-banting.jpg"><figure><img src="/assets/images/brand/kilang-cuckoo-banting.jpg" alt="" loading="lazy" /></figure></a>
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

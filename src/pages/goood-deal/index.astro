@@ -1,0 +1,575 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AgentSection from '../../components/AgentSection.astro';
+
+const whatsappTradeIn = 'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil,%20saya%20nak%20semak%20kelayakan%20Trade-In%20CUCKOO.%20Mesin%20lama%20saya%20ialah%20____%20dan%20status%20kontrak%20saya%20____.';
+const whatsappIzzah = 'https://api.whatsapp.com/send?phone=60132775539&text=Salam%20Pn%20Izzah,%20saya%20nak%20semak%20kelayakan%20Trade-In%20CUCKOO.%20Mesin%20lama%20saya%20ialah%20____%20dan%20status%20kontrak%20saya%20____.';
+
+const meta = {
+  title: 'Trade-In CUCKOO Malaysia 2026 | Tukar Mesin Lama & Jimat Bayaran Bulanan',
+  description: 'Semak kelayakan Trade-In CUCKOO untuk penapis air dan penapis udara lama. Tukar kepada model baru, harga bulanan lebih rendah dan jimat sehingga RM1,500 tertakluk syarat semasa.',
+  canonical: 'https://www.cuckoonano.com/goood-deal/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/gambar-produk/promosi-cuckoo-2025-water-purifier-penapis-air-promotion-offer-agent.jpeg',
+  ogType: 'website'
+};
+
+const eligibility = [
+  ['Kontrak sudah tamat', 'Mesin lama sudah habis ansuran dan tiada tunggakan bayaran.'],
+  ['Kontrak hampir tamat', 'Untuk kempen semasa, kontrak berbaki pendek boleh disemak kelayakan.'],
+  ['Beli cash / outright', 'Pelanggan yang pernah beli mesin CUCKOO secara tunai juga boleh disemak.'],
+  ['Kategori sama', 'Penapis air tukar penapis air, penapis udara tukar penapis udara.']
+];
+
+const painPoints = [
+  ['Mesin lama nampak kusam', 'Dapur rasa kurang kemas bila mesin sudah kuning, lama atau kurang cantik.'],
+  ['Kos servis terasa berat', 'Bila kontrak tamat, servis atau filter boleh jadi kos tambahan yang perlu dirancang.'],
+  ['Teknologi model lama', 'Model baru biasanya lebih moden, kemas dan lebih sesuai dengan rumah sekarang.'],
+  ['Nak bayar lebih rendah', 'Trade-in boleh bantu kurangkan bayaran bulanan untuk model terpilih.']
+];
+
+const comparison = [
+  {
+    title: 'Beli filter sendiri',
+    tag: 'Risiko DIY',
+    price: 'RM150-RM250',
+    tone: 'bg-white',
+    points: ['Kos awal nampak murah', 'Risiko filter tiruan', 'Tiada servis rasmi', 'Waranti tidak jelas']
+  },
+  {
+    title: 'Sambung servis lama',
+    tag: 'Terus guna mesin lama',
+    price: 'RM500-RM800',
+    tone: 'bg-white',
+    points: ['Servis rasmi CUCKOO', 'Mesin masih model lama', 'Kos tahunan boleh terasa', 'Tiada upgrade model']
+  },
+  {
+    title: 'Trade-In CUCKOO',
+    tag: 'Pilihan upgrade',
+    price: 'Dari RM59/bulan',
+    tone: 'bg-brand text-white',
+    points: ['Mesin baru', 'Bayaran bulanan lebih rendah', 'Waranti dan servis kontrak baru', 'Fadhil & Izzah bantu semak kelayakan']
+  }
+];
+
+const waterProducts = [
+  {
+    name: 'King Top 2',
+    image: '/assets/images/Gambar%20Produk%20png/king-top-2.webp',
+    normal: 'RM86',
+    trade: 'RM59',
+    laterNormal: 'RM81',
+    laterTrade: 'RM59',
+    saving: 'RM1,500',
+    note: 'Model mekanikal popular untuk keluarga.'
+  },
+  {
+    name: 'Xcel 2',
+    image: '/assets/images/Gambar%20Produk%20png/xcel-2.webp',
+    normal: 'RM100',
+    trade: 'RM85',
+    laterNormal: 'RM95',
+    laterTrade: 'RM80',
+    saving: 'RM900',
+    note: 'Countertop digital premium untuk dapur moden.'
+  },
+  {
+    name: 'Warrior',
+    image: '/assets/images/Gambar%20Produk%20png/warrior.webp',
+    normal: 'RM105',
+    trade: 'RM95',
+    laterNormal: 'RM100',
+    laterTrade: 'RM90',
+    saving: 'RM600',
+    note: 'Tangki besar untuk keluarga dan pejabat kecil.'
+  },
+  {
+    name: 'Grande',
+    image: '/assets/images/Gambar%20Produk%20png/grande.webp',
+    normal: 'RM121',
+    trade: 'RM111',
+    laterNormal: 'RM116',
+    laterTrade: 'RM106',
+    saving: 'RM600',
+    note: 'Floor-standing digital dengan kapasiti besar.'
+  },
+  {
+    name: 'Glamour',
+    image: '/assets/images/Gambar%20Produk%20png/glamour-front.webp',
+    normal: 'RM110',
+    trade: 'RM100',
+    laterNormal: 'RM105',
+    laterTrade: 'RM95',
+    saving: 'RM600',
+    note: 'Model digital premium untuk dapur keluarga.'
+  },
+  {
+    name: 'Titan',
+    image: '/assets/images/Gambar%20Produk%20png/titan.webp',
+    normal: 'RM115',
+    trade: 'RM104',
+    laterNormal: 'RM110',
+    laterTrade: 'RM99',
+    saving: 'RM900',
+    note: 'Model tankless untuk dapur moden.'
+  },
+  {
+    name: 'Kiut',
+    image: '/assets/images/Gambar%20Produk%20png/kiut.webp',
+    normal: 'RM72',
+    trade: 'RM62',
+    laterNormal: 'RM67',
+    laterTrade: 'RM57',
+    saving: 'RM600',
+    note: 'Model kompak untuk ruang dapur terhad.'
+  },
+  {
+    name: 'Vivid',
+    image: '/assets/images/Gambar%20Produk%20png/vivid.webp',
+    normal: 'RM77',
+    trade: 'RM67',
+    laterNormal: 'RM72',
+    laterTrade: 'RM62',
+    saving: 'RM600',
+    note: 'Penapis air panas tangki besar.'
+  },
+  {
+    name: 'Flo Stand',
+    image: '/assets/images/Gambar%20Produk%20png/flo.webp',
+    normal: 'RM121',
+    trade: 'RM111',
+    laterNormal: 'RM116',
+    laterTrade: 'RM106',
+    saving: 'RM600',
+    note: 'Floor-standing untuk tempat ramai pengguna.'
+  },
+  {
+    name: 'Queen Stand',
+    image: '/assets/images/promo/promosi-2025-penapis-air-cuckoo-queen-stand-rm123-water-purifier-promotion-agent-price-harga.jpeg',
+    normal: 'RM129',
+    trade: 'RM119',
+    laterNormal: 'RM124',
+    laterTrade: 'RM114',
+    saving: 'RM600',
+    note: 'Model stand untuk kegunaan keluarga.'
+  }
+];
+
+const airProducts = [
+  {
+    name: 'L Model',
+    image: '/assets/images/Gambar%20Produk%20png/l-model-main.webp',
+    normal: 'RM105',
+    trade: 'RM95',
+    laterNormal: 'RM100',
+    laterTrade: 'RM90',
+    saving: 'RM600',
+    note: 'Coverage sehingga 600 ft².'
+  },
+  {
+    name: 'K Model',
+    image: '/assets/images/Gambar%20Produk%20png/k-model.webp',
+    normal: 'RM94',
+    trade: 'RM84',
+    laterNormal: 'RM89',
+    laterTrade: 'RM79',
+    saving: 'RM600',
+    note: 'Fine dust sensor dan 7-stage filtration.'
+  },
+  {
+    name: 'R Model',
+    image: '/assets/images/Gambar%20Produk%20png/d-model-1.webp',
+    normal: 'RM77',
+    trade: 'RM67',
+    laterNormal: 'RM72',
+    laterTrade: 'RM62',
+    saving: 'RM600',
+    note: 'Pilihan bajet untuk ruang harian.'
+  },
+  {
+    name: 'C Humidifier',
+    image: '/assets/images/Gambar%20Produk%20png/cuckoo-c-plus.webp',
+    normal: 'RM121',
+    trade: 'RM111',
+    laterNormal: 'RM116',
+    laterTrade: 'RM106',
+    saving: 'RM600',
+    note: 'Air purifier dengan fungsi humidifier.'
+  },
+  {
+    name: 'D Model',
+    image: '/assets/images/Gambar%20Produk%20png/d-model-1.webp',
+    normal: 'RM127',
+    trade: 'RM117',
+    laterNormal: 'RM122',
+    laterTrade: 'RM112',
+    saving: 'RM600',
+    note: 'Premium filtration dengan HEPA H14.'
+  },
+  {
+    name: 'U Model',
+    image: '/assets/images/Gambar%20Produk%20png/u-model.webp',
+    normal: 'RM143',
+    trade: 'RM133',
+    laterNormal: 'RM138',
+    laterTrade: 'RM128',
+    saving: 'RM600',
+    note: 'Coverage besar sehingga 1161 ft².'
+  }
+];
+
+const faqs = [
+  ['Apa maksud Trade-In CUCKOO?', 'Trade-In CUCKOO bermaksud pelanggan CUCKOO sedia ada menukar mesin lama kepada model baru dengan kontrak baru dan harga trade-in yang lebih rendah, tertakluk syarat semasa.'],
+  ['Adakah saya dapat cash bila trade-in mesin lama?', 'Tidak. Trade-in bukan jual balik mesin lama untuk dapat cash. Ia adalah program upgrade kepada model baru dengan harga promosi trade-in.'],
+  ['Mesin belum habis kontrak boleh trade-in?', 'Boleh disemak jika kontrak hampir tamat dan tiada tunggakan. Kelayakan bergantung kepada syarat kempen semasa.'],
+  ['Kalau beli cash boleh trade-in?', 'Boleh disemak jika mesin CUCKOO lama dibeli secara cash atau outright dan memenuhi syarat semasa.'],
+  ['Boleh trade-in penapis air kepada penapis udara?', 'Biasanya trade-in perlu dalam kategori sama, contohnya penapis air kepada penapis air atau penapis udara kepada penapis udara.'],
+  ['Mesin lama perlu dipulangkan?', 'Ya, mesin lama biasanya perlu dipulangkan kepada pihak CUCKOO semasa pemasangan mesin baru.'],
+  ['Apa yang perlu saya beri untuk semak kelayakan?', 'Beritahu nama pemilik kontrak, nombor IC, model mesin lama dan status kontrak jika anda tahu. Kami bantu semak langkah seterusnya.']
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer
+    }
+  }))
+};
+
+---
+
+<BaseLayout {...meta}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="relative overflow-hidden bg-[radial-gradient(circle_at_76%_20%,rgba(242,193,90,.18),transparent_28%),linear-gradient(135deg,#35040f_0%,#76091f_55%,#a3132f_100%)] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-20">
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/10 to-transparent"></div>
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_.88fr] lg:items-center">
+      <div class="relative z-10">
+        <p class="inline-flex rounded-full bg-brand-gold px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-brand">GOOOD Trade-In CUCKOO</p>
+        <h1 class="mt-6 max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+          Tukar Mesin CUCKOO Lama Kepada Model Baru, Bayaran Bulanan Lebih Rendah.
+        </h1>
+        <p class="mt-5 max-w-3xl text-lg font-semibold leading-8 text-white/82">
+          Untuk pengguna CUCKOO yang kontrak sudah tamat, hampir tamat atau beli cash. Kami bantu semak kelayakan, model yang boleh upgrade dan anggaran penjimatan.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href={whatsappTradeIn} class="inline-flex justify-center rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_42px_rgba(37,211,102,.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#1EBE5D]">
+            Semak Kelayakan Trade-In
+          </a>
+          <a href="#model-trade-in" class="inline-flex justify-center rounded-full bg-white px-7 py-4 text-sm font-black text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-gold">
+            Lihat Harga Trade-In
+          </a>
+        </div>
+        <p class="mt-6 max-w-2xl text-xs font-semibold leading-6 text-white/65">
+          Website ini dikendalikan oleh ejen CUCKOO individu. Kelayakan, harga dan promo tertakluk kepada stok, kawasan, status kontrak, kelulusan dan syarat semasa.
+        </p>
+      </div>
+
+      <div class="relative z-10 min-h-[430px] sm:min-h-[500px] lg:min-h-[520px]">
+        <div class="absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gold/15 blur-3xl"></div>
+
+        <div class="absolute left-[1%] top-[10%] w-[34%] rotate-[-5deg] rounded-[1.5rem] border border-white/15 bg-white/10 p-3 shadow-glow backdrop-blur sm:left-[3%] sm:w-[35%]">
+          <img src="/assets/images/Gambar%20Produk%20png/xcel-2.webp" alt="Penapis air CUCKOO Xcel 2 untuk trade-in" class="aspect-square w-full object-contain" loading="eager" />
+          <p class="mt-2 text-center text-xs font-black text-white/80">Xcel 2</p>
+        </div>
+
+        <div class="absolute right-[2%] top-[7%] w-[34%] rotate-[5deg] rounded-[1.5rem] border border-white/15 bg-white/10 p-3 shadow-glow backdrop-blur sm:right-[4%] sm:w-[34%]">
+          <img src="/assets/images/Gambar%20Produk%20png/l-model-main.webp" alt="Penapis udara CUCKOO L Model untuk trade-in" class="aspect-square w-full object-contain" loading="eager" />
+          <p class="mt-2 text-center text-xs font-black text-white/80">L Model</p>
+        </div>
+
+        <div class="absolute bottom-[3%] left-[28%] z-10 w-[42%] rounded-[1.75rem] border border-white/20 bg-white p-4 text-brand shadow-glow sm:bottom-[5%] sm:left-[30%] sm:w-[40%] sm:p-5">
+          <img src="/assets/images/Gambar%20Produk%20png/king-top-2.webp" alt="Penapis air CUCKOO King Top 2 untuk trade-in RM59" class="aspect-square w-full object-contain" loading="eager" />
+          <div class="mt-3 rounded-2xl bg-brand-soft px-4 py-3 text-center">
+            <p class="text-xs font-black uppercase tracking-[.14em]">Trade-In dari</p>
+            <p class="mt-1 text-3xl font-black">RM59<span class="text-sm">/bulan</span></p>
+          </div>
+        </div>
+
+        <div class="absolute bottom-[4%] left-[3%] w-[30%] rotate-[-4deg] rounded-[1.5rem] border border-white/15 bg-white/10 p-3 shadow-glow backdrop-blur sm:left-[7%] sm:w-[30%]">
+          <img src="/assets/images/Gambar%20Produk%20png/k-model.webp" alt="Penapis udara CUCKOO K Model untuk trade-in" class="aspect-square w-full object-contain" loading="eager" />
+          <p class="mt-2 text-center text-xs font-black text-white/80">K Model</p>
+        </div>
+
+        <div class="absolute bottom-[5%] right-[1%] w-[30%] rotate-[4deg] rounded-[1.5rem] border border-white/15 bg-white/10 p-3 shadow-glow backdrop-blur sm:right-[3%] sm:w-[30%]">
+          <img src="/assets/images/Gambar%20Produk%20png/u-model.webp" alt="Penapis udara CUCKOO U Model untuk trade-in" class="aspect-square w-full object-contain" loading="eager" />
+          <p class="mt-2 text-center text-xs font-black text-white/80">U Model</p>
+        </div>
+
+        <div class="absolute left-[5%] top-[96%] z-20 rounded-full border border-brand-gold/45 bg-[#24040c]/88 px-5 py-3 text-sm font-black text-brand-gold shadow-glow backdrop-blur sm:left-[8%] sm:top-[94%]">
+          Jimat hingga RM1,500*
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+      <div>
+        <p class="font-bold text-brand">Kenapa trade-in?</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Mesin Lama Dah Habis Bayar, Tapi Kos Servis Dan Rupa Mesin Mula Jadi Isu?</h2>
+        <p class="mt-4 leading-8 text-muted">
+          Kalau mesin lama masih berfungsi, anda boleh terus guna. Tetapi jika anda mahu mesin baru, warranty baru, servis rasmi dan bayaran bulanan yang lebih rendah, trade-in boleh jadi pilihan yang lebih berbaloi.
+        </p>
+        <a href={whatsappTradeIn} class="mt-6 inline-flex rounded-full bg-brand px-6 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+          Semak Mesin Lama Saya
+        </a>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {painPoints.map(([title, copy]) => (
+          <article class="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-brand/10">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft text-sm font-black text-brand">!</span>
+            <h3 class="mt-4 text-lg font-black">{title}</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">{copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-bold text-brand">Bandingkan pilihan</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Sambung Servis Atau Trade-In?</h2>
+        <p class="mt-4 leading-7 text-muted">Bukan semua orang wajib trade-in. Tapi untuk mesin lama yang sudah tamat kontrak, pilihan ini patut disemak dulu.</p>
+      </div>
+      <div class="mt-9 grid gap-5 lg:grid-cols-3">
+        {comparison.map((item) => (
+          <article class={`rounded-[1.75rem] p-6 shadow-soft ring-1 ring-brand/10 ${item.tone}`}>
+            <p class={`inline-flex rounded-full px-4 py-2 text-xs font-black uppercase tracking-[.14em] ${item.tone.includes('bg-brand') ? 'bg-white/15 text-brand-gold' : 'bg-brand-soft text-brand'}`}>{item.tag}</p>
+            <h3 class="mt-5 text-2xl font-black">{item.title}</h3>
+            <p class={`mt-4 text-4xl font-black ${item.tone.includes('bg-brand') ? 'text-brand-gold' : 'text-brand'}`}>{item.price}</p>
+            <ul class="mt-6 grid gap-3">
+              {item.points.map((point) => (
+                <li class={`flex gap-3 text-sm font-bold leading-6 ${item.tone.includes('bg-brand') ? 'text-white/82' : 'text-muted'}`}>
+                  <span class={`mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] ${item.tone.includes('bg-brand') ? 'bg-white text-brand' : 'bg-brand text-white'}`}>✓</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="model-trade-in" class="px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="font-bold text-brand">Harga trade-in</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Trade-In Penapis Air CUCKOO</h2>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-muted">
+            Harga asal diambil daripada normal plan bulan 1-36. Harga trade-in dan penjimatan tertakluk kepada kelayakan, stok, kawasan, kempen dan syarat semasa.
+          </p>
+        </div>
+        <a href={whatsappTradeIn} class="inline-flex w-fit rounded-full bg-brand px-6 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+          Semak Kelayakan
+        </a>
+      </div>
+
+      <div class="-mx-4 mt-8 flex snap-x gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [&::-webkit-scrollbar]:hidden">
+        {waterProducts.map((product) => (
+          <article class="flex w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] bg-white p-4 shadow-soft ring-1 ring-brand/10 sm:w-[350px]">
+            <div class="flex h-56 items-center justify-center rounded-[1.25rem] bg-gradient-to-br from-white to-cream ring-1 ring-brand/10">
+              <img src={product.image} alt={`Trade-in CUCKOO ${product.name}`} loading="lazy" class="h-full w-full object-contain p-4" />
+            </div>
+            <div class="mt-5">
+              <h3 class="text-xl font-black">{product.name}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{product.note}</p>
+            </div>
+            <div class="mt-5 rounded-2xl bg-brand-soft/70 p-4 ring-1 ring-brand/10">
+              <p class="text-[11px] font-black uppercase tracking-[.14em] text-brand">Bulan 1-36</p>
+              <div class="mt-2 flex items-end gap-2">
+                <del class="pb-1 text-sm font-black text-muted">{product.normal}/bulan</del>
+                <span class="text-3xl font-black leading-none text-brand">{product.trade}</span>
+                <span class="pb-1 text-xs font-black text-brand">/bulan</span>
+              </div>
+              <div class="mt-4 grid gap-1 border-t border-brand/10 pt-3 text-xs">
+                <div class="flex justify-between gap-3">
+                  <span class="font-bold text-muted">Bulan 37-60</span>
+                  <span class="font-black text-brand"><del class="mr-1 text-muted">{product.laterNormal}</del>{product.laterTrade}/bulan</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <span class="font-bold text-muted">Total penjimatan</span>
+                  <span class="font-black text-brand">{product.saving}</span>
+                </div>
+              </div>
+            </div>
+            <a href={whatsappTradeIn} class="mt-auto inline-flex justify-center rounded-full bg-brand px-5 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+              Semak Model Ini
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="font-bold text-brand">Harga trade-in</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Trade-In Penapis Udara CUCKOO</h2>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-muted">
+            Untuk pelanggan CUCKOO sedia ada yang mahu tukar penapis udara lama kepada model baru dalam kategori sama.
+          </p>
+        </div>
+        <a href={whatsappTradeIn} class="inline-flex w-fit rounded-full bg-brand px-6 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+          Semak Kelayakan
+        </a>
+      </div>
+
+      <div class="-mx-4 mt-8 flex snap-x gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [&::-webkit-scrollbar]:hidden">
+        {airProducts.map((product) => (
+          <article class="flex w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] bg-cream p-4 shadow-soft ring-1 ring-brand/10 sm:w-[350px]">
+            <div class="flex h-56 items-center justify-center rounded-[1.25rem] bg-white ring-1 ring-brand/10">
+              <img src={product.image} alt={`Trade-in CUCKOO ${product.name}`} loading="lazy" class="h-full w-full object-contain p-4" />
+            </div>
+            <div class="mt-5">
+              <h3 class="text-xl font-black">{product.name}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{product.note}</p>
+            </div>
+            <div class="mt-5 rounded-2xl bg-white p-4 ring-1 ring-brand/10">
+              <p class="text-[11px] font-black uppercase tracking-[.14em] text-brand">Bulan 1-36</p>
+              <div class="mt-2 flex items-end gap-2">
+                <del class="pb-1 text-sm font-black text-muted">{product.normal}/bulan</del>
+                <span class="text-3xl font-black leading-none text-brand">{product.trade}</span>
+                <span class="pb-1 text-xs font-black text-brand">/bulan</span>
+              </div>
+              <div class="mt-4 grid gap-1 border-t border-brand/10 pt-3 text-xs">
+                <div class="flex justify-between gap-3">
+                  <span class="font-bold text-muted">Bulan 37-60</span>
+                  <span class="font-black text-brand"><del class="mr-1 text-muted">{product.laterNormal}</del>{product.laterTrade}/bulan</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <span class="font-bold text-muted">Total penjimatan</span>
+                  <span class="font-black text-brand">{product.saving}</span>
+                </div>
+              </div>
+            </div>
+            <a href={whatsappTradeIn} class="mt-auto inline-flex justify-center rounded-full bg-brand px-5 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+              Semak Model Ini
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-bold text-brand">Penting faham</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Trade-In CUCKOO Bukan Jual Mesin Lama Dapat Cash.</h2>
+      </div>
+      <div class="mt-8 grid gap-5 md:grid-cols-2">
+        <article class="rounded-[1.75rem] bg-white p-6 ring-1 ring-brand/10">
+          <h3 class="text-xl font-black">Bukan bermaksud</h3>
+          <ul class="mt-5 grid gap-3 text-sm font-bold leading-6 text-muted">
+            <li>× Jual balik mesin lama dan dapat cash</li>
+            <li>× CUCKOO bayar baki hutang lama tanpa syarat</li>
+            <li>× Tukar kategori sesuka hati</li>
+            <li>× Semua pelanggan automatik layak</li>
+          </ul>
+        </article>
+        <article class="rounded-[1.75rem] bg-brand p-6 text-white shadow-glow">
+          <h3 class="text-xl font-black">Trade-In bermaksud</h3>
+          <ul class="mt-5 grid gap-3 text-sm font-bold leading-6 text-white/82">
+            <li>✓ Tukar mesin CUCKOO lama kepada model baru</li>
+            <li>✓ Kontrak baru dengan servis dan warranty baru</li>
+            <li>✓ Harga bulanan lebih rendah untuk model terpilih</li>
+            <li>✓ Mesin lama dipulangkan mengikut syarat pemasangan</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+      <div>
+        <p class="font-bold text-brand">Syarat asas</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Apa Yang Perlu Anda Tahu Sebelum Trade-In?</h2>
+        <p class="mt-4 leading-8 text-muted">
+          Program trade-in tertakluk kepada syarat kempen semasa. Cara paling cepat ialah WhatsApp kami untuk semak status kontrak dan model yang layak.
+        </p>
+        <a href={whatsappTradeIn} class="mt-6 inline-flex rounded-full bg-brand px-6 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+          Semak Status Kontrak
+        </a>
+      </div>
+      <div class="grid gap-4">
+        <div class="grid gap-3 sm:grid-cols-2">
+          {eligibility.map(([title, copy]) => (
+            <article class="rounded-2xl bg-cream px-5 py-4 ring-1 ring-brand/10">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-black text-brand ring-1 ring-brand/10">✓</span>
+              <h3 class="mt-3 text-base font-black text-brand">{title}</h3>
+              <p class="mt-1 text-sm font-semibold leading-6 text-muted">{copy}</p>
+            </article>
+          ))}
+        </div>
+        <div class="rounded-[1.5rem] bg-brand p-5 text-white shadow-soft">
+          <h3 class="text-lg font-black">Nota semakan</h3>
+          <div class="mt-4 grid gap-3">
+            {[
+              'Tiada tunggakan bayaran atau outstanding mengikut semakan semasa.',
+              'Mesin lama perlu dipulangkan semasa pemasangan mesin baru.',
+              'Harga, stok, kawasan, pemasangan dan kelulusan tertakluk kepada syarat semasa.'
+            ].map((item) => (
+              <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-bold leading-6 text-white/82">✓ {item}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-bold text-brand">FAQ</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Soalan Biasa Tentang Trade-In CUCKOO</h2>
+      </div>
+      <div class="mt-8 grid gap-3">
+        {faqs.map(([question, answer]) => (
+          <details class="group rounded-[1.35rem] bg-white p-5 shadow-sm ring-1 ring-brand/10">
+            <summary class="cursor-pointer list-none font-black text-ink">
+              <span class="flex items-center justify-between gap-4">
+                <span>{question}</span>
+                <span class="text-brand transition-transform duration-300 group-open:rotate-45">+</span>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm leading-7 text-muted">{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-[linear-gradient(135deg,#35040f_0%,#76091f_58%,#a3132f_100%)] px-4 py-14 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
+      <div>
+        <p class="font-bold text-brand-gold">Semak dengan ejen</p>
+        <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Tak Pasti Mesin Lama Layak Trade-In? WhatsApp Kami Dulu.</h2>
+        <p class="mt-4 max-w-3xl leading-8 text-white/78">
+          Fadhil & Izzah bantu semak kelayakan, status kontrak, model baru dan anggaran bayaran bulanan sebelum anda buat keputusan.
+        </p>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+        <a href={whatsappTradeIn} class="inline-flex justify-center rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1EBE5D]">
+          WhatsApp Fadhil
+        </a>
+        <a href={whatsappIzzah} class="inline-flex justify-center rounded-full bg-white px-7 py-4 text-sm font-black text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-gold">
+          WhatsApp Izzah
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <AgentSection />
+</BaseLayout>

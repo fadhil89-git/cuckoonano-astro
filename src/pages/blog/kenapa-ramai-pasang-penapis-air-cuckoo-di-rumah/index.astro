@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Kenapa Ramai Pasang Penapis Air Cuckoo Di Rumah? | CUCKOONANO",
+  description: "Mereka yang pasang ni ada ciri-ciri yang sama. Apa yang mereka mahu: CONVENIENT / MUDAH Apa yang mudah? --> Mudah sebab tak perlu fikir lagi mengenai...",
+  canonical: "https://www.cuckoonano.com/blog/kenapa-ramai-pasang-penapis-air-cuckoo-di-rumah/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2017-12-12";
+const modifiedDate = "2025-11-30";
+
+const articleTitle = "Kenapa Ramai Pasang Penapis Air Cuckoo Di Rumah?";
+const articleDescription = "Mereka yang pasang ni ada ciri-ciri yang sama. Apa yang mereka mahu: CONVENIENT / MUDAH Apa yang mudah? --> Mudah sebab tak perlu fikir lagi mengenai...";
+const featuredImage = "/assets/images/gambar-produk/7-kelebihan-penapis-air-cuckoo-water-purifier-benefits-1.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      Mereka yang pasang ni ada ciri-ciri yang sama. Apa yang mereka mahu:
+      
+      
+       
+      
+      
+      CONVENIENT / MUDAH
+      
+      
+       
+      
+      
+      Apa yang mudah? 
+      
+      
+       
+      
+      
+      --&gt; Mudah sebab tak perlu fikir lagi mengenai kebersihan dan keselamatan air minuman di rumah.
+      
+      
+       
+      
+      
+      --&gt; Mudah sebab jimat masa, tak perlu masak air dan pergi kedai beli air mineral.
+      
+      
+       
+      
+      
+      --&gt; Mudah sebab tak perlu fikir pasal servis mesin, tukar filter, kerosakan dan sebagaainya.
+      
+      
+       
+      
+      
+      --&gt; Mudah sebab tak perlu masuk air masak dalam peti sejuk.
+      
+      
+       
+      
+      
+      --&gt; Mudah nak buat kopi untuk husband, air untuk tetamu dan makanan anak kecil.
+      
+      
+       
+      
+      
+      'Convenient' ni pilihan masing-masing, bagi siapa yang nak insyaAllah boleh contact saya. 
+      
+      
+       
+      
+      
+      Saya bantu anda untuk pasang seunit di rumah. No extra cost, no hidden cost. 
+      
+      
+       
+      
+      
+      Bayangkan wife kita happy bila dah ada Cuckoo kat rumah. Parents datang pun jadi mudah nak buat air. Tetamu datang pun senang nak hidang air. 
+      
+      
+       
+      
+      
+      Komitmen serendah RM2 je sehari atau RM60 sebulan. 
+      
+      
+       
+      
+      
+      Mai wasap 0139916967 (Fadhil)
+      
+      
+      
+      <h3>Konsultasi Percuma!</h3>
+      Isi borang di bawah, kemudian kami akan hubungi anda dengan segera untuk konsultasi penapis udara PERCUMA!
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

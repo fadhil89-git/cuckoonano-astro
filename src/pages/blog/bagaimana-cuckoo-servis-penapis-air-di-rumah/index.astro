@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "Bagaimana Cuckoo servis penapis air kat rumah kita?",
+  description: "Nak tahu macam mana orang Cuckoo datang servis mesin? Play video ni. Ni dia servis kat rumah saya Jumaat lepas Benda ni yang orang Cuckoo akan buat bila...",
+  canonical: "https://www.cuckoonano.com/blog/bagaimana-cuckoo-servis-penapis-air-di-rumah/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2017-10-22";
+const modifiedDate = "2025-11-30";
+
+const articleTitle = "Bagaimana Cuckoo Servis Penapis Air Di Rumah?";
+const articleDescription = "Nak tahu macam mana orang Cuckoo datang servis mesin? Play video ni. Ni dia servis kat rumah saya Jumaat lepas Benda ni yang orang Cuckoo akan buat bila...";
+const featuredImage = "/assets/images/gambar-produk/cuckoo-service-filter-nano-positive.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      Nak tahu macam mana orang Cuckoo datang servis mesin?
+      
+      Play video ni. Ni dia servis kat rumah saya Jumaat lepas
+      
+      Benda ni yang orang Cuckoo akan buat bila servis mesin kat rumah kita:
+      <h3>1. Tukar Filter</h3>
+      Setiap kali orang Cuckoo datang ke rumah, dia akan tukar filter baru. Bukan sekadar backwash je. 1 tahun, 7 batang filter akan ditukar. So tak perlu risau air kotor lagi.
+      <h3>2. Steam sterilization</h3>
+      bagi bersihkan dan bunuh kuman yang ada pada tangki air dan injap air kat mesin.
+      <h3>3. NCS 15 Point Check</h3>
+      Dia akan cek 15 poin penting yang ada pada mesin dan sekitarnya, termasuk suis letrik dan hos yang disambungkan pada mesin bagi memastikan tiada kebocoran.
+      <h3>4. Bonus</h3>
+      Dia akan sterilize sinki dan papan potong kita juga
+      
+      *Pekerja yang datang servis adalah wanita. Tak perlu risau nak tinggal isteri kat rumah kalau nak servis pada waktu berkerja.
+      
+      Amacam, ok tak?
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>

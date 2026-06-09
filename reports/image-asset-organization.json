@@ -1,0 +1,226 @@
+{
+  "moved": 965,
+  "skipped": 77,
+  "summary": {
+    "misc": 117,
+    "products/air-purifier": 70,
+    "products/water-purifier": 207,
+    "promo": 216,
+    "blog-topics/health": 29,
+    "people": 37,
+    "blog-topics/guides": 13,
+    "blog-topics/comparison": 3,
+    "service": 4,
+    "brand": 18,
+    "installation": 15,
+    "products/pressure-cooker": 63,
+    "products/induction": 1,
+    "products/mattress": 67,
+    "products/aircond": 37,
+    "products/massage-chair": 42,
+    "products/treadmill": 5,
+    "products/washer-dryer": 21
+  },
+  "examples": [
+    {
+      "from": "/assets/images/blog/wp-uploads/25aa.png",
+      "to": "/assets/images/misc/25aa.png",
+      "category": "misc"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/b-model.jpg",
+      "to": "/assets/images/products/air-purifier/b-model.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/cuckoo-fusion-deluxe.png",
+      "to": "/assets/images/products/water-purifier/cuckoo-fusion-deluxe.png",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/fusion-top.jpg",
+      "to": "/assets/images/products/water-purifier/fusion-top.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/icon.jpg",
+      "to": "/assets/images/products/water-purifier/icon.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/img-20170817-wa0008.jpg",
+      "to": "/assets/images/misc/img-20170817-wa0008.jpg",
+      "category": "misc"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/kingtop-02.jpg",
+      "to": "/assets/images/misc/kingtop-02.jpg",
+      "category": "misc"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/06/promosi-buy-1-free-1-goood-deal-latest.jpg",
+      "to": "/assets/images/promo/promosi-buy-1-free-1-goood-deal-latest.jpg",
+      "category": "promo"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/1-habuk-dan-debu.jpg",
+      "to": "/assets/images/blog-topics/health/1-habuk-dan-debu.jpg",
+      "category": "blog-topics/health"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/2-bulu-haiwan.jpg",
+      "to": "/assets/images/blog-topics/health/2-bulu-haiwan.jpg",
+      "category": "blog-topics/health"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/3-asap-rokok.jpg",
+      "to": "/assets/images/blog-topics/health/3-asap-rokok.jpg",
+      "category": "blog-topics/health"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/c-model.jpg",
+      "to": "/assets/images/products/air-purifier/c-model.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/cuckoo-air-purifiers-bkg.jpg",
+      "to": "/assets/images/products/air-purifier/cuckoo-air-purifiers-bkg.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/natural-doctor-img.png",
+      "to": "/assets/images/blog-topics/health/natural-doctor-img.png",
+      "category": "blog-topics/health"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/penapis-udara-cuckoo-sapu.png",
+      "to": "/assets/images/products/air-purifier/penapis-udara-cuckoo-sapu.png",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-10.jpg",
+      "to": "/assets/images/products/air-purifier/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-10.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-2.jpg",
+      "to": "/assets/images/products/air-purifier/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-2.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-5.jpg",
+      "to": "/assets/images/products/air-purifier/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-5.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-6.jpg",
+      "to": "/assets/images/products/air-purifier/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-6.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-9.jpg",
+      "to": "/assets/images/products/air-purifier/penapis-udara-cuckoo-sedut-habuk-sedut-bulu-bersin-resdung-rumah-habuk-banyak-bau-kepam-c-model-9.jpg",
+      "category": "products/air-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/07/water-filters.png",
+      "to": "/assets/images/products/water-purifier/water-filters.png",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/a.jpg",
+      "to": "/assets/images/misc/a.jpg",
+      "category": "misc"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/iris-top.jpg",
+      "to": "/assets/images/products/water-purifier/iris-top.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/kerjaya-1.jpeg",
+      "to": "/assets/images/people/kerjaya-1.jpeg",
+      "category": "people"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/produkcuckoo.jpg",
+      "to": "/assets/images/misc/produkcuckoo.jpg",
+      "category": "misc"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-bacteria-test-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-bacteria-test-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-cb-report-kualiti-penapis-air-cuckoo-alkali-malaysia-keselamatan-elektrik.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-cb-report-kualiti-penapis-air-cuckoo-alkali-malaysia-keselamatan-elektrik.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-halal-jakim-penapis-air-cuckoo-malaysia-2.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-halal-jakim-penapis-air-cuckoo-malaysia-2.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-halal-jakim-penapis-air-cuckoo-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-halal-jakim-penapis-air-cuckoo-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-halal-korea-penapis-air-cuckoo-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-halal-korea-penapis-air-cuckoo-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-heavy-metal-kualiti-penapis-air-cuckoo-alkali-malaysia-2.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-heavy-metal-kualiti-penapis-air-cuckoo-alkali-malaysia-2.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-heavy-metal-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-heavy-metal-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-korea-nsf-report-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-korea-nsf-report-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia-2.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia-2.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia-3.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia-3.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia-4.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia-4.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-korea-water-mark-report-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-mineral-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-mineral-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-nano-positive-filter-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-nano-positive-filter-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    },
+    {
+      "from": "/assets/images/blog/wp-uploads/2017/10/sijil-natural-filter-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "to": "/assets/images/products/water-purifier/sijil-natural-filter-kualiti-penapis-air-cuckoo-alkali-malaysia.jpg",
+      "category": "products/water-purifier"
+    }
+  ]
+}

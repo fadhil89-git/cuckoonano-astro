@@ -1,0 +1,745 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import WaterHalalSection from '../../../../components/WaterHalalSection.astro';
+import FreeGiftSection from '../../../../components/FreeGiftSection.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
+import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
+import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
+import WaterPurifierServiceSection from '../../../../components/WaterPurifierServiceSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+import WhyChooseCuckooWaterPurifiers from '../../../../components/water-purifier/WhyChooseCuckooWaterPurifiers.astro';
+
+const whatsappFloUrl =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20promo%20CUCKOO%20FLO%20Stand.%20Boleh%20bantu%20saya%3F';
+
+const floImageBase = '/assets/images/products/water-purifier/flo-stand';
+
+const meta = {
+  title: 'CUCKOO FLO Stand | Penapis Air Tangki Besar 16L & Promo Terkini',
+  description:
+    'CUCKOO FLO Stand penapis air tangki besar 16L untuk rumah, pejabat, sekolah, masjid, hotel dan premis. Semak harga RM115, spesifikasi, promo dan servis berkala.',
+  canonical: 'https://www.cuckoonano.com/products/water-purifier/flo-stand/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/products/water-purifier/flo-stand/FLO.webp',
+  ogType: 'website'
+};
+
+const highlights = [
+  {
+    icon: '🏢',
+    title: 'Untuk Lokasi Ramai Pengguna',
+    copy: 'Sesuai untuk pejabat, sekolah, masjid, hotel, pantry dan premis yang perlukan air sepanjang hari.'
+  },
+  {
+    icon: '💧',
+    title: 'Tangki Besar 16L',
+    copy: 'Room 7.0L, Cold 5.0L dan Hot 4.0L untuk penggunaan lebih kerap.'
+  },
+  {
+    icon: '🔥❄️',
+    title: 'Hot • Cold • Room',
+    copy: 'Air panas, sejuk dan suhu bilik tersedia dalam satu model stand.'
+  },
+  {
+    icon: '🧬',
+    title: 'Nano Positive Filtration',
+    copy: 'Sistem tapisan 6 peringkat untuk air minuman bersih, mineral dan mild alkaline.'
+  },
+  {
+    icon: '🧼',
+    title: 'Servis Berkala CUCKOO',
+    copy: 'Servis dan penukaran filter berkala diuruskan mengikut jadual.'
+  },
+  {
+    icon: '🚚',
+    title: 'Free Installation',
+    copy: 'Pemasangan percuma tertakluk kepada kawasan, stok dan terma semasa.'
+  }
+];
+
+const locationCards = [
+  {
+    title: 'Lobi Hotel / Pejabat',
+    copy: 'Letak di ruang menunggu, lobi atau sudut minuman untuk tetamu dan staf.',
+    image: `${floImageBase}/penapis-air-cuckoo-flo-stand-water-purifier-corporate-office-kerajaan-hotel-masjid-school-1.webp`,
+    alt: 'CUCKOO FLO Stand water purifier untuk lobi hotel dan pejabat'
+  },
+  {
+    title: 'Masjid / Surau',
+    copy: 'Sesuai untuk kegunaan jemaah, kelas mengaji, kuliah dan program komuniti.',
+    image: `${floImageBase}/penapis-air-cuckoo-flo-stand-water-purifier-corporate-office-kerajaan-hotel-masjid-school-2.webp`,
+    alt: 'CUCKOO FLO Stand penapis air untuk masjid dan surau'
+  },
+  {
+    title: 'Pejabat Kerajaan',
+    copy: 'Pilihan praktikal untuk pantry jabatan, kaunter servis dan ruang staff.',
+    image: `${floImageBase}/penapis-air-cuckoo-flo-stand-water-purifier-corporate-office-kerajaan-hotel-masjid-school-3.webp`,
+    alt: 'CUCKOO FLO Stand water purifier untuk pejabat kerajaan'
+  },
+  {
+    title: 'Sekolah / Bilik Guru / Kantin',
+    copy: 'Membantu sediakan air panas, sejuk dan suhu bilik untuk guru serta warga sekolah.',
+    image: `${floImageBase}/penapis-air-cuckoo-flo-stand-water-purifier-corporate-office-kerajaan-hotel-masjid-school-4.webp`,
+    alt: 'CUCKOO FLO Stand penapis air untuk sekolah bilik guru dan kantin'
+  },
+  {
+    title: 'Pantry Pejabat',
+    copy: 'Sesuai untuk team yang minum kopi, teh dan air sejuk setiap hari.',
+    image: `${floImageBase}/penapis-air-cuckoo-flo-stand-water-purifier-corporate-office-kerajaan-hotel-masjid-school-5.webp`,
+    alt: 'CUCKOO FLO Stand water purifier untuk pantry pejabat'
+  }
+];
+
+const interiorSlides = [
+  {
+    image: `${floImageBase}/Flo-banner-02_dt_03.webp`,
+    title: 'Ruang Moden',
+    copy: 'FLO Stand mudah blend dengan pejabat, gym, dapur atau cafe.'
+  },
+  {
+    image: `${floImageBase}/flo-banner-03_dt_03.webp`,
+    title: 'Office Ready',
+    copy: 'Rekaan stand yang kemas untuk penggunaan staff dan pelanggan.'
+  },
+  {
+    image: `${floImageBase}/flo-banner-04_dt_04.webp`,
+    title: 'Premium White',
+    copy: 'Nampak bersih, moden dan sesuai dengan banyak jenis interior.'
+  },
+  {
+    image: `${floImageBase}/flo-banner-05_dt_04.webp`,
+    title: 'Hydration Corner',
+    copy: 'Bina sudut minuman yang nampak lebih profesional.'
+  },
+  {
+    image: `${floImageBase}/FLO-Cafe-interior.webp`,
+    title: 'Cafe',
+    copy: 'Sesuai untuk ruang cafe, kedai dan waiting area.'
+  },
+  {
+    image: `${floImageBase}/FLO-kitchen-interior.webp`,
+    title: 'Kitchen',
+    copy: 'Boleh digunakan untuk dapur rumah besar atau pantry premis.'
+  },
+  {
+    image: `${floImageBase}/FLO-Office-interior.webp`,
+    title: 'Office',
+    copy: 'Pilihan praktikal untuk pejabat yang ramai pengguna.'
+  }
+];
+
+const usageSlides = [
+  ...locationCards,
+  ...interiorSlides.map((item) => ({
+    ...item,
+    alt: `CUCKOO FLO Stand sesuai untuk ${item.title.toLowerCase()}`
+  }))
+];
+
+const dailyFeatures = [
+  {
+    image: `${floImageBase}/cuckoo-flo-stand-feature-ciri-2.webp`,
+    title: 'Pilih Tahap Kesejukan Yang Sesuai',
+    copy: 'Laraskan suhu air sejuk mengikut keperluan harian. Sama ada mahu air yang lebih sejuk atau kurang sejuk, FLO Stand memberikan pilihan yang lebih fleksibel untuk pengguna di rumah, pejabat dan premis.',
+    alt: 'CUCKOO FLO Stand kawalan tahap kesejukan air'
+  },
+  {
+    image: `${floImageBase}/cuckoo-flo-stand-feature-ciri-3.webp`,
+    title: 'Petunjuk Air Panas Dan Sejuk Yang Jelas',
+    copy: 'Lampu indikator membantu pengguna mengenal pasti suhu air dengan lebih mudah supaya penggunaan harian menjadi lebih selesa, praktikal dan tidak mengelirukan.',
+    alt: 'CUCKOO FLO Stand lampu indikator air panas dan sejuk'
+  },
+  {
+    image: `${floImageBase}/cuckoo-flo-stand-feature-ciri-1.webp`,
+    title: 'Child Lock Untuk Keselamatan Tambahan',
+    copy: 'Fungsi child lock pada dispenser air panas membantu mengurangkan risiko penggunaan tidak sengaja oleh kanak-kanak, terutama di rumah, sekolah, pejabat dan lokasi yang ramai pengguna.',
+    alt: 'CUCKOO FLO Stand child lock untuk keselamatan air panas'
+  },
+  {
+    image: `${floImageBase}/flo-banner-08-dt_07.webp`,
+    mobileImage: `${floImageBase}/flo-banner-09_mb_1.webp`,
+    title: 'Ruang Isi Air Yang Lebih Selesa',
+    copy: 'Ruang dispensing yang luas memudahkan pengisian cawan, botol air, tumbler, teko dan jug kecil tanpa rasa sempit ketika digunakan.',
+    alt: 'CUCKOO FLO Stand ruang dispensing luas'
+  },
+  {
+    image: '/assets/images/products/water-purifier/xcel-2/cuckoo-xcel-2-feature-6.webp',
+    title: 'Air Mineral & Mild Alkaline Untuk Minuman Harian',
+    copy: 'Sistem Nano Positive Filtration membantu menapis bahan yang tidak diperlukan sambil mengekalkan mineral bermanfaat dalam air, sesuai untuk kegunaan minuman harian seisi keluarga.',
+    alt: 'Air mineral dan mild alkaline CUCKOO untuk minuman harian'
+  }
+];
+
+const pricingPlans = [
+  {
+    tier: 'Tier 1',
+    title: 'Rental 5 Tahun',
+    price: 'RM115',
+    suffix: '/bulan',
+    badge: 'Best Seller',
+    copy: 'Pilihan popular untuk pelanggan yang mahu tempoh komitmen lebih pendek dengan servis berkala CUCKOO.',
+    details: ['Promo RM12/bulan untuk 6 bulan pertama tertakluk kempen semasa.', 'Sesuai untuk pejabat, sekolah, masjid dan premis.'],
+    featured: true
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Rental 7 Tahun',
+    price: 'RM108',
+    suffix: '/bulan',
+    badge: '',
+    copy: 'Pilihan untuk pelanggan yang mahu bayaran bulanan lebih rendah dan tempoh servis lebih panjang.',
+    details: ['Harga rujukan tertakluk kepada pakej dan promo semasa.', 'WhatsApp untuk semak kelayakan dan dokumen.'],
+    featured: false
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Beli Terus',
+    price: 'RM4,200',
+    suffix: '',
+    badge: 'Outright',
+    copy: 'Pilihan untuk pelanggan yang mahu beli terus tanpa komitmen bulanan.',
+    details: ['Bayar sekali sahaja.', 'Semak terma servis dan warranty semasa.'],
+    featured: false
+  }
+];
+
+const galleryItems = Array.from({ length: 11 }, (_, index) => {
+  const number = index + 1;
+  return {
+    image: `${floImageBase}/gambar-image-penapis-air-cuckoo-flo-stand-water-purifier-gallery-${number}.webp`,
+    title: `CUCKOO FLO Stand Gallery ${number}`,
+    copy: 'Rujukan gambar FLO Stand untuk lihat rupa, saiz, pemasangan dan kesesuaian lokasi.',
+    alt: `Gambar CUCKOO FLO Stand water purifier gallery ${number} untuk pejabat sekolah masjid hotel dan pantry`
+  };
+});
+
+const faqItems = [
+  {
+    q: 'Apa kelebihan utama CUCKOO FLO Stand?',
+    a: 'FLO Stand ialah penapis air floor-standing dengan kapasiti tangki besar 16L, air panas, sejuk dan suhu bilik, serta Nano Positive Filtration.'
+  },
+  {
+    q: 'Berapa kapasiti tangki FLO Stand?',
+    a: 'Jumlah kapasiti tangki ialah 16L: Room 7.0L, Cold 5.0L dan Hot 4.0L.'
+  },
+  {
+    q: 'FLO Stand sesuai untuk pejabat kerajaan atau sekolah?',
+    a: 'Ya. FLO Stand sesuai untuk lokasi penggunaan ramai seperti pejabat kerajaan, sekolah, bilik guru, masjid, surau, hotel, pantry dan premis.'
+  },
+  {
+    q: 'Berapa harga bulanan FLO Stand?',
+    a: 'Rujukan harga bulanan ialah RM115/bulan tertakluk kepada promo dan pakej semasa.'
+  },
+  {
+    q: 'Adakah FLO Stand ada promo RM12?',
+    a: 'Promo RM12/bulan untuk 6 bulan pertama tertakluk kepada kempen, kelayakan, stok, kawasan servis dan terma semasa.'
+  },
+  {
+    q: 'Siapa tukar filter dan buat servis?',
+    a: 'Servis dan penukaran filter dibuat mengikut jadual servis CUCKOO.'
+  },
+  {
+    q: 'Adakah FLO Stand sesuai untuk rumah?',
+    a: 'Ya, terutama rumah besar atau keluarga yang kerap menggunakan air panas, sejuk dan suhu bilik.'
+  },
+  {
+    q: 'Macam mana nak semak kelayakan pemasangan?',
+    a: 'Klik WhatsApp dan saya akan bantu semak promo, dokumen, kelayakan, stok dan kawasan pemasangan.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO FLO Stand Water Purifier',
+  image: [
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/flo-stand/FLO.webp',
+    'https://www.cuckoonano.com/assets/images/products/water-purifier/flo-stand/product-specification.webp'
+  ],
+  url: 'https://www.cuckoonano.com/products/water-purifier/flo-stand/',
+  sku: 'CUCKOO-FLO-STAND',
+  category: 'Water Purifier',
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  description:
+    'Penapis air stand dengan kapasiti tangki besar 16L, air panas, sejuk dan suhu bilik, Nano Positive Filtration dan servis berkala CUCKOO.',
+  offers: [
+    {
+      '@type': 'Offer',
+      priceCurrency: 'MYR',
+      price: '115',
+      availability: 'https://schema.org/InStock',
+      description: 'Pelan bulanan FLO Stand dari RM115/bulan tertakluk kepada promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      priceCurrency: 'MYR',
+      price: '4200',
+      availability: 'https://schema.org/InStock',
+      description: 'Outright purchase rujukan RM4,200 tertakluk kepada promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+---
+
+<BaseLayout {...meta}>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .flo-blob { background: radial-gradient(circle at 28% 22%, rgba(216,166,74,.22), transparent 38%), radial-gradient(circle at 78% 70%, rgba(122,14,35,.16), transparent 40%), linear-gradient(145deg, #fff8f2, #ffffff); }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+    <section id="hero" class="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-start lg:gap-10">
+        <div class="order-1 lg:col-start-1 lg:row-start-1">
+          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Free Installation</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Servis Berkala</span>
+          </div>
+
+          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
+            <span class="text-sm font-black sm:text-base">RM12/bulan untuk 6 bulan pertama</span>
+          </div>
+
+          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            CUCKOO FLO Stand — Penapis Air Tangki Besar 16L Untuk Rumah, Pejabat & Premis
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
+            Model stand dengan air panas, sejuk dan suhu bilik, Nano Positive Filtration serta kapasiti besar untuk lokasi yang ramai pengguna setiap hari.
+          </p>
+        </div>
+
+        <div class="order-2 rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="flo-blob relative overflow-hidden rounded-[1.7rem] p-4 shadow-[0_30px_80px_rgba(122,14,35,.14)] sm:p-6 lg:p-8">
+            <div class="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/80 to-white/35 p-5 sm:min-h-[460px] lg:min-h-[560px]">
+              <div class="absolute bottom-14 h-20 w-[72%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+              <img
+                src={`${floImageBase}/flo-stand-2.png`}
+                alt="CUCKOO FLO Stand water purifier tangki besar 16L"
+                class="relative z-10 h-[330px] w-auto object-contain drop-shadow-2xl sm:h-[430px] lg:h-[520px]"
+              />
+            </div>
+
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full border border-brand/20 bg-white px-4 py-2 text-xs font-black text-brand">Total 16L</span>
+              <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">Cold 5.0L</span>
+              <span class="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-black text-red-700">Hot 4.0L</span>
+              <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">Room 7.0L</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappFloUrl}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              Semak Promo FLO Stand
+            </a>
+
+            <a
+              href="#lokasi"
+              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
+            >
+              Lihat Lokasi Sesuai
+            </a>
+          </div>
+
+          <div class="mt-7 rounded-[1.75rem] border border-brand/10 bg-white/80 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+            <div class="grid gap-3 sm:grid-cols-[1fr_1fr] sm:items-stretch">
+              <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+                <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Promo Terkini</p>
+                <p class="mt-2 text-4xl font-black leading-none">
+                  RM12<span class="text-sm font-black">/bulan</span>
+                </p>
+                <p class="mt-1 text-xs font-bold text-white/75">6 bulan pertama</p>
+              </div>
+
+              <a
+                href="#harga"
+                class="rounded-[1.35rem] border border-brand/10 bg-brand-cream px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25"
+              >
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Harga FLO Stand</p>
+                <p class="mt-2 text-xl font-black text-brand">Dari RM115/bulan</p>
+                <p class="mt-2 text-sm font-bold text-brand-muted">Outright RM4,200 →</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-10 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {highlights.map((item) => (
+          <article class="rounded-3xl bg-white p-6 shadow-soft">
+            <div class="mb-4 text-2xl">{item.icon}</div>
+            <h3 class="font-black">{item.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="kapasiti" class="px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Tangki Besar 16L</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Dibina Untuk Penggunaan Ramai</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Kapasiti besar FLO Stand membantu sediakan air panas, sejuk dan suhu bilik untuk premis yang kerap digunakan.
+          </p>
+        </div>
+
+        <div class="mt-9 overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+          <picture>
+            <img
+              src={`${floImageBase}/flo-banner-01_dt_07c.webp`}
+              alt="CUCKOO FLO Stand kapasiti tangki besar 16L"
+              loading="lazy"
+              class="w-full object-cover"
+            />
+          </picture>
+        </div>
+
+        <div class="mt-5 grid gap-4 sm:grid-cols-3">
+          {[
+            ['Room Tank', '7.0L', 'Untuk air suhu bilik'],
+            ['Cold Tank', '5.0L', 'Untuk air sejuk'],
+            ['Hot Tank', '4.0L', 'Untuk air panas']
+          ].map(([label, value, copy]) => (
+            <article class="rounded-[1.5rem] bg-white p-6 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-sm font-black uppercase tracking-[.14em] text-brand-gold">{label}</p>
+              <p class="mt-2 text-4xl font-black text-brand">{value}</p>
+              <p class="mt-2 text-sm font-bold text-brand-muted">{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="ciri-ciri" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Ciri-Ciri Harian</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">
+            Ciri-Ciri Yang Memudahkan Penggunaan Harian
+          </h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            FLO Stand direka untuk penggunaan harian di rumah, pejabat dan premis dengan ciri-ciri yang menjadikan pengambilan air lebih mudah, selesa dan praktikal.
+          </p>
+        </div>
+
+        <div class="mt-10 space-y-6">
+          {dailyFeatures.map((item, index) => {
+            const imageFirst = index % 2 === 0;
+            return (
+              <article class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10 lg:grid lg:grid-cols-2 lg:items-center">
+                <div class={`${imageFirst ? 'lg:order-1' : 'lg:order-2'} bg-brand-cream`}>
+                  <picture>
+                    {item.mobileImage && <source media="(max-width: 767px)" srcset={item.mobileImage} />}
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      loading="lazy"
+                      class="aspect-[4/3] w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                <div class={`${imageFirst ? 'lg:order-2' : 'lg:order-1'} p-6 sm:p-8 lg:p-12`}>
+                  <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">
+                    Ciri {index + 1}
+                  </p>
+                  <h3 class="mt-3 text-2xl font-black text-brand-ink sm:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p class="mt-4 text-base leading-8 text-brand-muted">
+                    {item.copy}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-brand p-7 text-white shadow-premium sm:p-9 lg:flex lg:items-center lg:justify-between lg:gap-8">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">Semak Sekarang</p>
+            <h3 class="mt-3 text-3xl font-black">Berminat Dengan FLO Stand?</h3>
+            <p class="mt-3 max-w-2xl leading-8 text-white/75">
+              Semak promo semasa dan kelayakan pemasangan dengan ejen CUCKOO.
+            </p>
+          </div>
+          <a
+            href={whatsappFloUrl}
+            class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D] sm:w-auto lg:mt-0"
+          >
+            <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+            Semak Promo FLO Stand
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="filtration" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-5 shadow-premium sm:p-8 lg:p-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Filtration System</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Sistem Tapisan 6 Peringkat Dengan 4 Filter</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            FLO Stand menggunakan sistem tapisan Nano Positive yang membantu menapis bakteria dan bahan berbahaya, sambil mengekalkan mineral bermanfaat dalam air untuk penggunaan harian.
+          </p>
+        </div>
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] bg-brand-cream">
+          <img src="/assets/images/filter/filter-cuckoo-desktop.webp" class="hidden w-full md:block" alt="Sistem tapisan CUCKOO FLO Stand desktop">
+          <img src="/assets/images/filter/filter-cuckoo-mobile.webp" class="block w-full md:hidden" alt="Sistem tapisan CUCKOO FLO Stand mobile">
+        </div>
+        <div class="mt-6 grid gap-4 md:grid-cols-4">
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5"><h3 class="font-black">Sediment Filter</h3><p class="text-xs font-bold text-brand-gold">Stage 1</p><p class="mt-2 text-sm leading-7 text-brand-muted">Menapis partikel besar dan bendasing.</p></article>
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5"><h3 class="font-black">Pre-Carbon Block 2.0</h3><p class="text-xs font-bold text-brand-gold">Stage 2–3</p><p class="mt-2 text-sm leading-7 text-brand-muted">Membantu menapis klorin dan sebatian organik.</p></article>
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5"><h3 class="font-black">Natural 2.0 Filter</h3><p class="text-xs font-bold text-brand-gold">Stage 4–5</p><p class="mt-2 text-sm leading-7 text-brand-muted">Mengekalkan mineral bermanfaat dalam air.</p></article>
+          <article class="rounded-2xl border border-brand/10 bg-brand-cream p-5"><h3 class="font-black">Nano Positive Filter</h3><p class="text-xs font-bold text-brand-gold">Stage 6</p><p class="mt-2 text-sm leading-7 text-brand-muted">Membantu menapis bakteria, virus, heavy metals, algae dan fungi.</p></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="lokasi" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-end">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Lokasi Sesuai</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+              Nampak Kemas Di Pejabat, Dapur, Cafe Atau Ruang Menunggu
+            </h2>
+          </div>
+          <p class="text-base leading-8 text-brand-muted lg:text-lg">
+            FLO Stand sesuai untuk lokasi yang perlukan bekalan air panas, sejuk dan suhu bilik sepanjang hari. Swipe untuk lihat contoh lokasi pemasangan dan ruang sebenar.
+          </p>
+        </div>
+
+        <div class="mt-9 flex snap-x gap-5 overflow-x-auto scroll-smooth pb-5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {usageSlides.map((item) => (
+            <article class="min-w-[84vw] snap-center overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10 sm:min-w-[560px] lg:min-w-[46%]">
+              <div class="relative">
+                <img src={item.image} alt={item.alt} loading="lazy" class="aspect-[3/2] w-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-black text-brand-ink">{item.title}</h3>
+                <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-1 text-center text-xs font-bold text-brand-muted">
+          Swipe kiri / kanan untuk lihat lokasi lain
+        </p>
+      </div>
+    </section>
+
+
+    <ProductGallerySlider
+      id="gallery"
+      eyebrow="Galeri FLO Stand"
+      title="Lihat CUCKOO FLO Stand Dalam Penggunaan Sebenar"
+      description="Rujukan gambar FLO Stand untuk lihat rupa, saiz, pemasangan dan kesesuaian di lokasi seperti pejabat, sekolah, masjid, hotel dan pantry."
+      items={galleryItems}
+    />
+
+    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10 text-center">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Spesifikasi</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi CUCKOO FLO Stand</h2>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div class="self-start overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.14),transparent_32%),linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#B0163C_100%)] p-6 shadow-premium sm:p-8">
+            <img
+              src={`${floImageBase}/product-specification-2.webp`}
+              alt="Spesifikasi dan dimensi CUCKOO FLO Stand water purifier"
+              loading="lazy"
+              class="w-full rounded-[1.5rem] object-contain"
+            />
+          </div>
+
+          <div class="space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">16L</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Jumlah Tangki</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">6</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Peringkat Tapisan</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">3</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Suhu Air</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">4 Bulan</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Servis Berkala</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-brand/10">
+              {[
+                ['Model', 'CUCKOO FLO Stand'],
+                ['Jenis', 'Floor-standing water purifier'],
+                ['Kapasiti', '16L total tank'],
+                ['Room Tank', '7.0L'],
+                ['Cold Tank', '5.0L'],
+                ['Hot Tank', '4.0L'],
+                ['Tapisan', '6-Stage Nano Positive Filtration'],
+                ['Jenis Air', 'Hot, Cold & Room Temperature'],
+                ['Sesuai Untuk', 'Rumah, pejabat, sekolah, masjid, hotel dan pantry'],
+                ['Servis', 'Servis berkala CUCKOO']
+              ].map(([label, value], index) => (
+                <div class={`grid grid-cols-2 ${index < 9 ? 'border-b border-brand/10' : ''}`}>
+                  <div class="px-5 py-4 font-black text-brand-ink">{label}</div>
+                  <div class="px-5 py-4 text-brand-muted">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">
+            Semak Pakej FLO Stand Yang Sesuai Untuk Lokasi Anda
+          </h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak promo RM12, dokumen, kelayakan dan kawasan servis.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <article class={`relative rounded-[2rem] p-7 shadow-soft ${plan.featured ? 'border-2 border-brand bg-brand text-white shadow-glow' : 'border border-brand/10 bg-white'}`}>
+              {plan.badge && (
+                <div class={`absolute -top-4 left-7 rounded-full px-5 py-2 text-xs font-black uppercase tracking-[.14em] shadow-soft ${plan.featured ? 'bg-white text-brand' : 'bg-brand text-white'}`}>
+                  {plan.badge}
+                </div>
+              )}
+              <p class={`mt-3 text-sm font-black uppercase tracking-[.16em] ${plan.featured ? 'text-brand-gold' : 'text-brand-gold'}`}>{plan.tier}</p>
+              <h3 class={`mt-4 text-2xl font-black ${plan.featured ? 'text-white' : 'text-brand-ink'}`}>{plan.title}</h3>
+              <p class={`mt-3 text-sm font-bold ${plan.featured ? 'text-white/70' : 'text-brand-muted'}`}>
+                {plan.title === 'Rental 5 Tahun' && 'Pakej rental 5 tahun'}
+                {plan.title === 'Rental 7 Tahun' && 'Pakej rental 7 tahun'}
+                {plan.title === 'Beli Terus' && 'Bayaran sekali sahaja'}
+              </p>
+              <div class={`mt-7 rounded-[1.5rem] p-5 ${plan.featured ? 'bg-white/10' : 'bg-brand-cream'}`}>
+                <p class={`text-5xl font-black ${plan.featured ? 'text-white' : 'text-brand'}`}>
+                  {plan.price}<span class={`text-base font-black ${plan.featured ? 'text-white/70' : 'text-brand-muted'}`}>{plan.suffix}</span>
+                </p>
+                <p class={`mt-2 text-xs font-black uppercase tracking-[.12em] ${plan.featured ? 'text-brand-gold' : 'text-brand-muted'}`}>
+                  {plan.suffix ? 'Harga bulanan' : 'Harga outright'}
+                </p>
+              </div>
+              <p class={`mt-5 text-sm leading-7 ${plan.featured ? 'text-white/78' : 'text-brand-muted'}`}>{plan.copy}</p>
+              <ul class={`mt-5 space-y-2 text-sm font-bold ${plan.featured ? 'text-white/85' : 'text-brand-ink'}`}>
+                {plan.details.map((detail) => (
+                  <li>✓ {detail}</li>
+                ))}
+              </ul>
+              <a href={whatsappFloUrl}
+                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+                <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+                WhatsApp Semak
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <PromoBannerSection />
+
+    <FreeGiftSection
+      title="Free Gift Untuk Tempahan CUCKOO FLO Stand"
+      description="Selain menikmati penapis air tangki besar 16L dengan servis berkala, pelanggan juga berpeluang menerima free gift semasa promo masih tersedia."
+    />
+
+    <WaterPurifierServiceSection
+      productName="Penapis Air CUCKOO FLO Stand"
+      productImage={`${floImageBase}/FLO.webp`}
+      productAlt="Penapis Air CUCKOO FLO Stand dengan servis berkala dan penukaran filter"
+    />
+
+   <WhyChooseCuckooWaterPurifiers />
+    
+
+    <CustomerProofSection />
+    <WaterHalalSection />
+
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">
+            Soalan Lazim CUCKOO FLO Stand
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
+            Jawapan ringkas sebelum anda pilih FLO Stand untuk rumah, pejabat atau premis.
+          </p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProductCategorySection />
+    <AgentSection />
+  </div>
+
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(schema)}
+  </script>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(faqSchema)}
+  </script>
+</BaseLayout>

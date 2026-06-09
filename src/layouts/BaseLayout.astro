@@ -1,0 +1,199 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'CUCKOO Malaysia',
+  description = 'Order produk CUCKOO dengan ejen berpengalaman sejak 2017.',
+  canonical = 'https://www.cuckoonano.com/',
+  ogImage = 'https://www.cuckoonano.com/assets/images/uploads/cuckoonano-og.webp',
+  ogType = 'website',
+  showWaterHalal = false,
+  showHeader = true,
+  showFooter = true,
+  showFloatingWhatsapp = true
+} = Astro.props;
+
+const logoSrc = '/assets/images/brand/logo_cmyk_maroon02-e1546229046344.png.webp';
+const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
+---
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content={ogType} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/webp" href={faviconSrc} />
+    <link rel="apple-touch-icon" href={faviconSrc} />
+  </head>
+  <body class="bg-cream text-ink antialiased">
+    {showHeader && (
+    <header class="sticky top-0 z-40 border-b border-brand/10 bg-white/90 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex h-12 w-36 items-center justify-center rounded-2xl" aria-label="CUCKOO Nano Home">
+          <img src={logoSrc} alt="CUCKOO" class="max-h-7 w-auto object-contain" loading="eager" />
+        </a>
+        <nav class="hidden items-center gap-7 text-sm font-semibold text-muted lg:flex">
+          <a class="nav-link hover:text-brand" href="/">Home</a>
+          <div class="group relative before:absolute before:left-0 before:top-full before:h-5 before:w-full before:content-['']">
+            <button class="nav-link flex items-center gap-1 hover:text-brand" type="button">Produk <span>⌄</span></button>
+            <div class="invisible absolute left-1/2 top-full z-50 mt-2 w-[760px] -translate-x-1/2 rounded-[1.5rem] border border-brand/10 bg-white p-4 opacity-0 shadow-soft transition duration-200 group-hover:visible group-hover:opacity-100">
+              <div class="grid grid-cols-3 gap-2">
+                <a href="/products/water-purifier/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Penapis Air</span><span class="block text-xs text-muted">10 produk</span></a>
+                <a href="/products/air-purifier/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Penapis Udara</span><span class="block text-xs text-muted">6 produk</span></a>
+                <a href="/products/air-conditioner/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Aircond</span><span class="block text-xs text-muted">1 produk</span></a>
+                <a href="/products/washer-dryer/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Washer Dryer</span><span class="block text-xs text-muted">1 produk</span></a>
+                <a href="/products/samsung/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Samsung</span><span class="block text-xs text-muted">3 produk</span></a>
+                <a href="/products/massage-chair/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Kerusi Urut</span><span class="block text-xs text-muted">2 produk</span></a>
+                <a href="/products/mattress/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Tilam</span><span class="block text-xs text-muted">2 produk</span></a>
+                <a href="/products/induction/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Induction</span><span class="block text-xs text-muted">2 produk</span></a>
+                <a href="/products/pressure-cooker/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Pressure Cooker</span><span class="block text-xs text-muted">2 produk</span></a>
+                <a href="/products/treadmill/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Treadmill</span><span class="block text-xs text-muted">1 produk</span></a>
+              </div>
+            </div>
+          </div>
+          <a class="nav-link hover:text-brand" href="/#promo">Promo</a>
+          <a class="nav-link hover:text-brand" href="/goood-deal/">Trade-In</a>
+          <a class="nav-link hover:text-brand" href="/service/">Servis</a>
+          <a class="nav-link hover:text-brand" href="/kerjaya-cuckoo/">Daftar Ejen</a>
+        </nav>
+        <details class="group relative lg:hidden">
+          <summary class="flex h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-brand/15 bg-white px-4 text-sm font-black text-brand shadow-sm transition-all duration-300 hover:bg-cream [&::-webkit-details-marker]:hidden">
+            <span>Menu</span>
+            <span class="text-base leading-none transition-transform duration-300 group-open:rotate-45">+</span>
+          </summary>
+          <div class="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[1.5rem] border border-brand/10 bg-white shadow-soft">
+            <div class="grid gap-1 p-3 text-sm font-black text-ink">
+              <a href="/" class="rounded-2xl px-4 py-3 hover:bg-cream">Home</a>
+              <details class="group/products rounded-2xl bg-cream/70">
+                <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-brand [&::-webkit-details-marker]:hidden">
+                  <span>Produk</span>
+                  <span class="transition-transform duration-300 group-open/products:rotate-45">+</span>
+                </summary>
+                <div class="grid gap-1 border-t border-brand/10 p-2">
+                  <a href="/products/water-purifier/" class="rounded-xl px-3 py-2 hover:bg-white">Penapis Air</a>
+                  <a href="/products/air-purifier/" class="rounded-xl px-3 py-2 hover:bg-white">Penapis Udara</a>
+                  <a href="/products/air-conditioner/" class="rounded-xl px-3 py-2 hover:bg-white">Aircond</a>
+                  <a href="/products/washer-dryer/" class="rounded-xl px-3 py-2 hover:bg-white">Washer Dryer</a>
+                  <a href="/products/samsung/" class="rounded-xl px-3 py-2 hover:bg-white">Samsung</a>
+                  <a href="/products/massage-chair/" class="rounded-xl px-3 py-2 hover:bg-white">Kerusi Urut</a>
+                  <a href="/products/mattress/" class="rounded-xl px-3 py-2 hover:bg-white">Tilam</a>
+                  <a href="/products/induction/" class="rounded-xl px-3 py-2 hover:bg-white">Induction</a>
+                  <a href="/products/pressure-cooker/" class="rounded-xl px-3 py-2 hover:bg-white">Pressure Cooker</a>
+                  <a href="/products/treadmill/" class="rounded-xl px-3 py-2 hover:bg-white">Treadmill</a>
+                </div>
+              </details>
+              <a href="/#promo" class="rounded-2xl px-4 py-3 hover:bg-cream">Promo</a>
+              <a href="/goood-deal/" class="rounded-2xl px-4 py-3 hover:bg-cream">Trade-In</a>
+              <a href="/service/" class="rounded-2xl px-4 py-3 hover:bg-cream">Servis</a>
+              <a href="/kerjaya-cuckoo/" class="rounded-2xl px-4 py-3 hover:bg-cream">Daftar Ejen</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </header>
+    )}
+
+<main>
+  <slot />
+</main>
+
+    {showFooter && (
+    <footer class="bg-ink px-4 py-12 text-white sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.45fr_.85fr]">
+        <div>
+          <p class="text-xl font-black tracking-tight">CUCKOONANO</p>
+          <p class="mt-4 max-w-sm text-sm leading-7 text-white/64">
+            Website ejen CUCKOO oleh Fadhil & Izzah. Membantu pelanggan semak produk, promo dan pilihan bayaran bulanan CUCKOO.
+          </p>
+          <p class="mt-4 inline-flex rounded-full border border-brand-gold/25 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-[.14em] text-brand-gold">
+            Ejen CUCKOO sejak 2017
+          </p>
+          <div class="mt-5 grid gap-3 text-sm leading-6 text-white/60">
+            <div>
+              <p class="font-black text-white">Fadhil <span class="text-brand-gold">SR1000138</span></p>
+              <p>Cuckoo Branch Sales Manager (BSM)</p>
+            </div>
+            <div>
+              <p class="font-black text-white">Nurul 'Izzah <span class="text-brand-gold">SR1003594</span></p>
+              <p>Cuckoo Sales Representative</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="font-bold text-white">Kategori Produk</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2" data-footer-products></div>
+        </div>
+        <div>
+          <p class="font-bold text-white">Pautan Penting</p>
+          <div class="mt-4 grid gap-2 text-sm font-bold">
+            <a href="/#promo" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Promo Terkini</a>
+            <a href="/goood-deal/" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Trade-In Plan</a>
+            <a href="/service/" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Sambung Servis</a>
+            <a href="/blog/" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Blog</a>
+            <a href="/locations/" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Locations</a>
+            <a href="/kerjaya-cuckoo/" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Daftar Ejen</a>
+            <a href="/#contact" class="rounded-xl px-3 py-2 text-white/64 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Hubungi Kami</a>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6">
+        <div class="flex flex-col gap-4 text-xs font-semibold leading-6 text-white/50 lg:flex-row lg:items-center lg:justify-between">
+          <p>© 2026 CUCKOONANO. All rights reserved.</p>
+          <div class="flex flex-wrap gap-x-4 gap-y-2">
+            <span>Privacy Policy</span>
+            <span>Terms & Conditions</span>
+            <span>Disclaimer</span>
+          </div>
+        </div>
+        <p class="mt-4 max-w-4xl text-xs leading-6 text-white/45">
+          Harga, promo, kelulusan dan pemasangan tertakluk kepada terma & syarat CUCKOO.
+        </p>
+      </div>
+    </footer>
+    )}
+{showFloatingWhatsapp && (
+<a data-floating-whatsapp href="#" onclick="this.href=rotatingWhatsapp()" class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-black text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 sm:px-6 sm:py-4 sm:text-base">
+  <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" />
+  <span>Semak Promo</span>
+</a>
+)}
+    <script is:inline src="/assets/js/site-data.js"></script>
+    <script is:inline src="/assets/js/blog-items.js"></script>
+    <script is:inline src="/assets/js/main.js"></script>
+    <script is:inline>
+      (() => {
+        const hero = document.querySelector('[data-home-hero]');
+        const floatingWhatsapp = document.querySelector('[data-floating-whatsapp]');
+        if (!hero || !floatingWhatsapp) return;
+
+        const mobileQuery = window.matchMedia('(max-width: 767px)');
+        const setHidden = (hidden) => {
+          floatingWhatsapp.classList.toggle('pointer-events-none', hidden);
+          floatingWhatsapp.classList.toggle('translate-y-4', hidden);
+          floatingWhatsapp.classList.toggle('opacity-0', hidden);
+        };
+
+        const update = () => {
+          if (!mobileQuery.matches) {
+            setHidden(false);
+            return;
+          }
+          const heroBottom = hero.getBoundingClientRect().bottom;
+          setHidden(heroBottom > 80);
+        };
+
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        mobileQuery.addEventListener?.('change', update);
+      })();
+    </script>
+  </body>
+</html>

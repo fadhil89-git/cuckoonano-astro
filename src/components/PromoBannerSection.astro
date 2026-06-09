@@ -1,0 +1,94 @@
+---
+const {
+  title = 'Promo CUCKOO Terkini',
+  headline = 'RM12/bulan untuk 6 bulan pertama',
+  description = 'Customer hanya bayar RM12 untuk 6 bulan pertama dan boleh jimat hingga RM800+ sempena 12 tahun CUCKOO di Malaysia.',
+  cta = 'WhatsApp Untuk Semak Promo',
+  validUntil = '30 Jun 2026',
+  whatsappHref = 'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil,%20saya%20nak%20semak%20promo%20RM12%20CUCKOO.'
+} = Astro.props;
+
+const documents = ['🪪 IC', '💳 Kad debit/kredit', '🏠 Bil api/air rumah'];
+---
+
+<section id="promo" class="px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_78%_12%,rgba(216,166,74,.2),transparent_30%),linear-gradient(135deg,#35040f_0%,#6f0b20_48%,#8E1830_100%)] p-5 text-white shadow-glow sm:p-8 lg:p-10">
+    <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+      <div class="rounded-[1.85rem] bg-white p-5 text-brand shadow-xl shadow-brand-dark/25 ring-1 ring-white/50 sm:p-7">
+        <div class="rounded-[1.5rem] bg-[radial-gradient(circle_at_80%_20%,rgba(216,166,74,.22),transparent_34%),linear-gradient(135deg,#fff8f2_0%,#ffffff_52%,#f8e7db_100%)] p-6 ring-1 ring-brand/10 sm:p-8">
+          <p class="inline-flex rounded-full bg-brand-soft px-4 py-2 text-xs font-black uppercase tracking-[.18em] text-brand">
+            {title}
+          </p>
+
+          <p class="mt-8 text-sm font-black uppercase tracking-[.2em] text-brand/70">
+            6 bulan pertama
+          </p>
+
+          <div class="mt-2 flex flex-wrap items-end gap-x-3 gap-y-1">
+            <span class="text-[5rem] font-black leading-none tracking-tight text-brand sm:text-[6.5rem] lg:text-[7rem]">
+              RM12
+            </span>
+            <span class="pb-3 text-2xl font-black text-brand sm:text-3xl">
+              /bulan
+            </span>
+          </div>
+
+          <p class="mt-5 text-base font-black leading-7 text-ink sm:text-lg">
+            Bayar hanya RM12 sebulan untuk 6 bulan pertama.
+          </p>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <div class="rounded-2xl bg-brand p-5 text-white shadow-lg">
+            <p class="text-3xl font-black">RM800+</p>
+            <p class="mt-1 text-xs font-bold text-white/75">potensi penjimatan</p>
+          </div>
+
+          <div class="rounded-2xl bg-brand-soft p-5 text-brand shadow-lg">
+            <p class="text-3xl font-black">12</p>
+            <p class="mt-1 text-xs font-bold text-brand/70">tahun CUCKOO Malaysia</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-black text-white ring-1 ring-white/20">
+          Sempena ulang tahun CUCKOO
+        </p>
+
+        <h2 class="mt-6 max-w-3xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl">
+          {headline}
+        </h2>
+
+        <p class="mt-5 max-w-2xl text-lg font-bold leading-8 text-white/90">
+          {description}
+        </p>
+
+        <p class="mt-4 max-w-2xl rounded-2xl bg-white/10 p-4 text-base font-bold leading-7 text-white ring-1 ring-white/15">
+          Promo sah sehingga <span class="font-black text-brand-gold">{validUntil}</span>. Tertakluk kepada stok, kawasan servis dan kelulusan pendaftaran.
+        </p>
+
+        <div class="mt-7">
+          <p class="text-sm font-black uppercase tracking-[.18em] text-brand-gold">
+            3 dokumen diperlukan
+          </p>
+
+          <div class="mt-3 flex flex-wrap gap-3">
+            {documents.map((document) => (
+              <span class="rounded-full bg-white px-4 py-2 text-sm font-black text-brand shadow-soft">
+                {document}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <a
+          href={whatsappHref}
+          class="mt-8 inline-flex rounded-full bg-[#25D366] px-7 py-4 font-black text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
+        >
+          {cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

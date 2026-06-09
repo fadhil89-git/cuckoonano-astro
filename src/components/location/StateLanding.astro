@@ -1,0 +1,92 @@
+---
+import { stateFlagUrls } from '../../data/locationFlags.js';
+
+const { state } = Astro.props;
+const flagUrl = stateFlagUrls[state.slug];
+
+const topAreas = state.locations
+  .flatMap((location) => location.areas.slice(0, 3))
+  .slice(0, 18);
+---
+
+<section class="hero-pattern px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+  <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+    <div>
+      <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-brand/15 bg-white px-5 py-3 shadow-sm">
+        <div class="flex h-10 w-14 items-center justify-center overflow-hidden rounded-xl bg-white">
+          <img src={flagUrl} alt={`Bendera ${state.name}`} class="h-full w-full object-contain" />
+        </div>
+        <div>
+          <p class="text-xs font-bold text-brand">{state.name.toUpperCase()}</p>
+          <p class="text-xs text-muted">Senarai lokasi negeri</p>
+        </div>
+      </div>
+      <h1 class="max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">Order CUCKOO di {state.name}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-muted">
+        Pilih bandar, daerah atau lokasi utama di {state.name} untuk tanya produk CUCKOO, harga cash, rental bulanan, promo terkini dan pemasangan mengikut coverage servis.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="#lokasi" class="rounded-full bg-brand px-7 py-4 text-center text-base font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">Pilih Lokasi</a>
+        <a href="https://wasap.my/60139916967" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center text-base font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft hover:shadow-soft">WhatsApp Ejen</a>
+      </div>
+    </div>
+    <div class="rounded-[2rem] bg-white p-5 shadow-soft">
+      <div class="rounded-[1.75rem] bg-gradient-to-br from-brand via-brand-dark to-[#2B0710] p-6 text-white">
+        <div class="inline-flex overflow-hidden rounded-2xl border border-white/20 bg-white p-3 shadow-xl">
+          <img src={flagUrl} alt={`Bendera ${state.name}`} class="h-24 w-36 object-contain" />
+        </div>
+        <h2 class="mt-6 text-3xl font-black leading-tight">{state.name}</h2>
+        <p class="mt-3 text-sm leading-6 text-white/75">Pilih lokasi yang paling dekat dengan rumah anda. Jika kawasan anda tidak tersenarai, boleh WhatsApp untuk semakan coverage.</p>
+        <div class="mt-7 grid grid-cols-2 gap-3">
+          <div class="rounded-2xl bg-white/10 p-4 text-center ring-1 ring-white/10">
+            <p class="text-3xl font-black">{state.tier2Count || state.locations.length}</p>
+            <p class="mt-1 text-xs text-white/65">Lokasi utama</p>
+          </div>
+          <div class="rounded-2xl bg-white/10 p-4 text-center ring-1 ring-white/10">
+            <p class="text-3xl font-black">{state.tier3Count}</p>
+            <p class="mt-1 text-xs text-white/65">Kawasan sekitar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lokasi" class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-8 max-w-3xl">
+      <p class="font-bold text-brand">Lokasi utama</p>
+      <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Pilih kawasan di {state.name}</h2>
+      <p class="mt-4 text-muted leading-7">Setiap lokasi ada senarai kawasan sekitar seperti taman, seksyen, bandar satelit dan kawasan berdekatan.</p>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {state.locations.map((location) => (
+        <a href={location.url} class="rounded-[1.5rem] bg-cream p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-soft">
+          <p class="text-xs font-bold text-muted">{state.name}</p>
+          <h3 class="mt-2 text-xl font-black text-brand">{location.name}</h3>
+          <p class="mt-3 text-sm leading-6 text-muted">{location.areas.slice(0, 4).join(', ')}</p>
+          <p class="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-xs font-black text-brand shadow-sm">Lihat lokasi</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-6 shadow-soft lg:p-8">
+    <div class="grid gap-8 lg:grid-cols-[.75fr_1.25fr] lg:items-start">
+      <div>
+        <p class="font-bold text-brand">Kawasan sekitar</p>
+        <h2 class="mt-2 text-3xl font-black tracking-tight">Kawasan yang biasa pelanggan tanya di {state.name}</h2>
+        <p class="mt-4 text-muted leading-7">Semak kawasan berdekatan rumah anda sebelum pilih produk. Jika nama kawasan tidak ada dalam senarai, WhatsApp lokasi rumah untuk semakan coverage.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        {topAreas.map((area) => (
+          <span class="area-chip rounded-full bg-cream px-4 py-2 text-sm font-bold text-brand shadow-sm">{area}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-agent-block></div>

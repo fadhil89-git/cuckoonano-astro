@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StateLanding from '../../../components/location/StateLanding.astro';
+import { locationStates } from '../../../data/locations.js';
+
+export function getStaticPaths() {
+  return locationStates.map((state) => ({
+    params: { state: state.slug },
+    props: { state },
+  }));
+}
+
+const { state } = Astro.props;
+
+const meta = {
+  title: `Ejen CUCKOO ${state.name} | Produk CUCKOO ${state.name}`,
+  description: `Order CUCKOO di ${state.name}. Pilih lokasi utama untuk tanya produk, promo, harga cash/rental dan pemasangan CUCKOO mengikut coverage.`,
+  canonical: `https://www.cuckoonano.com/locations/${state.slug}/`,
+  ogImage: 'https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png',
+  ogType: 'website',
+};
+---
+
+<BaseLayout {...meta}>
+  <StateLanding state={state} />
+</BaseLayout>

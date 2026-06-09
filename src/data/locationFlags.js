@@ -1,0 +1,18 @@
+export const stateFlagUrls = {
+  johor: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Flag_of_Johor.svg',
+  selangor: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Flag_of_Selangor.svg',
+  'kuala-lumpur': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Kuala_Lumpur%2C_Malaysia.svg',
+  putrajaya: 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Putrajaya.svg',
+  'negeri-sembilan': 'https://upload.wikimedia.org/wikipedia/commons/d/db/Flag_of_Negeri_Sembilan.svg',
+  melaka: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_Malacca.svg',
+  pahang: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Pahang.svg',
+  perak: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Flag_of_Perak.svg',
+  'pulau-pinang': 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Penang_%28Malaysia%29.svg',
+  kedah: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Flag_of_Kedah.svg',
+  perlis: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Perlis.svg',
+  kelantan: 'https://upload.wikimedia.org/wikipedia/commons/6/61/Flag_of_Kelantan.svg',
+  terengganu: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Flag_of_Terengganu.svg',
+  sabah: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Sabah.svg',
+  labuan: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Flag_of_Labuan.svg',
+  sarawak: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Flag_of_Sarawak.svg',
+};

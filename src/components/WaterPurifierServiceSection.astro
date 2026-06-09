@@ -1,0 +1,103 @@
+---
+const {
+  productName = 'Penapis Air CUCKOO',
+  productImage = '/assets/images/Gambar%20Produk%20png/xcel-2.webp',
+  productAlt = 'Penapis Air CUCKOO',
+  technicianImage = '/assets/images/service/service-cuckoo.webp'
+} = Astro.props;
+---
+
+<section id="service" class="px-4 py-14 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-white p-5 shadow-premium ring-1 ring-brand/10 sm:p-7 lg:p-10">
+    <div class="grid gap-8 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
+
+      <!-- LEFT VISUAL -->
+      <div class="relative min-h-[580px] overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#fff7f2_0%,#ffffff_55%,#f8e7db_100%)] p-5 sm:min-h-[660px] sm:p-7 lg:min-h-[720px]">
+        <div class="absolute bottom-0 left-0 right-0 h-[50%] rounded-t-[2rem] bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_55%,#8E1830_100%)]"></div>
+
+        <div class="pointer-events-none absolute left-7 top-7 text-[4.5rem] font-black leading-[.9] text-brand/10 sm:text-[6.2rem]">
+          CUCKOO<br />SERVICE
+        </div>
+
+        <div class="absolute right-5 top-5 z-40 rounded-2xl bg-white/95 px-5 py-4 shadow-soft ring-1 ring-brand/10 backdrop-blur">
+          <p class="text-sm font-black text-brand">Setiap 4 Bulan</p>
+          <p class="text-xs font-bold text-brand-muted">Servis berkala</p>
+        </div>
+
+        <div class="absolute right-5 top-28 z-40 rounded-2xl bg-white/95 px-5 py-4 shadow-soft ring-1 ring-brand/10 backdrop-blur">
+          <p class="text-sm font-black text-brand">6 Filter Setahun</p>
+          <p class="text-xs font-bold text-brand-muted">Penukaran berkala</p>
+        </div>
+
+        <!-- PRODUCT IMAGE -->
+        <img
+          src={productImage}
+          alt={productAlt}
+          loading="lazy"
+          class="absolute bottom-[95px] right-[-12px] z-10 h-[350px] w-auto object-contain opacity-95 drop-shadow-2xl sm:right-6 sm:h-[430px] lg:right-[-10px] lg:h-[475px]"
+        />
+
+        <!-- TECHNICIAN IMAGE -->
+        <img
+          src={technicianImage}
+          alt={`Servis CUCKOO untuk ${productName}`}
+          loading="lazy"
+          class="absolute bottom-0 left-[-26px] z-30 h-[620px] w-auto object-contain object-bottom drop-shadow-2xl sm:left-[-10px] sm:h-[760px] lg:left-[-18px] lg:h-[900px]"
+        />
+
+        <!-- BADGE -->
+        <div class="absolute bottom-7 left-7 z-40 rounded-[1.5rem] bg-brand px-6 py-5 text-white shadow-glow ring-1 ring-white/20 sm:left-8">
+          <p class="text-base font-black text-brand-gold">SERVIS BERKALA</p>
+          <p class="mt-1 text-sm font-bold text-white/85">Filter • Servis • Sokongan</p>
+        </div>
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div>
+        <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">
+          CUCKOO Service
+        </p>
+
+        <h2 class="mt-3 text-3xl font-black leading-tight text-brand-ink sm:text-4xl lg:text-5xl">
+          Bukan Sekadar {productName}.
+          <span class="text-brand">Servis Berkala Kami Uruskan.</span>
+        </h2>
+
+        <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted">
+          Dengan CUCKOO, anda bukan hanya dapat penapis air. Kami bantu urus servis berkala dan penukaran filter mengikut jadual supaya penggunaan harian lebih tenang.
+        </p>
+
+        <div class="mt-7 grid gap-3">
+          <div class="rounded-2xl bg-brand-cream p-4 shadow-soft ring-1 ring-brand/10 sm:p-5">
+            <p class="font-black text-brand-ink">🔄 Filter Replacement Berkala</p>
+            <p class="mt-1 text-sm leading-6 text-brand-muted">
+              Penukaran 6 batang filter setahun mengikut jadual servis CUCKOO.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-brand-cream p-4 shadow-soft ring-1 ring-brand/10 sm:p-5">
+            <p class="font-black text-brand-ink">🛠️ Servis Berkala</p>
+            <p class="mt-1 text-sm leading-6 text-brand-muted">
+              Pemeriksaan dan servis setiap 4 bulan untuk prestasi penapis air.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-brand-cream p-4 shadow-soft ring-1 ring-brand/10 sm:p-5">
+            <p class="font-black text-brand-ink">🛡️ Warranty</p>
+            <p class="mt-1 text-sm leading-6 text-brand-muted">
+              Perlindungan warranty tertakluk kepada plan dan terma semasa.
+            </p>
+          </div>
+
+          <div class="rounded-2xl bg-brand p-5 text-white shadow-glow">
+            <p class="font-black">❤️ CUCKOO+ Care / Appointment Support</p>
+            <p class="mt-1 text-sm leading-6 text-white/75">
+              Sokongan appointment jika tersedia mengikut kawasan dan jadual semasa.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

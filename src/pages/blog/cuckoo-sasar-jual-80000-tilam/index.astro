@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "%%title%% %%page%% | CuckooNano.Com",
+  description: "Kuala Lumpur: PENERAJU produk kelengkapan rumah, Cuckoo International (M) Sdn Bhd (Cuckoo) dengan kerjasama LSK Napure Sdn Bhd (LSK Napure) menyasarkan...",
+  canonical: "https://www.cuckoonano.com/blog/cuckoo-sasar-jual-80000-tilam/",
+  ogImage: "https://www.cuckoonano.com/assets/images/brand/cuckoo-ebrandstore3.png",
+  ogType: 'article'
+};
+
+const publishedDate = "2020-12-11";
+const modifiedDate = "2020-12-11";
+
+const articleTitle = "Cuckoo Sasar Jual 80,000 Tilam";
+const articleDescription = "Kuala Lumpur: PENERAJU produk kelengkapan rumah, Cuckoo International (M) Sdn Bhd (Cuckoo) dengan kerjasama LSK Napure Sdn Bhd (LSK Napure) menyasarkan...";
+const featuredImage = "/assets/images/gambar-produk/tilam-cuckoo-mattress-gambar-cantik.jpg";
+---
+<BaseLayout {...meta}>
+  <div class="reading-progress" data-reading-progress></div>
+  <article class="article-shell" data-article-page data-article-title={articleTitle} data-current-path={Astro.url.pathname}>
+    <header class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-kicker-row">
+          <span class="article-badge">Panduan CUCKOO</span>
+        </div>
+        <h1>{articleTitle}</h1>
+        <p class="article-excerpt">{articleDescription}</p>
+        <div class="article-meta">
+          <span>Ditulis oleh Fadhil</span>
+          <span aria-hidden="true">/</span>
+          <span>Diterbitkan <time datetime={publishedDate}>{publishedDate}</time></span>
+          {modifiedDate ? <><span aria-hidden="true">/</span><span>Dikemaskini {modifiedDate}</span></> : null}
+        </div>
+        <figure class="article-featured">
+          <img src={featuredImage} alt={articleTitle} loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="Isi artikel">
+        <p>Dalam Artikel</p>
+        <nav data-toc-list></nav>
+      </aside>
+      <div class="article-main">
+        <details class="article-toc-mobile">
+          <summary>Isi Artikel</summary>
+          <nav data-toc-list></nav>
+        </details>
+        <article class="content article-content">
+      <p>Kuala Lumpur: PENERAJU produk kelengkapan rumah, <a href="https://www.cuckoo.com.my/">Cuckoo International (M) Sdn Bhd</a> (Cuckoo) dengan kerjasama <a href="https://www.napure.com/">LSK Napure Sdn Bhd (LSK Napure)</a> menyasarkan penjualan 80,000 tilam dalam tempoh tiga tahun akan datang.</p>
+      
+      <p>Ketua Pegawai Eksekutif, Cuckoo International, KC Hoe berkata, dengan pengalaman dan kepakaran daripada LSK, tilam Cuckoo yang dijadualkan dilancarkan pada akhir suku pertama 2021 akan menjadi antara tilam terbaik dalam industri.</p>
+      
+      <p>Katanya, produk tilam yang ditawarkan kepada pelanggan itu sangat istimewa kerana setiap pembelian, pelanggan bakal mendapat servis pembersihan untuk tempoh tiga tahun.</p>
+      
+      <p>"Dalam tempoh itu, pelanggan yang membeli tilam kami akan mendapat servis pembersihan setiap empat bulan.</p>
+      
+      <p>"Itu adalah keistimewaan yang ditawarkan. Ini lebih kepada jaminan pembelian, sebab biasanya pelanggan beli tilam, tiada jaminan pembelian seperti ini.</p>
+      
+      <p>"Ini antara kelainan untuk menarik pelanggan di mana kami menawarkan dua saiz tilam iaitu king dan queen selain servis pembersihan tilam," katanya selepas memeterai Memorandom Perjanjian Mencipta Produk Bersama antara Cuckoo dan LSK di ibu pejabat LSK di sini.</p>
+      
+      <p>Hadir sama, Pengarah Urusan LSK, Datuk Eric Lee.</p>
+      
+      <p>KC Hoe berkata, melalui memorandum perjanjian berkenaan, kedua-dua pihak akan menyumbangkan sumber, pengalaman dan kepakaran masing-masing bagi mencipta tilam berkualiti tinggi dan berinovatif untuk rakyat Malaysia.</p>
+      
+      <p>"Selepas memberikan perkhidmatan kepada lebih empat juta pengguna isi rumah melalui pelbagai produk dan perkhidmatan, kami menggorak langkah dan mempergiat usaha membentuk kediaman yang lebih sihat dengan kolaborasi bersama LSK Napure.</p>
+      
+      <p>"Kolaborasi dinamik dan strategik ini akan membuahkan hasil dengan penciptaan tilam yang berinovatif pada masa akan datang.</p>
+      
+      <p>"Kami percaya ini satu pelaburan yang sesuai dengan usaha kami bagi meningkatkan kualiti kehidupan rakyat Malaysia," katanya.</p>
+      
+      <p>Sumber: <a href="https://www.hmetro.com.my/bisnes/2020/12/651954/sasar-jual-80000-tilam?fbclid=IwAR1a0PZ1Jre_Kzslckhsq5Ecu33Qs3aWzS1RHuAc7wDYkvA-MPkdvZina20">https://www.hmetro.com.my/</a></p>
+      
+      <p><strong>Artikel ini disiarkan pada : Jumaat, 11 Disember 2020 @ 7:00 AM</strong></p>
+        </article>
+        <section class="article-author" aria-label="Penulis artikel">
+          <div class="article-author-avatar">FA</div>
+          <div>
+            <p class="article-author-label">Ditulis oleh</p>
+            <h2>Wan Ahmad Fadhil</h2>
+            <p>Ejen CUCKOO sepenuh masa sejak 2017. Saya bantu pembaca faham pilihan produk, harga dan proses order dengan bahasa yang mudah.</p>
+          </div>
+        </section>
+        <section class="article-related" aria-label="Artikel berkaitan">
+          <div class="article-section-heading">
+            <p>Bacaan Seterusnya</p>
+            <h2>Artikel berkaitan</h2>
+          </div>
+          <div class="article-related-grid" data-related-posts></div>
+        </section>
+      </div>
+    </div>
+  </article>
+  <div data-promo></div>
+</BaseLayout>
