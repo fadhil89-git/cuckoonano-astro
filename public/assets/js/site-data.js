@@ -284,12 +284,12 @@ const SITE = {
   "label": "Outdoor Filter",
   "title": "Outdoor Water Filter CUCKOO",
   "desc": "Penapis air luar rumah CUCKOO untuk tapis air utama sebelum masuk ke rumah.",
-  "url": "/kelebihan-cuckoo-prime-x3/",
+  "url": "/products/water-purifier/prime-x3/",
   "items": [
     {
       "id": "prime-x3",
       "name": "Prime X3",
-      "url": "/kelebihan-cuckoo-prime-x3/",
+      "url": "/products/water-purifier/prime-x3/",
       "category": "outdoor-filter",
       "image": "/assets/images/products/water-purifier/cuckoo-prime-x3-water-filter-benefits.jpg",
       "desc": "Outdoor water filter point-of-entry untuk rumah yang mahu air lebih bersih dari paip utama.",
@@ -692,7 +692,7 @@ const SITE = {
           "name": "Bespoke 2",
           "url": "/products/massage-chair/bespoke-2/",
           "category": "massage-chair",
-          "image": "/assets/images/Gambar%20Produk%20png/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp",
+          "image": "/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp",
           "desc": "Kerusi urut premium bersama OGAWA untuk rutin relaksasi harian di rumah.",
           "price": "RM148/bln",
           "bullets": [
@@ -713,7 +713,7 @@ const SITE = {
           "name": "Bespoke Massage Lounger",
           "url": "/products/massage-chair/bespoke-massage-lounger/",
           "category": "massage-chair",
-          "image": "/assets/images/Gambar%20Produk%20png/bespoke-massage-lounger.webp",
+          "image": "/assets/images/products/massage-chair/lounger/bespoke-massage-lounger.webp",
           "desc": "Massage lounger yang lebih santai untuk rehat harian dan ruang keluarga.",
           "price": "RM99/bulan",
           "bullets": [
@@ -864,24 +864,24 @@ const SITE = {
       "desc": "Treadmill CUCKOO untuk rutin kecergasan di rumah.",
       "items": [
         {
-          "id": "treadmill",
-          "name": "Treadmill",
-          "url": "/products/treadmill/treadmill/",
+          "id": "b-fit",
+          "name": "CUCKOO B-Fit Treadmill",
+          "url": "/products/treadmill/b-fit/",
           "category": "treadmill",
-          "image": "/assets/images/Gambar%20Produk%20png/b-fit.webp",
-          "desc": "Treadmill untuk rutin berjalan dan light jogging dari rumah.",
-          "price": "RM102/bulan",
+          "image": "/assets/images/products/treadmill/B-Fit_png-510x510.webp",
+          "desc": "Treadmill 2-in-1 untuk walking dan running di rumah. Foldable, 15 preset program dan service berkala.",
+          "price": "RM12/bulan (6 bulan pertama)",
           "bullets": [
-            "Walking & light jog",
-            "Rekaan sesuai rumah",
-            "Mudah digunakan",
-            "Sesuai rutin harian"
+            "2-in-1 walking & running",
+            "Foldable 20cm",
+            "15 preset program",
+            "Service setiap 6 bulan"
           ],
-          "specs": ["Walking", "Light Jog", "Rumah"],
+          "specs": ["1-14 km/h", "Foldable", "100kg max"],
           "highlights": [
-            "Walking & light jog",
-            "Rekaan sesuai rumah",
-            "Mudah digunakan"
+            "2-in-1 walking & running",
+            "Foldable & compact",
+            "8-point shock absorption"
           ]
         }
       ]

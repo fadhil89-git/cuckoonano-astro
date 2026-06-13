@@ -54,7 +54,6 @@ function suitability(product) {
 
   if (category === 'air-purifier') return 'bilik tidur, ruang tamu dan rumah kawasan berhabuk';
   if (category === 'air-conditioner') return 'bilik tidur, bilik anak dan ruang kerja';
-  if (category === 'washer-dryer') return 'condo, apartment dan keluarga yang mahu jimat ruang';
   if (category === 'samsung') return 'rumah moden dan gaya hidup digital';
   if (category === 'massage-chair') return 'ruang rehat keluarga dan hadiah untuk ibu bapa';
   if (category === 'mattress') return 'upgrade tidur dan keselesaan harian';
@@ -87,7 +86,6 @@ function productSpecs(product) {
 
   const byCategory = {
     'air-conditioner': ['Inverter', '5-Star', 'Bilik Tidur'],
-    'washer-dryer': ['12kg Wash', '7kg Dry', 'AI Combo'],
     samsung: ['Smart Home', 'Samsung', 'Plan CUCKOO'],
     'air-purifier': ['Air Purifier', 'Filter', 'Ruang Bilik'],
     mattress: ['Tilam', 'Sokongan Badan', 'Tidur Harian'],
@@ -263,7 +261,6 @@ function renderProductSelector() {
       'outdoor-filter',
       'air-purifier',
       'air-conditioner',
-      'washer-dryer',
       'samsung',
       'mattress',
       'massage-chair',
@@ -271,7 +268,9 @@ function renderProductSelector() {
       'pressure-cooker',
       'treadmill'
     ];
-    const keys = preferred.filter((key) => SITE.products[key]);
+    const initial = el.dataset.initial;
+    const mode = el.dataset.mode || (initial ? 'single' : 'all');
+    const keys = preferred.filter((key) => SITE.products[key] && (mode === 'all' || key === initial));
     const sections = keys.map((key, index) => {
       const category = SITE.products[key];
       const guide = categoryGuide(key);
@@ -284,7 +283,7 @@ function renderProductSelector() {
           <div class="mx-auto max-w-7xl">
             <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <p class="font-bold text-brand">${index === 0 ? 'Produk CUCKOO' : 'Kategori seterusnya'}</p>
+                <p class="font-bold text-brand">${mode === 'single' ? 'Kategori Produk' : (index === 0 ? 'Produk CUCKOO' : 'Kategori seterusnya')}</p>
                 <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">${category.title}</h2>
                 <p class="mt-3 max-w-3xl text-sm leading-7 text-muted">${category.desc}</p>
               </div>
@@ -322,12 +321,12 @@ function renderProductSelector() {
 
     el.innerHTML = `
       <div id="produk-popular">
-        <section class="bg-cream px-4 pb-4 pt-16 sm:px-6 lg:px-8">
+        ${mode === 'all' ? `<section class="bg-cream px-4 pb-4 pt-16 sm:px-6 lg:px-8">
           <div class="mx-auto max-w-7xl text-center">
             <p class="font-bold text-brand">Produk mengikut kategori</p>
-            <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-5xl">Produk CUCKOO Yang Ramai Customer Tanya</h2>
+            <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-5xl">Pilih kategori produk CUCKOO</h2>
             <p class="mx-auto mt-4 max-w-3xl text-muted">
-              Pilih kategori yang anda sudah minat, kemudian semak model popular, anggaran bayaran dan promo semasa dengan ejen.
+              Pilih kategori yang anda minat, kemudian semak model, anggaran bayaran dan promo semasa dengan ejen.
             </p>
             <div class="sticky top-3 z-20 mx-auto mt-7 flex max-w-4xl flex-col items-center justify-between gap-3 rounded-[1.5rem] border border-brand/10 bg-white/95 p-3 text-left shadow-soft backdrop-blur sm:flex-row sm:rounded-full sm:px-5">
               <p class="text-sm font-bold leading-6 text-ink">
@@ -338,7 +337,7 @@ function renderProductSelector() {
               </a>
             </div>
           </div>
-        </section>
+        </section>` : ''}
         ${sections}
       </div>
     `;
@@ -620,6 +619,7 @@ function renderArticleEnhancements() {
 function renderFooter() {
   document.querySelectorAll('[data-footer-products]').forEach((el) => {
     el.innerHTML = Object.entries(SITE.products)
+      .filter(([key]) => key !== 'washer-dryer')
       .map(([key, category]) => `
         <details class="rounded-2xl border border-white/10 bg-white/[.045] p-4 transition-colors open:bg-white/[.065]">
           <summary class="cursor-pointer list-none font-bold text-white/88 outline-none transition-colors hover:text-white focus-visible:rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink [&::-webkit-details-marker]:hidden">${category.label}</summary>

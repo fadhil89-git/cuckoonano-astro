@@ -1,44 +1,700 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
+import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
+import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+
+const whatsappPrimeX3Url =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20promo%20CUCKOO%20Prime%20X3.%20Boleh%20bantu%20saya%3F';
+
+const assetBase = '/assets/images/products/water-purifier/prime-x3';
 
 const meta = {
-  title: 'CUCKOO Prime X3 Outdoor Water Purifier | Penapis Air Luar Rumah',
+  title: 'CUCKOO Prime X3 Outdoor Water Filter | Harga, Spec & Promo Terkini',
   description:
-    'Semak maklumat CUCKOO Prime X3 outdoor water purifier, kegunaan untuk rumah, pemasangan dan promo terkini.',
+    'CUCKOO Prime X3 Outdoor Water Filter menapis air dari paip utama sebelum sampai ke dapur, bilik air, laundry dan seluruh rumah. Semak harga RM12 promo, rental plan 60 bulan dan outright RM2100.',
   canonical: 'https://www.cuckoonano.com/products/water-purifier/prime-x3/',
-  ogImage: 'https://www.cuckoonano.com/assets/images/products/prime-x3.webp',
+  ogImage: 'https://www.cuckoonano.com/assets/images/products/water-purifier/prime-x3/prime-x3.webp',
   ogType: 'website'
+};
+
+const highlights = [
+  {
+    title: 'Whole-House Filter',
+    copy: 'Tapis air dari paip utama sebelum masuk ke dapur, bilik air dan laundry.'
+  },
+  {
+    title: 'PVDF 2.0 Membrane',
+    copy: 'Ultra-filtration membrane untuk menapis dirt, rust, sediment dan bacteria.'
+  },
+  {
+    title: 'Auto + Manual Flush',
+    copy: 'Automated flushing dan Prime-X Flush membantu kurangkan clogging.'
+  },
+  {
+    title: 'SS304 Stainless Steel',
+    copy: 'Vessel stainless steel yang tahan lasak untuk pemasangan outdoor.'
+  },
+  {
+    title: 'Non-Electric Filter',
+    copy: 'Tidak memerlukan elektrik untuk operasi harian.'
+  },
+  {
+    title: 'Service 6 Bulan',
+    copy: 'CUCKOO+ Care Service membantu pastikan produk dijaga berkala.'
+  }
+];
+
+const usageItems = [
+  'Cooking',
+  'Showering',
+  'Laundry',
+  'Washing',
+  'Outdoor usage',
+  'Personal hygiene'
+];
+
+const technologies = [
+  {
+    title: 'PVDF 2.0 Ultra-Filtration Membrane',
+    copy: 'Direka untuk menapis dirt, rust, sediment dan bacteria daripada sumber air rumah dengan pore size 0.05 micron.'
+  },
+  {
+    title: 'Royal Out-to-In Filtration System',
+    copy: 'Air bergerak dari luar ke dalam filter. Kotoran ditahan pada lapisan luar supaya proses pembersihan dan flushing lebih efektif.'
+  },
+  {
+    title: 'Prime-X Flush + Automated Flushing',
+    copy: 'Manual flush membantu kurangkan clogging, manakala automated flushing membantu sistem kekal bersih secara berkala.'
+  }
+];
+
+const supportingFeatures = [
+  'SS304 Stainless Steel Vessel',
+  'Non-Electric Outdoor Filter',
+  'Compact Form',
+  'Service Every 6 Months'
+];
+
+const serviceItems = [
+  {
+    title: 'Natural Care Service',
+    copy: 'Servis berkala setiap 6 bulan untuk bantu jaga prestasi filter.'
+  },
+  {
+    title: '1-to-1 Customised Service',
+    copy: 'Service specialist akan semak keadaan produk mengikut pemasangan rumah pelanggan.'
+  },
+  {
+    title: 'NCS 6-Point Check',
+    copy: 'Semakan water source, product cleanliness, auto timer, leakage test, product surface dan performance.'
+  }
+];
+
+const galleryItems = [
+  ...Array.from({ length: 10 }, (_, index) => {
+    const number = index + 1;
+    return {
+      image: `${assetBase}/prime-x3-${number}.webp`,
+      title: `CUCKOO Prime X3 Gallery ${number}`,
+      copy: 'Rujukan gambar Prime X3 untuk lihat rupa produk, pemasangan dan kegunaan outdoor filter.',
+      alt: `Gambar CUCKOO Prime X3 outdoor water filter ${number}`
+    };
+  })
+];
+
+const faqItems = [
+  {
+    q: 'Apa itu CUCKOO Prime X3?',
+    a: 'CUCKOO Prime X3 ialah outdoor water filter atau whole-house filter yang dipasang pada paip utama untuk menapis air sebelum sampai ke paip rumah.'
+  },
+  {
+    q: 'Apa beza outdoor filter dan indoor water purifier?',
+    a: 'Outdoor filter menapis air untuk kegunaan seluruh rumah seperti mandi, membasuh dan laundry. Indoor water purifier pula lebih fokus untuk air minuman.'
+  },
+  {
+    q: 'Berapa harga rental Prime X3?',
+    a: 'Promo semasa ialah RM12/bulan untuk 6 bulan pertama. Selepas itu, bulan 7 hingga 60 ialah RM88/bulan. Harga tertakluk kepada promo semasa.'
+  },
+  {
+    q: 'Berapa harga outright Prime X3?',
+    a: 'Harga outright promo ialah RM2100 berbanding harga normal RM2600, tertakluk kepada terma dan tempoh promosi semasa.'
+  },
+  {
+    q: 'Berapa kerap servis Prime X3?',
+    a: 'Servis CUCKOO+ Care Service dibuat setiap 6 bulan mengikut jadual servis.'
+  },
+  {
+    q: 'Boleh pasang untuk air telaga atau underground water?',
+    a: 'Prime X3 hanya sesuai untuk rumah dengan sumber air kerajaan. Untuk sumber lain, perlu semakan lanjut dahulu.'
+  },
+  {
+    q: 'Boleh pasang di apartment atau flat?',
+    a: 'Boleh dipertimbangkan, tetapi perlu semakan lokasi, drain outlet dan kebenaran management sebelum pemasangan.'
+  },
+  {
+    q: 'Adakah tekanan air akan berkurang?',
+    a: 'Tekanan air boleh berkurang sedikit semasa proses filtrasi. Sebab itu semakan tekanan air dan lokasi paip utama penting sebelum pemasangan.'
+  },
+  {
+    q: 'Ada kos tambahan installation?',
+    a: 'Kos tambahan bergantung pada lokasi paip, jarak piping, tekanan air dan aksesori tambahan. Semak dengan ejen sebelum confirm order.'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO Prime X3 Outdoor Water Filter',
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  description:
+    'Outdoor whole-house water filter dengan PVDF 2.0 Ultra-Filtration Membrane, Royal Out-to-In Filtration System, Prime-X Flush, Automated Flushing dan SS304 Stainless Steel Vessel.',
+  offers: [
+    {
+      '@type': 'Offer',
+      priceCurrency: 'MYR',
+      price: '12',
+      description: 'Promo RM12/bulan untuk 6 bulan pertama. Bulan 7 hingga 60 ialah RM88/bulan tertakluk kepada promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      priceCurrency: 'MYR',
+      price: '2100',
+      description: 'Outright promo RM2100 tertakluk kepada promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
 };
 ---
 
 <BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8">
-    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
-      <div>
-        <p class="font-bold text-brand">Penapis Air Luar Rumah</p>
-        <h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">CUCKOO Prime X3</h1>
-        <p class="mt-5 text-lg leading-8 text-muted">
-          Page produk awal untuk Prime X3. Kandungan penuh, harga, spesifikasi dan gambar produk
-          boleh dikemaskini kemudian.
-        </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">
-            WhatsApp Ejen
-          </a>
-          <a href="/products/water-purifier/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">
-            Produk Penapis Air
-          </a>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .glass { background: rgba(255,255,255,.72); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.75); }
+    .gold-line { background: linear-gradient(90deg, transparent, rgba(216,166,74,.8), transparent); }
+    .water-blob { background: radial-gradient(circle at 42% 34%, rgba(14,102,178,.2), transparent 36%), radial-gradient(circle at 68% 58%, rgba(216,166,74,.16), transparent 42%), linear-gradient(145deg, #f0f8ff, #ffffff); }
+    .steel-panel { background: linear-gradient(135deg,#061A35 0%,#0B4D82 58%,#0E66B2 100%); }
+    .video-frame iframe { width: 100%; height: 100%; border: 0; }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+    <section id="hero" class="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <div class="absolute left-1/2 top-0 -z-10 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-blue-100 blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-start lg:gap-10">
+        <div class="order-1 lg:col-start-1 lg:row-start-1">
+          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Outdoor Water Filter</span>
+            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Service Setiap 6 Bulan</span>
+          </div>
+
+          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Q2 2026</span>
+            <span class="text-sm font-black sm:text-base">RM12/bulan untuk 6 bulan pertama</span>
+          </div>
+
+          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
+            CUCKOO Prime X3 - Air Bersih Untuk Seluruh Rumah
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
+            Tapis air dari paip utama sebelum sampai ke dapur, bilik air, mesin basuh dan kawasan luar rumah. Sesuai untuk keluarga yang mahu air harian lebih bersih dari sumber utama.
+          </p>
+        </div>
+
+        <div class="order-2 rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="water-blob relative overflow-hidden rounded-[1.7rem] p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">The Pillar of Strength</p>
+                <p class="mt-1 text-lg font-black text-brand">Prime X3 Outdoor Filter</p>
+              </div>
+              <span class="rounded-full bg-brand px-4 py-2 text-xs font-black text-white">Non-Electric</span>
+            </div>
+
+            <div class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/90 to-blue-50/70 p-5 sm:min-h-[390px] lg:min-h-[470px]">
+              <div class="absolute bottom-12 h-16 w-[72%] rounded-full bg-blue-300/25 blur-2xl"></div>
+              <img
+                src={`${assetBase}/prime-x3.webp`}
+                alt="CUCKOO Prime X3 Outdoor Water Filter"
+                class="relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[455px]"
+              />
+            </div>
+
+            <div class="mt-5 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-black text-blue-700">2000L/H</span>
+              <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">SS304 Stainless Steel</span>
+              <span class="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-black text-red-700">PVDF 2.0</span>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Out-to-In</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Prime-X Flush</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">Auto Flush</p>
+            </div>
+            <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
+              <p class="text-xs font-black text-brand">4.3kg</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappPrimeX3Url}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
+            >
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Promo Prime X3
+            </a>
+
+            <a
+              href="#harga"
+              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
+            >
+              Lihat Pelan Harga
+            </a>
+          </div>
+
+          <div class="mt-7 rounded-[1.75rem] border border-brand/10 bg-white/80 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+            <div class="grid gap-3 sm:grid-cols-[1fr_1fr] sm:items-stretch">
+              <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+                <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Rental Promo</p>
+                <p class="mt-2 text-4xl font-black leading-none">
+                  RM12<span class="text-sm font-black">/bulan</span>
+                </p>
+                <p class="mt-1 text-xs font-bold text-white/75">6 bulan pertama</p>
+              </div>
+
+              <a
+                href="#harga"
+                class="rounded-[1.35rem] border border-brand/10 bg-brand-cream px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25"
+              >
+                <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">
+                  Selepas Promo
+                </p>
+                <p class="mt-2 text-xl font-black text-brand">
+                  Bulan 7-60: RM88/bulan
+                </p>
+                <p class="mt-2 text-sm font-bold text-brand-muted">
+                  Rental plan 60 bulan
+                </p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="rounded-[2rem] bg-white p-6 shadow-soft">
-        <h2 class="text-2xl font-black">Untuk dikemaskini</h2>
-        <p class="mt-3 text-muted">
-          Masukkan detail Prime X3, filter, plan bulanan, warranty, servis dan FAQ di sini.
-        </p>
+    </section>
+
+    <section class="px-4 py-10 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {highlights.map((item) => (
+          <article class="rounded-3xl bg-white p-6 shadow-soft">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-black text-white">+</div>
+            <h3 class="font-black">{item.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+          </article>
+        ))}
       </div>
+    </section>
+
+    <section id="masalah-air" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-8 rounded-[2rem] bg-white p-6 shadow-premium lg:grid-cols-[.9fr_1.1fr] lg:p-10">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Kenapa Perlu Outdoor Filter?</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Air nampak jernih, tapi paip lama boleh bawa karat, pasir dan mendapan.</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Prime X3 dipasang di point-of-entry supaya air ditapis lebih awal sebelum digunakan untuk mandi, memasak, membasuh pakaian dan membersihkan rumah.
+          </p>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Kurangkan air keruh dan mendapan</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Bantu jaga paip dan appliances</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Air lebih bersih untuk bilik air</div>
+          <div class="rounded-2xl bg-brand-cream p-5 font-black">Lebih yakin untuk kegunaan harian</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kegunaan" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Whole-House Usage</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Satu filter untuk air yang digunakan seluruh rumah.</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Outdoor filter bukan hanya untuk air minum. Ia bantu tapis air sebelum sampai ke pelbagai titik penggunaan dalam rumah.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {usageItems.map((item, index) => (
+            <article class="rounded-3xl bg-white p-6 shadow-soft">
+              <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Usage 0{index + 1}</p>
+              <h3 class="mt-2 text-xl font-black">{item}</h3>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="teknologi" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Prime X3 Technology</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Cleans 3 Ways Untuk Air Rumah Yang Lebih Bersih</h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            Feature section ini sengaja dibuat lebih premium: tiga teknologi utama dahulu, kemudian supporting features dalam baris ringkas.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
+          <div class="steel-panel relative overflow-hidden rounded-[2rem] p-6 shadow-premium sm:p-8">
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">3 Clean Ways</p>
+            <h3 class="mt-3 text-4xl font-black leading-tight text-white sm:text-5xl">PVDF. Flush. Auto Clean.</h3>
+            <p class="mt-4 max-w-md text-sm leading-7 text-white/70">
+              Reka bentuk filtration dan flushing membantu menapis serta membuang dirt particle daripada sistem.
+            </p>
+            <img
+              src={`${assetBase}/prime-x3-technology.webp`}
+              alt="Teknologi CUCKOO Prime X3"
+              loading="lazy"
+              class="mt-8 h-[330px] w-full object-contain drop-shadow-2xl"
+            />
+          </div>
+
+          <div class="space-y-4">
+            {technologies.map((item) => (
+              <article class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-brand/10">
+                <h3 class="text-2xl font-black text-brand-ink">{item.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-brand-muted">{item.copy}</p>
+              </article>
+            ))}
+
+            <div class="grid gap-3 sm:grid-cols-2">
+              {supportingFeatures.map((item) => (
+                <div class="rounded-2xl bg-brand-cream p-5 text-sm font-black text-brand">{item}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servis" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-6 shadow-premium lg:p-10">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">CUCKOO+ Care Service</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Servis berkala yang buat outdoor filter lebih meyakinkan.</h2>
+            <p class="mt-4 leading-8 text-brand-muted">
+              Untuk outdoor filter, servis ialah selling point utama. Pelanggan bukan sekadar beli produk, tetapi dapat penjagaan berkala daripada CUCKOO+ Service Team.
+            </p>
+          </div>
+
+          <div class="grid gap-4">
+            {serviceItems.map((item) => (
+              <article class="rounded-3xl border border-brand/10 bg-brand-cream p-6">
+                <h3 class="font-black">{item.title}</h3>
+                <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Video Produk</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Video HQ sebagai main, video menegak sebagai slider.</h2>
+          <p class="mt-4 text-base leading-8 text-brand-muted">
+            Susunan ini nampak kemas di desktop dan mobile: satu video horizontal utama, kemudian video Shorts boleh swipe.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
+          <div class="video-frame aspect-video overflow-hidden rounded-[2rem] bg-brand shadow-premium">
+            <iframe
+              loading="lazy"
+              src="https://www.youtube.com/embed/Sv7qAWjG49I"
+              title="CUCKOO Prime X3 HQ video"
+              allowfullscreen></iframe>
+          </div>
+
+          <div>
+            <p class="mb-4 text-sm font-bold leading-7 text-brand-muted">
+              Real usage, air kotor, test filter dan servis filter. Semua embed lazy-load supaya page tidak terlalu berat.
+            </p>
+            <div class="flex gap-4 overflow-x-auto pb-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {[
+                ['hYvSz7C5FZc', 'Air kotor Prime X3'],
+                ['vxJ53Jtzmvw', 'Test filter Prime X3'],
+                ['Y9f8huOmEH8', 'Servis filter Prime X3'],
+                ['KqRsPX5j8Xk', 'Servis filter Prime X3 short'],
+                ['o2oj02VRtus', 'Servis filter Prime X3 short'],
+                ['Jkgdv8tq-qY', 'Servis filter Prime X3 short'],
+                ['OaXEUizPZmM', 'Servis filter Prime X3 short']
+              ].map(([id, title]) => (
+                <div class="video-frame aspect-[9/16] w-[170px] shrink-0 overflow-hidden rounded-[1.5rem] bg-brand shadow-soft">
+                  <iframe loading="lazy" src={`https://www.youtube.com/embed/${id}`} title={title} allowfullscreen></iframe>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ProductGallerySlider
+      id="gambar-produk"
+      title="Lihat CUCKOO Prime X3 Dengan Lebih Dekat"
+      description="Swipe untuk lihat rupa produk, contoh pemasangan dan kegunaan Prime X3 sebagai outdoor water filter. Klik gambar untuk paparan penuh."
+      items={galleryItems}
+    />
+
+    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Specifications</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi CUCKOO Prime X3</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
+            Spesifikasi utama untuk bantu pelanggan faham kapasiti, bahan dan syarat asas pemasangan.
+          </p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div class="self-start overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,.14),transparent_32%),linear-gradient(135deg,#061A35_0%,#0B4D82_55%,#0E66B2_100%)] p-6 shadow-premium sm:p-8">
+            <img
+              src={`${assetBase}/prime-x3-specification.webp`}
+              alt="Dimensi CUCKOO Prime X3"
+              class="h-auto w-full object-contain"
+            />
+            <p class="mt-4 text-center text-sm text-white/70">Dimensi dan spesifikasi Prime X3</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">2000L/H</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Filtration Capacity</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">4.3kg</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Weight</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">590mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Height</p>
+              </div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft">
+                <p class="text-3xl font-black text-brand">135mm</p>
+                <p class="mt-1 text-sm font-bold text-brand-muted">Width</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium">
+              {[
+                ['Model', 'CUCKOO Prime X3'],
+                ['Filtration Type', 'Hollow Fibre Ultra Filtration'],
+                ['Membrane Material', 'PVDF 2.0'],
+                ['Housing Material', 'Stainless Steel SS304'],
+                ['Operating Pressure', '0.1 - 0.5 Mpa'],
+                ['Operating Temperature', '4 - 38°C'],
+                ['Inlet / Outlet', 'Male 3/4 inch threaded'],
+                ['Power', 'Non-electric']
+              ].map(([label, value]) => (
+                <div class="grid grid-cols-2 border-b border-brand/10 last:border-b-0">
+                  <div class="p-5 font-black text-brand-ink">{label}</div>
+                  <div class="p-5 text-brand-muted">{value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Pilih Plan Prime X3 Yang Sesuai</h2>
+          <p class="mt-5 leading-8 text-brand-muted">
+            Pricing dibuat jelas supaya pelanggan faham beza rental promo dan outright purchase.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-2">
+          <article class="relative rounded-[2rem] border-2 border-brand bg-white p-7 shadow-glow">
+            <div class="absolute -top-4 left-7 rounded-full bg-brand px-5 py-2 text-xs font-black uppercase tracking-[.14em] text-white shadow-soft">
+              Promo Rental
+            </div>
+
+            <p class="mt-3 text-sm font-black uppercase tracking-[.16em] text-brand-gold">Rental Plan 60 Bulan</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">RM12 Untuk 6 Bulan Pertama</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">
+              Sesuai untuk pelanggan yang mahu bayaran permulaan rendah dan servis CUCKOO sepanjang tempoh plan.
+            </p>
+
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <p class="text-5xl font-black text-brand">
+                RM12<span class="text-base font-black text-brand-muted">/bulan</span>
+              </p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Bulan 1-6</p>
+              <div class="my-4 h-px bg-brand/10"></div>
+              <p class="text-4xl font-black text-brand">
+                RM88<span class="text-base font-black text-brand-muted">/bulan</span>
+              </p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Bulan 7-60</p>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li>✓ Rental plan 60 bulan</li>
+              <li>✓ Service setiap 6 bulan</li>
+              <li>✓ Filter change selepas 3 tahun</li>
+              <li>✓ 5 years free CCS service mengikut promo</li>
+            </ul>
+
+            <a href={whatsappPrimeX3Url}
+              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Rental Prime X3
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-brand/10 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Bayar sekali</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">Outright Promo</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">
+              Sesuai untuk pelanggan yang mahu beli terus dan tidak mahu komitmen bulanan.
+            </p>
+
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Promo Price</p>
+              <p class="mt-2 text-5xl font-black text-brand">RM2100</p>
+              <p class="mt-2 text-sm font-bold text-brand-muted">
+                Harga normal <span class="line-through">RM2600</span>
+              </p>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li>✓ Bayar sekali sahaja</li>
+              <li>✓ Service setiap 6 bulan</li>
+              <li>✓ Filter change setiap tahun</li>
+              <li>✓ Free CCS: 2 + 1 tahun mengikut promo</li>
+            </ul>
+
+            <a href={whatsappPrimeX3Url}
+              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Outright Prime X3
+            </a>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-white p-5 text-center text-sm font-bold leading-7 text-brand-muted shadow-soft">
+          Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak bayaran permulaan, kelayakan rumah, tekanan air dan promo terkini.
+        </div>
+      </div>
+    </section>
+
+    <section id="pemasangan" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-6 shadow-premium lg:p-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Installation Check</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Pemasangan tertakluk kepada semakan lokasi rumah.</h2>
+          <p class="mt-4 leading-8 text-brand-muted">
+            Untuk elak overclaim, section ini bantu customer faham bahawa pemasangan outdoor filter perlu semakan sumber air, tekanan air dan lokasi paip utama.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <article class="rounded-3xl bg-brand-cream p-6">
+            <h3 class="font-black">Sumber Air Kerajaan</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Prime X3 sesuai untuk rumah yang menggunakan direct main daripada sumber air kerajaan.</p>
+          </article>
+          <article class="rounded-3xl bg-brand-cream p-6">
+            <h3 class="font-black">Semak Tekanan Air</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Tekanan air dan lokasi pemasangan akan disemak sebelum pemasangan dibuat.</p>
+          </article>
+          <article class="rounded-3xl bg-brand-cream p-6">
+            <h3 class="font-black">Apartment Perlu Semakan</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">Untuk apartment atau flat, lokasi dan kebenaran management perlu disahkan dahulu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <PromoBannerSection />
+
+    <CustomerProofSection />
+
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">
+            Soalan Lazim CUCKOO Prime X3
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
+            Jawapan ringkas sebelum anda pilih plan atau semak kesesuaian pemasangan.
+          </p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
+                {item.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ProductCategorySection />
+    <div id="hubungi-ejen">
+      <AgentSection />
     </div>
-  </section>
-  <div data-promo></div>
-  <div data-product-selector data-initial="water-purifier"></div>
-  <div data-agent-block></div>
+  </div>
+
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(schema)}
+  </script>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify(faqSchema)}
+  </script>
 </BaseLayout>

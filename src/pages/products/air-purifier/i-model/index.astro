@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const meta = {
+  title: 'I Model CUCKOO | Penapis Udara',
+  description:
+    'Semak maklumat I Model CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.',
+  canonical: 'https://www.cuckoonano.com/products/air-purifier/i-model/',
+  ogImage: 'https://www.cuckoonano.com/assets/images/products/i-model.webp',
+  ogType: 'website'
+};
+---
+
+<BaseLayout {...meta}>
+  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="font-bold text-brand">Penapis Udara</p>
+        <h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">I Model CUCKOO</h1>
+        <p class="mt-5 text-lg leading-8 text-muted">
+          Semak maklumat I Model, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a>
+          <a href="/products/air-purifier/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a>
+        </div>
+      </div>
+      <div class="rounded-[2rem] bg-white p-5 shadow-soft">
+        <div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-brand-soft">
+          <img src="/assets/images/Gambar%20Produk%20png/i-model.webp" alt="I Model" loading="lazy" class="h-full w-full object-contain p-6" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl space-y-10">
+      <article class="content">
+        <h2>Kenapa pilih I Model?</h2>
+        <p>Bahagian ini ialah rangka awal untuk page produk I Model. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p>
+        <h2>Sesuai untuk siapa?</h2>
+        <ul>
+          <li>Customer yang mahu tahu harga sebelum order.</li>
+          <li>Customer yang mahu bandingkan model dalam kategori Penapis Udara.</li>
+          <li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <div data-promo></div>
+  <div data-product-selector data-initial="air-purifier"></div>
+  <div data-agent-block></div>
+</BaseLayout>

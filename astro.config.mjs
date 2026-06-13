@@ -47,6 +47,18 @@ const productRedirects = {
   '/cuckoo-inductrio/': '/products/induction/inductrio/',
   '/cuckoo-c-plus-humidifier/': '/products/air-purifier/c-plus-humidifier/',
   '/cuckoo-d-model/': '/products/air-purifier/d-model/',
+  '/k-model/': '/products/air-purifier/k-model/',
+  '/cuckoo-k-model/': '/products/air-purifier/k-model/',
+  '/i-model/': '/products/air-purifier/i-model/',
+  '/cuckoo-i-model/': '/products/air-purifier/i-model/',
+  '/r-model/': '/products/air-purifier/r-model/',
+  '/cuckoo-r-model/': '/products/air-purifier/r-model/',
+  '/u-model/': '/products/air-purifier/u-model/',
+  '/cuckoo-u-model/': '/products/air-purifier/u-model/',
+  '/m10-multi-cooker-rice-cooker/': '/products/pressure-cooker/m10/',
+  '/cuckoo-pressure-multi-cooker-ch10-induction-heating/': '/products/pressure-cooker/ch10/',
+  '/cuckoo-b-fit/': '/products/treadmill/b-fit/',
+  '/products/treadmill/treadmill/': '/products/treadmill/b-fit/',
   '/a-luxe/': '/products/mattress/a-luxe/'
 };
 

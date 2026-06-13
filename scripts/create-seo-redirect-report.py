@@ -197,8 +197,9 @@ def parse_redirects() -> list[list[object]]:
     rows = [
         [
             "Type",
-            "Old URL / Route",
+            "Old URL",
             "Final URL",
+            "Current Astro Route",
             "HTTP Status",
             "Source",
             "File Path",
@@ -213,6 +214,7 @@ def parse_redirects() -> list[list[object]]:
             "Redirect",
             item["source"],
             item["target"],
+            "",
             item["status"],
             "public/_redirects",
             "",
@@ -227,12 +229,13 @@ def parse_redirects() -> list[list[object]]:
             continue
         rows.append([
             "Kekal",
+            "",
             route,
             route,
             "200",
             "Astro route",
             file.relative_to(ROOT).as_posix(),
-            "File/page kekal, no redirect source",
+            "Current page/file, bukan old URL",
         ])
     return rows
 
@@ -329,7 +332,7 @@ def main() -> None:
     redirect_rows = parse_redirects()
     seo = seo_rows()
     sheets = [
-        ("Redirect & Kekal", redirect_rows, [16, 54, 56, 12, 20, 55, 36]),
+        ("Redirect & Kekal", redirect_rows, [16, 54, 56, 56, 12, 20, 55, 36]),
         ("On-page SEO", seo, [42, 12, 58, 55, 80, 68, 70, 14, 55, 16, 16, 38]),
     ]
     xlsx_package(sheets, OUTPUT_FILE)

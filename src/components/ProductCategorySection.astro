@@ -1,13 +1,13 @@
 ---
 const {
-  initial = 'water-purifier'
+  initial = 'water-purifier',
+  mode = 'single'
 } = Astro.props;
 
 const categories = [
   ['water-purifier', 'Penapis Air'],
   ['air-purifier', 'Penapis Udara'],
   ['air-conditioner', 'Aircond'],
-  ['washer-dryer', 'Washer Dryer'],
   ['samsung', 'Samsung'],
   ['massage-chair', 'Kerusi Urut'],
   ['mattress', 'Tilam'],
@@ -133,13 +133,6 @@ const products = {
       { name: 'Vita 5TAR', url: '/products/air-conditioner/vita-5tar/', image: '/assets/images/Gambar%20Produk%20png/aircond%20cuckoo%20vita%205tar%201%20png%20(1)-Photoroom.webp', desc: 'Aircond inverter 5-star untuk bilik tidur, bilik anak atau ruang kerja rumah.', price: 'Dari RM103/bln', bullets: ['Inverter 5-star', 'Vitamin C Filter', 'Silver Ion Filter', 'UVC LED sterilisation*'] }
     ]
   },
-  'washer-dryer': {
-    title: 'Washer Dryer CUCKOO x Samsung',
-    desc: 'Samsung Bespoke AI Laundry Combo melalui CUCKOO untuk rutin basuh dan kering lebih mudah.',
-    items: [
-      { name: 'Bespoke AI Laundry Combo 12/7kg', url: '/products/washer-dryer/samsung-bespoke-ai-laundry-combo-12-7kg/', image: '/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-03.webp', desc: 'Washer dryer combo untuk basuh dan kering dalam satu mesin, sesuai rumah moden.', price: 'RM115/bln x60', bullets: ['12kg washer / 7kg dryer', 'AI Wash & AI Ecobubble', 'Auto Dispense', '2-in-1 space saver'] }
-    ]
-  },
   samsung: {
     title: 'CUCKOO X Samsung | Smart Healthy Home',
     desc: 'Produk Samsung melalui CUCKOO untuk rumah pintar dan gaya hidup moden.',
@@ -153,8 +146,8 @@ const products = {
     title: 'Kerusi Urut CUCKOO',
     desc: 'Kerusi urut CUCKOO untuk rehat premium di rumah.',
     items: [
-      { name: 'Bespoke 2', url: '/products/massage-chair/bespoke-2/', image: '/assets/images/Gambar%20Produk%20png/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp', desc: 'Kerusi urut premium bersama OGAWA untuk rutin relaksasi harian di rumah.', price: 'RM148/bln', bullets: ['Smart SL Track massage', '34 air massage bags', 'Thermotherapy ±45°C*', 'Auto massage programmes'] },
-      { name: 'Bespoke Massage Lounger', url: '/products/massage-chair/bespoke-massage-lounger/', image: '/assets/images/Gambar%20Produk%20png/bespoke-massage-lounger.webp', desc: 'Massage lounger yang lebih santai untuk rehat harian dan ruang keluarga.', price: 'Semak plan', bullets: ['Lounger design', 'Auto massage programmes', 'Rekaan lebih kompak', 'Sesuai ruang keluarga'] }
+      { name: 'Bespoke 2', url: '/products/massage-chair/bespoke-2/', image: '/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp', desc: 'Kerusi urut premium bersama OGAWA untuk rutin relaksasi harian di rumah.', price: 'RM148/bln', bullets: ['Smart SL Track massage', '34 air massage bags', 'Thermotherapy ±45°C*', 'Auto massage programmes'] },
+      { name: 'Bespoke Massage Lounger', url: '/products/massage-chair/bespoke-massage-lounger/', image: '/assets/images/products/massage-chair/lounger/bespoke-massage-lounger.webp', desc: 'Massage lounger yang lebih santai untuk rehat harian dan ruang keluarga.', price: 'Semak plan', bullets: ['Lounger design', 'Auto massage programmes', 'Rekaan lebih kompak', 'Sesuai ruang keluarga'] }
     ]
   },
   mattress: {
@@ -174,77 +167,153 @@ const products = {
     ]
   },
   'pressure-cooker': {
-    title: 'Pressure Cooker CUCKOO P10',
-    desc: 'CUCKOO P10 untuk masakan harian, lauk, nasi dan menu keluarga.',
+    title: 'Pressure Cooker CUCKOO',
+    desc: 'Pilihan pressure cooker dan multi-cooker CUCKOO untuk masakan harian, lauk, nasi dan menu keluarga.',
     items: [
-      { name: 'P10', url: '/products/pressure-cooker/p10/', image: '/assets/images/Gambar%20Produk%20png/p10-1.webp', desc: 'Pressure cooker P10 untuk nasi, lauk dan masakan harian dengan lebih mudah.', price: 'Semak promo', bullets: ['Pressure multi cooker', 'X-Wall coating*', 'Auto steam cleaning*', 'Menu masakan harian'] }
+      { name: 'P10', url: '/products/pressure-cooker/p10/', image: '/assets/images/Gambar%20Produk%20png/p10-1.webp', desc: 'Pressure cooker P10 untuk nasi, lauk dan masakan harian dengan lebih mudah.', price: 'Semak promo', bullets: ['Pressure multi cooker', 'X-Wall coating*', 'Auto steam cleaning*', 'Menu masakan harian'] },
+      { name: 'CH10', url: '/products/pressure-cooker/ch10/', image: '/assets/images/Gambar%20Produk%20png/p10-4.webp', desc: 'Pressure multi-cooker dengan induction heating untuk masakan yang lebih konsisten.', price: 'Semak promo', bullets: ['Induction heating', 'Pressure multi-cooker', 'Menu masakan harian', 'Sesuai keluarga'] },
+      { name: 'M10', url: '/products/pressure-cooker/m10/', image: '/assets/images/products/pressure-cooker/m10-multicooker.png', desc: 'Multi-cooker CUCKOO untuk nasi, lauk dan menu ringkas harian.', price: 'Semak promo', bullets: ['Multi-cooker', 'Masakan harian', 'Mudah digunakan', 'Sesuai rumah'] }
     ]
   },
   treadmill: {
     title: 'Treadmill CUCKOO',
     desc: 'Treadmill CUCKOO untuk rutin kecergasan di rumah.',
     items: [
-      { name: 'Treadmill', url: '/products/treadmill/treadmill/', image: '/assets/images/Gambar%20Produk%20png/b-fit.webp', desc: 'Treadmill untuk rutin berjalan dan light jogging dari rumah.', price: 'Semak plan', bullets: ['Walking & light jog', 'Rekaan sesuai rumah', 'Mudah digunakan', 'Sesuai rutin harian'] }
+      { name: 'B-Fit Treadmill', url: '/products/treadmill/b-fit/', image: '/assets/images/Gambar%20Produk%20png/b-fit.webp', desc: 'Treadmill untuk rutin berjalan dan light jogging dari rumah.', price: 'Semak plan', bullets: ['Walking & light jog', 'Rekaan sesuai rumah', 'Mudah digunakan', 'Sesuai rutin harian'] }
     ]
   }
 };
 
 const current = products[initial] || products['water-purifier'];
+const rawVisibleProducts = mode === 'all'
+  ? Object.entries(products)
+  : [[initial, current]];
+const categoryLabels = Object.fromEntries(categories);
+const categoryGuides = {
+  'water-purifier': {
+    eyebrow: 'Apa Perlu Semak',
+    title: 'Sebelum pilih Penapis Air, semak perkara ini dulu.',
+    copy: 'Saiz keluarga, kapasiti tangki, fungsi panas/sejuk dan ruang dapur.',
+    items: ['Tangki & suhu air', 'Digital atau mekanikal', 'Anggaran bayaran bulanan']
+  }
+};
+const fallbackGuide = (productCategory) => ({
+  eyebrow: 'Apa Perlu Semak',
+  title: `Sebelum pilih ${productCategory.title.replace(' CUCKOO', '')}, semak perkara ini dulu.`,
+  copy: 'Semak fungsi utama, ruang rumah, bajet bulanan dan keperluan penggunaan harian.',
+  items: ['Fungsi utama', 'Ruang penggunaan', 'Anggaran bayaran bulanan']
+});
+const visibleProducts = rawVisibleProducts.map(([key, productCategory]) => ({
+  key,
+  productCategory,
+  guide: categoryGuides[key] || fallbackGuide(productCategory)
+}));
+const specLabel = (spec) => String(spec || '')
+  .replace(/\bCold\b/gi, 'Sejuk')
+  .replace(/\bHot\b/gi, 'Panas')
+  .replace(/\bRoom\b/gi, 'Room')
+  .replace(/\s+/g, ' ')
+  .trim();
+const productSpecs = (product) => {
+  const firstBullet = product.bullets?.[0] || '';
+  if (!firstBullet.includes(',')) return [];
+  return firstBullet.split(',').map(specLabel).filter(Boolean).slice(0, 3);
+};
+const productHighlights = (product) => {
+  const hasSpecs = productSpecs(product).length > 0;
+  return (product.bullets || []).slice(hasSpecs ? 1 : 0).slice(0, 3);
+};
+const productWhatsapp = (product) => {
+  const text = `Salam Fadhil, saya nak semak promo untuk ${product.name}. Boleh bantu semak harga bulanan, syarat dan produk yang layak?`;
+  return `https://api.whatsapp.com/send?phone=60139916967&text=${encodeURIComponent(text)}`;
+};
 const activeClasses = 'bg-brand text-white shadow-glow';
 const inactiveClasses = 'bg-white/90 text-brand shadow-soft ring-1 ring-brand/10 hover:bg-brand-soft';
 ---
 
 <section id="kategori-produk" class="bg-cream px-4 py-16 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-7xl">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="font-bold text-brand">Produk CUCKOO</p>
-      <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-        Pilih kategori yang anda berminat
-      </h2>
-      <p class="mt-4 text-muted">
-        Pilih kategori produk untuk semak model, fungsi dan pilihan yang sesuai.
-      </p>
-    </div>
+    {mode === 'all' && (
+      <>
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="font-bold text-brand">Produk CUCKOO</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+            Pilih kategori yang anda berminat
+          </h2>
+          <p class="mt-4 text-muted">
+            Pilih kategori produk untuk semak model, fungsi dan pilihan yang sesuai.
+          </p>
+        </div>
 
-    <div class="mt-8 flex flex-wrap justify-center gap-3">
-      {categories.map(([key, label]) => (
-        <button
-          type="button"
-          data-product-tab={key}
-          class:list={[
-            'rounded-full px-5 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
-            key === initial ? activeClasses : inactiveClasses
-          ]}
-        >
-          {label}
-        </button>
-      ))}
-    </div>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          {categories.map(([key, label]) => (
+            <button
+              type="button"
+              data-product-tab={key}
+              class:list={[
+                'rounded-full px-5 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
+                key === initial ? activeClasses : inactiveClasses
+              ]}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </>
+    )}
 
-    {Object.entries(products).map(([key, productCategory]) => (
+    {visibleProducts.map(({ key, productCategory, guide }) => (
     <div
       data-product-panel={key}
       class:list={[
-        'mt-8 rounded-[2rem] bg-cream p-5 shadow-none ring-0 sm:p-6',
+        mode === 'single'
+          ? ''
+          : 'mt-8 rounded-[2rem] bg-cream p-5 shadow-none ring-0 sm:p-6',
         key === initial ? '' : 'hidden'
       ]}
     >
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div class={mode === 'single' ? 'flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between' : 'flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between'}>
         <div>
-          <p class="text-xs font-black uppercase tracking-[.18em] text-brand/70">Kategori produk</p>
-          <h3 class="mt-2 text-2xl font-black sm:text-3xl">{productCategory.title}</h3>
-          <p class="mt-3 max-w-2xl text-sm leading-6 text-muted">{productCategory.desc}</p>
+          <p class={mode === 'single' ? 'font-bold text-brand' : 'text-xs font-black uppercase tracking-[.18em] text-brand/70'}>
+            Kategori Produk
+          </p>
+          <h3 class={mode === 'single' ? 'mt-3 text-3xl font-black tracking-tight sm:text-4xl' : 'mt-2 text-2xl font-black sm:text-3xl'}>
+            {productCategory.title}
+          </h3>
+          <p class={mode === 'single' ? 'mt-3 max-w-3xl text-sm leading-7 text-muted' : 'mt-3 max-w-2xl text-sm leading-6 text-muted'}>
+            {productCategory.desc}
+          </p>
         </div>
-        <a href={`/products/${key}/`} class="inline-flex w-fit rounded-full bg-white px-5 py-3 text-sm font-black text-brand shadow-none transition-all duration-300 hover:-translate-y-1">
-          Lihat kategori
+        <a href={`/products/${key}/`} class={mode === 'single' ? 'inline-flex w-fit rounded-full bg-brand px-6 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl' : 'inline-flex w-fit rounded-full bg-white px-5 py-3 text-sm font-black text-brand shadow-none transition-all duration-300 hover:-translate-y-1'}>
+          {mode === 'single' ? 'Lihat Semua Model' : 'Lihat kategori'}
         </a>
       </div>
 
-      <div class="mt-7 flex snap-x gap-4 overflow-x-auto overflow-y-visible pb-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div class={mode === 'single' ? 'mt-8 grid gap-6 lg:grid-cols-[.58fr_1.42fr] lg:items-start' : 'mt-7'}>
+        {mode === 'single' && (
+          <aside class="rounded-[1.75rem] bg-brand p-6 text-white shadow-glow lg:sticky lg:top-24">
+            <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">{guide.eyebrow}</p>
+            <h4 class="mt-4 text-2xl font-black leading-tight">Sebelum pilih {categoryLabels[key] || productCategory.title}, semak perkara ini dulu.</h4>
+            <p class="mt-4 text-sm font-semibold leading-7 text-white/75">{guide.copy}</p>
+            <div class="mt-5 grid gap-2">
+              {guide.items.map((item) => (
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-black text-white ring-1 ring-white/15">
+                  {item}
+                </div>
+              ))}
+            </div>
+            <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-6 inline-flex w-full justify-center rounded-full bg-white px-5 py-3 text-sm font-black text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-gold">
+              Semak Promo Kategori Ini
+            </a>
+          </aside>
+        )}
+
+        <div class={mode === 'single' ? 'min-w-0 rounded-[2rem] bg-white p-4 ring-1 ring-brand/10 sm:p-5' : ''}>
+          <div class="flex snap-x gap-4 overflow-x-auto overflow-y-visible pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {productCategory.items.map((product) => (
-          <article class="group flex w-[300px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[320px]">
-            <div class="relative flex h-[260px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10">
-              {product.badge && (
+          <article class={mode === 'single' ? 'group flex w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[340px]' : 'group flex w-[300px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[320px]'}>
+            <div class={mode === 'single' ? 'relative flex h-[310px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10' : 'relative flex h-[260px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10'}>
+              {mode !== 'single' && product.badge && (
                 <span class="absolute left-3 top-3 z-10 rounded-full bg-brand px-4 py-1.5 text-[11px] font-black uppercase tracking-[.12em] text-white shadow-soft">
                   {product.badge}
                 </span>
@@ -269,8 +338,18 @@ const inactiveClasses = 'bg-white/90 text-brand shadow-soft ring-1 ring-brand/10
             </div>
 
             <div class="mt-5">
-              <h3 class="text-lg font-black leading-tight">{product.name}</h3>
+              <h3 class={mode === 'single' ? 'text-xl font-black leading-tight' : 'text-lg font-black leading-tight'}>{product.name}</h3>
             </div>
+
+            {mode === 'single' && productSpecs(product).length > 0 && (
+              <div class="mt-3 flex flex-wrap gap-2">
+                {productSpecs(product).map((spec) => (
+                  <span class="rounded-full bg-cream px-3 py-1.5 text-[11px] font-black leading-none text-brand ring-1 ring-brand/10">
+                    {spec}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {product.pricePlans?.map((plan) => (
               <div class="mt-4 rounded-2xl bg-brand-soft/70 p-4 ring-1 ring-brand/10">
@@ -296,24 +375,29 @@ const inactiveClasses = 'bg-white/90 text-brand shadow-soft ring-1 ring-brand/10
               </div>
             )}
 
-            <p class="mt-4 min-h-[3.5rem] text-sm leading-6 text-muted">{product.desc}</p>
-
             <ul class="mt-4 grid gap-2">
-              {product.bullets.slice(0, 4).map((bullet) => (
-                <li class="flex gap-2 text-xs leading-5 text-muted">
-                  <span class="mt-1.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand text-[9px] font-black text-white">✓</span>
+              {productHighlights(product).map((bullet) => (
+                <li class="flex gap-2 text-xs font-bold leading-5 text-muted">
+                  <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand text-[10px] text-white">✓</span>
                   <span>{bullet}</span>
                 </li>
               ))}
             </ul>
 
-            <div class="mt-auto pt-7">
-              <a href={product.url} class="inline-flex w-fit rounded-full bg-brand px-5 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
-                Lihat Produk
+            <p class="mt-4 text-sm leading-6 text-muted">{product.desc}</p>
+
+            <div class="mt-auto grid gap-3 pt-7">
+              <a href={productWhatsapp(product)} class="inline-flex items-center justify-center rounded-full bg-brand px-5 py-3 text-sm font-black text-white transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark hover:shadow-xl">
+                Semak Promo Produk Ini
+              </a>
+              <a href={product.url} class="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-black text-brand ring-1 ring-brand/10 transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">
+                Lihat Detail
               </a>
             </div>
           </article>
         ))}
+          </div>
+        </div>
       </div>
 
       <p class="mt-6 text-xs leading-5 text-muted">

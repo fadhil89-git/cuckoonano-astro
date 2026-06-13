@@ -106,6 +106,66 @@
       "permanent": true
     },
     {
+      "source": "/k-model/",
+      "destination": "/products/air-purifier/k-model/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-k-model/",
+      "destination": "/products/air-purifier/k-model/",
+      "permanent": true
+    },
+    {
+      "source": "/i-model/",
+      "destination": "/products/air-purifier/i-model/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-i-model/",
+      "destination": "/products/air-purifier/i-model/",
+      "permanent": true
+    },
+    {
+      "source": "/r-model/",
+      "destination": "/products/air-purifier/r-model/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-r-model/",
+      "destination": "/products/air-purifier/r-model/",
+      "permanent": true
+    },
+    {
+      "source": "/u-model/",
+      "destination": "/products/air-purifier/u-model/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-u-model/",
+      "destination": "/products/air-purifier/u-model/",
+      "permanent": true
+    },
+    {
+      "source": "/m10-multi-cooker-rice-cooker/",
+      "destination": "/products/pressure-cooker/m10/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-pressure-multi-cooker-ch10-induction-heating/",
+      "destination": "/products/pressure-cooker/ch10/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-b-fit/",
+      "destination": "/products/treadmill/b-fit/",
+      "permanent": true
+    },
+    {
+      "source": "/products/treadmill/treadmill/",
+      "destination": "/products/treadmill/b-fit/",
+      "permanent": true
+    },
+    {
       "source": "/a-luxe/",
       "destination": "/products/mattress/a-luxe/",
       "permanent": true
