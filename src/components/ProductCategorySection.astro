@@ -97,7 +97,7 @@ const products = {
       {
         name: 'Ace',
         url: '/products/water-purifier/ace/',
-        image: '/assets/images/Gambar%20Produk%20png/ace-undersink.webp',
+        image: '/assets/images/products/water-purifier/ace/cuckoo-ace-under-sink-water-purifier-product.png',
         desc: 'Undersink untuk dapur minimal dan ruang counter lebih kemas.',
         badge: 'Undersink',
         price: 'Semak plan',
@@ -106,7 +106,7 @@ const products = {
       {
         name: 'Kiut',
         url: '/products/water-purifier/kiut/',
-        image: '/assets/images/Gambar%20Produk%20png/kiut.webp',
+        image: '/assets/images/products/water-purifier/kiut/cuckoo-kiut-tankless-water-purifier-hero.png',
         desc: 'Model kompak untuk rumah kecil atau ruang dapur terhad.',
         badge: 'Kompak',
         pricePlans: [{ type: 'Plan 5 Tahun', highlight: 'RM67', rows: [['Tahun 1–3', 'RM72/bln'], ['Tahun 4–5', 'RM67/bln']] }],
@@ -309,10 +309,20 @@ const inactiveClasses = 'bg-white/90 text-brand shadow-soft ring-1 ring-brand/10
         )}
 
         <div class={mode === 'single' ? 'min-w-0 rounded-[2rem] bg-white p-4 ring-1 ring-brand/10 sm:p-5' : ''}>
-          <div class="flex snap-x gap-4 overflow-x-auto overflow-y-visible pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="mb-3 flex items-center justify-between gap-3">
+            <span data-product-scroll-count class="rounded-full bg-white px-3 py-2 text-[11px] font-black text-brand ring-1 ring-brand/10">1 / {productCategory.items.length}</span>
+            <div class="flex gap-2">
+              <button type="button" data-product-scroll-prev class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-black text-brand ring-1 ring-brand/10 transition hover:bg-brand-soft" aria-label="Produk sebelumnya">‹</button>
+              <button type="button" data-product-scroll-next class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-lg font-black text-white shadow-soft transition hover:bg-brand-dark" aria-label="Produk seterusnya">›</button>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div data-product-scroll-fade class="pointer-events-none absolute inset-y-0 right-[-1rem] z-10 w-20 bg-gradient-to-l from-white via-white/90 to-transparent sm:right-0"></div>
+            <div data-product-scroll-track class="flex snap-x gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 pr-16 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {productCategory.items.map((product) => (
-          <article class={mode === 'single' ? 'group flex w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[340px]' : 'group flex w-[300px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[320px]'}>
-            <div class={mode === 'single' ? 'relative flex h-[310px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10' : 'relative flex h-[260px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10'}>
+          <article class={mode === 'single' ? 'group flex w-[82vw] max-w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[340px] sm:max-w-none' : 'group flex w-[82vw] max-w-[300px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:bg-white sm:w-[320px] sm:max-w-none'}>
+            <div class={mode === 'single' ? 'relative flex h-[260px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10 sm:h-[310px]' : 'relative flex h-[240px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10 sm:h-[260px]'}>
               {mode !== 'single' && product.badge && (
                 <span class="absolute left-3 top-3 z-10 rounded-full bg-brand px-4 py-1.5 text-[11px] font-black uppercase tracking-[.12em] text-white shadow-soft">
                   {product.badge}
@@ -396,6 +406,7 @@ const inactiveClasses = 'bg-white/90 text-brand shadow-soft ring-1 ring-brand/10
             </div>
           </article>
         ))}
+            </div>
           </div>
         </div>
       </div>
@@ -419,7 +430,62 @@ const inactiveClasses = 'bg-white/90 text-brand shadow-soft ring-1 ring-brand/10
         document.querySelectorAll('[data-product-panel]').forEach((panel) => {
           panel.classList.toggle('hidden', panel.dataset.productPanel !== category);
         });
+
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 0);
       });
     });
+
+    const setupProductScrollControls = (panel) => {
+      const track = panel.querySelector('[data-product-scroll-track]');
+      const prev = panel.querySelector('[data-product-scroll-prev]');
+      const next = panel.querySelector('[data-product-scroll-next]');
+      const count = panel.querySelector('[data-product-scroll-count]');
+      const fade = panel.querySelector('[data-product-scroll-fade]');
+      if (!track || !prev || !next) return;
+      const cards = Array.from(track.children);
+
+      const currentIndex = () => {
+        const left = track.scrollLeft;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        cards.forEach((card, index) => {
+          const distance = Math.abs(card.offsetLeft - track.offsetLeft - left);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+        return closestIndex;
+      };
+
+      const update = () => {
+        const canScroll = track.scrollWidth > track.clientWidth + 8;
+        const atStart = track.scrollLeft <= 4;
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        const index = currentIndex();
+        prev.hidden = !canScroll || atStart;
+        next.hidden = !canScroll || atEnd;
+        if (count) {
+          count.hidden = !canScroll;
+          count.textContent = `${index + 1} / ${cards.length}`;
+        }
+        if (fade) fade.hidden = !canScroll || atEnd;
+      };
+
+      const scrollToIndex = (index) => {
+        const target = cards[Math.max(0, Math.min(cards.length - 1, index))];
+        if (!target) return;
+        track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      };
+
+      prev.addEventListener('click', () => scrollToIndex(currentIndex() - 1));
+      next.addEventListener('click', () => scrollToIndex(currentIndex() + 1));
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+      setTimeout(update, 250);
+    };
+
+    document.querySelectorAll('[data-product-panel]').forEach(setupProductScrollControls);
   </script>
 </section>

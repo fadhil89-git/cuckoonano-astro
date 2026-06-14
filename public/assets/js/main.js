@@ -158,8 +158,8 @@ function card(product) {
   const baseOpacity = product.hoverImage ? 'group-hover:opacity-0' : '';
 
   return `
-    <article class="group flex w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-brand/25 hover:bg-white sm:w-[340px]">
-      <div class="relative flex h-[310px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10">
+    <article class="group flex w-[82vw] max-w-[310px] shrink-0 snap-start flex-col rounded-[1.75rem] border border-brand/10 bg-white p-4 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-brand/25 hover:bg-white sm:w-[340px] sm:max-w-none">
+      <div class="relative flex h-[260px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-white to-cream ring-1 ring-brand/10 sm:h-[310px]">
         <img src="${product.image}" alt="${product.name}" loading="lazy" class="h-full w-full object-contain p-4 transition-opacity duration-300 ${baseOpacity}" />
         ${hover}
       </div>
@@ -276,6 +276,7 @@ function renderProductSelector() {
       const guide = categoryGuide(key);
       const bg = index % 2 === 0 ? 'bg-cream' : 'bg-white';
       const panelBg = index % 2 === 0 ? 'bg-white' : 'bg-cream';
+      const panelFade = panelBg === 'bg-white' ? '#ffffff' : '#FFF8F3';
       const categoryUrl = category.url || `/products/${key}/`;
 
       return `
@@ -305,9 +306,20 @@ function renderProductSelector() {
                 </a>
               </aside>
 
-              <div class="min-w-0 rounded-[2rem] ${panelBg} p-4 shadow-none ring-1 ring-brand/10 sm:p-5">
-                <div class="flex snap-x gap-4 overflow-x-auto overflow-y-visible pb-1 no-scrollbar">
-                  ${category.items.slice(0, 8).map(card).join('')}
+              <div data-product-rail-wrap class="min-w-0 rounded-[2rem] ${panelBg} p-4 shadow-none ring-1 ring-brand/10 sm:p-5">
+                <div class="mb-3 flex items-center justify-between gap-3">
+                  <span data-product-rail-count class="rounded-full bg-white px-3 py-2 text-[11px] font-black text-brand ring-1 ring-brand/10">1 / ${category.items.length}</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" data-product-rail-prev class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-black text-brand ring-1 ring-brand/10 transition hover:bg-brand-soft" aria-label="Produk sebelumnya">‹</button>
+                    <button type="button" data-product-rail-next class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-lg font-black text-white shadow-soft transition hover:bg-brand-dark" aria-label="Produk seterusnya">›</button>
+                  </div>
+                </div>
+
+                <div class="relative">
+                  <div data-product-rail-fade class="pointer-events-none absolute inset-y-0 right-[-1rem] z-10 w-20 sm:right-0" style="background: linear-gradient(to left, ${panelFade} 0%, ${panelFade} 58%, transparent 100%);"></div>
+                  <div data-product-rail class="flex snap-x gap-4 overflow-x-auto overflow-y-visible scroll-smooth pb-1 pr-16 no-scrollbar">
+                    ${category.items.map(card).join('')}
+                  </div>
                 </div>
                 <p class="mt-5 px-1 text-xs leading-5 text-muted">
                   *Harga, promo dan ciri tertentu bergantung kepada model, stok dan kempen semasa. WhatsApp ejen untuk semak pakej terkini.
@@ -341,6 +353,64 @@ function renderProductSelector() {
         ${sections}
       </div>
     `;
+
+    setupProductRails(el);
+  });
+}
+
+function setupProductRails(root = document) {
+  root.querySelectorAll('[data-product-rail]').forEach((track) => {
+    if (track.dataset.railReady === 'true') return;
+    track.dataset.railReady = 'true';
+
+    const panel = track.closest('[data-product-rail-wrap]') || track.parentElement?.parentElement;
+    const prev = panel?.querySelector('[data-product-rail-prev]');
+    const next = panel?.querySelector('[data-product-rail-next]');
+    const count = panel?.querySelector('[data-product-rail-count]');
+    const fade = panel?.querySelector('[data-product-rail-fade]');
+    const cards = Array.from(track.children);
+
+    if (!prev || !next || !count || !cards.length) return;
+
+    const currentIndex = () => {
+      const left = track.scrollLeft;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+      cards.forEach((card, index) => {
+        const distance = Math.abs(card.offsetLeft - track.offsetLeft - left);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+      return closestIndex;
+    };
+
+    const update = () => {
+      const canScroll = track.scrollWidth > track.clientWidth + 8;
+      const atStart = track.scrollLeft <= 4;
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      const index = currentIndex();
+
+      prev.hidden = !canScroll || atStart;
+      next.hidden = !canScroll || atEnd;
+      count.hidden = !canScroll;
+      if (fade) fade.hidden = !canScroll || atEnd;
+      count.textContent = `${index + 1} / ${cards.length}`;
+    };
+
+    const scrollToIndex = (index) => {
+      const target = cards[Math.max(0, Math.min(cards.length - 1, index))];
+      if (!target) return;
+      track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    };
+
+    prev.addEventListener('click', () => scrollToIndex(currentIndex() - 1));
+    next.addEventListener('click', () => scrollToIndex(currentIndex() + 1));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    setTimeout(update, 250);
   });
 }
 

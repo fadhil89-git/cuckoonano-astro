@@ -25,7 +25,7 @@ const categoryCards = [
   },
   {
     title: 'Aircond CUCKOO',
-    image: '/assets/images/Gambar%20Produk%20png/aircond%20cuckoo%20vita%205tar%201%20png%20(1)-Photoroom.webp',
+    image: '/assets/images/Gambar%20Produk%20png/vita-5tar.webp',
     alt: 'Aircond CUCKOO untuk bilik tidur dan ruang kerja',
     copy: 'Untuk bilik tidur, ruang kerja atau rumah yang perlukan keselesaan harian.',
     label: 'Air Conditioner',
@@ -34,7 +34,7 @@ const categoryCards = [
   },
   {
     title: 'Outdoor Filter Prime X3',
-    image: '/assets/images/products/water-purifier/cuckoo-prime-x3-water-filter-benefits.jpg',
+    image: '/assets/images/products/water-purifier/prime-x3/cuckoo-prime-X3-Outdoor-water-filter-penapis-air-luar-rumah-5-980x426.webp',
     alt: 'Outdoor water filter CUCKOO Prime X3 untuk air utama rumah',
     copy: 'Untuk tapis air utama sebelum masuk ke rumah.',
     label: 'Outdoor Filter',
@@ -42,11 +42,11 @@ const categoryCards = [
     href: '/products/water-purifier/prime-x3/'
   },
   {
-    title: 'Peti Sejuk CUCKOO x Samsung',
+    title: 'Washer Dryer, Fridge, TV OLED',
     image: '/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-05.webp',
-    alt: 'Peti sejuk Samsung melalui pakej CUCKOO',
+    alt: 'Produk Samsung melalui pakej CUCKOO',
     copy: 'Untuk dapur keluarga moden yang perlukan ruang simpanan lebih teratur.',
-    label: 'Refrigerator',
+    label: 'CUCKOO x Samsung',
     anchor: '#produk-samsung',
     href: '/products/samsung/'
   },
@@ -70,7 +70,7 @@ const categoryCards = [
   },
   {
     title: 'Kerusi Urut CUCKOO',
-    image: '/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp',
+    image: '/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%204.webp',
     alt: 'Kerusi urut CUCKOO untuk ruang rehat keluarga',
     copy: 'Untuk ruang rehat, hadiah ibu bapa atau rutin relaks selepas kerja.',
     label: 'Massage Chair',
@@ -272,21 +272,32 @@ const faqSchema = {
         </a>
       </div>
 
-      <div class="-mx-4 mt-6 flex snap-x gap-4 overflow-x-auto px-4 pb-3 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [&::-webkit-scrollbar]:hidden">
-        {categoryCards.map((category) => (
-          <a href={category.anchor} class="group min-w-[170px] snap-start overflow-hidden rounded-2xl bg-cream shadow-soft ring-1 ring-brand/10 transition-all duration-300 hover:-translate-y-1 hover:ring-brand/25 sm:min-w-[195px]" aria-label={`Lihat model popular ${category.title}`}>
-            <div class="flex h-32 items-center justify-center bg-gradient-to-br from-white to-cream">
-              <img src={category.image} alt={category.alt} loading="lazy" class="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105" />
-            </div>
-            <div class="p-4">
-              <p class="text-[11px] font-black uppercase tracking-[.14em] text-brand">{category.label}</p>
-              <h3 class="mt-2 text-sm font-black leading-tight text-ink transition group-hover:text-brand sm:text-base">{category.title}</h3>
-              <div class="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-xs font-black text-brand ring-1 ring-brand/10">
-                Lihat Model
+      <div class="mt-5 flex items-center justify-between gap-3 sm:hidden">
+        <p class="text-xs font-black uppercase tracking-[.16em] text-brand/70">Leret untuk lihat lagi</p>
+        <div class="flex gap-2">
+          <button type="button" data-home-category-prev class="flex h-10 w-10 items-center justify-center rounded-full bg-cream text-lg font-black text-brand ring-1 ring-brand/10" aria-label="Kategori sebelumnya">‹</button>
+          <button type="button" data-home-category-next class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-lg font-black text-white shadow-soft" aria-label="Kategori seterusnya">›</button>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="pointer-events-none absolute inset-y-0 right-[-1rem] z-10 w-16 bg-gradient-to-l from-white via-white/85 to-transparent sm:right-[-1.5rem] lg:right-[-2rem]"></div>
+        <div data-home-category-track class="-mx-4 mt-3 flex snap-x gap-4 overflow-x-auto scroll-smooth px-4 pb-3 pr-20 [scrollbar-width:none] sm:-mx-6 sm:mt-6 sm:px-6 lg:-mx-8 lg:px-8 [&::-webkit-scrollbar]:hidden">
+          {categoryCards.map((category) => (
+            <a href={category.anchor} class="group min-w-[170px] snap-start overflow-hidden rounded-2xl bg-cream shadow-soft ring-1 ring-brand/10 transition-all duration-300 hover:-translate-y-1 hover:ring-brand/25 sm:min-w-[195px]" aria-label={`Lihat model popular ${category.title}`}>
+              <div class="flex h-32 items-center justify-center bg-gradient-to-br from-white to-cream">
+                <img src={category.image} alt={category.alt} loading="lazy" class="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105" />
               </div>
-            </div>
-          </a>
-        ))}
+              <div class="p-4">
+                <p class="text-[11px] font-black uppercase tracking-[.14em] text-brand">{category.label}</p>
+                <h3 class="mt-2 text-sm font-black leading-tight text-ink transition group-hover:text-brand sm:text-base">{category.title}</h3>
+                <div class="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-xs font-black text-brand ring-1 ring-brand/10">
+                  Lihat Model
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -370,4 +381,34 @@ const faqSchema = {
   </section>
 
   <AgentSection />
+
+  <script is:inline>
+    (() => {
+      const track = document.querySelector('[data-home-category-track]');
+      const prev = document.querySelector('[data-home-category-prev]');
+      const next = document.querySelector('[data-home-category-next]');
+      if (!track || !prev || !next) return;
+
+      const update = () => {
+        const canScroll = track.scrollWidth > track.clientWidth + 8;
+        const atStart = track.scrollLeft <= 4;
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        prev.hidden = !canScroll || atStart;
+        next.hidden = !canScroll || atEnd;
+      };
+
+      prev.addEventListener('click', () => {
+        track.scrollBy({ left: -Math.max(220, track.clientWidth * 0.82), behavior: 'smooth' });
+      });
+
+      next.addEventListener('click', () => {
+        track.scrollBy({ left: Math.max(220, track.clientWidth * 0.82), behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+      setTimeout(update, 250);
+    })();
+  </script>
 </BaseLayout>

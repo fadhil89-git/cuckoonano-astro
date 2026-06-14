@@ -241,7 +241,7 @@ const SITE = {
       "name": "Ace",
       "url": "/products/water-purifier/ace/",
       "category": "water-purifier",
-      "image": "/assets/images/Gambar%20Produk%20png/ace-undersink.webp",
+      "image": "/assets/images/products/water-purifier/ace/cuckoo-ace-under-sink-water-purifier-product.png",
       "desc": "Undersink untuk dapur minimal dan ruang counter lebih kemas.",
       "badge": "Undersink",
       "price": "Semak plan",
@@ -257,7 +257,7 @@ const SITE = {
       "name": "Kiut",
       "url": "/products/water-purifier/kiut/",
       "category": "water-purifier",
-      "image": "/assets/images/Gambar%20Produk%20png/kiut.webp",
+      "image": "/assets/images/products/water-purifier/kiut/cuckoo-kiut-tankless-water-purifier-hero.png",
       "desc": "Model kompak untuk rumah kecil atau ruang dapur terhad.",
       "badge": "Kompak",
       "pricePlans": [
@@ -291,7 +291,7 @@ const SITE = {
       "name": "Prime X3",
       "url": "/products/water-purifier/prime-x3/",
       "category": "outdoor-filter",
-      "image": "/assets/images/products/water-purifier/cuckoo-prime-x3-water-filter-benefits.jpg",
+      "image": "/assets/images/products/water-purifier/prime-x3/cuckoo-prime-X3-Outdoor-water-filter-penapis-air-luar-rumah-5-980x426.webp",
       "desc": "Outdoor water filter point-of-entry untuk rumah yang mahu air lebih bersih dari paip utama.",
       "pricePlans": [
         {
@@ -571,7 +571,7 @@ const SITE = {
           "name": "Bespoke AI Laundry Combo 12/7kg",
           "url": "/products/washer-dryer/samsung-bespoke-ai-laundry-combo-12-7kg/",
           "category": "washer-dryer",
-          "image": "/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-03.webp",
+          "image": "assets/images/products/samsung/washer-dryer/Samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry.webp",
           "desc": "Washer dryer combo untuk basuh dan kering dalam satu mesin, sesuai rumah moden.",
           "price": "RM115/bln x60",
           "bullets": [
@@ -599,7 +599,7 @@ const SITE = {
           "name": "Bespoke AI Laundry Combo 12/7kg",
           "url": "/products/samsung/samsung-bespoke-ai-laundry-combo-12-7kg/",
           "category": "samsung",
-          "image": "/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-03.webp",
+          "image": "/assets/images/products/samsung/washer-dryer/samsung-bespoke-washer-dryer-12kg-wash-7kg-dryer.webp",
           "desc": "Washer dryer combo untuk basuh dan kering dalam satu mesin, sesuai rumah moden.",
           "price": "RM115/bln x60",
           "bullets": [
@@ -620,7 +620,7 @@ const SITE = {
           "name": "Side-by-Side Refrigerator 583L",
           "url": "/products/samsung/",
           "category": "samsung",
-          "image": "/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-05.webp",
+          "image": "/assets/images/products/samsung/refrigerator/583L-Refrigerator.webp",
           "desc": "Peti sejuk besar CUCKOO x Samsung untuk keluarga moden yang perlukan ruang lebih luas.",
           "price": "RM85/bulan",
           "bullets": [
@@ -643,7 +643,7 @@ const SITE = {
           "name": "65\" Mini LED M1EH 4K Samsung Vision Smart TV",
           "url": "/products/samsung/65-mini-led-m1eh-4k-samsung-vision-smart-tv/",
           "category": "samsung",
-          "image": "/assets/images/Gambar%20Produk%20png/m1eh-4k-tv-1.webp",
+          "image": "/assets/images/products/samsung/oled-tv/M1EH-4K-TV-img-01.webp",
           "desc": "Smart TV Samsung 65 inci untuk hiburan rumah dengan skrin besar dan paparan 4K.",
           "price": "Semak plan",
           "bullets": [
@@ -692,7 +692,7 @@ const SITE = {
           "name": "Bespoke 2",
           "url": "/products/massage-chair/bespoke-2/",
           "category": "massage-chair",
-          "image": "/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp",
+          "image": "/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%204.webp",
           "desc": "Kerusi urut premium bersama OGAWA untuk rutin relaksasi harian di rumah.",
           "price": "RM148/bln",
           "bullets": [
@@ -713,7 +713,7 @@ const SITE = {
           "name": "Bespoke Massage Lounger",
           "url": "/products/massage-chair/bespoke-massage-lounger/",
           "category": "massage-chair",
-          "image": "/assets/images/products/massage-chair/lounger/bespoke-massage-lounger.webp",
+          "image": "/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-kerusi-urut-1-copy.webp",
           "desc": "Massage lounger yang lebih santai untuk rehat harian dan ruang keluarga.",
           "price": "RM99/bulan",
           "bullets": [
