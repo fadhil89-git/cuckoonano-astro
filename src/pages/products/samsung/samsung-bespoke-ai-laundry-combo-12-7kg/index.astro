@@ -1,14 +1,769 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
 
-const meta = {
-  "title": "Bespoke AI Laundry Combo 12/7kg CUCKOO | Samsung",
-  "description": "Semak maklumat Bespoke AI Laundry Combo 12/7kg CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/samsung/samsung-bespoke-ai-laundry-combo-12-7kg/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/samsung-bespoke-ai-laundry-combo-12-7kg.webp",
-  "ogType": "website"
+const base = '/assets/images/products/samsung/washer-dryer';
+const heroImg = `${base}/Cuckoo-Samsung-Bespoke-AI-Washer-Dryer-12kg-wash-7kg-dry-transparent.webp`;
+// Hero product views (Sisi 1-5)
+const sisi1 = `${base}/Cuckoo-Samsung-Bespoke-AI-Washer-Dryer-12kg-wash-7kg-dry-transparent.webp`; // Depan
+const sisi2 = `${base}/Samsung-bespoke-ai-img-05.webp`; // Serong
+const sisi3 = `${base}/Samsung-bespoke-ai-img-06.webp`; // Sisi
+const sisi4 = `${base}/Samsung-bespoke-ai-img-04.webp`; // Pintu terbuka
+const sisi5 = `${base}/Samsung-bespoke-ai-img-08.webp`; // Panel kawalan
+const pageUrl = 'https://www.cuckoonano.com/products/samsung/samsung-bespoke-ai-laundry-combo-12-7kg/';
+const ogImg = 'https://www.cuckoonano.com/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-1.webp';
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Samsung Bespoke AI Washer Dryer 12/7kg',
+  brand: { '@type': 'Brand', name: 'Samsung' },
+  description:
+    'Samsung Bespoke AI Washer Dryer 12/7kg melalui CUCKOO. Promo RM99/bulan untuk 6 bulan pertama. Harga asal RM115/bulan, pelan rental 60 bulan, tertakluk kepada stok, kelayakan dan terma semasa.',
+  url: pageUrl,
+  image: ogImg,
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'MYR',
+    price: '99',
+    url: pageUrl,
+    description:
+      'Promo RM99/bulan untuk 6 bulan pertama. Harga asal RM115/bulan. Pelan rental 60 bulan. Tertakluk kepada stok, kelayakan dan terma semasa.',
+    availability: 'https://schema.org/InStock'
+  }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Mesin ini boleh basuh dan kering terus ke?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. Ini ialah washer dryer combo 2-in-1. Anda boleh basuh dan keringkan pakaian menggunakan satu mesin, jadi tak perlu beli dryer berasingan.' } },
+    { '@type': 'Question', name: 'Sesuai tak untuk condo atau apartment?', acceptedAnswer: { '@type': 'Answer', text: 'Ya, sangat sesuai untuk condo, apartment dan rumah yang ruang laundry terhad. Sebab mesin ini 2-in-1, anda tak perlu sediakan ruang untuk washer dan dryer berasingan.' } },
+    { '@type': 'Question', name: 'Sesuai tak untuk keluarga ramai?', acceptedAnswer: { '@type': 'Answer', text: 'Sesuai. Kapasiti basuhan 12kg membantu urus cucian harian keluarga dengan lebih mudah. Untuk pengeringan, kapasiti dryer ialah 7kg, jadi load yang terlalu banyak mungkin perlu dikeringkan secara berasingan.' } },
+    { '@type': 'Question', name: 'Apa maksud promo RM99 untuk 6 bulan pertama?', acceptedAnswer: { '@type': 'Answer', text: 'Bayaran bulanan untuk 6 bulan pertama ialah RM99/bulan. Selepas tempoh promo, bayaran kembali kepada RM115/bulan. Pelan rental untuk tempoh 60 bulan dan tertakluk kepada stok, kelayakan serta terma semasa.' } },
+    { '@type': 'Question', name: 'Berapa bayaran masa order?', acceptedAnswer: { '@type': 'Answer', text: 'Bayaran semasa order bergantung kepada promo semasa dan kelayakan customer. WhatsApp untuk semak jumlah bayaran terkini, dokumen diperlukan, stok dan slot pemasangan.' } },
+    { '@type': 'Question', name: 'Apa syarat asas sebelum tempahan?', acceptedAnswer: { '@type': 'Answer', text: 'Customer perlu sediakan maklumat asas seperti IC, nombor telefon dan detail alamat pemasangan. Kelayakan tertakluk kepada semakan. Rumah digalakkan mempunyai WiFi yang stabil untuk fungsi pintar SmartThings.' } },
+    { '@type': 'Question', name: 'Kalau rumah tiada lif, ada caj tambahan?', acceptedAnswer: { '@type': 'Answer', text: 'Jika rumah jenis flat atau apartment tiada lif dan unit di tingkat 2 atau ke atas, mungkin ada caj tambahan untuk mengangkat mesin. Anggaran caj ialah RM80 bagi setiap tingkat, tertakluk kepada keadaan lokasi dan terma semasa.' } },
+    { '@type': 'Question', name: 'Berapa lama tunggu pemasangan?', acceptedAnswer: { '@type': 'Answer', text: 'Tempoh menunggu biasanya sekitar 5-7 hari selepas tempahan berjaya, bergantung kepada stok dan slot pemasangan.' } },
+    { '@type': 'Question', name: 'Sabun apa yang sesuai digunakan?', acceptedAnswer: { '@type': 'Answer', text: 'Gunakan detergent jenis HE (High Efficiency) yang sesuai untuk front-load washer. Detergent jenis ini kurang menghasilkan buih berlebihan dan lebih sesuai untuk penjagaan mesin.' } },
+    { '@type': 'Question', name: 'Kalau mesin rosak, hubungi siapa?', acceptedAnswer: { '@type': 'Answer', text: 'Customer boleh hubungi CUCKOO HQ di 1800-88-8181 untuk bantuan lanjut, atau maklumkan kepada ejen untuk bantuan guide proses seterusnya.' } }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.cuckoonano.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://www.cuckoonano.com/products/' },
+    { '@type': 'ListItem', position: 3, name: 'Samsung', item: 'https://www.cuckoonano.com/products/samsung/' },
+    { '@type': 'ListItem', position: 4, name: 'Samsung Bespoke AI Washer Dryer 12/7kg', item: pageUrl }
+  ]
 };
 ---
-<BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Samsung</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">Bespoke AI Laundry Combo 12/7kg CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat Bespoke AI Laundry Combo 12/7kg, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/samsung/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-brand/10"><img src="/assets/images/Gambar%20Produk%20png/Samsung-bespoke-ai-img-03.webp" alt="Bespoke AI Laundry Combo 12/7kg" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih Bespoke AI Laundry Combo 12/7kg?</h2><p>Bahagian ini ialah rangka awal untuk page produk Bespoke AI Laundry Combo 12/7kg. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Samsung.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="samsung"></div><div data-agent-block></div>
+
+<BaseLayout
+  title="Samsung Bespoke AI Washer Dryer 12/7kg | Promo RM99 CUCKOO"
+  description="Samsung Bespoke AI Washer Dryer 12/7kg. Promo RM99/bulan untuk 6 bulan pertama, harga asal RM115/bulan, pelan rental 60 bulan. Basuh dan kering dalam satu mesin AI — sesuai untuk condo, apartment dan keluarga sibuk. Servis berkala CUCKOO. Semak promo melalui WhatsApp."
+  canonical={pageUrl}
+  ogImage={ogImg}
+  ogType="website"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-[#16080c] px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-16">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(122,31,43,0.42),transparent_34%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_32%),linear-gradient(135deg,#16080c_0%,#2a0b12_48%,#070407_100%)]"></div>
+    <div class="absolute -right-24 top-6 h-96 w-96 rounded-full bg-rose-500/10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-amber-400/10 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl">
+
+      <!-- Mobile Hero -->
+      <div class="md:hidden">
+        <div class="mx-auto max-w-md text-center">
+          <div class="mb-3 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-amber-400/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-amber-100 ring-1 ring-amber-300/30">Promo RM99</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/15">12kg Wash / 7kg Dry</span>
+          </div>
+
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-rose-200">Samsung Bespoke AI Washer Dryer</p>
+
+          <h1 class="mt-3 text-3xl font-black leading-[1.03] tracking-tight text-white">
+            Tak Perlu Sidai Lagi<br />
+            <span class="bg-gradient-to-r from-[#FFD46B] via-[#FFC233] to-[#F59E0B] bg-clip-text text-transparent">Walaupun Musim Hujan</span>
+          </h1>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-4 shadow-premium">
+          <div class="rounded-[1.5rem] bg-white p-3">
+            <img id="heroProductImageMobile" src={sisi1} alt="Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry" class="mx-auto h-[240px] w-full object-contain transition duration-300" />
+          </div>
+
+          <div class="mt-3 flex flex-wrap justify-center gap-2">
+            <button type="button" data-hero-product={sisi1} class="hero-product-thumb-mobile rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-rose-300">Sisi 1</button>
+            <button type="button" data-hero-product={sisi2} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 2</button>
+            <button type="button" data-hero-product={sisi3} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 3</button>
+            <button type="button" data-hero-product={sisi4} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 4</button>
+            <button type="button" data-hero-product={sisi5} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 5</button>
+          </div>
+
+          <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">12kg</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Wash</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">7kg</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Dry</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">6 Bulan</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Service</p></div>
+          </div>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md rounded-[1.75rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur">
+          <p class="text-center text-sm font-semibold leading-6 text-rose-100">Basuh dan keringkan pakaian dalam satu mesin. Sesuai untuk condo, apartment dan keluarga sibuk yang tak mahu pening sidai baju.</p>
+          <div class="mt-4 rounded-[1.45rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#FFD46B] px-4 py-4 text-brand-dark shadow-soft ring-1 ring-amber-200">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-amber-800">6 bulan pertama</p>
+                <p class="mt-1 text-4xl font-black tracking-tight text-slate-950">RM99<span class="text-base text-slate-700">/bulan</span></p>
+              </div>
+              <div class="text-right text-xs font-black leading-5 text-slate-700"><p>Harga asal</p><p>RM115/bulan</p></div>
+            </div>
+          </div>
+          <p class="mt-3 text-center text-xs font-semibold leading-5 text-rose-100">Pelan rental 60 bulan. Tertakluk kepada stok, kelayakan dan terma semasa.</p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta">📲 Semak Promo RM99 Sekarang</a>
+        </div>
+      </div>
+
+      <!-- Desktop Hero -->
+      <div class="hidden items-center gap-10 md:grid lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
+        <div class="order-1 text-center lg:text-left">
+          <div class="mb-5 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <span class="rounded-full bg-amber-400/15 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-amber-100 ring-1 ring-amber-300/30">Promo RM99</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-white ring-1 ring-white/15">Samsung Bespoke AI</span>
+          </div>
+
+          <p class="mb-3 text-sm font-black uppercase tracking-[0.24em] text-rose-200">Smart Laundry Untuk Rumah Moden</p>
+
+          <h1 class="mx-auto max-w-4xl text-balance text-4xl font-black leading-[1.03] tracking-tight text-white sm:text-5xl lg:mx-0 lg:text-6xl">
+            Tak Perlu Sidai Lagi <span class="bg-gradient-to-r from-[#FFD46B] via-[#FFC233] to-[#F59E0B] bg-clip-text text-transparent">Walaupun Musim Hujan</span>
+          </h1>
+
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg lg:mx-0">Samsung Bespoke AI Washer Dryer bantu basuh dan keringkan pakaian dalam satu mesin. Lebih mudah untuk condo, apartment dan keluarga yang banyak laundry setiap hari.</p>
+
+          <div id="promo" class="mx-auto mt-6 max-w-2xl rounded-[2rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur lg:mx-0">
+            <div class="grid gap-3 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+              <div class="rounded-[1.5rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#FFD46B] px-5 py-5 text-center text-brand-dark shadow-soft ring-1 ring-amber-200">
+                <p class="text-xs font-black uppercase tracking-[0.22em] text-amber-700">6 bulan pertama</p>
+                <p class="mt-2 text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">RM99</p>
+                <p class="text-base font-black text-brand-dark">/bulan</p>
+              </div>
+              <div class="space-y-3 text-white">
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Harga asal RM115/bulan</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Pelan rental 60 bulan</div>
+                <p class="text-sm font-semibold leading-6 text-rose-100">Order di sini dan semak kelayakan untuk dapatkan free gift daripada kami.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">📲 Semak Promo RM99 Sekarang</a>
+            <a href="#benefits" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white px-7 py-4 text-base font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 sm:text-lg">Lihat Kelebihan</a>
+          </div>
+
+          <p class="mt-5 text-sm font-semibold text-rose-100">Boleh WhatsApp untuk semak stok, pemasangan, syarat rumah dan servis berkala CUCKOO.</p>
+        </div>
+
+        <!-- Product Visual -->
+        <div class="order-2 mt-2 lg:mt-0">
+          <div class="relative mx-auto max-w-[440px] sm:max-w-[520px] lg:max-w-[620px]">
+            <div class="absolute -inset-8 rounded-[3rem] bg-amber-400/10 blur-3xl"></div>
+            <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl"></div>
+
+            <div class="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-5 shadow-premium sm:p-6">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(245,158,11,0.16),transparent_42%),radial-gradient(circle_at_18%_15%,rgba(255,255,255,0.10),transparent_32%)]"></div>
+
+              <div class="relative text-center">
+                <div class="mb-5 flex flex-wrap justify-center gap-2">
+                  <span class="rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-wide text-white shadow-sm">12kg Wash</span>
+                  <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-rose-100 ring-1 ring-white/15">7kg Dry</span>
+                </div>
+
+                <div class="rounded-[1.75rem] bg-white p-4">
+                  <img id="heroProductImage" src={sisi1} alt="Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry" class="mx-auto h-[300px] w-full object-contain transition duration-300 sm:h-[360px]" />
+                </div>
+
+                <div class="mt-5 flex flex-wrap justify-center gap-2">
+                  <button type="button" data-hero-product={sisi1} class="hero-product-thumb rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-rose-300">Sisi 1</button>
+                  <button type="button" data-hero-product={sisi2} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 2</button>
+                  <button type="button" data-hero-product={sisi3} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 3</button>
+                  <button type="button" data-hero-product={sisi4} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 4</button>
+                  <button type="button" data-hero-product={sisi5} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 5</button>
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">12kg</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Basuh</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">7kg</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Kering</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">6 Bulan</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Service</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mx-auto mt-4 w-[88%] rounded-3xl bg-brand-maroon px-5 py-4 text-center text-white shadow-xl ring-1 ring-rose-300/30">
+              <p class="text-[11px] font-bold text-rose-200 sm:text-xs">Highlight Utama</p>
+              <p class="text-sm font-black sm:text-base">Basuh, Kering & Tak Perlu Sidai</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <section class="bg-gradient-to-r from-[#16080c] via-brand-maroon to-[#2f0b10] px-4 py-6 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🔥 RM99/Bulan</p><p class="mt-1 font-semibold text-rose-100">Untuk 6 bulan pertama</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🧺 12kg Wash / 7kg Dry</p><p class="mt-1 font-semibold text-rose-100">Basuh & kering 2-in-1</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🛠️ Servis 6 Bulan</p><p class="mt-1 font-semibold text-rose-100">Disokong team servis CUCKOO</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🏠 Condo & Family</p><p class="mt-1 font-semibold text-rose-100">Sesuai rumah moden</p></div>
+    </div>
+  </section>
+
+  <!-- Pain Point -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Masalah Harian</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Laundry Tak Patut Ambil Banyak Masa Setiap Hari</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Kalau setiap minggu masih penat basuh, sidai, tunggu kering dan angkat kain — mungkin sudah tiba masa untuk upgrade cara anda urus laundry.</p>
+
+          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+            <p class="text-sm font-black uppercase tracking-[0.22em] text-promo-gold">Solusi Lebih Praktikal</p>
+            <p class="mt-3 text-2xl font-black leading-tight">Basuh + kering dalam satu mesin, tanpa perlu tunggu cuaca panas.</p>
+            <p class="mt-3 leading-7 text-rose-100">Sesuai untuk keluarga sibuk, condo, apartment dan rumah yang ruang sidai terhad.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[2rem] bg-rose-50 p-6 shadow-soft ring-1 ring-rose-100"><p class="text-3xl">🌧️</p><h3 class="mt-4 text-xl font-black text-brand-dark">Musim Hujan Susah Kering</h3><p class="mt-3 leading-7 text-stone-600">Baju lambat kering, rumah penuh kain bergantung dan laundry makin bertangguh.</p></div>
+          <div class="rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">🏢</p><h3 class="mt-4 text-xl font-black text-brand-dark">Ruang Sidai Terhad</h3><p class="mt-3 leading-7 text-stone-600">Condo dan apartment selalunya tak ada ruang besar untuk sidai atau tambah dryer berasingan.</p></div>
+          <div class="rounded-[2rem] bg-amber-50 p-6 shadow-soft ring-1 ring-amber-100"><p class="text-3xl">👨‍👩‍👧‍👦</p><h3 class="mt-4 text-xl font-black text-brand-dark">Cucian Keluarga Banyak</h3><p class="mt-3 leading-7 text-stone-600">Anak ramai, baju sekolah, pakaian kerja dan laundry harian boleh cepat menimbun.</p></div>
+          <div class="rounded-[2rem] bg-emerald-50 p-6 shadow-soft ring-1 ring-emerald-100"><p class="text-3xl">✅</p><h3 class="mt-4 text-xl font-black text-emerald-900">2-in-1 Lebih Mudah</h3><p class="mt-3 leading-7 text-stone-600">Masukkan baju, pilih cycle, dan biar mesin bantu urus proses basuh serta kering.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="inline-flex rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-md">Kenapa Berbaloi</p>
+        <h2 class="mt-5 text-balance text-3xl font-black tracking-tight sm:text-5xl">Kelebihan Yang Customer Betul-Betul Mahu</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Bukan sekadar mesin basuh biasa — ini solusi untuk mudahkan rutin laundry harian.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-50 text-3xl">🌧️</div><h3 class="text-xl font-black text-brand-dark">Tak Perlu Sidai Lagi</h3><p class="mt-4 leading-7 text-stone-600">Musim hujan bukan masalah. Pakaian boleh dicuci dan dikeringkan dalam satu mesin.</p></div>
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 text-3xl">🏢</div><h3 class="text-xl font-black text-brand-dark">Jimat Ruang Rumah</h3><p class="mt-4 leading-7 text-stone-600">Sesuai untuk condo dan apartment kerana tak perlu washer dan dryer berasingan.</p></div>
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-50 text-3xl">🤖</div><h3 class="text-xl font-black text-brand-dark">AI Mudahkan Cucian</h3><p class="mt-4 leading-7 text-stone-600">AI Wash bantu laraskan cucian supaya lebih praktikal untuk penggunaan harian.</p></div>
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-3xl">🛠️</div><h3 class="text-xl font-black text-brand-dark">Servis Berkala</h3><p class="mt-4 leading-7 text-stone-600">Order melalui CUCKOO dan dapat sokongan servis berkala setiap 6 bulan.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Feature Details -->
+  <section id="product-features" class="relative overflow-hidden bg-[#070407] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
+    <div class="pointer-events-none absolute inset-x-0 h-72 bg-[radial-gradient(circle_at_top,rgba(122,31,43,0.36)_0,transparent_42%)]"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">Teknologi Utama</p>
+        <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">Teknologi Yang Buat Laundry Harian Jadi Lebih Mudah</h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Tak perlu baca spesifikasi teknikal terlalu panjang. Ini fungsi yang paling mudah customer faham dan paling membantu rutin harian.</p>
+      </div>
+
+      <!-- Feature 1 -->
+      <div class="mt-14 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-[#2f0b10] to-[#070407] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">01 / AI Ecobubble™</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Cucian Lebih Bersih Walaupun Dengan Air Sejuk</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Buih halus bantu detergent meresap ke dalam fabrik dengan lebih cepat, sesuai untuk cucian harian keluarga yang kerap membasuh.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Bantu tanggal kotoran</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Lebih lembut pada fabrik</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Sesuai cucian harian</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10">
+          <video class="aspect-video w-full object-cover" autoplay muted loop playsinline controls>
+            <source src="https://images.samsung.com/is/content/samsung/p6pim/my/feature/165378453/my-feature---542136026.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#12070b] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10 lg:order-1">
+          <video class="aspect-video w-full object-cover" autoplay muted loop playsinline controls>
+            <source src="https://images.samsung.com/is/content/samsung/p6pim/my/feature/165378429/my-feature-intelligently-thorough-542135960.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="order-1 p-3 sm:p-5 lg:order-2">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">02 / AI Wash</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Mesin Bantu Laraskan Cucian Untuk Anda</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">AI Wash membantu mengesan load, jenis fabrik dan tahap kekotoran supaya cucian lebih mudah tanpa perlu pening pilih setting setiap kali membasuh.</p>
+          <div class="mt-7 space-y-3 text-base font-bold text-stone-200">
+            <p>✓ Kurangkan kerja manual pilih cycle</p>
+            <p>✓ Laras cucian ikut keadaan pakaian</p>
+            <p>✓ Praktikal untuk keluarga sibuk</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-[#2f0b10] to-[#070407] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">03 / Super Speed</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Basuh Lebih Cepat Dalam 39 Minit</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Sesuai bila baju sekolah anak, pakaian kerja atau pakaian harian perlu dicuci tanpa tunggu hujung minggu.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Cucian pantas</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Rutin harian mudah</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Kurang baju menimbun</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-white/10">
+          <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-39-minutes.avif`} alt="Samsung Bespoke AI Washer Dryer Super Speed 39 minutes" class="aspect-video w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#12070b] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-white/10 lg:order-1">
+          <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-auto-dispense.avif`} alt="Samsung Bespoke AI Washer Dryer Auto Dispense" class="aspect-video w-full object-cover" />
+        </div>
+        <div class="order-1 p-3 sm:p-5 lg:order-2">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">04 / Auto Dispense</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Tak Perlu Isi Detergent Setiap Kali Basuh</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Auto Dispense membantu keluarkan jumlah detergent dan softener yang sesuai untuk setiap cucian. Lebih mudah untuk penggunaan harian dan bantu kurangkan pembaziran sabun.</p>
+          <div class="mt-7 space-y-3 text-base font-bold text-stone-200">
+            <p>✓ Tak perlu sukat detergent setiap kali basuh</p>
+            <p>✓ Kurangkan pembaziran sabun</p>
+            <p>✓ Sesuai untuk keluarga yang kerap membasuh</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- More Features Compact -->
+      <div class="mt-8 rounded-[2.25rem] bg-white p-6 text-brand-ink shadow-premium ring-1 ring-white/10 sm:p-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Fungsi Tambahan</p>
+          <h3 class="mt-3 text-2xl font-black tracking-tight text-brand-dark sm:text-4xl">Lagi Fungsi Berguna Untuk Kegunaan Harian</h3>
+          <p class="mt-4 leading-7 text-stone-600">Ringkas, mudah scan, dan fokus kepada fungsi yang bantu rutin laundry lebih praktikal.</p>
+        </div>
+
+        <div class="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3">
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-intelligent-washing.avif`} alt="Samsung Bespoke AI Washer Dryer AI Control" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">AI Control</p><h4 class="mt-2 text-xl font-black text-brand-dark">Mesin Ingat Cara Anda Basuh</h4><p class="mt-3 leading-7 text-stone-600">Cadangkan cycle dan maklumat cucian berdasarkan penggunaan harian.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-quickdrive.avif`} alt="Samsung Bespoke AI Washer Dryer QuickDrive" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">QuickDrive™</p><h4 class="mt-2 text-xl font-black text-brand-dark">Bantu Kurangkan Masa Cucian</h4><p class="mt-3 leading-7 text-stone-600">Cucian lebih pantas dan praktikal untuk rutin keluarga sibuk.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-air-wash.avif`} alt="Samsung Bespoke AI Washer Dryer Air Wash" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Air Wash</p><h4 class="mt-2 text-xl font-black text-brand-dark">Segarkan Pakaian Tanpa Cucian Penuh</h4><p class="mt-3 leading-7 text-stone-600">Bantu kurangkan bau pada pakaian tertentu tanpa air dan detergent.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-reduce-bacteria.avif`} alt="Samsung Bespoke AI Washer Dryer Hygiene Steam" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Hygiene Steam</p><h4 class="mt-2 text-xl font-black text-brand-dark">Cucian Lebih Bersih Dengan Wap</h4><p class="mt-3 leading-7 text-stone-600">Sesuai untuk keluarga yang mahu cucian lebih bersih dan meyakinkan.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-drum-clean.avif`} alt="Samsung Bespoke AI Washer Dryer Drum Clean Plus" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Drum Clean+</p><h4 class="mt-2 text-xl font-black text-brand-dark">Mesin Lebih Bersih & Segar</h4><p class="mt-3 leading-7 text-stone-600">Bantu jaga kebersihan drum dan beri notifikasi bila perlu cleaning.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={`${base}/cuckoo-samsung-bespoke-washer-dryer-reduces-microplastic.avif`} alt="Samsung Bespoke AI Washer Dryer Less Microfiber Cycle" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Less Microfiber</p><h4 class="mt-2 text-xl font-black text-brand-dark">Cucian Lebih Mesra Alam</h4><p class="mt-3 leading-7 text-stone-600">Bantu kurangkan pelepasan microfiber daripada pakaian tertentu.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-10 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-400">*Ciri dan prestasi mungkin berbeza mengikut jenis pakaian, jumlah load, tetapan cucian dan cara penggunaan. Rujuk maklumat produk rasmi untuk detail penuh.</p>
+    </div>
+  </section>
+
+  <!-- Servis Berkala -->
+  <section id="servis-berkala" class="overflow-hidden bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-brand-maroon to-[#070407] p-6 text-white shadow-premium ring-1 ring-white/10 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
+        <div>
+          <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-promo-gold ring-1 ring-white/15">Servis Berkala CUCKOO</p>
+          <h2 class="mt-5 text-balance text-3xl font-black tracking-tight sm:text-5xl">Mesin Lebih Terjaga Dengan Servis Setiap 6 Bulan</h2>
+          <p class="mt-5 text-lg leading-8 text-rose-100">Bila order melalui CUCKOO, anda bukan sekadar dapat mesin basuh pengering — anda juga dapat sokongan servis berkala oleh team servis CUCKOO setiap 6 bulan.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Servis setiap 6 bulan</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Dibantu team servis CUCKOO</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Mesin lebih terjaga</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Kurangkan risiko masalah mengejut</div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 text-brand-ink shadow-premium ring-1 ring-white/20">
+          <p class="text-sm font-black uppercase tracking-[0.2em] text-brand-maroon">Kenapa servis berkala penting?</p>
+          <h3 class="mt-3 text-2xl font-black text-brand-dark">Mesin Yang Dijaga Lebih Tahan Lama</h3>
+          <p class="mt-4 leading-8 text-stone-600">Berbanding mesin biasa yang tiada servis berkala, mesin yang diservis secara konsisten lebih mudah dijaga, kualiti penggunaan lebih terpelihara dan potensi masalah boleh dikesan lebih awal.</p>
+          <div class="mt-6 rounded-2xl bg-rose-50 p-5">
+            <p class="text-base font-black text-brand-dark">Lebih tenang untuk keluarga yang guna mesin hampir setiap hari.</p>
+            <p class="mt-2 text-sm font-semibold leading-6 text-stone-600">Sesuai untuk rumah yang banyak laundry, anak ramai, pakaian kerja dan baju sekolah yang perlu dicuci secara kerap.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-14">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Apa Yang Dibuat Semasa Servis?</p>
+          <h3 class="mt-3 text-2xl font-black tracking-tight text-brand-dark sm:text-4xl">Proses Servis Berkala CUCKOO</h3>
+          <p class="mt-4 leading-7 text-stone-600">Antara pemeriksaan dan pembersihan yang dilakukan untuk membantu mesin kekal bersih dan lebih optimum.</p>
+        </div>
+        <div class="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3">
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-soft ring-1 ring-stone-100 md:min-w-0"><img src="assets/images/products/samsung/washer-dryer/knight-step01@2x-392x382.webp/" alt="Servis berkala CUCKOO step 1" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" /><p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Step 1</p><h4 class="mt-2 text-xl font-black text-brand-dark">Buka Komponen Utama</h4><p class="mt-3 leading-7 text-stone-600">Water inlet, inlet valve filter dan detergent drawer dibuka untuk pemeriksaan.</p></div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-soft ring-1 ring-stone-100 md:min-w-0"><img src="https://www.cuckoonano.com/wp-content/uploads/2024/10/knight-step02@2x.png" alt="Servis berkala CUCKOO step 2" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" /><p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Step 2</p><h4 class="mt-2 text-xl font-black text-brand-dark">Bersihkan Filter & Drawer</h4><p class="mt-3 leading-7 text-stone-600">Filter, detergent tray, detergent drawer dan door seal dibersihkan.</p></div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-soft ring-1 ring-stone-100 md:min-w-0"><img src="https://www.cuckoonano.com/wp-content/uploads/2024/10/knight-step03@2x.png" alt="Servis berkala CUCKOO step 3" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" /><p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Step 3</p><h4 class="mt-2 text-xl font-black text-brand-dark">Bersihkan Stopper</h4><p class="mt-3 leading-7 text-stone-600">Air lebihan dikeluarkan dan stopper dibersihkan sebelum dipasang semula.</p></div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-soft ring-1 ring-stone-100 md:min-w-0"><img src="https://www.cuckoonano.com/wp-content/uploads/2024/10/knight-step04@2x.png" alt="Servis berkala CUCKOO step 4" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" /><p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Step 4</p><h4 class="mt-2 text-xl font-black text-brand-dark">Bersihkan Drain Filter</h4><p class="mt-3 leading-7 text-stone-600">Drain filter dibersihkan supaya saliran lebih lancar.</p></div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-soft ring-1 ring-stone-100 md:min-w-0"><img src="https://www.cuckoonano.com/wp-content/uploads/2024/10/knight-step05@2x.png" alt="Servis berkala CUCKOO step 5" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" /><p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Step 5</p><h4 class="mt-2 text-xl font-black text-brand-dark">Steam Sterilise</h4><p class="mt-3 leading-7 text-stone-600">Inner drum, door rubber seal dan detergent drawer disteril menggunakan steam.</p></div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-soft ring-1 ring-stone-100 md:min-w-0"><img src="https://www.cuckoonano.com/wp-content/uploads/2024/10/knight-step06@2x.png" alt="Servis berkala CUCKOO step 6" class="aspect-video w-full rounded-[1.25rem] object-contain bg-white" /><p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Step 6</p><h4 class="mt-2 text-xl font-black text-brand-dark">Clean The Tub</h4><p class="mt-3 leading-7 text-stone-600">Anti-bacterial cleaning tablets digunakan untuk melengkapkan pembersihan tub.</p></div>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-3xl rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-center text-white shadow-premium sm:p-8">
+        <p class="text-2xl font-black">Nak mesin yang lebih terjaga selepas pemasangan?</p>
+        <p class="mx-auto mt-3 max-w-2xl leading-7 text-rose-100">Order melalui CUCKOO dan nikmati sokongan servis berkala setiap 6 bulan mengikut jadual servis.</p>
+        <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-6 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Tanya Tentang Servis Berkala</a>
+      </div>
+      <p class="mx-auto mt-6 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-500">*Servis berkala tertakluk kepada jadual, kawasan liputan dan terma semasa CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- Real Product Gallery -->
+  <section id="real-gallery" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Gambar Produk Sebenar</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Tengok Rupa Sebenar Sebelum Buat Keputusan</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Lihat gambar produk dari beberapa sudut supaya anda lebih yakin dengan saiz, design dan kesesuaian ruang rumah.</p>
+          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+            <p class="text-sm font-black uppercase tracking-[0.18em] text-promo-gold">Real Product View</p>
+            <p class="mt-3 text-lg font-black leading-7">Swipe atau tekan butang kiri kanan untuk lihat gambar produk.</p>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-5">
+          <div class="relative overflow-hidden rounded-[1.75rem] bg-stone-100">
+            <img id="productSliderImage" src={`${base}/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-1.webp`} alt="CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 1" class="h-[420px] w-full object-cover sm:h-[500px]" />
+            <button type="button" id="productSliderPrev" class="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" id="productSliderNext" class="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+            <div class="absolute bottom-4 left-4 right-4 rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur">
+              <p id="productSliderTitle" class="text-lg font-black text-brand-dark">Produk Sebenar</p>
+              <p id="productSliderDesc" class="mt-1 text-sm font-semibold text-stone-600">Gambar produk sebenar Samsung Bespoke AI Washer Dryer 12kg wash / 7kg dry.</p>
+            </div>
+          </div>
+          <div id="productSliderDots" class="mt-5 flex flex-wrap justify-center gap-2"></div>
+          <div class="mt-5 grid grid-cols-3 gap-3 text-center text-xs font-bold text-stone-600">
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Kapasiti Besar</div>
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Cucian Bersih</div>
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Basuh + Kering</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banner -->
+  <section id="promo-banner" class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] bg-gradient-to-br from-[#16080c] via-brand-maroon to-[#070407] p-6 shadow-premium sm:p-8 lg:p-10">
+      <div class="grid items-center gap-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="text-white">
+          <p class="inline-flex rounded-full bg-promo-gold px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white shadow-md">Promo Tertakluk Stok Semasa</p>
+          <h2 class="mt-5 text-balance text-3xl font-black leading-tight sm:text-5xl">Samsung Bespoke AI Washer Dryer Dari RM99/Bulan</h2>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Bayar RM99/bulan untuk 6 bulan pertama, kemudian RM115/bulan. Tekan WhatsApp untuk semak stok, pemasangan dan kelayakan.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Promo RM99/bulan untuk 6 bulan pertama</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Selepas promo RM115/bulan</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Pelan rental 60 bulan</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Tertakluk stok, kelayakan & terma</div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-[0_25px_80px_rgba(0,0,0,0.22)] sm:p-8">
+          <p class="mb-3 inline-flex rounded-full bg-rose-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon">Consultation Percuma</p>
+          <h3 class="text-2xl font-black leading-tight sm:text-4xl">Semak Kelayakan Promo RM99</h3>
+          <p class="mt-4 leading-7 text-stone-600">Saya bantu semak promo, installment, stok, delivery, installation dan kesesuaian rumah anda.</p>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Harga dan promo terkini</p></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Kelayakan dan bayaran permulaan</p></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Delivery dan installation</p></div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-5 text-center text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">📲 Semak Kelayakan Promo RM99</a>
+          <p class="mt-4 text-center text-sm font-semibold text-stone-500">Stok dan promo bergantung kepada availability semasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Gift Section -->
+  <section id="free-gift" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#fff7ed] via-white to-[#fff1f2] p-6 shadow-premium ring-1 ring-orange-100 sm:p-8 lg:p-10">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="order-2 lg:order-1">
+          <p class="inline-flex rounded-full bg-promo-gold px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-md">Free Gift Terpilih</p>
+          <h2 class="mt-5 text-balance text-3xl font-black tracking-tight text-brand-dark sm:text-5xl">Order Di Sini & Dapatkan Free Gift Daripada Kami</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-700">Customer yang order melalui kami berpeluang dapat free gift set pisau CUCKOO. Tekan WhatsApp untuk semak promo RM99, stok, pemasangan dan kelayakan free gift.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">🎁 Free gift pisau CUCKOO</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Semak kelayakan melalui WhatsApp</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Tertakluk stok semasa</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Ejen bantu explain promo</div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">🎁 Semak Promo RM99 + Free Gift</a>
+          <p class="mt-4 text-sm font-semibold text-stone-500">*Free gift tertakluk kepada terma, stok dan availability semasa.</p>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="relative mx-auto max-w-[520px]"><div class="absolute -inset-4 rounded-[2.5rem] bg-orange-200/50 blur-3xl"></div><div class="relative overflow-hidden rounded-[2.25rem] bg-white p-5 shadow-premium ring-1 ring-orange-100"><div class="rounded-[1.75rem] bg-gradient-to-br from-orange-50 via-white to-rose-50 p-5 text-center"><span class="mb-4 inline-flex rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-wide text-white">Set Pisau CUCKOO</span><img src="/assets/images/gift/SET-PISAU-CUCKOO.webp" alt="Free gift set pisau CUCKOO" class="mx-auto h-auto w-full max-w-[430px] rounded-[1.5rem] object-cover shadow-soft" /><div class="mt-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-orange-100"><p class="text-sm font-bold text-stone-500">Bonus Untuk Customer Terpilih</p><p class="mt-1 text-2xl font-black text-brand-dark">Set Pisau CUCKOO</p></div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifestyle / Feature -->
+  <section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
+      <div class="rounded-[2rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-6">
+        <div class="overflow-hidden rounded-[1.5rem] bg-white">
+          <img src={`${base}/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-8.webp`} alt="CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering" class="h-auto w-full object-cover" />
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Upgrade Lifestyle</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Masukkan Baju Malam Ini, Esok Pagi Dah Siap</h2>
+        <p class="mt-6 text-lg leading-8 text-stone-700">Dengan washer dryer combo, anda tak perlu tunggu cuaca panas, tak perlu sidai, dan tak perlu ulang kerja yang sama setiap hari. Rutin laundry jadi lebih mudah, kemas dan automatik.</p>
+        <div class="mt-7 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl bg-white p-5 font-bold shadow-sm ring-1 ring-stone-100">✓ Kurang kerja manual</div>
+          <div class="rounded-2xl bg-white p-5 font-bold shadow-sm ring-1 ring-stone-100">✓ Rumah lebih kemas</div>
+          <div class="rounded-2xl bg-white p-5 font-bold shadow-sm ring-1 ring-stone-100">✓ Sesuai keluarga sibuk</div>
+          <div class="rounded-2xl bg-white p-5 font-bold shadow-sm ring-1 ring-stone-100">✓ Praktikal untuk condo</div>
+        </div>
+        <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 inline-flex rounded-2xl bg-cta-green px-8 py-5 text-lg font-black text-white shadow-cta hover:bg-cta-dark">📲 Tanya Promo Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Spesifikasi Ringkas</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Detail Utama Produk</h2>
+        <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-600">Ini antara maklumat penting yang customer perlu tahu sebelum semak kesesuaian ruang, pemasangan dan penggunaan harian.</p>
+      </div>
+
+      <div class="mt-10 overflow-hidden rounded-[2rem] border border-stone-200 shadow-soft">
+        <table class="w-full text-left text-sm sm:text-base">
+          <tbody class="divide-y divide-stone-200">
+            <tr><th class="w-2/5 bg-stone-50 p-5 font-black">Nama Produk</th><td class="p-5 font-semibold">Bespoke AI Laundry Combo AI Ecobubble™ 12/7kg</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Model Code</th><td class="p-5 font-semibold">WD12DB8B85GBFQ</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Kapasiti Basuh</th><td class="p-5 font-semibold">12kg</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Kapasiti Dryer</th><td class="p-5 font-semibold">7kg</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Jenis</th><td class="p-5 font-semibold">Front Load Washer Dryer Combo 2-in-1</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Warna / Design</th><td class="p-5 font-semibold">Black body dengan tempered glass door</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Panel Display</th><td class="p-5 font-semibold">AI Control</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Teknologi Utama</th><td class="p-5 font-semibold">AI Ecobubble™, AI Wash, QuickDrive™, Auto Dispense, Air Wash, Hygiene Steam</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Cycle Penting</th><td class="p-5 font-semibold">Wash+Dry, Super Speed, 15' Quick Wash, Bedding, Towels, Shirts, Silent Wash, Drum Clean+</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Smart Control</th><td class="p-5 font-semibold">WiFi Embedded + SmartThings App Support</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Spin Speed</th><td class="p-5 font-semibold">1400 rpm</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Saiz Mesin</th><td class="p-5 font-semibold">600mm lebar x 850mm tinggi x 600mm dalam</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Berat Mesin</th><td class="p-5 font-semibold">77kg</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-10 overflow-hidden rounded-[2rem] bg-stone-50 p-4 shadow-soft ring-1 ring-stone-100 sm:p-6">
+        <div class="overflow-hidden rounded-[1.5rem] bg-white shadow-sm">
+          <img src={`${base}/WD8400D_PC_How-to-measure.webp`} alt="Ukuran Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry" class="w-full object-contain bg-white" />
+        </div>
+        <div class="mt-5 rounded-2xl bg-white p-5 text-center shadow-sm ring-1 ring-stone-100">
+          <p class="text-sm font-black uppercase tracking-[0.2em] text-brand-maroon">Ukuran Mesin</p>
+          <p class="mt-2 text-xl font-black text-brand-dark">Semak Ruang Sebelum Pemasangan</p>
+          <p class="mx-auto mt-2 max-w-2xl text-sm font-semibold leading-6 text-stone-600">Pastikan ruang laundry sesuai dengan ukuran mesin dan ada laluan yang mencukupi untuk proses penghantaran serta pemasangan.</p>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-500">*Spesifikasi dan fungsi tertakluk kepada model, stok dan maklumat rasmi semasa. Tekan WhatsApp untuk semak detail pemasangan dan kesesuaian ruang rumah anda.</p>
+    </div>
+  </section>
+
+  <!-- Testimoni Customer -->
+  <section id="review" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Testimoni Customer</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Apa Kata Customer Yang Pernah Berurusan Dengan Saya</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara feedback customer yang pernah saya bantu sebelum ini. Testimoni ini berdasarkan pengalaman berurusan dengan saya sebagai ejen CUCKOO.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-1.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 1" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-2.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 2" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-3.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 3" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-4.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 4" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2025/08/testimoni-aircond-cuckoo-vita-s-1.jpg" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 5" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-5.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 6" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+      </div>
+
+      <div class="mt-12 grid gap-4 text-center sm:grid-cols-3">
+        <div class="rounded-2xl bg-white p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ Berpengalaman sejak 2017</div>
+        <div class="rounded-2xl bg-white p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ 1000+ customer dibantu</div>
+        <div class="rounded-2xl bg-white p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ Support sebelum & selepas order</div>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-3xl rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-center text-white shadow-premium sm:p-8">
+        <p class="text-2xl font-black">Nak saya bantu semak promo untuk rumah anda?</p>
+        <p class="mx-auto mt-3 max-w-2xl leading-7 text-rose-100">Tekan WhatsApp dan saya bantu explain harga, promo, stok, installation dan kelayakan order.</p>
+        <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-6 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Kami Sekarang</a>
+      </div>
+
+      <p class="mt-6 text-center text-sm font-semibold leading-6 text-stone-500">*Testimoni adalah berdasarkan pengalaman customer yang pernah berurusan dengan saya sebagai ejen CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- Contact / Agent (shared component) -->
+  <AgentSection />
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">FAQ</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Soalan Lazim Sebelum Order</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara soalan penting yang biasa customer tanya sebelum semak promo dan buat tempahan.</p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100" open><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Mesin ini boleh basuh dan kering terus ke?</summary><p class="mt-4 leading-7 text-stone-600">Ya. Ini ialah washer dryer combo 2-in-1. Anda boleh basuh dan keringkan pakaian menggunakan satu mesin, jadi tak perlu beli dryer berasingan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Sesuai tak untuk condo atau apartment?</summary><p class="mt-4 leading-7 text-stone-600">Ya, sangat sesuai untuk condo, apartment dan rumah yang ruang laundry terhad. Sebab mesin ini 2-in-1, anda tak perlu sediakan ruang untuk washer dan dryer berasingan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Sesuai tak untuk keluarga ramai?</summary><p class="mt-4 leading-7 text-stone-600">Sesuai. Kapasiti basuhan 12kg membantu urus cucian harian keluarga dengan lebih mudah. Untuk pengeringan pula, kapasiti dryer ialah 7kg, jadi load yang terlalu banyak mungkin perlu dikeringkan secara berasingan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa maksud promo RM99 untuk 6 bulan pertama?</summary><p class="mt-4 leading-7 text-stone-600">Promo ini bermaksud bayaran bulanan untuk 6 bulan pertama ialah RM99/bulan. Selepas tempoh promo tamat, bayaran kembali kepada RM115/bulan. Pelan rental adalah untuk tempoh 60 bulan dan tertakluk kepada stok, kelayakan serta terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Berapa bayaran masa order?</summary><p class="mt-4 leading-7 text-stone-600">Bayaran semasa order bergantung kepada promo semasa dan kelayakan customer. Untuk promo RM99, tekan WhatsApp dan saya akan bantu semak jumlah bayaran terkini, dokumen diperlukan, stok dan slot pemasangan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa syarat asas sebelum tempahan?</summary><div class="mt-4 space-y-3 leading-7 text-stone-600"><p>Untuk tempahan, customer perlu sediakan maklumat asas seperti IC, nombor telefon dan detail alamat pemasangan. Kelayakan adalah tertakluk kepada semakan pihak berkaitan.</p><p>Rumah juga digalakkan mempunyai sambungan <strong>WiFi rumah yang stabil</strong> untuk menggunakan fungsi pintar seperti SmartThings. Sambungan menggunakan mobile data atau hotspot tidak digalakkan kerana ia mungkin tidak stabil untuk connect dengan mesin.</p></div></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Kalau rumah tiada lif, ada caj tambahan?</summary><p class="mt-4 leading-7 text-stone-600">Jika rumah jenis flat atau apartment tiada lif, dan unit berada di tingkat 2 atau ke atas, mungkin ada caj tambahan untuk kerja mengangkat mesin. Anggaran caj ialah RM80 bagi setiap tingkat, tertakluk kepada keadaan lokasi dan terma semasa.</p><div class="mt-5 overflow-hidden rounded-2xl border border-stone-200 bg-white p-4 shadow-sm"><img src="https://www.cuckoonano.com/wp-content/uploads/2025/08/mesin-basuh-cuckoo-knight-washer-dryer-level.jpg" alt="Caj tambahan mengangkat mesin basuh CUCKOO jika rumah tiada lif" class="w-full rounded-xl object-cover" /></div><p class="mt-4 text-sm font-semibold leading-6 text-stone-500">*Caj sebenar tertakluk kepada keadaan tempat pemasangan dan pengesahan pihak pemasangan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Berapa lama tunggu pemasangan?</summary><p class="mt-4 leading-7 text-stone-600">Tempoh menunggu biasanya sekitar 5–7 hari selepas tempahan berjaya, bergantung kepada stok dan slot pemasangan. Jika stok terhad, tempoh mungkin berubah. Saya akan bantu follow up supaya proses berjalan secepat mungkin.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Sabun apa yang sesuai digunakan?</summary><p class="mt-4 leading-7 text-stone-600">Gunakan detergent jenis HE / High Efficiency yang sesuai untuk front-load washer. Detergent jenis ini kurang menghasilkan buih berlebihan dan lebih sesuai untuk penjagaan mesin.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Kalau mesin rosak, hubungi siapa?</summary><p class="mt-4 leading-7 text-stone-600">Jika berlaku sebarang masalah atau kerosakan, customer boleh hubungi CUCKOO HQ di 1800-88-8181 untuk bantuan lanjut. Anda juga boleh maklumkan kepada saya supaya saya bantu guide proses seterusnya.</p></details>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-white px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium sm:p-12 lg:p-16">
+      <div class="mx-auto max-w-3xl">
+        <p class="inline-flex rounded-full bg-white/12 px-5 py-2 text-xs font-black uppercase tracking-[0.24em] text-rose-100 ring-1 ring-white/15">Ready Untuk Upgrade?</p>
+        <h2 class="mt-6 text-balance text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">Upgrade Cara Anda Urus Laundry Bermula Hari Ini</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Lebih mudah. Lebih kemas. Lebih tenang. Klik WhatsApp untuk semak promo dan dapatkan consultation percuma.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-9 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Sekarang</a>
+          <a href="#promo" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-9 py-5 text-lg font-black text-white backdrop-blur transition hover:bg-white/20">Tengok Promo</a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-rose-100">
+          <span>✓ Consultation Percuma</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Pelan Rental 60 Bulan</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Support Installation</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .glass { background: rgba(255,255,255,.86); backdrop-filter: blur(16px); }
+  .text-balance { text-wrap: balance; }
+</style>
+
+<script is:inline>
+  // Hero product image switcher (desktop + mobile)
+  function setupHeroProductSwitcher(imageId, buttonClass, inactiveClass, activeClass) {
+    const image = document.getElementById(imageId);
+    const buttons = document.querySelectorAll('.' + buttonClass);
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!image) return;
+        image.src = button.dataset.heroProduct;
+        buttons.forEach((thumb) => { thumb.className = buttonClass + ' ' + inactiveClass; });
+        button.className = buttonClass + ' ' + activeClass;
+      });
+    });
+  }
+  setupHeroProductSwitcher('heroProductImage', 'hero-product-thumb', 'rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20', 'rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-rose-300');
+  setupHeroProductSwitcher('heroProductImageMobile', 'hero-product-thumb-mobile', 'rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20', 'rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-rose-300');
+
+  const productSlides = [
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-1.webp', title: '', desc: 'Anak ramai pun tak risau, kapasiti besar 12kg.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 1' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-2.webp', title: '', desc: 'Balik kerja, sumbat je baju. Esok pagi kering.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 2' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-3.webp', title: '', desc: 'Musim hujan pun tak payah cari dobi.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 3' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-4.webp', title: '', desc: 'Lepas ni tak payah sidai baju lagi.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 4' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-5.webp', title: '', desc: 'Baju sekolah anak boleh cuci hari-hari.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 5' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-6.webp', title: '', desc: 'Tak sempat jemur pagi-pagi pun tak apa.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 6' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-7.webp', title: '', desc: 'Tak perlu tunggu baju menimbun baru nak cuci.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 7' },
+    { src: '/assets/images/products/samsung/washer-dryer/cuckoo-samsung-bespoke-ai-washer-dryer-12kg-wash-7kg-dry-mesin-basuh-pengering-8.webp', title: '', desc: 'Isteri makin gembira sebab kerja laundry jadi mudah.', alt: 'CUCKOO Samsung Bespoke AI Washer Dryer 12kg wash 7kg dry mesin basuh pengering gambar produk 8' }
+  ];
+
+  let currentProductSlide = 0;
+  const productSliderImage = document.getElementById('productSliderImage');
+  const productSliderTitle = document.getElementById('productSliderTitle');
+  const productSliderDesc = document.getElementById('productSliderDesc');
+  const productSliderPrev = document.getElementById('productSliderPrev');
+  const productSliderNext = document.getElementById('productSliderNext');
+  const productSliderDots = document.getElementById('productSliderDots');
+
+  function renderProductSlide(index) {
+    const slide = productSlides[index];
+    productSliderImage.src = slide.src;
+    productSliderImage.alt = slide.alt;
+    if (productSliderTitle) {
+      productSliderTitle.textContent = slide.title;
+      productSliderTitle.style.display = slide.title ? 'block' : 'none';
+    }
+    if (productSliderDesc) { productSliderDesc.textContent = slide.desc; }
+    productSliderDots.innerHTML = '';
+    productSlides.forEach((item, dotIndex) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Lihat gambar produk ' + (dotIndex + 1));
+      dot.className = dotIndex === index
+        ? 'h-3 w-8 rounded-full bg-brand-maroon transition'
+        : 'h-3 w-3 rounded-full bg-stone-300 transition hover:bg-brand-maroon';
+      dot.addEventListener('click', () => { currentProductSlide = dotIndex; renderProductSlide(currentProductSlide); });
+      productSliderDots.appendChild(dot);
+    });
+  }
+
+  if (productSliderPrev && productSliderNext) {
+    productSliderPrev.addEventListener('click', () => {
+      currentProductSlide = currentProductSlide === 0 ? productSlides.length - 1 : currentProductSlide - 1;
+      renderProductSlide(currentProductSlide);
+    });
+    productSliderNext.addEventListener('click', () => {
+      currentProductSlide = currentProductSlide === productSlides.length - 1 ? 0 : currentProductSlide + 1;
+      renderProductSlide(currentProductSlide);
+    });
+  }
+
+  if (productSliderImage) { renderProductSlide(currentProductSlide); }
+</script>

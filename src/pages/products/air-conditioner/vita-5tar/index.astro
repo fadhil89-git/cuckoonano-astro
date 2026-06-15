@@ -1,36 +1,17 @@
 ---
-import '../../../../styles/global.css';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import FreeGiftSection from '../../../../components/FreeGiftSection.astro';
 import AgentSection from '../../../../components/AgentSection.astro';
 
 const aircondWhatsappUrl =
   'https://api.whatsapp.com/send?phone=60139916967&text=Salam%2C%20saya%20nak%20semak%20promo%20CUCKOO%20VITA%205TAR%20Aircond.%20Boleh%20bantu%20semak%20model%20sesuai%20untuk%20bilik%20saya%3F';
 ---
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>CUCKOO VITA 5TAR Inverter 5-Star Aircond | Promo 12 Bulan</title>
-  <meta name="description" content="CUCKOO VITA 5TAR Inverter 5-Star Aircond. Promo diskaun RM12/bulan untuk 12 bulan pertama: 1.0HP RM91/bulan dan 1.5HP RM101/bulan. Harga biasa RM103 dan RM113 selepas tempoh promo. Energy 5-Star, Vitamin C Filter, Silver Ion Filter, UVC LED Sterilisation, Golden Hydrophilic Fin dan servis berkala CUCKOO." />
-  <link rel="canonical" href="https://www.cuckoonano.com/products/air-conditioner/vita-5tar/" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="CUCKOO VITA 5TAR Aircond | Promo 12 Bulan" />
-  <meta property="og:description" content="Aircond inverter 5-star dengan servis berkala CUCKOO. Semak promo diskaun RM12 untuk 12 bulan pertama." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.cuckoonano.com/assets/images/products/vita-5tar/aircond-cuckoo-vita-5tar-3-png.webp" />
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .text-balance { text-wrap: balance; }
-    .glass { background: rgba(255,255,255,.86); backdrop-filter: blur(16px); }
-    .maroon-radial { background: radial-gradient(circle at top left, #eff6ff 0, #ffffff 36%, #f8fafc 100%); }
-  </style>
-
+<BaseLayout
+  title="CUCKOO VITA 5TAR Inverter 5-Star Aircond | Promo 12 Bulan"
+  description="CUCKOO VITA 5TAR Inverter 5-Star Aircond. Promo diskaun RM12/bulan untuk 12 bulan pertama: 1.0HP RM91/bulan dan 1.5HP RM101/bulan. Harga biasa RM103 dan RM113 selepas tempoh promo. Energy 5-Star, Vitamin C Filter, Silver Ion Filter, UVC LED Sterilisation, Golden Hydrophilic Fin dan servis berkala CUCKOO."
+  canonical="https://www.cuckoonano.com/products/air-conditioner/vita-5tar/"
+  ogImage="https://www.cuckoonano.com/assets/images/products/vita-5tar/aircond-cuckoo-vita-5tar-3-png.webp"
+>
   <script is:inline type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,42 +28,6 @@ const aircondWhatsappUrl =
     }
   }
   </script>
-</head>
-
-<body class="overflow-x-hidden bg-white text-brand-ink">
-  <!-- Mobile Sticky CTA -->
-  <div class="fixed bottom-0 left-0 right-0 z-50 border-t border-stone-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
-    <a href={aircondWhatsappUrl} data-aircond-whatsapp
-       class="flex w-full items-center justify-center gap-2 rounded-2xl bg-cta-green px-5 py-4 text-base font-black text-white shadow-cta">
-      <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
-      Semak Promo Aircond
-    </a>
-  </div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8">
-      <a href="#" class="flex min-w-0 items-center gap-3">
-        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-cool-blue text-lg font-black text-white shadow-sm">C</div>
-        <div class="min-w-0 leading-tight">
-          <p class="text-base font-black tracking-tight text-cool-blue sm:text-lg">CUCKOO</p>
-          <p class="max-w-[190px] truncate text-[10px] font-extrabold uppercase tracking-[0.16em] text-stone-500 sm:max-w-none">VITA 5TAR Aircond</p>
-        </div>
-      </a>
-
-      <nav class="hidden items-center gap-7 text-sm font-bold text-stone-600 md:flex">
-        <a href="#promo" class="transition hover:text-cool-blue">Promo</a>
-        <a href="#benefits" class="transition hover:text-cool-blue">Kelebihan</a>
-        <a href="#service" class="transition hover:text-cool-blue">Servis</a>
-        <a href="#faq" class="transition hover:text-cool-blue">FAQ</a>
-      </nav>
-
-      <a href={aircondWhatsappUrl} data-aircond-whatsapp
-         class="hidden rounded-full bg-cta-green px-5 py-3 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark md:inline-flex">
-        Semak Promo Aircond
-      </a>
-    </div>
-  </header>
 
   <!-- HERO -->
   <section class="relative overflow-hidden bg-[#07111f] px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-16">
@@ -949,18 +894,6 @@ const aircondWhatsappUrl =
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-stone-200 bg-stone-50 px-4 py-10 pb-28 text-center sm:px-6 md:pb-10 lg:px-8">
-    <div class="mx-auto max-w-4xl">
-      <p class="text-lg font-black text-cool-blue">CUCKOO VITA 5TAR Aircond</p>
-      <p class="mt-3 text-sm font-semibold leading-7 text-stone-500">
-        Harga, promo, stok, kelayakan, servis, warranty dan pemasangan tertakluk kepada terma semasa CUCKOO. Maklumat di halaman ini boleh dikemaskini dari semasa ke semasa. Sila semak dengan ejen sebelum membuat tempahan.
-      </p>
-      <p class="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-stone-400">Ejen CUCKOO sejak 2017</p>
-    </div>
-  </footer>
-
-
   <script is:inline>
     function setupHeroProductSwitcher(imageId, buttonClass, inactiveClass, activeClass) {
       const image = document.getElementById(imageId);
@@ -1066,6 +999,12 @@ const aircondWhatsappUrl =
 
     renderProductSlider();
   </script>
+</BaseLayout>
 
-</body>
-</html>
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .text-balance { text-wrap: balance; }
+  .glass { background: rgba(255,255,255,.86); backdrop-filter: blur(16px); }
+  .maroon-radial { background: radial-gradient(circle at top left, #eff6ff 0, #ffffff 36%, #f8fafc 100%); }
+</style>
