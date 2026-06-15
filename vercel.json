@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/cuckoo-bespoke-2-massage-chair/",
+      "destination": "/products/massage-chair/bespoke-2/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-bespoke-massage-lounger/",
+      "destination": "/products/massage-chair/bespoke-massage-lounger/",
+      "permanent": true
+    },
+    {
       "source": "/king-top/",
       "destination": "/products/water-purifier/king-top-2/",
       "permanent": true

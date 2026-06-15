@@ -21,6 +21,37 @@ const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NZLLCTNM');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-1ESHWB2MBY"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1ESHWB2MBY');
+
+      // Google Ads conversion event - delays navigation until the event is sent.
+      function gtagSendEvent(url) {
+        var callback = function () {
+          if (typeof url === 'string') { window.location = url; }
+        };
+        if (typeof gtag === 'function') {
+          gtag('event', 'ads_conversion_Form_2', {
+            'event_callback': callback,
+            'event_timeout': 2000
+          });
+        } else {
+          callback();
+        }
+        return false;
+      }
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -32,7 +63,11 @@ const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
     <link rel="icon" type="image/webp" href={faviconSrc} />
     <link rel="apple-touch-icon" href={faviconSrc} />
   </head>
-  <body class="bg-cream text-ink antialiased">
+  <body class="overflow-x-hidden bg-cream text-ink antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZLLCTNM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {showHeader && (
     <header class="sticky top-0 z-40 border-b border-brand/10 bg-white/90 backdrop-blur-xl">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -167,7 +202,7 @@ const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
     <script is:inline src="/assets/js/main.js"></script>
     <script is:inline>
       (() => {
-        const hero = document.querySelector('[data-home-hero]');
+        const hero = document.querySelector('[data-home-hero], #hero');
         const floatingWhatsapp = document.querySelector('[data-floating-whatsapp]');
         if (!hero || !floatingWhatsapp) return;
 
@@ -192,6 +227,20 @@ const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
         window.addEventListener('resize', update);
         mobileQuery.addEventListener?.('change', update);
       })();
+    </script>
+    <script is:inline>
+      // Global WhatsApp-click conversion tracking. Works with rotatingWhatsapp():
+      // the inline onclick runs in the target phase and rewrites href before this
+      // document-level (bubble phase) listener reads it.
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest && e.target.closest('a[href]');
+        if (!link) return;
+        const href = link.href;
+        if (!/wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/.test(href)) return;
+        if (typeof gtag !== 'function') return; // no tracker: let normal navigation proceed
+        e.preventDefault();
+        gtagSendEvent(href);
+      });
     </script>
   </body>
 </html>

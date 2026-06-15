@@ -771,10 +771,6 @@ const faqSchema = {
     <AgentSection />
   </div>
 
-  <script type="application/ld+json" is:inline>
-    {JSON.stringify(schema)}
-  </script>
-  <script type="application/ld+json" is:inline>
-    {JSON.stringify(faqSchema)}
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>

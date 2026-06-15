@@ -1,14 +1,685 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
 
-const meta = {
-  "title": "Bespoke 2 CUCKOO | Kerusi Urut",
-  "description": "Semak maklumat Bespoke 2 CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/massage-chair/bespoke-2/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp",
-  "ogType": "website"
+const base = '/assets/images/products/massage-chair/bespoke-2';
+const heroMain = `${base}/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%204.webp`;
+const heroDepan = `${base}/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%202.webp`;
+const heroAtas = `${base}/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%203.webp`;
+const heroIncline = `${base}/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%205.webp`;
+const heroRecline = `${base}/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%206.webp`;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO BESPOKE 2 Massage Chair',
+  alternateName: ['Kerusi Urut CUCKOO BESPOKE 2', 'CUCKOO Massage Chair', 'Kerusi Urut CUCKOO'],
+  brand: { '@type': 'Brand', name: 'CUCKOO' },
+  url: 'https://www.cuckoonano.com/products/massage-chair/bespoke-2/',
+  description:
+    'CUCKOO BESPOKE 2 Massage Chair co-created with OGAWA. Kerusi urut premium dengan Smart SL Track, 34 Airbags, 170° Natural Recline, 45°C lumbar heat, servis berkala, free leather change dan pelan bulanan CUCKOO.',
+  image: [
+    'https://www.cuckoonano.com/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%204.webp',
+    'https://www.cuckoonano.com/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-2.webp',
+    'https://www.cuckoonano.com/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-3.webp'
+  ],
+  offers: {
+    '@type': 'Offer',
+    url: 'https://www.cuckoonano.com/products/massage-chair/bespoke-2/',
+    priceCurrency: 'MYR',
+    price: '148',
+    description:
+      'Rental plan from RM148/month. Current promo may include RM12/month for first 6 months, subject to current terms, eligibility and availability.',
+    availability: 'https://schema.org/InStock',
+    areaServed: { '@type': 'Country', name: 'Malaysia' },
+    seller: { '@type': 'Organization', name: 'CUCKOO Malaysia' }
+  },
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Massage Programs', value: '6 Programs' },
+    { '@type': 'PropertyValue', name: 'Massage Techniques', value: '11 Techniques' },
+    { '@type': 'PropertyValue', name: 'Airbags', value: '34 Air Bags' },
+    { '@type': 'PropertyValue', name: 'Recline Angle', value: '126° - 170°' },
+    { '@type': 'PropertyValue', name: 'Heating', value: '45°C Lumbar Thermotherapy' }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Promo RM12 untuk berapa bulan?', acceptedAnswer: { '@type': 'Answer', text: 'Promo RM12 adalah untuk 6 bulan pertama. Selepas itu bayaran bulanan kembali kepada RM148/bulan, tertakluk kepada terma semasa.' } },
+    { '@type': 'Question', name: 'Perlu kad kredit untuk apply?', acceptedAnswer: { '@type': 'Answer', text: 'Tidak semestinya. Customer boleh apply menggunakan kad bank atau debit card mengikut syarat semasa.' } },
+    { '@type': 'Question', name: 'Perlu slip gaji atau penyata bank?', acceptedAnswer: { '@type': 'Answer', text: 'Untuk proses CUCKOO, biasanya tidak perlu slip gaji dan penyata bank. Kelulusan tetap tertakluk kepada semakan semasa.' } },
+    { '@type': 'Question', name: 'Suri rumah boleh daftar?', acceptedAnswer: { '@type': 'Answer', text: 'Boleh cuba apply. Proses masih tertakluk kepada kelulusan semasa CUCKOO.' } },
+    { '@type': 'Question', name: 'Installation free ke?', acceptedAnswer: { '@type': 'Answer', text: 'Penghantaran dan pemasangan asas adalah percuma mengikut terma semasa. Caj tambahan boleh dikenakan untuk situasi khas seperti delivery melalui tangga, dismantle, assemble, disposal atau relocation.' } },
+    { '@type': 'Question', name: 'Kalau rumah apartment tiada lift?', acceptedAnswer: { '@type': 'Answer', text: 'Jika tiada lift atau lift rosak, delivery by staircase dari tingkat 2 ke atas boleh dikenakan caj RM80/floor mengikut terma semasa.' } },
+    { '@type': 'Question', name: 'Bila leather change dibuat?', acceptedAnswer: { '@type': 'Answer', text: 'Leather replacement dibuat pada bulan ke-30 atau servis ke-5 dan FOC mengikut terma semasa.' } },
+    { '@type': 'Question', name: 'Servis berkala dibuat setiap berapa lama?', acceptedAnswer: { '@type': 'Answer', text: 'Servis berkala dibuat setiap 6 bulan mengikut jadual CUCKOO. Item tertentu seperti motor lubrication dan air hose examination dibuat setiap 12 bulan.' } }
+  ]
 };
 ---
-<BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Kerusi Urut</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">Bespoke 2 CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat Bespoke 2, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/massage-chair/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-brand-soft"><img src="/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%201.webp" alt="Bespoke 2" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih Bespoke 2?</h2><p>Bahagian ini ialah rangka awal untuk page produk Bespoke 2. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Kerusi Urut.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="massage-chair"></div><div data-agent-block></div>
+
+<BaseLayout
+  title="Kerusi Urut CUCKOO BESPOKE 2 | Massage Chair RM148 Sebulan"
+  description="Kerusi urut CUCKOO BESPOKE 2 dengan Smart SL Track, 34 Airbags, servis berkala, free leather change dan pelan RM148 sebulan."
+  canonical="https://www.cuckoonano.com/products/massage-chair/bespoke-2/"
+  ogImage="https://www.cuckoonano.com/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%204.webp"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-luxe-black px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-16">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(214,182,121,0.26),transparent_34%),radial-gradient(circle_at_85%_20%,rgba(122,31,43,0.28),transparent_32%),linear-gradient(135deg,#09090B_0%,#151216_48%,#261815_100%)]"></div>
+    <div class="hero-grid absolute inset-0 opacity-40"></div>
+    <div class="absolute -right-24 top-6 h-96 w-96 rounded-full bg-luxe-gold/10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-luxe-maroon/25 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl">
+
+      <!-- Mobile Hero -->
+      <div class="md:hidden">
+        <div class="mx-auto max-w-md text-center">
+          <div class="mb-3 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-luxe-gold/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-luxe-champagne ring-1 ring-luxe-gold/30">🔥 Madness 12 Promo</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/15">Co-created with OGAWA</span>
+          </div>
+
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-luxe-gold">CUCKOO Massage Chair Malaysia</p>
+
+          <h1 class="mt-3 text-3xl font-black leading-[1.03] tracking-tight text-white">
+            Kerusi Urut CUCKOO BESPOKE 2<br />
+            <span class="gold-text">Dari RM12/Bulan</span>
+          </h1>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#141111] via-[#241715] to-[#050505] p-4 shadow-premium">
+          <div class="relative flex min-h-[260px] items-center justify-center">
+            <div class="absolute bottom-7 h-12 w-[82%] rounded-full bg-luxe-gold/25 blur-2xl"></div>
+            <img id="heroProductImageMobile"
+                 src={heroMain}
+                 alt="Kerusi Urut CUCKOO BESPOKE 2 Massage Chair"
+                 class="floating relative z-10 mx-auto h-auto w-full max-w-[330px] object-contain drop-shadow-2xl transition duration-300" />
+          </div>
+
+          <div class="mt-3 flex flex-wrap justify-center gap-2">
+            <button type="button" data-hero-product={heroMain} class="hero-product-thumb-mobile rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-luxe-black shadow-sm ring-2 ring-luxe-gold">Main</button>
+            <button type="button" data-hero-product={heroDepan} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Depan</button>
+            <button type="button" data-hero-product={heroAtas} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Atas</button>
+            <button type="button" data-hero-product={heroIncline} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Incline</button>
+            <button type="button" data-hero-product={heroRecline} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Recline</button>
+          </div>
+        </div>
+
+        <div id="promo" class="mx-auto mt-5 max-w-md rounded-[1.75rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur">
+          <p class="text-center text-sm font-semibold leading-6 text-stone-200">Badan penat, bahu tegang atau pinggang lenguh? Nikmati urutan premium di rumah tanpa perlu bayar cash ribuan ringgit sekaligus.</p>
+          <div class="mt-4 rounded-[1.45rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#D6B679] px-4 py-4 text-luxe-black shadow-soft ring-1 ring-amber-200">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-amber-800">6 bulan pertama</p>
+                <p class="mt-1 text-4xl font-black tracking-tight text-slate-950">RM12<span class="text-base text-slate-700">/bulan</span></p>
+              </div>
+              <div class="text-right text-xs font-black leading-5 text-slate-700">
+                <p>Lepas promo</p>
+                <p>RM148/bulan</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">170°</p><p class="text-[10px] font-bold uppercase tracking-wide text-luxe-cream">Recline</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">34</p><p class="text-[10px] font-bold uppercase tracking-wide text-luxe-cream">Airbags</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">45°C</p><p class="text-[10px] font-bold uppercase tracking-wide text-luxe-cream">Heat</p></div>
+          </div>
+          <p class="mt-3 text-center text-xs font-semibold leading-5 text-stone-300">Tertakluk kepada stok, kelayakan, kawasan pemasangan dan terma semasa.</p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md">
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta">
+            📲 Semak Kelayakan RM12 Sekarang
+          </a>
+        </div>
+      </div>
+
+      <!-- Desktop Hero -->
+      <div class="hidden items-center gap-10 md:grid lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
+        <div class="order-1 text-center lg:text-left">
+          <div class="mb-5 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <span class="rounded-full bg-luxe-gold/15 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-luxe-champagne ring-1 ring-luxe-gold/30">Madness 12 Promo</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-white ring-1 ring-white/15">Co-created with OGAWA</span>
+          </div>
+
+          <p class="mb-3 text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">CUCKOO BESPOKE 2 Massage Chair</p>
+
+          <h1 class="mx-auto max-w-4xl text-balance text-4xl font-black leading-[1.03] tracking-tight text-white sm:text-5xl lg:mx-0 lg:text-6xl">
+            Kerusi Urut CUCKOO BESPOKE 2 <span class="gold-text">Dari RM12/Bulan</span>
+          </h1>
+
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-stone-200 sm:text-lg lg:mx-0">
+            BESPOKE 2 memberi pengalaman urutan premium di rumah dengan 170° Natural Recline, Smart SL Track, 34 Airbags dan 45°C Lumbar Heat — sesuai untuk anda yang selalu penat bekerja, memandu atau berdiri lama.
+          </p>
+
+          <div class="mx-auto mt-6 max-w-2xl rounded-[2rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur lg:mx-0">
+            <div class="grid gap-3 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+              <div class="rounded-[1.5rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#D6B679] px-5 py-5 text-center text-luxe-black shadow-soft ring-1 ring-amber-200">
+                <p class="text-xs font-black uppercase tracking-[0.22em] text-amber-700">6 bulan pertama</p>
+                <p class="mt-2 text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">RM12</p>
+                <p class="text-base font-black text-luxe-black">/bulan</p>
+              </div>
+              <div class="space-y-3 text-white">
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Selepas promo — RM148/bulan</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Tak perlu kad kredit — kad bank cukup*</div>
+                <p class="text-sm font-semibold leading-6 text-stone-300">Tak perlu slip gaji dan penyata bank. Suri rumah pun boleh cuba apply, tertakluk kelayakan semasa.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#" onclick="this.href=rotatingWhatsapp()"
+               class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">
+              📲 Semak Kelayakan RM12
+            </a>
+            <a href="#benefits" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white px-7 py-4 text-base font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 sm:text-lg">
+              Lihat Kelebihan Utama
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Visual -->
+        <div class="order-2 mt-2 lg:mt-0">
+          <div class="relative mx-auto max-w-[440px] sm:max-w-[520px] lg:max-w-[620px]">
+            <div class="absolute -inset-8 rounded-[3rem] bg-luxe-gold/15 blur-3xl"></div>
+            <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-luxe-copper/20 blur-3xl"></div>
+
+            <div class="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-gradient-to-br from-[#141111] via-[#241715] to-[#050505] p-5 shadow-premium sm:p-6">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(214,182,121,0.18),transparent_42%),radial-gradient(circle_at_18%_15%,rgba(255,255,255,0.10),transparent_32%)]"></div>
+
+              <div class="relative text-center">
+                <div class="mb-5 flex flex-wrap justify-center gap-2">
+                  <span class="rounded-full bg-luxe-gold px-4 py-2 text-xs font-black uppercase tracking-wide text-luxe-black shadow-sm">170° Recline</span>
+                  <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-luxe-cream ring-1 ring-white/15">34 Airbags</span>
+                </div>
+
+                <div class="relative mx-auto flex min-h-[260px] items-center justify-center sm:min-h-[380px]">
+                  <div class="absolute bottom-8 h-12 w-[82%] rounded-full bg-luxe-gold/25 blur-2xl"></div>
+                  <img id="heroProductImage"
+                       src={heroMain}
+                       alt="Kerusi Urut CUCKOO BESPOKE 2 Massage Chair"
+                       class="floating relative z-10 mx-auto h-auto w-full max-w-[360px] object-contain drop-shadow-2xl transition duration-300 sm:max-w-[500px] lg:max-w-[560px]" />
+                </div>
+
+                <div class="mt-5 flex flex-wrap justify-center gap-2">
+                  <button type="button" data-hero-product={heroMain} class="hero-product-thumb rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-luxe-black shadow-sm ring-2 ring-luxe-gold">Main</button>
+                  <button type="button" data-hero-product={heroDepan} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Depan</button>
+                  <button type="button" data-hero-product={heroAtas} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Atas</button>
+                  <button type="button" data-hero-product={heroIncline} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Incline</button>
+                  <button type="button" data-hero-product={heroRecline} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Recline</button>
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">6</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Programs</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">11</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Techniques</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">5</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Intensity</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mx-auto mt-4 w-[88%] rounded-3xl bg-luxe-gold px-5 py-4 text-center text-luxe-black shadow-xl ring-1 ring-luxe-champagne/40">
+              <p class="text-[11px] font-bold text-amber-900 sm:text-xs">Highlight Utama</p>
+              <p class="text-sm font-black sm:text-base">Premium Massage, Easy Monthly Payment</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <section class="bg-gradient-to-r from-[#09090B] via-[#2B1A14] to-[#7A1F2B] px-4 py-6 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/20"><p class="text-lg font-black">🔥 RM12/bulan</p><p class="mt-1 font-semibold text-luxe-cream">Untuk 6 bulan pertama*</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/20"><p class="text-lg font-black">💳 Kad bank cukup</p><p class="mt-1 font-semibold text-luxe-cream">Tak perlu kad kredit*</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/20"><p class="text-lg font-black">📄 Tak perlu slip gaji</p><p class="mt-1 font-semibold text-luxe-cream">Tak perlu penyata bank*</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/20"><p class="text-lg font-black">🛡️ 5 tahun</p><p class="mt-1 font-semibold text-luxe-cream">Servis & warranty*</p></div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-goldDeep">Kenapa ramai mula cari massage chair?</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Kerusi Urut CUCKOO Untuk Rehat Di Rumah</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Ramai orang sebenarnya nak badan rasa lebih lega di rumah sendiri, tapi tak sempat pergi spa atau pusat urut. BESPOKE 2 beri pilihan untuk bina ruang rehat premium di rumah dengan bayaran bulanan yang lebih mudah dimiliki.</p>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-7 inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Tanya Promo & Kelayakan</a>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">💼</p><h3 class="mt-4 text-xl font-black text-luxe-black">Penat selepas kerja</h3><p class="mt-3 leading-7 text-stone-600">Balik rumah badan rasa berat, bahu tegang dan susah nak relax.</p></div>
+          <div class="rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">🚗</p><h3 class="mt-4 text-xl font-black text-luxe-black">Banyak memandu</h3><p class="mt-3 leading-7 text-stone-600">Pinggang dan belakang mudah lenguh bila lama duduk dalam kereta.</p></div>
+          <div class="rounded-[2rem] bg-amber-50 p-6 shadow-soft ring-1 ring-amber-100"><p class="text-3xl">🦵</p><h3 class="mt-4 text-xl font-black text-luxe-black">Kaki cepat letih</h3><p class="mt-3 leading-7 text-stone-600">Sesuai untuk yang banyak berjalan, berdiri lama atau aktif seharian.</p></div>
+          <div class="rounded-[2rem] bg-luxe-black p-6 text-white shadow-premium"><p class="text-3xl">💸</p><h3 class="mt-4 text-xl font-black text-luxe-gold">Tak mampu bayar cash</h3><p class="mt-3 leading-7 text-luxe-muted">Dengan CUCKOO, boleh pilih bayaran bulanan RM148 selepas promo.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Benefits Storytelling -->
+  <section id="benefits" class="relative overflow-hidden bg-[#050505] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
+    <div class="pointer-events-none absolute inset-x-0 h-72 bg-[radial-gradient(circle_at_top,#D6B67944_0,transparent_42%)]"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-luxe-gold ring-1 ring-white/15">6 Sebab BESPOKE 2 Rasa Lebih Premium</p>
+        <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">Kelebihan Kerusi Urut CUCKOO BESPOKE 2</h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Setiap fungsi BESPOKE 2 direka untuk bantu anda berehat dengan lebih selesa — daripada posisi rebah, urutan badan penuh, tekanan airbags, haba lembut pada pinggang hingga audio Bluetooth untuk suasana lebih menenangkan.</p>
+      </div>
+
+      <div class="mt-14 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#111111] via-[#1F1714] to-[#3A2405] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3]">
+          <img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-1.webp`} alt="170 Natural Recline Kerusi Urut CUCKOO BESPOKE 2" class="h-full w-full object-cover object-center" />
+        </div>
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">01 / 170° Natural Recline</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Rebah Lebih Dalam, Badan Rasa Lebih Ringan</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Posisi recline sehingga 170° membantu badan masuk ke mode rehat yang lebih natural dan selesa — sesuai untuk sesi relax selepas hari yang panjang.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Posisi rehat lebih mendalam</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Rasa lebih weightless</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#101010] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 p-3 sm:p-5 lg:order-1">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">02 / 4th Gen Smart SL Track</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Urutan Ikut Lengkung Badan</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Smart SL Track mengikuti lengkung leher, bahu, belakang, lumbar hingga paha supaya urutan rasa lebih menyeluruh dan lebih kena tempat.</p>
+          <div class="mt-7 space-y-3 text-base font-bold text-stone-200"><p>✓ Fokus pada kawasan yang selalu tegang</p><p>✓ Sesuai untuk kerja laptop, memandu dan duduk lama</p><p>✓ Urutan dari atas hingga bawah badan</p></div>
+        </div>
+        <div class="order-1 overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3] lg:order-2"><img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-2.webp`} alt="Smart SL Track CUCKOO BESPOKE 2 Massage Chair" class="h-full w-full object-cover object-center" /></div>
+      </div>
+
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#101010] via-[#1B1210] to-[#101010] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3]"><img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-3.webp`} alt="34 Airbag Kerusi Urut CUCKOO BESPOKE 2" class="h-full w-full object-cover object-center" /></div>
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">03 / 34 Precision Airbags</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Rasa Dipeluk Lembut Semasa Urutan</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">34 airbags memberi tekanan lembut dan berirama pada bahu, lengan, upper calves dan lower calves — menjadikan urutan lebih lengkap dari atas sampai bawah.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-4"><div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">4 Shoulder</div><div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">10 Arms</div><div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">8 Upper Calves</div><div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">12 Lower Calves</div></div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#101010] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 p-3 sm:p-5 lg:order-1">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-orange-300">04 / 45°C Lumbar Thermotherapy</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Hangat & Soothing Pada Pinggang</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Haba lembut pada bahagian lumbar membantu sesi urutan rasa lebih comforting, terutama selepas badan penat atau pinggang rasa kurang selesa.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2"><div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">🔥 Heat therapy 45°C</div><div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Sesuai untuk sesi rehat malam</div></div>
+        </div>
+        <div class="order-1 overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3] lg:order-2"><img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-4.webp`} alt="45 Celsius Lumbar Heat CUCKOO BESPOKE 2 Massage Chair" class="h-full w-full object-cover object-center" /></div>
+      </div>
+
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#090909] via-[#17110a] to-[#3a2405] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3]"><img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-5.webp`} alt="6 Program Urutan CUCKOO BESPOKE 2 Massage Chair" class="h-full w-full object-cover object-center" /></div>
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">05 / 6 Programs + 11 Techniques</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Pilih Urutan Ikut Keadaan Badan</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Pilih program untuk seluruh badan, upper body, lower body, deep tissue atau relax. Sesuai untuk mood dan tahap penat yang berbeza setiap hari.</p>
+          <div class="mt-7 grid gap-4 sm:grid-cols-3"><div class="rounded-2xl bg-[#2a210b] p-5 font-black text-luxe-gold ring-1 ring-luxe-gold/30">Full Body</div><div class="rounded-2xl bg-[#2a210b] p-5 font-black text-luxe-gold ring-1 ring-luxe-gold/30">Deep Tissue</div><div class="rounded-2xl bg-[#2a210b] p-5 font-black text-luxe-gold ring-1 ring-luxe-gold/30">Relax</div></div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#101010] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 p-3 sm:p-5 lg:order-1">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">06 / Smart Touch Panel</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Kawal Urutan Dengan Lebih Mudah</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Pilih program, laras intensiti, timer, heater, roller dan airbags melalui panel kawalan yang mudah digunakan — supaya sesi urutan harian terasa lebih simple dan tidak menyusahkan.</p>
+          <div class="mt-7 space-y-3 text-base font-bold text-stone-200"><p>✓ Pilih program urutan dengan cepat</p><p>✓ Laras intensiti mengikut keselesaan badan</p><p>✓ Mudah digunakan oleh seisi rumah</p></div>
+        </div>
+        <div class="order-1 overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3] lg:order-2"><img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-6.webp`} alt="Smart Touch Panel Kerusi Urut CUCKOO BESPOKE 2" class="h-full w-full object-cover object-center" /></div>
+      </div>
+
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#090909] via-[#151515] to-[#2B1A14] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="overflow-hidden rounded-[2rem] bg-[#050505] p-0 shadow-premium ring-1 ring-white/10 aspect-[4/3]"><img src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-feature-7.webp`} alt="Bluetooth Speaker CUCKOO BESPOKE 2 Massage Chair" class="h-full w-full object-cover object-center" /></div>
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">07 / Bluetooth Speaker</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Rehat Sambil Dengar Audio Kegemaran</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Sambungkan telefon melalui Bluetooth dan nikmati sesi urutan sambil dengar zikir, podcast, music santai atau audio relaksasi. Urutan rasa lebih personal dan lebih menenangkan.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2"><div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">🎧 Audio lebih immersive</div><div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">🌙 Sesuai untuk rehat malam</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Massage Programs -->
+  <section class="bg-gradient-to-br from-stone-50 via-white to-amber-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-goldDeep">6 Massage Programs</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">6 Program Urutan CUCKOO BESPOKE 2</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Badan penat tak sama setiap hari. Sebab itu BESPOKE 2 hadir dengan 6 program urutan supaya anda boleh pilih mode yang paling sesuai — dari urutan santai hingga tekanan yang lebih padu.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-4xl">✨</p><h3 class="mt-4 text-2xl font-black">Signature</h3><p class="mt-3 leading-7 text-stone-600">Untuk pengalaman premium dengan gentle stretch dan rasa urutan yang lebih lengkap.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-4xl">🧘</p><h3 class="mt-4 text-2xl font-black">Full Body</h3><p class="mt-3 leading-7 text-stone-600">Sesuai bila badan rasa penat secara keseluruhan dari atas sampai bawah.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-4xl">💪</p><h3 class="mt-4 text-2xl font-black">Deep Tissue</h3><p class="mt-3 leading-7 text-stone-600">Untuk anda yang suka rasa urutan lebih padu dan lebih mendalam.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-4xl">🙆</p><h3 class="mt-4 text-2xl font-black">Upper Body</h3><p class="mt-3 leading-7 text-stone-600">Fokus pada leher, bahu dan belakang yang selalu tegang akibat kerja atau memandu.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-4xl">🦵</p><h3 class="mt-4 text-2xl font-black">Lower Body</h3><p class="mt-3 leading-7 text-stone-600">Untuk kaki, betis dan bahagian bawah badan yang letih selepas banyak berdiri atau berjalan.</p></div>
+        <div class="rounded-[2rem] bg-luxe-black p-6 text-white shadow-premium ring-1 ring-luxe-gold/20"><p class="text-4xl">🌙</p><h3 class="mt-4 text-2xl font-black text-luxe-gold">Relax</h3><p class="mt-3 leading-7 text-luxe-muted">Urutan lebih ringan dan santai untuk sesi rehat malam atau masa anda mahu tenangkan badan.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Massage Techniques -->
+  <section class="bg-luxe-black px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-luxe-gold ring-1 ring-white/15">11 Massage Techniques</p>
+        <h2 class="mt-5 text-balance text-3xl font-black tracking-tight sm:text-5xl">11 Teknik Urutan Kerusi Urut CUCKOO</h2>
+        <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-300">BESPOKE 2 menggabungkan pelbagai teknik urutan untuk memberi rasa tekanan, rhythm dan relaksasi yang berbeza mengikut program pilihan anda.</p>
+      </div>
+
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🤲</p><h3 class="mt-3 font-black text-luxe-gold">Kneading</h3><p class="mt-2 text-sm leading-6 text-stone-300">Rasa seperti tekanan menguli pada otot.</p></div>
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">💆</p><h3 class="mt-3 font-black text-luxe-gold">Swedish</h3><p class="mt-2 text-sm leading-6 text-stone-300">Urutan smooth untuk rasa lebih santai.</p></div>
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">👋</p><h3 class="mt-3 font-black text-luxe-gold">Tapping</h3><p class="mt-2 text-sm leading-6 text-stone-300">Sentuhan berirama untuk rasa lebih segar.</p></div>
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">👏</p><h3 class="mt-3 font-black text-luxe-gold">Clapping</h3><p class="mt-2 text-sm leading-6 text-stone-300">Gerakan rhythm yang memberi rasa aktif.</p></div>
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🎯</p><h3 class="mt-3 font-black text-luxe-gold">Shiatsu</h3><p class="mt-2 text-sm leading-6 text-stone-300">Fokus pada rasa tekanan titik tertentu.</p></div>
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">✨</p><h3 class="mt-3 font-black text-luxe-gold">Guasa</h3><p class="mt-2 text-sm leading-6 text-stone-300">Teknik urutan dengan rasa lebih unik.</p></div>
+        <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🔄</p><h3 class="mt-3 font-black text-luxe-gold">Variasi Level</h3><p class="mt-2 text-sm leading-6 text-stone-300">Gabungan teknik dengan tahap berbeza.</p></div>
+        <div class="rounded-2xl bg-luxe-gold p-5 text-luxe-black"><p class="text-3xl">➕</p><h3 class="mt-3 font-black">Lebih Banyak Pilihan</h3><p class="mt-2 text-sm font-semibold leading-6">Satu kerusi, pelbagai rasa urutan untuk keperluan harian.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Easy Ownership -->
+  <section class="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-goldDeep">Kenapa Ramai Pilih CUCKOO</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Harga CUCKOO BESPOKE 2 & Pelan Bulanan</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Inilah kekuatan pelan CUCKOO — lebih mudah untuk customer mula memiliki produk premium secara bulanan.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">💳</p><h3 class="mt-4 text-xl font-black">Bayar Bulanan Guna Kad Bank</h3><p class="mt-3 leading-7 text-stone-600">Tak perlu keluarkan modal besar sekali gus.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">✅</p><h3 class="mt-4 text-xl font-black">Lebih Mudah Lulus*</h3><p class="mt-3 leading-7 text-stone-600">Proses lebih mudah untuk customer yang nak apply.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">🏡</p><h3 class="mt-4 text-xl font-black">Suri Rumah Pun Boleh Apply*</h3><p class="mt-3 leading-7 text-stone-600">Tak semestinya perlu slip gaji formal.</p></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">📄</p><h3 class="mt-4 text-xl font-black">Tak Perlu Slip Gaji</h3><p class="mt-3 leading-7 text-stone-600">Tak perlu penyata bank juga, tertakluk semakan semasa.</p></div>
+      </div>
+
+      <div class="mt-8 overflow-hidden rounded-[2.5rem] bg-luxe-black shadow-premium lg:grid lg:grid-cols-[1fr_.9fr]">
+        <div class="p-7 text-white sm:p-10 lg:p-12">
+          <p class="text-xs font-black uppercase tracking-[0.26em] text-luxe-gold">Promo / Payment</p>
+          <h3 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Bayar 1 Bulan Pertama Untuk Mula Apply</h3>
+          <p class="mt-5 text-lg leading-8 text-luxe-muted">Semasa promo RM12, bayaran permulaan boleh jadi serendah RM12 sahaja sebelum pemasangan, tertakluk kelayakan dan terma semasa. Jika promo tamat, bayaran permulaan akan ikut kadar bulanan biasa seperti RM148.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2"><div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl font-black text-luxe-gold">RM12</p><p class="mt-1 text-sm font-bold text-luxe-muted">Upfront semasa promo*</p></div><div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl font-black text-luxe-gold">RM148</p><p class="mt-1 text-sm font-bold text-luxe-muted">Bayaran bulanan biasa*</p></div></div>
+        </div>
+        <div class="bg-gradient-to-br from-luxe-gold via-luxe-champagne to-luxe-goldDeep p-7 text-luxe-black sm:p-10 lg:p-12">
+          <h3 class="text-2xl font-black">Apa customer dapat?</h3>
+          <div class="mt-6 space-y-4 text-sm font-black"><p class="rounded-2xl bg-white/70 p-4">🚚 Free penghantaran & pemasangan asas*</p><p class="rounded-2xl bg-white/70 p-4">🛡️ Waranti 5 tahun untuk rental plan*</p><p class="rounded-2xl bg-white/70 p-4">🧼 Servis berkala CUCKOO</p><p class="rounded-2xl bg-white/70 p-4">🪑 1-time free leather change bulan ke-30*</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Gift -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-8 overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-luxe-black via-luxe-espresso to-[#3a2405] p-6 text-white shadow-premium ring-1 ring-luxe-gold/20 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
+        <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-luxe-gold/25">
+          <img src="/assets/images/gift/SET-PISAU-CUCKOO.webp" alt="Free Gift Set Pisau CUCKOO BESPOKE 2 Massage Chair" class="aspect-[4/3] w-full object-cover object-center" />
+        </div>
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">Bonus Tempahan Semasa Promo*</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Free Gift CUCKOO BESPOKE 2 Massage Chair</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Selain dapat nikmati kerusi urut premium dengan bayaran bulanan CUCKOO, customer juga boleh dapat free gift set pisau CUCKOO semasa promo masih tersedia.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/10">🎁 Free set pisau CUCKOO*</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/10">🔥 Tertakluk stok promo</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/10">✓ Untuk pendaftaran berjaya*</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/10">📲 Semak dahulu sebelum apply</div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Semak Free Set Pisau</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-goldDeep">Visual CUCKOO BESPOKE 2</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Gambar CUCKOO BESPOKE 2 Di Rumah</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Lihat visual CUCKOO BESPOKE 2 dalam suasana yang lebih premium dan realistik untuk bantu anda bayangkan kesesuaian kerusi urut ini di rumah.</p>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Tanya Gambar & Detail</a>
+        </div>
+
+        <div class="overflow-hidden rounded-[2.25rem] bg-white p-3 shadow-premium ring-1 ring-stone-100 sm:p-5">
+          <div class="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-stone-100 via-white to-amber-50 p-2 sm:rounded-[2rem] sm:p-3">
+            <img id="productSliderImage" src={`${base}/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-gambar-image-1.webp`} alt="Galeri gambar CUCKOO BESPOKE 2 Massage Chair" class="aspect-[4/3] w-full rounded-[1.45rem] object-cover object-center sm:rounded-[1.8rem]" />
+            <button type="button" id="productSliderPrev" class="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/92 text-2xl font-black text-luxe-black shadow-lg transition hover:bg-white sm:h-12 sm:w-12">‹</button>
+            <button type="button" id="productSliderNext" class="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/92 text-2xl font-black text-luxe-black shadow-lg transition hover:bg-white sm:h-12 sm:w-12">›</button>
+          </div>
+          <div id="productSliderDots" class="mt-5 flex flex-wrap justify-center gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service -->
+  <section id="service" class="overflow-hidden bg-[#040404] text-white">
+    <div class="relative bg-black px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#ffffff10_0,transparent_30%),radial-gradient(circle_at_bottom_right,#7A1F2B44_0,transparent_34%)]" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl">
+        <div class="mx-auto max-w-4xl text-center">
+          <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-luxe-gold shadow-md ring-1 ring-white/15">CUCKOO Service Confidence</p>
+          <h2 class="mt-6 text-balance text-4xl font-black tracking-tight sm:text-6xl">Servis Berkala, Waranti & Free Leather Change</h2>
+          <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-300">CUCKOO bantu jaga fungsi dan kondisi kerusi urut anda secara berkala. Ini antara sebab utama produk rental CUCKOO lebih meyakinkan untuk jangka panjang.</p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <div class="rounded-[2rem] bg-[#181818] p-6 shadow-premium ring-1 ring-white/10 md:p-7"><p class="text-4xl font-black text-luxe-gold">6 Bulan</p><h3 class="mt-3 text-2xl font-black">Periodic Service</h3><p class="mt-3 leading-7 text-stone-300">Pemeriksaan fungsi utama, cleaning dan penjagaan permukaan kerusi.</p></div>
+          <div class="rounded-[2rem] bg-[#181818] p-6 shadow-premium ring-1 ring-white/10 md:p-7"><p class="text-4xl font-black text-luxe-gold">12 Bulan</p><h3 class="mt-3 text-2xl font-black">Annual Maintenance</h3><p class="mt-3 leading-7 text-stone-300">Termasuk motor lubrication & inspection serta air hose examination.</p></div>
+          <div class="rounded-[2rem] bg-[#181818] p-6 shadow-premium ring-1 ring-white/10 md:p-7"><p class="text-4xl font-black text-luxe-gold">30 Bulan</p><h3 class="mt-3 text-2xl font-black">Free Leather Change</h3><p class="mt-3 leading-7 text-stone-300">Head rest, back rest dan seat front tertakluk terma semasa.</p></div>
+        </div>
+
+        <div class="mt-12 rounded-[2.5rem] bg-[#151515] p-5 shadow-premium ring-1 ring-white/10 sm:p-8">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">Apa Yang Disemak?</p>
+              <h3 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">10 Pemeriksaan & Penjagaan Berkala</h3>
+            </div>
+            <p class="max-w-xl text-sm font-semibold leading-6 text-stone-400">Item bertanda 12 bulan dibuat semasa major service mengikut jadual servis.</p>
+          </div>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🔍</p><h4 class="mt-3 font-black text-luxe-gold">Exterior Inspection</h4><p class="mt-2 text-sm leading-6 text-stone-300">Semak keadaan luaran kerusi.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">📱</p><h4 class="mt-3 font-black text-luxe-gold">Touch Panel Test</h4><p class="mt-2 text-sm leading-6 text-stone-300">Ujian fungsi panel kawalan.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">💨</p><h4 class="mt-3 font-black text-luxe-gold">Airbags & Heater</h4><p class="mt-2 text-sm leading-6 text-stone-300">Semak airbags dan fungsi haba.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🔊</p><h4 class="mt-3 font-black text-luxe-gold">Audio Validation</h4><p class="mt-2 text-sm leading-6 text-stone-300">Semak sistem audio.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">⚙️</p><h4 class="mt-3 font-black text-luxe-gold">Actuator Assessment</h4><p class="mt-2 text-sm leading-6 text-stone-300">Semak komponen pergerakan.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">✨</p><h4 class="mt-3 font-black text-luxe-gold">Leather Polishing</h4><p class="mt-2 text-sm leading-6 text-stone-300">Polishing permukaan leather.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🧹</p><h4 class="mt-3 font-black text-luxe-gold">Vacuum Cleaning</h4><p class="mt-2 text-sm leading-6 text-stone-300">Pembersihan habuk.</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10"><p class="text-3xl">🧼</p><h4 class="mt-3 font-black text-luxe-gold">Surface Cleaning</h4><p class="mt-2 text-sm leading-6 text-stone-300">Pembersihan permukaan kerusi.</p></div>
+            <div class="rounded-2xl bg-luxe-gold p-5 text-luxe-black"><p class="text-3xl">🛠️</p><h4 class="mt-3 font-black">Motor Lubrication</h4><p class="mt-2 text-sm font-semibold leading-6">Setiap 12 bulan.</p></div>
+            <div class="rounded-2xl bg-luxe-gold p-5 text-luxe-black"><p class="text-3xl">🧪</p><h4 class="mt-3 font-black">Air Hose Examination</h4><p class="mt-2 text-sm font-semibold leading-6">Setiap 12 bulan.</p></div>
+          </div>
+        </div>
+
+        <div class="mx-auto mt-12 max-w-3xl text-center"><a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Tanya Tentang Servis Berkala</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery / Access Charges -->
+  <section class="bg-gradient-to-br from-stone-50 via-white to-amber-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-goldDeep">Sebelum Order</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Syarat Pemasangan CUCKOO BESPOKE 2</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Massage chair adalah produk besar. Bahagian ini membantu customer faham keperluan laluan, tangga dan caj luar skop dari awal.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-[2rem] bg-white p-6 shadow-premium ring-1 ring-green-100 sm:p-8"><div class="mb-6 inline-flex rounded-full bg-green-100 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-green-800">✓ Perlu Disemak</div><div class="grid gap-3 sm:grid-cols-2"><p class="rounded-2xl bg-green-50 p-4 font-bold text-stone-700">Laluan pintu / staircase / angle sekitar 760mm</p><p class="rounded-2xl bg-green-50 p-4 font-bold text-stone-700">Ruang untuk posisi recline</p><p class="rounded-2xl bg-green-50 p-4 font-bold text-stone-700">Ada lift atau perlu guna tangga</p><p class="rounded-2xl bg-green-50 p-4 font-bold text-stone-700">Lokasi sesuai untuk letak kerusi</p></div></div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-premium ring-1 ring-amber-100 sm:p-8"><div class="mb-6 inline-flex rounded-full bg-rose-100 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-rose-800">Caj Jika Berkenaan</div><div class="space-y-3"><p class="rounded-2xl bg-amber-50 p-4 font-bold text-stone-700">Delivery staircase tingkat 2 ke atas: RM80/floor*</p><p class="rounded-2xl bg-amber-50 p-4 font-bold text-stone-700">Dismantle & assemble same occasion: RM180*</p><p class="rounded-2xl bg-amber-50 p-4 font-bold text-stone-700">Massage chair disposal: RM200/chair*</p><p class="rounded-2xl bg-amber-50 p-4 font-bold text-stone-700">Dismantle & assemble different occasion: RM360/chair*</p></div></div>
+      </div>
+
+      <div class="mx-auto mt-8 max-w-3xl rounded-[2rem] bg-white p-6 text-center shadow-soft ring-1 ring-stone-100"><p class="text-xl font-black text-luxe-black">Tak pasti muat atau tidak?</p><p class="mt-3 leading-7 text-stone-600">WhatsApp saya dan hantar gambar laluan, pintu, lift atau tangga untuk semakan awal.</p><a href="#" onclick="this.href=rotatingWhatsapp()"
+           class="mt-6 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Semak Laluan Rumah Saya</a></div>
+    </div>
+  </section>
+
+  <!-- Specification -->
+  <section class="bg-gradient-to-br from-luxe-black via-luxe-espresso to-[#3a2405] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">Spesifikasi Produk</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Spesifikasi CUCKOO BESPOKE 2 Massage Chair</h2>
+        <p class="mt-5 text-lg leading-8 text-luxe-cream">Rujukan ringkas untuk saiz, fungsi utama dan kesesuaian pengguna.</p>
+      </div>
+
+      <div class="mt-12 rounded-[2.5rem] bg-white p-6 text-luxe-ink shadow-premium sm:p-8">
+        <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div class="rounded-[2rem] bg-gradient-to-br from-stone-100 via-white to-amber-50 p-6"><img src={heroMain} alt="Spesifikasi Kerusi Urut CUCKOO BESPOKE 2 Massage Chair" class="mx-auto w-full max-w-md object-contain" /></div>
+          <div class="divide-y divide-stone-100 text-sm">
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Product Name</span><span class="text-right font-black text-stone-900">BESPOKE 2 Massage Chair</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Model Code</span><span class="text-right font-black text-stone-900">CMC-OG6387</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Input Voltage</span><span class="text-right font-black text-stone-900">220V - 240V</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Power Consumption</span><span class="text-right font-black text-stone-900">85W</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Product Weight</span><span class="text-right font-black text-stone-900">Gross 89.5kg / Net 73.5kg</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Incline Dimension</span><span class="text-right font-black text-stone-900">1,515 × 760 × 1,105mm</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Recline Dimension</span><span class="text-right font-black text-stone-900">1,810 × 760 × 895mm</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Recline Angle</span><span class="text-right font-black text-stone-900">Est. Max 126° - 170°</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Weight Supported</span><span class="text-right font-black text-stone-900">Recommended below 100kg</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Massage Program</span><span class="text-right font-black text-stone-900">6 Programs</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Massage Technique</span><span class="text-right font-black text-stone-900">11 Techniques</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Intensity Level</span><span class="text-right font-black text-stone-900">5 Levels</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Heating</span><span class="text-right font-black text-stone-900">45°C</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Air Bags</span><span class="text-right font-black text-stone-900">34 Air Bags</span></div>
+            <div class="flex justify-between gap-4 py-3"><span class="font-bold text-stone-500">Colour</span><span class="text-right font-black text-stone-900">Charcoal Grey + Metallic Champagne Gold</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Agent (shared component) -->
+  <AgentSection />
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center"><p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-goldDeep">FAQ</p><h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">FAQ Kerusi Urut CUCKOO BESPOKE 2</h2></div>
+      <div class="mt-10 space-y-4">
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100" open><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Promo RM12 untuk berapa bulan?</summary><p class="mt-3 leading-7 text-stone-600">Promo RM12 adalah untuk 6 bulan pertama. Selepas itu bayaran bulanan kembali kepada RM148/bulan, tertakluk kepada terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Perlu kad kredit untuk apply?</summary><p class="mt-3 leading-7 text-stone-600">Tidak semestinya. Customer boleh apply menggunakan kad bank/debit card mengikut syarat semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Perlu slip gaji atau penyata bank?</summary><p class="mt-3 leading-7 text-stone-600">Untuk proses CUCKOO, biasanya tak perlu slip gaji dan penyata bank. Kelulusan tetap tertakluk kepada semakan semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Suri rumah boleh daftar?</summary><p class="mt-3 leading-7 text-stone-600">Boleh cuba apply. Ini antara kelebihan CUCKOO kerana proses lebih mudah, namun masih tertakluk kepada kelulusan semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Installation free ke?</summary><p class="mt-3 leading-7 text-stone-600">Penghantaran dan pemasangan asas adalah percuma mengikut terma semasa. Caj tambahan boleh dikenakan untuk situasi khas seperti delivery melalui tangga, dismantle/assemble, disposal atau relocation.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Kalau rumah apartment tiada lift?</summary><p class="mt-3 leading-7 text-stone-600">Jika tiada lift atau lift rosak, delivery by staircase dari tingkat 2 ke atas boleh dikenakan caj RM80/floor mengikut terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Siapa yang tidak disarankan guna massage chair?</summary><p class="mt-3 leading-7 text-stone-600">Pengguna hamil, ada masalah jantung, masalah kesihatan tertentu atau kanak-kanak bawah 17 tahun perlu berhati-hati dan dapatkan nasihat doktor dahulu sebelum menggunakan massage chair.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Berat maksimum pengguna?</summary><p class="mt-3 leading-7 text-stone-600">Recommended user below 100kg.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Bila leather change dibuat?</summary><p class="mt-3 leading-7 text-stone-600">Leather replacement dibuat pada bulan ke-30 / servis ke-5 dan FOC mengikut terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Kalau produk ada masalah, hubungi siapa?</summary><p class="mt-3 leading-7 text-stone-600">Customer boleh hubungi CUCKOO Careline di 1800-88-8181 atau hubungi ejen untuk bantuan awal.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Apa beza 6 massage programs dan 11 massage techniques?</summary><p class="mt-3 leading-7 text-stone-600">Massage programs ialah mode urutan siap pilih seperti Signature, Full Body, Deep Tissue, Upper Body, Lower Body dan Relax. Massage techniques pula ialah gaya urutan yang digunakan dalam program tersebut seperti Kneading, Swedish, Tapping, Clapping, Shiatsu dan Guasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Bluetooth speaker untuk apa?</summary><p class="mt-3 leading-7 text-stone-600">Bluetooth speaker membolehkan anda sambungkan telefon dan dengar zikir, podcast, muzik santai atau audio relaksasi semasa sesi urutan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-luxe-black">Servis berkala dibuat setiap berapa lama?</summary><p class="mt-3 leading-7 text-stone-600">Servis berkala dibuat setiap 6 bulan mengikut jadual CUCKOO. Item tertentu seperti motor lubrication & inspection dan air hose examination dibuat setiap 12 bulan.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-luxe-black via-luxe-espresso to-luxe-maroon p-8 text-center text-white shadow-premium sm:p-10">
+      <p class="text-sm font-black uppercase tracking-[0.24em] text-luxe-gold">Semak Sekarang</p>
+      <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Semak Kelayakan CUCKOO BESPOKE 2</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-luxe-cream">Tekan WhatsApp sekarang. Saya bantu semak promo RM12, bayaran RM148/bulan, free gift, kelayakan, stock dan pemasangan.</p>
+      <div class="mx-auto mt-7 grid max-w-3xl gap-3 text-left sm:grid-cols-2 lg:grid-cols-5"><div class="rounded-2xl bg-white/10 p-4 text-sm font-bold ring-1 ring-white/10">Semak promo</div><div class="rounded-2xl bg-white/10 p-4 text-sm font-bold ring-1 ring-white/10">Semak kelayakan</div><div class="rounded-2xl bg-white/10 p-4 text-sm font-bold ring-1 ring-white/10">Semak free gift</div><div class="rounded-2xl bg-white/10 p-4 text-sm font-bold ring-1 ring-white/10">Semak laluan</div><div class="rounded-2xl bg-white/10 p-4 text-sm font-bold ring-1 ring-white/10">Semak servis</div></div>
+      <a href="#" onclick="this.href=rotatingWhatsapp()"
+         class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Kami Sekarang</a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  .gold-text { background: linear-gradient(135deg, #F3D99B, #D6B679, #B88746); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gold-btn { background: linear-gradient(135deg, #F3D99B, #D6B679, #B88746); }
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .text-balance { text-wrap: balance; }
+  .floating { animation: floating 5.5s ease-in-out infinite; }
+  @keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .floating { animation: none; }
+  }
+</style>
+
+<script is:inline>
+  // Hero product image switcher (desktop + mobile)
+  function setupHeroProductSwitcher(imageId, buttonClass, inactiveClass, activeClass) {
+    const image = document.getElementById(imageId);
+    const buttons = document.querySelectorAll('.' + buttonClass);
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!image) return;
+        image.src = button.dataset.heroProduct;
+        buttons.forEach((thumb) => { thumb.className = buttonClass + ' ' + inactiveClass; });
+        button.className = buttonClass + ' ' + activeClass;
+      });
+    });
+  }
+
+  setupHeroProductSwitcher('heroProductImage', 'hero-product-thumb', 'rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20', 'rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-luxe-black shadow-sm ring-2 ring-luxe-gold');
+  setupHeroProductSwitcher('heroProductImageMobile', 'hero-product-thumb-mobile', 'rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20', 'rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-luxe-black shadow-sm ring-2 ring-luxe-gold');
+
+  // Gallery slider
+  const productSlides = [
+    { image: '/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-gambar-image-1.webp' },
+    { image: '/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-gambar-image-2.webp' },
+    { image: '/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-gambar-image-3.webp' },
+    { image: '/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-gambar-image-4.webp' },
+    { image: '/assets/images/products/massage-chair/bespoke-2/cuckoo-ogawa-bespoke-2-massage-chair-kerusi-urut-gambar-image-5.webp' }
+  ];
+
+  const productImage = document.getElementById('productSliderImage');
+  const productPrev = document.getElementById('productSliderPrev');
+  const productNext = document.getElementById('productSliderNext');
+  const productDots = document.getElementById('productSliderDots');
+  let productIndex = 0;
+
+  function renderProductSlider() {
+    if (!productImage || !productDots) return;
+    const slide = productSlides[productIndex];
+    productImage.src = slide.image;
+    productImage.alt = 'Gambar CUCKOO BESPOKE 2 Massage Chair ' + (productIndex + 1);
+    productDots.innerHTML = productSlides.map((_, index) => '<button type="button" aria-label="Lihat gambar ' + (index + 1) + '" class="h-3 rounded-full transition ' + (index === productIndex ? 'w-9 bg-luxe-goldDeep' : 'w-3 bg-stone-300') + '" data-product-dot="' + index + '"></button>').join('');
+    productDots.querySelectorAll('[data-product-dot]').forEach((dot) => {
+      dot.addEventListener('click', () => { productIndex = Number(dot.dataset.productDot); renderProductSlider(); });
+    });
+  }
+
+  if (productPrev && productNext) {
+    productPrev.addEventListener('click', () => { productIndex = (productIndex - 1 + productSlides.length) % productSlides.length; renderProductSlider(); });
+    productNext.addEventListener('click', () => { productIndex = (productIndex + 1) % productSlides.length; renderProductSlider(); });
+  }
+
+  renderProductSlider();
+</script>

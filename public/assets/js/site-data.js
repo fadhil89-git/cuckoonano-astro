@@ -741,7 +741,7 @@ const SITE = {
           "name": "A-Lite",
           "url": "/products/mattress/a-lite/",
           "category": "mattress",
-          "image": "/assets/images/Gambar%20Produk%20png/A-lite-series-With-BedFrame_Font.webp",
+          "image": "/assets/images/products/mattress/a-lite/A-lite-series-With-BedFrame_Top-Font-510x340.webp",
           "desc": "Tilam CUCKOO x Napure 300mm untuk tidur selesa dengan sokongan harian yang seimbang.",
           "price": "RM105/bulan",
           "bullets": [

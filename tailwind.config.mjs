@@ -50,6 +50,22 @@ export default {
           mid: '#ffe7a8',
           dark: '#b88746'
         },
+        // Luxe black/gold palette for the BESPOKE 2 Massage Chair page (additive)
+        luxe: {
+          black: '#09090B',
+          charcoal: '#111216',
+          graphite: '#1A1B20',
+          soft: '#F8F3EA',
+          cream: '#EFE3D0',
+          muted: '#B8AEA0',
+          gold: '#D6B679',
+          goldDeep: '#B88746',
+          champagne: '#F3D99B',
+          copper: '#A86C3A',
+          espresso: '#221815',
+          maroon: '#7A1F2B',
+          ink: '#111827'
+        },
         cream: '#FFF8F3',
         ink: '#21181A',
         muted: '#6F5B61'
@@ -60,7 +76,8 @@ export default {
         premium: '0 28px 90px rgba(15, 23, 42, 0.15)',
         cta: '0 18px 40px rgba(22, 163, 74, 0.25)',
         card: '0 8px 32px rgba(181,22,43,0.10)',
-        red: '0 18px 50px rgba(181,22,43,0.18)'
+        red: '0 18px 50px rgba(181,22,43,0.18)',
+        gold: '0 18px 60px rgba(214, 182, 121, 0.26)'
       },
       borderRadius: { soft: '1.5rem' }
     }

@@ -318,7 +318,7 @@ const faqSchema = {
 
           <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
             <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
-            <span class="text-sm font-black sm:text-base">RM12/bulan untuk 6 bulan pertama</span>
+            <span class="text-sm font-black sm:text-base">RM12 x 6 bulan pertama</span>
           </div>
 
           <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
@@ -736,10 +736,6 @@ const faqSchema = {
     <AgentSection />
   </div>
 
-  <script type="application/ld+json" is:inline>
-    {JSON.stringify(schema)}
-  </script>
-  <script type="application/ld+json" is:inline>
-    {JSON.stringify(faqSchema)}
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>
