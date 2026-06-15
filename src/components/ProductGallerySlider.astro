@@ -12,6 +12,7 @@ interface Props {
   title: string;
   description?: string;
   items: GalleryItem[];
+  aspectClass?: string;
 }
 
 const {
@@ -19,7 +20,8 @@ const {
   eyebrow = 'Product Gallery',
   title,
   description,
-  items
+  items,
+  aspectClass = 'aspect-[5/4]'
 } = Astro.props;
 ---
 
@@ -68,7 +70,7 @@ const {
             data-gallery-alt={item.alt ?? item.title}
             data-gallery-title={item.title}
           >
-            <div class="aspect-[5/4] overflow-hidden bg-brand-cream">
+            <div class={`${aspectClass} overflow-hidden bg-brand-cream`}>
               <img
                 src={item.image}
                 alt={item.alt ?? item.title}

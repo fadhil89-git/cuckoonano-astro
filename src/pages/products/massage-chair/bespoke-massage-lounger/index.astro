@@ -1,6 +1,19 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import AgentSection from '../../../../components/AgentSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+
+const loungerBase = '/assets/images/products/massage-chair/lounger';
+const galleryItems = [
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-2.webp`, title: 'CUCKOO Massage Lounger 1', alt: 'CUCKOO BESPOKE Massage Lounger gambar 1' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-3.webp`, title: 'CUCKOO Massage Lounger 2', alt: 'CUCKOO BESPOKE Massage Lounger gambar 2' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-4.webp`, title: 'CUCKOO Massage Lounger 3', alt: 'CUCKOO BESPOKE Massage Lounger gambar 3' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-5.webp`, title: 'CUCKOO Massage Lounger 4', alt: 'CUCKOO BESPOKE Massage Lounger gambar 4' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-9.webp`, title: 'CUCKOO Massage Lounger 5', alt: 'CUCKOO BESPOKE Massage Lounger gambar 5' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-10.webp`, title: 'CUCKOO Massage Lounger 6', alt: 'CUCKOO BESPOKE Massage Lounger gambar 6' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-11.webp`, title: 'CUCKOO Massage Lounger 7', alt: 'CUCKOO BESPOKE Massage Lounger gambar 7' },
+  { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-12.webp`, title: 'CUCKOO Massage Lounger 8', alt: 'CUCKOO BESPOKE Massage Lounger gambar 8' }
+];
 
 const productSchema = {
   '@context': 'https://schema.org',
@@ -571,7 +584,7 @@ const faqSchema = {
         <div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
 
           <div class="spec-card flex flex-col items-center rounded-[1.75rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#2d0a10] shadow-md sm:h-28 sm:w-28">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#8d0920] shadow-md sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/5-massage-techniques_01_kneading.png" alt="Teknik Kneading" class="h-full w-full object-cover" />
             </div>
             <h4 class="mt-4 text-sm font-black text-ink">Kneading</h4>
@@ -579,7 +592,7 @@ const faqSchema = {
           </div>
 
           <div class="spec-card flex flex-col items-center rounded-[1.75rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#2d0a10] shadow-md sm:h-28 sm:w-28">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#8d0920] shadow-md sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/5-massage-techniques_02_Clapping.png" alt="Teknik Clapping" class="h-full w-full object-cover" />
             </div>
             <h4 class="mt-4 text-sm font-black text-ink">Clapping</h4>
@@ -587,7 +600,7 @@ const faqSchema = {
           </div>
 
           <div class="spec-card flex flex-col items-center rounded-[1.75rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#2d0a10] shadow-md sm:h-28 sm:w-28">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#8d0920] shadow-md sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/5-massage-techniques_03_Shiatsu.png" alt="Teknik Shiatsu" class="h-full w-full object-cover" />
             </div>
             <h4 class="mt-4 text-sm font-black text-ink">Shiatsu</h4>
@@ -595,7 +608,7 @@ const faqSchema = {
           </div>
 
           <div class="spec-card flex flex-col items-center rounded-[1.75rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#2d0a10] shadow-md sm:h-28 sm:w-28">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#8d0920] shadow-md sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/5-massage-techniques_04_Tapping.png" alt="Teknik Tapping" class="h-full w-full object-cover" />
             </div>
             <h4 class="mt-4 text-sm font-black text-ink">Tapping</h4>
@@ -603,7 +616,7 @@ const faqSchema = {
           </div>
 
           <div class="spec-card col-span-2 flex flex-col items-center rounded-[1.75rem] border border-stone-200 bg-white p-5 text-center shadow-soft sm:col-span-1">
-            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#2d0a10] shadow-md sm:h-28 sm:w-28">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/10 bg-[#8d0920] shadow-md sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/5-massage-techniques_05_Rolling.png" alt="Teknik Rolling" class="h-full w-full object-cover" />
             </div>
             <h4 class="mt-4 text-sm font-black text-ink">Rolling</h4>
@@ -630,37 +643,37 @@ const faqSchema = {
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
 
           <div class="spec-card rounded-[1.5rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#2d0a10] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_01_Deep-Tissue.png" alt="Program Deep Tissue" class="h-16 w-16 object-contain" /></div>
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#8d0920] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_01_Deep-Tissue.png" alt="Program Deep Tissue" class="h-16 w-16 object-contain" /></div>
             <h4 class="mt-3 text-sm font-black text-ink">Deep Tissue</h4>
             <p class="mt-1 text-xs leading-5 text-muted">Lega kesakitan dan ketegangan dalam otot</p>
           </div>
 
           <div class="spec-card rounded-[1.5rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#2d0a10] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_02_Relax.png" alt="Program Relax" class="h-16 w-16 object-contain" /></div>
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#8d0920] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_02_Relax.png" alt="Program Relax" class="h-16 w-16 object-contain" /></div>
             <h4 class="mt-3 text-sm font-black text-ink">Relax</h4>
             <p class="mt-1 text-xs leading-5 text-muted">Kurang stress, pulih tenaga dengan lembut</p>
           </div>
 
           <div class="spec-card rounded-[1.5rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#2d0a10] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_03_Lower-Body.png" alt="Program Lower Body" class="h-16 w-16 object-contain" /></div>
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#8d0920] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_03_Lower-Body.png" alt="Program Lower Body" class="h-16 w-16 object-contain" /></div>
             <h4 class="mt-3 text-sm font-black text-ink">Lower Body</h4>
             <p class="mt-1 text-xs leading-5 text-muted">Lancarkan peredaran kaki, betis dan peha</p>
           </div>
 
           <div class="spec-card rounded-[1.5rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#2d0a10] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_04_Upper-Body.png" alt="Program Upper Body" class="h-16 w-16 object-contain" /></div>
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#8d0920] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_04_Upper-Body.png" alt="Program Upper Body" class="h-16 w-16 object-contain" /></div>
             <h4 class="mt-3 text-sm font-black text-ink">Upper Body</h4>
             <p class="mt-1 text-xs leading-5 text-muted">Lega leher, bahu dan bahagian atas belakang</p>
           </div>
 
           <div class="spec-card rounded-[1.5rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#2d0a10] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_05_Lumer-Care.png" alt="Program Lumbar Care" class="h-16 w-16 object-contain" /></div>
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#8d0920] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_05_Lumer-Care.png" alt="Program Lumbar Care" class="h-16 w-16 object-contain" /></div>
             <h4 class="mt-3 text-sm font-black text-ink">Lumbar Care</h4>
             <p class="mt-1 text-xs leading-5 text-muted">Tingkat mobiliti dan keselesaan pinggang bawah</p>
           </div>
 
           <div class="spec-card rounded-[1.5rem] border border-stone-200 bg-white p-5 text-center shadow-soft">
-            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#2d0a10] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_06_Shoulder-Massage.png" alt="Program Shoulder Massage" class="h-16 w-16 object-contain" /></div>
+            <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-[#8d0920] shadow-md"><img src="/assets/images/products/massage-chair/lounger/6-auto-massage-programs_06_Shoulder-Massage.png" alt="Program Shoulder Massage" class="h-16 w-16 object-contain" /></div>
             <h4 class="mt-3 text-sm font-black text-ink">Shoulder Massage</h4>
             <p class="mt-1 text-xs leading-5 text-muted">Lega bahu dan leher yang tegang sepenuhnya</p>
           </div>
@@ -755,7 +768,7 @@ const faqSchema = {
         <div class="rounded-[2rem] bg-white/10 p-6 ring-1 ring-white/10">
           <p class="text-4xl font-black" style="color: #d6b679;">30 Bulan</p>
           <h3 class="mt-3 text-xl font-black">Free Leather Change</h3>
-          <p class="mt-2 text-sm leading-6 text-rose-200">Penggantian leather percuma — head rest, back rest dan seat front.</p>
+          <p class="mt-2 text-sm leading-6 text-rose-200">Penggantian leather percuma — head rest, back rest dan seat front. <i>(Pakej RM119/bulan)</i></p>
         </div>
       </div>
 
@@ -767,10 +780,10 @@ const faqSchema = {
           </div>
         </div>
 
-        <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div class="mt-8 flex snap-x gap-4 overflow-x-auto pb-3 lg:grid lg:grid-cols-5 lg:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-1-Icon_06_Step1.webp" alt="Step 1 Exterior Inspection" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 1</p>
@@ -778,8 +791,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Assess overall condition</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-2-Icon_06_Step2.webp" alt="Step 2 Remote & Arm Controller Test" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 2</p>
@@ -787,8 +800,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Ensure seamless operation</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-3-Icon_06_Step3.webp" alt="Step 3 Airbags & Heater Evaluation" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 3</p>
@@ -796,8 +809,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Checkpoint for optimal performance</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-4-Icon_06_Step4.webp" alt="Step 4 Audio System Validation" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 4</p>
@@ -805,8 +818,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Ensure proper functioning</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-5-Icon_06_Step5.webp" alt="Step 5 Actuator Assessment" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 5</p>
@@ -814,8 +827,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Assess movement mechanism</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-6-Icon_06_Step6.webp" alt="Step 6 Leather Polishing" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 6</p>
@@ -823,8 +836,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Enhance upholstery appearance</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-7-Icon_06_Step7.webp" alt="Step 7 Vacuum Cleaning" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 7</p>
@@ -832,8 +845,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Remove debris and dust</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10" style="background: rgba(255,255,255,0.07);">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-white/20 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center ring-1 ring-white/10 sm:w-[30%] lg:w-auto" style="background: rgba(255,255,255,0.07);">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-white/20 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-8-Icon_06_Step8.webp" alt="Step 8 Surface Cleaning" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider" style="color: #d6b679;">Step 8</p>
@@ -841,8 +854,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-rose-300">Wipe down exterior</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center text-ink" style="background: #d6b679;">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-amber-300 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center text-ink sm:w-[30%] lg:w-auto" style="background: #d6b679;">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-amber-300 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-9-Icon_06_Step9.webp" alt="Step 9 Motor Lubrication" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider text-amber-900">Step 9 ⭐</p>
@@ -850,8 +863,8 @@ const faqSchema = {
             <p class="mt-1 text-[10px] leading-4 text-amber-900">Every 12 months — ensure smooth operation</p>
           </div>
 
-          <div class="flex flex-col items-center rounded-2xl p-4 text-center text-ink" style="background: #d6b679;">
-            <div class="h-20 w-20 overflow-hidden rounded-full border-2 border-amber-300 sm:h-24 sm:w-24">
+          <div class="flex w-[44%] shrink-0 snap-center flex-col items-center rounded-2xl p-4 text-center text-ink sm:w-[30%] lg:w-auto" style="background: #d6b679;">
+            <div class="h-24 w-24 overflow-hidden rounded-full border-2 border-amber-300 sm:h-28 sm:w-28">
               <img src="/assets/images/products/massage-chair/lounger/servis-10-Icon_06_Step10.webp" alt="Step 10 Air Hose Examination" class="h-full w-full object-cover" />
             </div>
             <p class="mt-2 text-[10px] font-black uppercase tracking-wider text-amber-900">Step 10 ⭐</p>
@@ -955,60 +968,16 @@ const faqSchema = {
 
 
   <!-- ============================================================ -->
-  <!-- GALLERY -->
+  <!-- GALLERY (ProductGallerySlider — portrait, macam page tilam) -->
   <!-- ============================================================ -->
-  <section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div class="mx-auto max-w-7xl">
-      <div class="mx-auto max-w-3xl text-center fade-up">
-        <p class="text-xs font-black uppercase tracking-[0.22em] text-red-brand">Galeri Gambar</p>
-        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-ink sm:text-5xl">Lihat Sendiri Keindahannya</h2>
-        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">Klik mana-mana gambar untuk lihat lebih besar. Scroll kiri kanan untuk tengok semua.</p>
-      </div>
-
-      <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 fade-up" id="galleryGrid">
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="0">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-2.webp" alt="CUCKOO Massage Lounger Gambar 1" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="1">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-3.webp" alt="CUCKOO Massage Lounger Gambar 2" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="2">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-4.webp" alt="CUCKOO Massage Lounger Gambar 3" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="3">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-5.webp" alt="CUCKOO Massage Lounger Gambar 4" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="4">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-9.webp" alt="CUCKOO Massage Lounger Gambar 5" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="5">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-10.webp" alt="CUCKOO Massage Lounger Gambar 6" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="6">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-11.webp" alt="CUCKOO Massage Lounger Gambar 7" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-        <button type="button" class="gallery-thumb group overflow-hidden rounded-2xl bg-stone-200" data-index="7">
-          <img src="/assets/images/products/massage-chair/lounger/kerusi-urut-cuckoo-massage-lounger-bespoke-12.webp" alt="CUCKOO Massage Lounger Gambar 8" class="h-40 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-48" />
-        </button>
-      </div>
-    </div>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center" style="background: rgba(0,0,0,0.92);">
-      <div class="relative mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center px-4">
-        <button id="lbClose" type="button" class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 z-10">
-          <span class="text-xl font-black">✕</span>
-        </button>
-        <p id="lbCounter" class="absolute top-4 left-1/2 -translate-x-1/2 text-xs font-bold text-white/60 z-10">1 / 8</p>
-        <div class="relative flex w-full items-center justify-center">
-          <button id="lbPrev" type="button" class="absolute left-0 z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25">‹</button>
-          <img id="lbImg" src="" alt="Gallery CUCKOO Massage Lounger" class="max-h-[75vh] max-w-full rounded-2xl object-contain shadow-2xl" />
-          <button id="lbNext" type="button" class="absolute right-0 z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/25">›</button>
-        </div>
-        <div id="lbDots" class="mt-5 flex gap-2"></div>
-      </div>
-    </div>
-  </section>
+  <ProductGallerySlider 
+    id="galeri"
+    eyebrow="Galeri Gambar"
+    title="Lihat Sendiri Keindahannya"
+    description="Swipe untuk lihat rupa, warna dan detail CUCKOO BESPOKE Massage Lounger. Klik gambar untuk paparan penuh."
+    items={galleryItems}
+    aspectClass="aspect-[3/4]"
+  />
 
 
   <!-- ============================================================ -->
@@ -1025,13 +994,15 @@ const faqSchema = {
       <div class="mt-12 overflow-hidden rounded-[2rem] border border-stone-100 bg-white shadow-soft fade-up">
         <div class="grid lg:grid-cols-[1fr_1.2fr] lg:items-stretch">
 
-          <div class="flex items-center justify-center bg-stone-50 p-6 lg:p-8">
-            <img src="/assets/images/products/massage-chair/lounger/desktop-Massage-chair-size-img-left_1.webp"
-                 alt="Dimensi CUCKOO BESPOKE Massage Lounger"
-                 class="hidden w-full max-w-sm object-contain lg:block" />
-            <img src="/assets/images/products/massage-chair/lounger/mobile-Massage-chair-size-img-left_1.webp"
-                 alt="Dimensi CUCKOO BESPOKE Massage Lounger"
-                 class="block w-full max-w-[280px] object-contain lg:hidden" />
+          <div class="grid grid-cols-1 items-center gap-6 p-6 lg:p-8" style="background: linear-gradient(135deg, #4B0715, #2d0a10);">
+            <img src="/assets/images/products/massage-chair/lounger/Massage-chair-size-img-left_1.png"
+                 alt="Dimensi CUCKOO BESPOKE Massage Lounger — pandangan 1"
+                 loading="lazy"
+                 class="mx-auto w-full max-w-[300px] object-contain" />
+            <img src="/assets/images/products/massage-chair/lounger/Massage-chair-size-img-left-1.png"
+                 alt="Dimensi CUCKOO BESPOKE Massage Lounger — pandangan 2"
+                 loading="lazy"
+                 class="mx-auto w-full max-w-[300px] object-contain" />
           </div>
 
           <div class="p-6 lg:p-8">
