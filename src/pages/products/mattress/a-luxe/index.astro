@@ -1,14 +1,932 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
 
-const meta = {
-  "title": "A-Luxe CUCKOO | Tilam",
-  "description": "Semak maklumat A-Luxe CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/mattress/a-luxe/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/a-luxe.webp",
-  "ogType": "website"
+const base = '/assets/images/products/mattress/a-luxe';
+
+// Hero images (point 12)
+const heroBed = `${base}/A-Luxe-Mattress-1000x1000-1.png.webp`;        // dengan katil
+const heroMattress = `${base}/A-Luxe-Mattress-tilam-sahaja-1000x1000.webp`; // tilam sahaja
+
+// Section images (real where available, placeholder otherwise)
+const grapheneImg = `${base}/Graphene-banner-desk.webp`;
+const layerImg = `${base}/A-Luxe-LAYER-BED-with-pointer.webp`;
+const layerMobile = `${base}/Layers-mobile-001.webp`;
+const specQueen = `${base}/A-Luxe-Spec-Queen@2x-2048x1376.webp`;
+const specKing = `${base}/A-Luxe-Spec-King@2x-2048x1376.webp`;
+
+// "Beyond Sleep" + "Quality Sleep" sections (white line icons → dark bg)
+const iconGaget = `${base}/ICON-gaget.png`;
+const iconBacteria = `${base}/ICON-bacteria.png`;
+const iconTemperature = `${base}/ICON-temperature.png`;
+const iconEQ = `${base}/ICON-EQ_1@2x.png`;
+const iconIQ = `${base}/ICON-IQ@2x.png`;
+const iconEnhance = `${base}/ICON-Enhance@2x.png`;
+const beyondMattressImg = `${base}/a-luxe-Mattress-img-dt@2x.webp`;
+
+const features = [
+  {
+    badge: 'Graphene Conductive Fiber',
+    title: 'Permukaan Tidur Lebih Selesa & Static-Free',
+    copy: 'Lapisan graphene membantu mengurangkan static discomfort, sambil memberi rasa permukaan tilam yang lebih premium.',
+    tags: ['Anti-static', 'Premium sleep layer'],
+    media: grapheneImg,
+    type: 'image'
+  },
+  {
+    badge: 'VitalShield Tech',
+    title: 'Tingkatkan Peredaran Darah & Kualiti Tidur',
+    copy: 'Improves blood circulation and enhances sleep quality.',
+    tags: ['Blood circulation', 'Sleep quality'],
+    media: `${base}/VitalShield_Desktop_Square.mp4`,
+    type: 'video',
+    ratio: 'square'
+  },
+  {
+    badge: 'Dustic Freeze Pro',
+    title: 'Rasa Lebih Sejuk, Bersih & Selesa',
+    copy: 'Teknologi Dustic Freeze Pro memberi cooling feel serta perlindungan permukaan daripada dust mites dan bakteria.',
+    tags: ['Cooling feel', 'Anti dust mite'],
+    media: `${base}/Dustic_Desktop_Square.mp4`,
+    type: 'video',
+    ratio: 'square'
+  },
+  {
+    badge: '100% Natural Latex',
+    title: 'Sokongan Lembut Tetapi Stabil Untuk Badan',
+    copy: 'Natural latex memberi rasa breathable dan responsif, sesuai untuk anda yang mahu tilam premium tetapi masih menyokong badan.',
+    tags: ['Breathable', 'Responsive support'],
+    media: `${base}/Latex_Desktop_Square.mp4`,
+    type: 'video',
+    ratio: 'square'
+  },
+  {
+    badge: '7-Zone Support',
+    title: 'Sokongan Berbeza Untuk Bahu, Pinggang & Pinggul',
+    copy: '7-Zone Skeletal Support membantu menyokong bahagian badan yang berbeza supaya tidur rasa lebih seimbang.',
+    tags: ['Spine support', 'Body alignment'],
+    media: `${base}/7-zone_Desktop_Horizontal.mp4`,
+    type: 'video',
+    ratio: 'horizontal'
+  },
+  {
+    badge: 'Zero Motion Transfer',
+    title: 'Kurang Gangguan Bila Pasangan Bergerak',
+    copy: 'Gabungan pocket spring dan struktur sokongan membantu mengurangkan rasa gegaran apabila pasangan bergerak di sisi.',
+    tags: ['Couple friendly', 'Pocket spring'],
+    media: `${base}/Zero-Motion_Desktop_Square.mp4`,
+    type: 'video',
+    ratio: 'square'
+  }
+];
+
+const galleryItems = [
+  ...Array.from({ length: 8 }, (_, i) => {
+    const n = i + 1;
+    return {
+      image: `${base}/tilam-cuckoo-a-luxe-napure-premium-mattress-${n}.webp`,
+      title: `CUCKOO A Luxe Mattress ${n}`,
+      copy: 'Rujukan rupa dan pemasangan sebenar CUCKOO A Luxe Mattress.',
+      alt: `Gambar CUCKOO A Luxe Napure premium mattress ${n}`
+    };
+  })
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO A Luxe Mattress',
+  alternateName: ['Tilam CUCKOO A Luxe', 'A Luxe Napure Mattress', 'Tilam Premium Natural Latex CUCKOO'],
+  brand: { '@type': 'Brand', name: 'CUCKOO' },
+  url: 'https://www.cuckoonano.com/products/mattress/a-luxe/',
+  description:
+    'CUCKOO A Luxe Mattress — tilam premium dengan Graphene Conductive Fiber, Dustic Freeze Pro, 100% Natural Latex, 7-Zone Support dan Zero Motion Transfer. CUCKOO+ Care Service setiap 4 bulan dan warranty 10 tahun.',
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'MYR',
+    price: '108',
+    availability: 'https://schema.org/InStock',
+    areaServed: { '@type': 'Country', name: 'Malaysia' }
+  }
+};
+
+const faqItems = [
+  { q: 'A Luxe sesuai untuk siapa?', a: 'Sesuai untuk anda yang mahukan tilam premium dengan natural latex, sokongan badan lebih baik, rasa lebih sejuk dan kurang gangguan pergerakan pasangan.' },
+  { q: 'Beza mattress sahaja dan mattress + bed frame?', a: 'Mattress sahaja ialah tilam A Luxe sahaja. Mattress + bed frame pula termasuk New CUCKOO Bed Frame mengikut pelan dan terma semasa.' },
+  { q: 'Rental ada berapa tahun?', a: 'Mattress sahaja ada pilihan 3 tahun, 5 tahun dan 7 tahun. Mattress + bed frame ada pilihan 5 tahun dan 7 tahun.' },
+  { q: 'Outright dapat apa?', a: 'Outright promo termasuk free 2× mattress protector dan free CCS 1 tahun, tertakluk kepada terma semasa.' },
+  { q: 'Berapa kerap service tilam?', a: 'CUCKOO+ Care Service untuk tilam dibuat setiap 4 bulan mengikut pelan dan jadual servis.' },
+  { q: 'Warranty cover apa?', a: 'Warranty 10 tahun adalah warranty terhad untuk manufacturing defect, tertakluk kepada terma semasa CUCKOO.' }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a }
+  }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.cuckoonano.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://www.cuckoonano.com/products/' },
+    { '@type': 'ListItem', position: 3, name: 'Tilam', item: 'https://www.cuckoonano.com/products/mattress/' },
+    { '@type': 'ListItem', position: 4, name: 'A Luxe Mattress', item: 'https://www.cuckoonano.com/products/mattress/a-luxe/' }
+  ]
 };
 ---
-<BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Tilam</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">A-Luxe CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat A-Luxe, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/mattress/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-brand-soft"><img src="/assets/images/Gambar%20Produk%20png/tilam%20cuckoo%20a%20luxe%20mattress%20napure%201.webp" alt="A-Luxe" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih A-Luxe?</h2><p>Bahagian ini ialah rangka awal untuk page produk A-Luxe. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Tilam.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="mattress"></div><div data-agent-block></div>
+
+<BaseLayout
+  title="CUCKOO A Luxe Mattress | Tilam Premium Natural Latex & 7-Zone Support"
+  description="CUCKOO A Luxe Mattress dengan Graphene Conductive Fiber, Dustic Freeze Pro, 100% Natural Latex, 7-Zone Support, Zero Motion Transfer, CUCKOO+ Care Service setiap 4 bulan dan warranty 10 tahun. WhatsApp ejen untuk semak harga."
+  canonical="https://www.cuckoonano.com/products/mattress/a-luxe/"
+  ogImage="https://www.cuckoonano.com/assets/images/products/mattress/a-luxe/A-Luxe-Mattress-1000x1000-1.png.webp"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- ============================================================ -->
+  <!-- HERO (navy) -->
+  <!-- ============================================================ -->
+  <section class="relative overflow-hidden px-4 py-10 text-white sm:px-6 lg:px-8 lg:py-16"
+           style="background: radial-gradient(circle at 72% 20%, rgba(216,180,120,.30), transparent 38%), linear-gradient(135deg, #3a0a12 0%, #5e1019 52%, #7a1f2b 100%);">
+    <div class="relative mx-auto max-w-7xl">
+
+      <!-- MOBILE HERO -->
+      <div class="lg:hidden">
+        <div class="mx-auto max-w-md text-center">
+          <div class="mb-3 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-[#d8c69a] px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#5a0f18]">🔥 Promo RM12</span>
+            <span class="rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-white ring-1 ring-white/15">CUCKOO × Napure Mattress</span>
+            <span class="rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-white ring-1 ring-white/15">Warranty 10 Tahun</span>
+          </div>
+          <p class="text-[11px] font-black uppercase tracking-[0.22em] text-[#d8c69a]">CUCKOO Mattress Malaysia</p>
+          <h1 class="mt-2 text-[1.85rem] font-black leading-[1.05] tracking-tight text-white">
+            CUCKOO <span class="gold-text">A Luxe</span><br />Mattress
+          </h1>
+          <p class="mx-auto mt-3 max-w-xs text-sm leading-6 text-[#f0e6d6]/90">
+            Tilam premium dengan Graphene Conductive Fiber, 100% Natural Latex dan 7-Zone Support untuk tidur yang lebih sejuk dan stabil.
+          </p>
+        </div>
+
+        <!-- Mobile product card -->
+        <div class="mx-auto mt-5 max-w-sm overflow-hidden rounded-[2rem] bg-white/10 p-3 ring-1 ring-white/15 backdrop-blur">
+          <div class="overflow-hidden rounded-[1.5rem] bg-white/50 p-2">
+            <img id="heroImgMobile" src={heroBed}
+                 alt="CUCKOO A Luxe Mattress dengan bed frame"
+                 class="mx-auto h-auto w-full max-w-[420px] object-contain transition duration-300" />
+          </div>
+          <div class="mt-3 flex justify-center gap-2">
+            <button type="button" data-img-mobile={heroBed} class="hero-thumb-mobile shrink-0 rounded-full bg-[#F6D77B] px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-[#5a0f18] shadow-sm ring-2 ring-black/10">Dengan Katil</button>
+            <button type="button" data-img-mobile={heroMattress} class="hero-thumb-mobile shrink-0 rounded-full bg-[#FFF7EA] px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-[#7a1f2b] ring-1 ring-black/10">Tilam Sahaja</button>
+          </div>
+        </div>
+
+        <!-- Pricing card mobile -->
+        <div class="mx-auto mt-5 max-w-sm rounded-[1.75rem] bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur">
+          <div class="rounded-[1.4rem] p-4 text-center shadow-[inset_0_0_0_1px_rgba(255,255,255,.5)]" style="background: linear-gradient(135deg, #fff7de 0%, #ffe7a8 52%, #d8b25e 100%);">
+            <p class="text-[11px] font-black uppercase tracking-[0.18em] text-[#7b4e14]">6 Bulan Pertama</p>
+            <p class="mt-1 text-4xl font-black tracking-tight text-[#5a0f18]">RM12<span class="text-base font-bold text-[#7b4e14]">/bulan</span></p>
+            <p class="mt-1 text-[11px] font-bold text-[#7b4e14]/85">Lepas promo — dari RM108/bulan</p>
+          </div>
+          <div class="mt-3 grid gap-2">
+            <div class="rounded-xl bg-white/10 px-3 py-2.5 text-xs font-black text-white ring-1 ring-white/15">Queen &amp; King · pilihan dengan atau tanpa bed frame</div>
+            <div class="rounded-xl bg-white/10 px-3 py-2.5 text-xs font-black text-white ring-1 ring-white/15">Mattress cleaning service setiap 4 bulan</div>
+            <div class="rounded-xl bg-white/10 px-3 py-2.5 text-xs font-black text-white ring-1 ring-white/15">Free delivery &amp; installation*</div>
+          </div>
+          <p class="mt-3 text-center text-[10px] font-semibold leading-5 text-[#d8c69a]/80">*Tertakluk kepada stok, kelayakan, kawasan pemasangan dan terma semasa.</p>
+        </div>
+
+        <div class="mx-auto mt-4 max-w-sm">
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta transition hover:bg-cta-dark">
+            📲 Semak Harga &amp; Kelayakan
+          </a>
+        </div>
+      </div><!-- end mobile hero -->
+
+
+      <!-- DESKTOP HERO -->
+      <div class="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-14">
+        <div>
+          <div class="mb-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-[#d8c69a] px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#5a0f18]">🔥 Promo RM12 Sekarang</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white ring-1 ring-white/15">CUCKOO × Napure Mattress</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white ring-1 ring-white/15">Warranty 10 Tahun</span>
+          </div>
+
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-[#d8c69a]">CUCKOO Mattress Malaysia</p>
+
+          <h1 class="mt-3 max-w-2xl text-balance text-5xl font-black leading-[1.03] tracking-tight text-white xl:text-6xl">
+            CUCKOO <span class="gold-text">A Luxe</span> Mattress
+          </h1>
+
+          <p class="mt-5 max-w-xl text-lg leading-8 text-[#f0e6d6]/90">
+            Tilam premium dengan Graphene Conductive Fiber, 100% Natural Latex dan 7-Zone Support untuk tidur yang lebih selesa, sejuk dan kurang gangguan pergerakan.
+          </p>
+
+          <!-- Pricing block -->
+          <div class="mt-7 max-w-xl rounded-[2rem] bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur">
+            <div class="grid grid-cols-[auto_1fr] items-center gap-4">
+              <div class="rounded-[1.5rem] px-6 py-5 text-center shadow-[inset_0_0_0_1px_rgba(255,255,255,.5)]" style="background: linear-gradient(135deg, #fff7de 0%, #ffe7a8 52%, #d8b25e 100%);">
+                <p class="text-[11px] font-black uppercase tracking-[0.2em] text-[#7b4e14]">6 Bulan Pertama</p>
+                <p class="mt-1 text-5xl font-black tracking-tight text-[#5a0f18]">RM12</p>
+                <p class="text-sm font-black text-[#7b4e14]">/bulan</p>
+              </div>
+              <div class="space-y-2.5">
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-extrabold text-white ring-1 ring-white/10">Lepas promo — dari RM108/bulan</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-extrabold text-white ring-1 ring-white/10">Queen &amp; King · pilihan dengan atau tanpa bed frame</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-extrabold text-white ring-1 ring-white/10">Mattress cleaning service setiap 4 bulan</div>
+                <p class="px-1 text-xs font-semibold leading-5 text-[#d8c69a]/80">Free delivery &amp; installation, tertakluk kepada stok, kelayakan dan terma semasa.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#" onclick="this.href=rotatingWhatsapp()"
+               class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+              📲 Semak Harga &amp; Kelayakan
+            </a>
+            <a href="#features"
+               class="inline-flex items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-base font-black text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20">
+              Lihat Features
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: product card -->
+        <div class="relative">
+          <div class="relative overflow-hidden rounded-[2.5rem] bg-white/10 p-5 shadow-[0_30px_80px_rgba(75,13,24,.45)] ring-1 ring-white/15 backdrop-blur">
+            <div class="mb-4 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full bg-[#7a1f2b] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">Natural Latex</span>
+              <span class="rounded-full bg-white/10 px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/15">7-Zone Support</span>
+            </div>
+
+            <div class="overflow-hidden rounded-[1.75rem] bg-white/50 p-4">
+              <img id="heroImgDesktop" src={heroBed}
+                   alt="CUCKOO A Luxe Mattress dengan bed frame"
+                   class="mx-auto h-auto w-full max-w-[460px] object-contain transition duration-300" />
+            </div>
+
+            <div class="mt-4 flex justify-center gap-2">
+              <button type="button" data-img-desktop={heroBed} class="hero-thumb-desktop shrink-0 rounded-full bg-[#F6D77B] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#5a0f18] shadow-sm ring-2 ring-black/10">Dengan Katil</button>
+              <button type="button" data-img-desktop={heroMattress} class="hero-thumb-desktop shrink-0 rounded-full bg-[#FFF7EA] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#7a1f2b] ring-1 ring-black/10">Tilam Sahaja</button>
+            </div>
+
+            <div class="mt-5 grid grid-cols-3 gap-2">
+              <div class="rounded-2xl bg-white/10 px-2 py-3 text-center ring-1 ring-white/10"><p class="text-base font-black text-white">10 Thn</p><p class="text-[10px] font-bold uppercase tracking-wide text-[#d8c69a]">Warranty</p></div>
+              <div class="rounded-2xl bg-white/10 px-2 py-3 text-center ring-1 ring-white/10"><p class="text-base font-black text-white">4 Bulan</p><p class="text-[10px] font-bold uppercase tracking-wide text-[#d8c69a]">Free Service</p></div>
+              <div class="rounded-2xl bg-white/10 px-2 py-3 text-center ring-1 ring-white/10"><p class="text-base font-black text-white">Queen/King</p><p class="text-[10px] font-bold uppercase tracking-wide text-[#d8c69a]">Pilihan 2 Saiz</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end desktop hero -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- TRUST STRIP -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-8 text-white sm:px-6 lg:px-8" style="background: #7a1f2b;">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-4">
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">Graphene Fabric</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Anti-static, antibacterial &amp; anti dust mite</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">Natural Latex</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Breathable dan selesa untuk tidur harian</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">7-Zone Support</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Sokongan ikut bahagian badan</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">Zero Motion</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Kurang gangguan bila pasangan bergerak</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PAIN POINTS -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #ededf0;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Masalah Tidur Harian</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Tidur Lama, Tapi Bangun Masih Tak Rasa Cukup Rehat?</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Tilam lama boleh nampak elok dari luar, tapi sokongan badan, haba dan kebersihan permukaan tidur mungkin sudah tidak sama.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="fade-up rounded-[1.75rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#efe9dd] text-base font-black text-[#9a2a33]">01</div>
+          <h3 class="text-base font-black text-[#7a1322]">Tidur rasa panas</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Tilam yang memerangkap haba boleh buat tidur kurang selesa sepanjang malam.</p>
+        </div>
+        <div class="fade-up rounded-[1.75rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#efe9dd] text-base font-black text-[#9a2a33]">02</div>
+          <h3 class="text-base font-black text-[#7a1322]">Badan rasa lenguh</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Sokongan yang tidak sekata boleh ganggu rehat dan buat badan rasa lenguh.</p>
+        </div>
+        <div class="fade-up rounded-[1.75rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#efe9dd] text-base font-black text-[#9a2a33]">03</div>
+          <h3 class="text-base font-black text-[#7a1322]">Mudah terganggu</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Pergerakan pasangan boleh terasa jika motion transfer terlalu kuat.</p>
+        </div>
+        <div class="fade-up rounded-[1.75rem] p-6 text-white shadow-[0_18px_44px_rgba(75,13,24,.25)]" style="background: linear-gradient(135deg, #7a1f2b, #4b0d18);">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-base font-black text-white">★</div>
+          <h3 class="text-base font-black">Nak bayaran lebih mudah</h3>
+          <p class="mt-2 text-sm leading-6 text-[#f0e6d6]/85">A Luxe boleh dipilih secara rental bulanan dari RM108/bulan dengan servis berjadual.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- BEYOND SLEEP (komen 1) -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24"
+           style="background: radial-gradient(circle at 80% 15%, rgba(216,180,120,.14), transparent 40%), linear-gradient(135deg, #3a0a12 0%, #6e1620 55%, #7a1f2b 100%);">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <h2 class="text-balance text-3xl font-black uppercase tracking-tight text-[#e9dcbb] sm:text-5xl">Tilam Yang Melebihi Sekadar Tidur</h2>
+        <div class="mx-auto mt-5 h-px w-28 bg-[#d8c69a]/60"></div>
+        <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/85">Tidur berkualiti bermaksud tidur lena dan bangun dengan badan cergas serta minda cerah. Jika ini tidak menggambarkan anda, mungkin ia disebabkan oleh:</p>
+      </div>
+
+      <div class="mt-12 grid gap-10 fade-up sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-[#d8c69a]/25">
+        <div class="px-6 text-center">
+          <img src={iconGaget} alt="Radiasi elektromagnetik" loading="lazy" class="mx-auto h-28 w-28 object-contain sm:h-32 sm:w-32" />
+          <h3 class="mt-5 text-base font-black leading-snug text-[#e9dcbb]">Radiasi elektromagnetik dari peranti elektronik</h3>
+        </div>
+        <div class="px-6 text-center">
+          <img src={iconBacteria} alt="Bakteria dan alahan" loading="lazy" class="mx-auto h-28 w-28 object-contain sm:h-32 sm:w-32" />
+          <h3 class="mt-5 text-base font-black leading-snug text-[#e9dcbb]">Bakteria &amp; alahan terkumpul pada tilam</h3>
+        </div>
+        <div class="px-6 text-center">
+          <img src={iconTemperature} alt="Tilam memerangkap haba" loading="lazy" class="mx-auto h-28 w-28 object-contain sm:h-32 sm:w-32" />
+          <h3 class="mt-5 text-base font-black leading-snug text-[#e9dcbb]">Tilam yang memerangkap haba</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- QUALITY SLEEP (komen 2) -->
+  <!-- ============================================================ -->
+  <section class="overflow-hidden" style="background: linear-gradient(135deg, #2b2f35 0%, #3a4048 100%);">
+    <div class="mx-auto grid max-w-7xl lg:grid-cols-2 lg:items-stretch">
+      <!-- left: full image -->
+      <div class="fade-up">
+        <img src={beyondMattressImg} alt="CUCKOO A Luxe Mattress di bilik tidur" loading="lazy" class="h-72 w-full object-cover sm:h-96 lg:h-full" />
+      </div>
+
+      <!-- right: description -->
+      <div class="px-4 py-14 text-white sm:px-6 lg:px-12 lg:py-20">
+        <div class="fade-up">
+          <p class="text-base leading-7 text-white/80">Tilam yang betul memberi perlindungan sepanjang malam, mengurangkan rasa resah berpusing-pusing, dan mengawal suhu badan.</p>
+          <h2 class="mt-4 text-balance text-2xl font-black tracking-tight text-white sm:text-3xl">CUCKOO A-LUXE SERIES — tilam yang mengaktifkan tidur <span class="text-[#d8c69a]">BERKUALITI</span>.</h2>
+        </div>
+
+        <div class="mt-10 grid gap-8 fade-up sm:grid-cols-3">
+          <div>
+            <img src={iconEQ} alt="" loading="lazy" class="h-12 w-12 object-contain" />
+            <h3 class="mt-4 text-sm font-black uppercase tracking-wide text-white">Mood Lebih Baik* (EQ)</h3>
+            <div class="mt-3 h-px w-full bg-white/15"></div>
+            <ul class="mt-3 space-y-2 text-sm leading-6 text-white/75">
+              <li class="flex gap-2"><span class="text-[#d8c69a]">•</span> Kurangkan rasa mudah marah</li>
+              <li class="flex gap-2"><span class="text-[#d8c69a]">•</span> Tingkatkan emosi positif &amp; kesejahteraan emosi</li>
+            </ul>
+          </div>
+          <div>
+            <img src={iconIQ} alt="" loading="lazy" class="h-12 w-12 object-contain" />
+            <h3 class="mt-4 text-sm font-black uppercase tracking-wide text-white">Pemikiran Lebih Pantas* (IQ)</h3>
+            <div class="mt-3 h-px w-full bg-white/15"></div>
+            <ul class="mt-3 space-y-2 text-sm leading-6 text-white/75">
+              <li class="flex gap-2"><span class="text-[#d8c69a]">•</span> Buat keputusan lebih baik</li>
+              <li class="flex gap-2"><span class="text-[#d8c69a]">•</span> Pemikiran lebih pantas &amp; pemprosesan minda lebih tajam</li>
+            </ul>
+          </div>
+          <div>
+            <img src={iconEnhance} alt="" loading="lazy" class="h-12 w-12 object-contain" />
+            <h3 class="mt-4 text-sm font-black uppercase tracking-wide text-white">Tingkatkan Kesihatan Badan, Kulit &amp; Minda*</h3>
+            <div class="mt-3 h-px w-full bg-white/15"></div>
+            <ul class="mt-3 space-y-2 text-sm leading-6 text-white/75">
+              <li class="flex gap-2"><span class="text-[#d8c69a]">•</span> Kurangkan stres &amp; keresahan</li>
+              <li class="flex gap-2"><span class="text-[#d8c69a]">•</span> Lega titik tekanan badan &amp; menenangkan kulit</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mt-8 text-xs font-semibold leading-5 text-white/55 fade-up">*Disokong oleh pelbagai kajian berkaitan kepentingan tidur berkualiti.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- FEATURES -->
+  <!-- ============================================================ -->
+  <section id="features" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Features Utama</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Direka Untuk Tidur Lebih Sejuk, Stabil &amp; Selesa</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Setiap feature ada peranan jelas: rasa permukaan, kebersihan, sokongan badan dan gangguan pergerakan.</p>
+      </div>
+
+      <div class="mt-12 space-y-6">
+        {features.map((f, i) => (
+          <div class="fade-up grid items-center gap-8 overflow-hidden rounded-[2rem] bg-[#ededf0] p-6 ring-1 ring-black/10 lg:grid-cols-2 lg:p-8">
+            <div class={`overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-black/10 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+              {f.type === 'video' ? (
+                <video
+                  src={f.media}
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="metadata"
+                  aria-label={`${f.badge} CUCKOO A Luxe`}
+                  class={`w-full object-cover ${f.ratio === 'horizontal' ? 'aspect-video' : 'aspect-square'}`}
+                ></video>
+              ) : (
+                <img src={f.media} alt={`${f.badge} CUCKOO A Luxe`} loading="lazy" class="h-64 w-full object-cover sm:h-80 lg:aspect-square lg:h-auto" />
+              )}
+            </div>
+            <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
+              <span class="inline-block rounded-full bg-[#efe9dd] px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-[#9a2a33]">{f.badge}</span>
+              <h3 class="mt-3 text-2xl font-black tracking-tight text-[#7a1322] sm:text-3xl">{f.title}</h3>
+              <p class="mt-3 text-base leading-7 text-[#5d6f80]">{f.copy}</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                {f.tags.map((t) => <span class="rounded-full bg-[#efe9dd] px-4 py-2 text-xs font-black text-[#9a2a33]">{t}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+<!-- LAYER BREAKDOWN (dark navy) -->
+<!-- ============================================================ -->
+<section
+  id="layers"
+  class="px-0 py-16 text-white sm:px-6 lg:px-8 lg:py-24"
+  style="background: linear-gradient(135deg, #3a0a12 0%, #5e1019 55%, #7a1f2b 100%);"
+>
+  <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-3xl px-4 text-center fade-up sm:px-0">
+      <p class="text-xs font-black uppercase tracking-[0.22em] text-[#d8c69a]">
+        Mattress Layer Breakdown
+      </p>
+
+      <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">
+        Layer By Layer: Apa Yang Buat A Luxe Rasa Premium
+      </h2>
+
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#f0e6d6]/85">
+        Setiap lapisan ada peranan — dari cover sehingga base layer — untuk keselesaan, kebersihan dan sokongan badan.
+      </p>
+    </div>
+
+    <!-- DESKTOP: cutaway + labels diletak ikut hujung garis penunjuk (HQ style) -->
+    <div class="relative mx-auto mt-12 hidden max-w-5xl fade-up lg:block">
+      <img
+        src={layerImg}
+        alt="Mattress Layer Breakdown CUCKOO A Luxe"
+        loading="lazy"
+        class="mx-auto w-[58%] object-contain"
+      />
+
+      <!-- COVER: kanan, atas (lapisan kelabu) -->
+      <div class="absolute right-0 top-[6%] w-[30%] text-left">
+        <p class="text-base font-black uppercase tracking-[0.14em] text-[#d8c89f]">Cover Layer</p>
+        <p class="mt-1 text-sm leading-6 text-[#f0e6d6]/75">Graphene Conductive Fibers + Dustic Freeze Pro Tech</p>
+      </div>
+
+      <!-- TOPPER: kiri, atas (lapisan latex) -->
+      <div class="absolute left-0 top-[18%] w-[30%] text-right">
+        <p class="text-base font-black uppercase tracking-[0.14em] text-[#d8c89f]">Topper Layer</p>
+        <p class="mt-1 text-sm leading-6 text-[#f0e6d6]/75">100% Natural Latex + 7-Zone Skeletal Support</p>
+      </div>
+
+      <!-- INSULATOR: kanan, tengah (lapisan teal) -->
+      <div class="absolute right-0 top-[44%] w-[30%] text-left">
+        <p class="text-base font-black uppercase tracking-[0.14em] text-[#d8c89f]">Insulator Layer</p>
+        <p class="mt-1 text-sm leading-6 text-[#f0e6d6]/75">Hard Felt Insulator</p>
+      </div>
+
+      <!-- BASE: kiri, tengah-bawah (pocket spring) -->
+      <div class="absolute left-0 top-[54%] w-[30%] text-right">
+        <p class="text-base font-black uppercase tracking-[0.14em] text-[#d8c89f]">Base Layer</p>
+        <p class="mt-1 text-sm leading-6 text-[#f0e6d6]/75">5-Zone Pocket Spring + Polyurethane Border</p>
+      </div>
+    </div>
+
+    <!-- MOBILE: full section image (teks baked in) -->
+    <div class="mt-10 fade-up lg:hidden">
+      <img
+        src={layerMobile}
+        alt="Mattress Layer Breakdown CUCKOO A Luxe: Cover, Topper, Insulator, Base Layer"
+        loading="lazy"
+        class="w-full max-w-none object-contain"
+      />
+    </div>
+  </div>
+</section>
+
+
+  <!-- ============================================================ -->
+  <!-- PRICING -->
+  <!-- ============================================================ -->
+  <section id="pricing" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: radial-gradient(circle at top left, rgba(123,31,43,.10), transparent 40%), linear-gradient(180deg, #ededf0 0%, #efe9dd 100%);">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Harga Rental &amp; Outright</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Pilih Ikut Cara Tidur Anda</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Pilih sama ada mahu mattress sahaja atau lengkap sekali dengan bed frame, dalam saiz Queen atau King.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8 fade-up">
+
+        <!-- Mattress Sahaja -->
+        <article data-pricing-card data-unit-class="text-base font-bold text-[#5d6f80]" class="overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] sm:p-8">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-black tracking-tight text-[#7a1322] sm:text-3xl">Mattress Sahaja</h3>
+            <span class="shrink-0 rounded-full bg-[#efe9dd] px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-[#9a2a33]">Pilihan 1</span>
+          </div>
+
+          <div class="mt-4 overflow-hidden rounded-2xl bg-[#ededf0]">
+            <img src={heroMattress} alt="CUCKOO A Luxe Mattress tanpa katil" loading="lazy" class="mx-auto h-72 w-full object-contain p-2 sm:h-80" />
+          </div>
+
+          <!-- current price -->
+          <div class="mt-5 rounded-2xl bg-[#ededf0] p-4 ring-1 ring-black/10">
+            <p class="text-[11px] font-black uppercase tracking-[0.12em] text-[#9a2a33]">Pilihan Semasa</p>
+            <p class="current-price mt-1 text-4xl font-black tracking-tight text-[#7a1322]">RM108<span class="text-base font-bold text-[#5d6f80]">/bulan</span></p>
+            <p class="current-detail mt-1 text-xs font-bold text-[#5d6f80]">Queen Mattress Sahaja · Rental 7 tahun</p>
+          </div>
+
+          <!-- accordion (tertutup; buka untuk reveal harga) -->
+          <div class="mt-4 space-y-3">
+            <details class="price-acc overflow-hidden rounded-2xl bg-white ring-1 ring-black/10">
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-black text-[#7a1322]">Queen<span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-[#efe9dd] text-base font-black text-[#9a2a33]">+</span></summary>
+              <div class="space-y-2 px-4 pb-4">
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM108" data-unit="/bulan" data-detail="Queen Mattress Sahaja · Rental 7 tahun"><b class="text-sm font-black text-[#7a1322]">7 tahun</b><strong class="text-base font-black text-[#9a2a33]">RM108</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM133" data-unit="/bulan" data-detail="Queen Mattress Sahaja · Rental 5 tahun"><b class="text-sm font-black text-[#7a1322]">5 tahun</b><strong class="text-base font-black text-[#9a2a33]">RM133</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM154" data-unit="/bulan" data-detail="Queen Mattress Sahaja · Rental 3 tahun"><b class="text-sm font-black text-[#7a1322]">3 tahun</b><strong class="text-base font-black text-[#9a2a33]">RM154</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM5,062" data-unit="" data-detail="Queen Mattress Sahaja · Outright"><b class="text-sm font-black text-[#7a1322]">Outright</b><strong class="text-base font-black text-[#9a2a33]">RM5,062</strong></button>
+              </div>
+            </details>
+            <details class="price-acc overflow-hidden rounded-2xl bg-white ring-1 ring-black/10">
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-black text-[#7a1322]">King<span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-[#efe9dd] text-base font-black text-[#9a2a33]">+</span></summary>
+              <div class="space-y-2 px-4 pb-4">
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM129" data-unit="/bulan" data-detail="King Mattress Sahaja · Rental 7 tahun"><b class="text-sm font-black text-[#7a1322]">7 tahun</b><strong class="text-base font-black text-[#9a2a33]">RM129</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM153" data-unit="/bulan" data-detail="King Mattress Sahaja · Rental 5 tahun"><b class="text-sm font-black text-[#7a1322]">5 tahun</b><strong class="text-base font-black text-[#9a2a33]">RM153</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM185" data-unit="/bulan" data-detail="King Mattress Sahaja · Rental 3 tahun"><b class="text-sm font-black text-[#7a1322]">3 tahun</b><strong class="text-base font-black text-[#9a2a33]">RM185</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-[#f1eee9] px-4 py-3 text-left ring-1 ring-black/10 transition hover:bg-[#efe9dd]" data-price="RM5,362" data-unit="" data-detail="King Mattress Sahaja · Outright"><b class="text-sm font-black text-[#7a1322]">Outright</b><strong class="text-base font-black text-[#9a2a33]">RM5,362</strong></button>
+              </div>
+            </details>
+          </div>
+
+          <p class="mt-4 text-sm leading-6 text-[#5d6f80]">Sesuai jika anda sudah ada bed frame sendiri dan hanya mahu tukar tilam.</p>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-6 flex w-full items-center justify-center rounded-2xl border-2 border-[#7a1f2b] px-6 py-4 text-base font-black text-[#9a2a33] transition hover:-translate-y-0.5 hover:bg-[#efe9dd]">
+            📲 Tanya Harga Mattress Sahaja
+          </a>
+        </article>
+
+        <!-- Mattress + Bed Frame (featured) -->
+        <article data-pricing-card data-unit-class="text-base font-bold text-[#f0e6d6]/80" class="relative overflow-hidden rounded-[2rem] p-6 text-white shadow-[0_24px_70px_rgba(75,13,24,.30)] sm:p-8"
+                 style="background: radial-gradient(circle at top right, rgba(216,180,120,.22), transparent 40%), linear-gradient(145deg, #4b0d18 0%, #6e1620 58%, #7a1f2b 100%);">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-black tracking-tight sm:text-3xl">Mattress + Bed Frame</h3>
+            <span class="shrink-0 rounded-full bg-[#d8c69a] px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-[#7a1322]">Pakej Lengkap</span>
+          </div>
+
+          <div class="mt-4 overflow-hidden rounded-2xl bg-white">
+            <img src={heroBed} alt="CUCKOO A Luxe Mattress dengan bed frame" loading="lazy" class="mx-auto h-72 w-full object-contain p-2 sm:h-80" />
+          </div>
+
+          <!-- current price -->
+          <div class="mt-5 rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+            <p class="text-[11px] font-black uppercase tracking-[0.12em] text-[#d8c69a]">Pilihan Semasa</p>
+            <p class="current-price mt-1 text-4xl font-black tracking-tight text-white">RM139<span class="text-base font-bold text-[#f0e6d6]/80">/bulan</span></p>
+            <p class="current-detail mt-1 text-xs font-bold text-[#f0e6d6]/80">Queen Mattress + Bed Frame · Rental 7 tahun</p>
+          </div>
+
+          <!-- accordion (tertutup; buka untuk reveal harga) -->
+          <div class="mt-4 space-y-3">
+            <details class="price-acc overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15">
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-black text-white">Queen<span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-base font-black text-white">+</span></summary>
+              <div class="space-y-2 px-4 pb-4">
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/20" data-price="RM139" data-unit="/bulan" data-detail="Queen Mattress + Bed Frame · Rental 7 tahun"><b class="text-sm font-black text-white">7 tahun</b><strong class="text-base font-black text-[#f0e6d6]">RM139</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/20" data-price="RM163" data-unit="/bulan" data-detail="Queen Mattress + Bed Frame · Rental 5 tahun"><b class="text-sm font-black text-white">5 tahun</b><strong class="text-base font-black text-[#f0e6d6]">RM163</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/20" data-price="RM6,312" data-unit="" data-detail="Queen Mattress + Bed Frame · Outright"><b class="text-sm font-black text-white">Outright</b><strong class="text-base font-black text-[#f0e6d6]">RM6,312</strong></button>
+              </div>
+            </details>
+            <details class="price-acc overflow-hidden rounded-2xl bg-white/10 ring-1 ring-white/15">
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-black text-white">King<span class="acc-plus flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-base font-black text-white">+</span></summary>
+              <div class="space-y-2 px-4 pb-4">
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/20" data-price="RM159" data-unit="/bulan" data-detail="King Mattress + Bed Frame · Rental 7 tahun"><b class="text-sm font-black text-white">7 tahun</b><strong class="text-base font-black text-[#f0e6d6]">RM159</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/20" data-price="RM184" data-unit="/bulan" data-detail="King Mattress + Bed Frame · Rental 5 tahun"><b class="text-sm font-black text-white">5 tahun</b><strong class="text-base font-black text-[#f0e6d6]">RM184</strong></button>
+                <button type="button" class="price-btn flex w-full items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/10 transition hover:bg-white/20" data-price="RM6,612" data-unit="" data-detail="King Mattress + Bed Frame · Outright"><b class="text-sm font-black text-white">Outright</b><strong class="text-base font-black text-[#f0e6d6]">RM6,612</strong></button>
+              </div>
+            </details>
+          </div>
+
+          <p class="mt-4 text-sm leading-6 text-[#f0e6d6]/85">Sesuai kalau mahu set bilik tidur nampak lebih lengkap dan kemas dengan New CUCKOO Bed Frame.</p>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-6 flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+            📲 Tanya Pakej + Bed Frame
+          </a>
+        </article>
+      </div>
+
+      <!-- Included strip -->
+      <div class="mt-8 grid grid-cols-2 gap-3 fade-up sm:grid-cols-3 lg:grid-cols-5">
+        <div class="rounded-[1.25rem] bg-white p-4 text-center text-sm font-black leading-snug text-[#7a1322] ring-1 ring-black/10">FREE 2× Mattress Protector</div>
+        <div class="rounded-[1.25rem] bg-white p-4 text-center text-sm font-black leading-snug text-[#7a1322] ring-1 ring-black/10">FREE CCS 1 Tahun (Outright)</div>
+        <div class="rounded-[1.25rem] bg-white p-4 text-center text-sm font-black leading-snug text-[#7a1322] ring-1 ring-black/10">Cleaning Setiap 4 Bulan</div>
+        <div class="rounded-[1.25rem] bg-white p-4 text-center text-sm font-black leading-snug text-[#7a1322] ring-1 ring-black/10">10 Years Warranty</div>
+        <div class="rounded-[1.25rem] bg-white p-4 text-center text-sm font-black leading-snug text-[#7a1322] ring-1 ring-black/10">Free Delivery &amp; Installation</div>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-3xl rounded-[1.5rem] bg-white p-5 text-center text-sm font-semibold leading-7 text-[#7a1322] ring-1 ring-black/10 fade-up">
+        Nikmati promo RM12/bulan untuk 6 bulan pertama. Termasuk penghantaran, pemasangan dan servis mengikut pelan CUCKOO. Semua harga, stok, promo dan kelayakan tertakluk kepada terma semasa CUCKOO.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SERVICE (CUCKOO+ Care) -->
+  <!-- ============================================================ -->
+  <section id="service" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #ededf0;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">CUCKOO+ Care Service</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Tilam Bukan Sekadar Beli — CUCKOO Bantu Jaga Kebersihannya</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#5d6f80]">Maklumat servis dan warranty dikumpulkan di sini supaya mudah dirujuk.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 fade-up sm:grid-cols-3">
+        <div class="rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <p class="text-4xl font-black tracking-tight text-[#9a2a33]">4 Bulan</p>
+          <h3 class="mt-3 text-xl font-black text-[#7a1322]">Mattress Cleaning Service</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Mattress cleaning service secara berkala untuk pelan rental.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <p class="text-4xl font-black tracking-tight text-[#9a2a33]">1 Tahun</p>
+          <h3 class="mt-3 text-xl font-black text-[#7a1322]">Free CCS (Outright)</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Free CCS 1 tahun untuk pembelian outright mengikut promo semasa.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <p class="text-4xl font-black tracking-tight text-[#9a2a33]">10 Tahun</p>
+          <h3 class="mt-3 text-xl font-black text-[#7a1322]">Limited Warranty</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Warranty terhad untuk manufacturing defect tertakluk kepada terma semasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- GALLERY (xcel-style ProductGallerySlider) -->
+  <!-- ============================================================ -->
+  <ProductGallerySlider
+    id="galeri"
+    eyebrow="Galeri Gambar"
+    title="Galeri CUCKOO A Luxe Mattress"
+    description="Swipe untuk lihat rupa dan pemasangan sebenar A Luxe Mattress. Klik gambar untuk paparan penuh."
+    items={galleryItems}
+  />
+
+
+  <!-- ============================================================ -->
+  <!-- SPECIFICATIONS -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #efe9dd;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Spesifikasi</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Spesifikasi &amp; Dimensi A Luxe</h2>
+      </div>
+
+      <!-- dimension diagrams: Queen & King -->
+      <div class="mt-12 grid gap-4 fade-up sm:grid-cols-2">
+        <figure class="overflow-hidden rounded-[1.5rem] bg-[#d8d3cb] p-3 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.12)]">
+          <img src={specQueen} alt="Dimensi CUCKOO A Luxe Mattress saiz Queen" loading="lazy" class="w-full rounded-[1rem] object-contain" />
+          <figcaption class="mt-2 pb-1 text-center text-xs font-black uppercase tracking-wide text-[#9a2a33]">Dimensi Queen</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-[1.5rem] bg-[#d8d3cb] p-3 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.12)]">
+          <img src={specKing} alt="Dimensi CUCKOO A Luxe Mattress saiz King" loading="lazy" class="w-full rounded-[1rem] object-contain" />
+          <figcaption class="mt-2 pb-1 text-center text-xs font-black uppercase tracking-wide text-[#9a2a33]">Dimensi King</figcaption>
+        </figure>
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-[2rem] bg-white ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] fade-up">
+        <div class="p-6 lg:p-8">
+          <p class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#9a2a33]">Spesifikasi Teknikal</p>
+          <div class="grid gap-x-10 sm:grid-cols-2">
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Produk</span><span class="text-right text-sm font-bold text-[#7a1322]">CUCKOO A Luxe Mattress</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Saiz Tersedia</span><span class="text-right text-sm font-bold text-[#7a1322]">Queen / King</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Cover Layer</span><span class="text-right text-sm font-bold text-[#7a1322]">Graphene Conductive Fiber + Dustic Freeze Pro</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Topper</span><span class="text-right text-sm font-bold text-[#7a1322]">100% Natural Latex + 7-Zone Support</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Insulator</span><span class="text-right text-sm font-bold text-[#7a1322]">Hard Felt Insulator</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Base</span><span class="text-right text-sm font-bold text-[#7a1322]">5-Zone Pocket Spring + PU Border</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Comfort</span><span class="text-right text-sm font-bold text-[#7a1322]">Zero Motion Transfer</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Saiz Queen</span><span class="text-right text-sm font-bold text-[#7a1322]">1520 × 1900 × 350mm</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Warranty</span><span class="text-right text-sm font-bold text-[#7a1322]">Waranti terhad 10 tahun</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3 sm:border-b-0"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Servis</span><span class="text-right text-sm font-bold text-[#7a1322]">Mattress cleaning setiap 4 bulan</span></div>
+          </div>
+          <p class="mt-4 text-[11px] font-semibold text-[#5d6f80]">*Maklumat tertakluk kepada spesifikasi rasmi dan terma semasa CUCKOO.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- AGENT / CONTACT (Astro shared component — blue theme) -->
+  <!-- ============================================================ -->
+  <AgentSection />
+
+
+  <!-- ============================================================ -->
+  <!-- FAQ -->
+  <!-- ============================================================ -->
+  <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #ededf0;">
+    <div class="mx-auto max-w-4xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">FAQ</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Soalan Yang Customer Selalu Tanya</h2>
+      </div>
+
+      <div class="mt-10 space-y-3 fade-up">
+        {faqItems.map((item) => (
+          <div class="faq-item overflow-hidden rounded-2xl bg-white ring-1 ring-black/10 shadow-[0_10px_28px_rgba(75,13,24,.04)]">
+            <button class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left" type="button">
+              <span class="text-sm font-black text-[#7a1322] sm:text-base">{item.q}</span>
+              <span class="faq-icon shrink-0 text-xl font-black text-[#9a2a33]">+</span>
+            </button>
+            <div class="faq-answer px-6">
+              <p class="pb-5 text-sm leading-7 text-[#5d6f80]">{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- FINAL CTA (navy) -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: linear-gradient(145deg, #4b0d18, #7a1f2b);">
+    <div class="mx-auto max-w-4xl text-center fade-up">
+      <p class="text-xs font-black uppercase tracking-[0.22em] text-[#d8c69a]">Semak Sekarang</p>
+      <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">Nak Tahu A Luxe Sesuai Untuk Bilik Anda?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#f0e6d6]/85">WhatsApp sekarang untuk semak harga terkini, pilihan Queen atau King, bed frame, rental/outright, promo, stok dan kelayakan.</p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">✓ Cleaning setiap 4 bulan</span>
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">🛏️ Queen &amp; King</span>
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">📦 Penghantaran percuma</span>
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">🛡️ Warranty 10 tahun</span>
+      </div>
+
+      <a href="#" onclick="this.href=rotatingWhatsapp()"
+         class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-10 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+        📲 WhatsApp Saya Sekarang
+      </a>
+
+      <p class="mt-5 text-xs font-semibold text-[#d8c69a]/80">Percuma untuk bertanya. Tiada komitmen sebelum kelulusan.</p>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  .gold-text {
+    background: linear-gradient(135deg, #fff3cf 0%, #e8c87e 45%, #bf9a4e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .faq-answer.open { max-height: 400px; }
+  .faq-icon { transition: transform 0.3s ease; }
+  .faq-icon.open { transform: rotate(45deg); }
+
+  .price-acc summary { list-style: none; }
+  .price-acc summary::-webkit-details-marker { display: none; }
+  .price-acc .acc-plus { transition: transform 0.25s ease; }
+  .price-acc[open] .acc-plus { transform: rotate(45deg); }
+
+  @media (prefers-reduced-motion: reduce) { .fade-up { transition: none; } }
+</style>
+
+<script is:inline>
+  // --- Hero image switcher: mobile ---
+  (function () {
+    const img = document.getElementById('heroImgMobile');
+    const btns = document.querySelectorAll('.hero-thumb-mobile');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (img) {
+          img.style.transition = 'opacity 0.15s ease';
+          img.style.opacity = '0';
+          setTimeout(() => { img.src = btn.dataset.imgMobile; img.style.opacity = '1'; }, 150);
+        }
+        btns.forEach((b) => {
+          b.className = 'hero-thumb-mobile shrink-0 rounded-full bg-[#FFF7EA] px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-[#7a1f2b] ring-1 ring-black/10';
+        });
+        btn.className = 'hero-thumb-mobile shrink-0 rounded-full bg-[#F6D77B] px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-[#5a0f18] shadow-sm ring-2 ring-black/10';
+      });
+    });
+  })();
+
+  // --- Hero image switcher: desktop ---
+  (function () {
+    const img = document.getElementById('heroImgDesktop');
+    const btns = document.querySelectorAll('.hero-thumb-desktop');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (img) {
+          img.style.transition = 'opacity 0.15s ease';
+          img.style.opacity = '0';
+          setTimeout(() => { img.src = btn.dataset.imgDesktop; img.style.opacity = '1'; }, 150);
+        }
+        btns.forEach((b) => {
+          b.className = 'hero-thumb-desktop shrink-0 rounded-full bg-[#FFF7EA] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#7a1f2b] ring-1 ring-black/10';
+        });
+        btn.className = 'hero-thumb-desktop shrink-0 rounded-full bg-[#F6D77B] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#5a0f18] shadow-sm ring-2 ring-black/10';
+      });
+    });
+  })();
+
+  // --- Pricing accordion: update current price on option click ---
+  document.querySelectorAll('[data-pricing-card]').forEach((card) => {
+    const priceEl = card.querySelector('.current-price');
+    const detailEl = card.querySelector('.current-detail');
+    const unitClass = card.dataset.unitClass || '';
+    if (!priceEl || !detailEl) return;
+    card.querySelectorAll('.price-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const unit = btn.dataset.unit ? '<span class="' + unitClass + '">' + btn.dataset.unit + '</span>' : '';
+        priceEl.innerHTML = btn.dataset.price + unit;
+        detailEl.textContent = btn.dataset.detail;
+      });
+    });
+  });
+
+  // --- FAQ accordion ---
+  document.querySelectorAll('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const ans = item.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const open = ans.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach((a) => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach((i) => i.classList.remove('open'));
+      if (!open) { ans.classList.add('open'); icon.classList.add('open'); }
+    });
+  });
+
+  // --- Fade-up on scroll ---
+  (function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  })();
+</script>

@@ -13,6 +13,12 @@ const heroMattress = `${base}/tilam-cuckoo-a-lite.webp`;
 const feat1 = `${base}/a-lite-feature-01@2x-2.webp`; // VitalShield (graphene, navy)
 const feat2 = `${base}/a-lite-feature-02@2x-1.webp`; // Dusticbac-Free (mattress + pest icons, red)
 const mattress04 = `${base}/a-lite-mattress-04@2x.webp`; // mattress + leaves (Where Nature...)
+const anilineIcon = `${base}/MTLP-Aniline-icon@2x.webp`;
+const anilineBadge = `${base}/Aniline-free-small-icon@2x.webp`;
+const latexTopperIcon = `${base}/MTLP-Latex-topper-icon@2x.webp`;
+const pressureIcon = `${base}/MTLP-icon-01@2x.webp`;
+const motionIcon = `${base}/MTLP-icon-02@2x.webp`;
+const spinalIcon = `${base}/MTLP-icon-03@2x.webp`;
 
 // Layers cutaway (labels baked into image), 5-zone visuals + grey icons, dimension diagrams
 const layersImg = `${base}/a-lite-mattress-updated-1002.webp`;
@@ -32,6 +38,27 @@ const accreditations = [
   { src: `${base}/allergy-free-pass-icon@2x.webp`, alt: 'Allergy Free — Sensitivity Test Passed' },
   { src: `${base}/aniline-free-by-eco-icon@2x.webp`, alt: 'Aniline Free certified by eco Institut' },
   { src: `${base}/eco-icon@2x.webp`, alt: 'eco Institut tested product' }
+];
+
+const natureFeatureCards = [
+  {
+    icon: anilineIcon,
+    title: '100% Bebas Aniline',
+    copy: 'Bebas daripada bahan kimia keras, direka untuk tidur malam yang lebih bersih dan selesa.',
+    badge: anilineBadge,
+    badgeAlt: 'Aniline Free'
+  },
+  {
+    icon: latexTopperIcon,
+    title: '100% Topper Lateks Semula Jadi',
+    copy: 'Lembut dan menyokong badan, pilihan tidur yang lebih sihat untuk anda dan alam sekitar.'
+  }
+];
+
+const natureMiniFeatures = [
+  { icon: pressureIcon, title: 'Agihan Tekanan Sekata' },
+  { icon: motionIcon, title: 'Zero Motion Transfer untuk Tidur Tanpa Gangguan' },
+  { icon: spinalIcon, title: 'Membantu Penjajaran Tulang Belakang Semula Jadi' }
 ];
 
 // CUCKOO+ mattress cleaning service photos (labels baked into image)
@@ -334,14 +361,14 @@ const breadcrumbSchema = {
   <!-- FEATURES (komen 3 — ikut HQ) -->
   <!-- ============================================================ -->
   <section id="features" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #fbe7df;">
-    <div class="mx-auto max-w-4xl">
+    <div class="mx-auto max-w-7xl">
       <div class="text-center fade-up">
         <p class="text-xs font-black uppercase tracking-[0.22em] text-[#a3172d]">Tingkatkan Keselesaan Tidur Anda</p>
         <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#73101f] sm:text-5xl">Graphene Infused Knit Cover Layer</h2>
       </div>
 
       <!-- HQ media cards: VitalShield + Dusticbac (text overlay, icons baked into image) -->
-      <div class="mt-10 grid gap-5 fade-up sm:grid-cols-2">
+      <div class="mx-auto mt-10 grid max-w-4xl gap-5 fade-up sm:grid-cols-2">
         <div class="relative overflow-hidden rounded-[1.5rem] shadow-[0_18px_44px_rgba(115,16,31,.15)]">
           <img src={feat1} alt="VitalShield Tech — graphene CUCKOO A-LITE" loading="lazy" class="w-full object-cover" />
           <div class="absolute inset-x-0 top-0 p-6">
@@ -365,17 +392,33 @@ const breadcrumbSchema = {
         <img src={mattress04} alt="CUCKOO A-LITE Series Mattress natural latex" loading="lazy" class="mx-auto mt-8 w-full max-w-2xl object-contain" />
       </div>
 
-      <div class="mx-auto mt-8 grid max-w-3xl gap-8 fade-up sm:grid-cols-2">
-        <div>
-          <h3 class="text-lg font-black text-[#73101f]">🌿 100% Aniline Free</h3>
-          <div class="mt-3 h-px w-full bg-[#73101f]/15"></div>
-          <p class="mt-3 text-sm leading-6 text-[#745f5a]">Bebas bahan kimia keras — direka untuk tidur malam yang lena dan bersih.</p>
-        </div>
-        <div>
-          <h3 class="text-lg font-black text-[#73101f]">🌿 100% Natural Latex Topper</h3>
-          <div class="mt-3 h-px w-full bg-[#73101f]/15"></div>
-          <p class="mt-3 text-sm leading-6 text-[#745f5a]">Lembut dan menyokong — pilihan tidur sihat untuk anda dan alam sekitar.</p>
-        </div>
+      <div class="mx-auto mt-16 grid max-w-6xl gap-12 fade-up lg:grid-cols-2 lg:gap-20">
+        {natureFeatureCards.map((item) => (
+          <article class="grid gap-6 sm:grid-cols-[7.5rem_1fr] sm:items-start">
+            <div class="flex justify-center sm:justify-start">
+              <img src={item.icon} alt="" loading="lazy" aria-hidden="true" class="h-24 w-24 object-contain sm:h-32 sm:w-32" />
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-2xl font-black leading-tight text-[#a3172d] sm:text-3xl">{item.title}</h3>
+                {'badge' in item && item.badge ? (
+                  <img src={item.badge} alt={item.badgeAlt} loading="lazy" class="h-10 w-auto object-contain" />
+                ) : null}
+              </div>
+              <div class="mt-5 h-px w-full bg-[#a3172d]/70"></div>
+              <p class="mt-5 text-lg font-bold leading-8 text-[#a3172d]">{item.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mx-auto mt-24 grid max-w-6xl gap-12 fade-up sm:grid-cols-3">
+        {natureMiniFeatures.map((item) => (
+          <article class="text-center">
+            <img src={item.icon} alt="" loading="lazy" aria-hidden="true" class="mx-auto h-20 w-20 object-contain sm:h-24 sm:w-24" />
+            <h3 class="mx-auto mt-7 max-w-[17rem] text-xl font-black leading-tight text-[#a3172d]">{item.title}</h3>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -453,10 +496,10 @@ const breadcrumbSchema = {
           </div>
 
           <div class="mt-4 overflow-hidden rounded-2xl bg-[#fff4ee]">
-            <img src={heroMattress} alt="Tilam CUCKOO A-LITE tanpa katil" loading="lazy" class="mx-auto h-60 w-full object-contain p-2 sm:h-60" />
+            <img src={heroMattress} alt="Tilam CUCKOO A-LITE tanpa katil" loading="lazy" class="mx-auto h-40 w-full object-contain p-2 sm:h-48" />
           </div>
 
-          <div class="mt-6 grid grid-cols-2 gap-3">
+          <div class="mt-5 grid grid-cols-2 gap-3">
             <div class="rounded-2xl bg-[#fff4ee] p-4 ring-1 ring-[#73101f]/10">
               <small class="block text-xs font-black text-[#745f5a]">Queen · Rental 5 tahun</small>
               <strong class="mt-2 block text-3xl font-black tracking-tight text-[#73101f] sm:text-4xl">RM105<span class="text-sm font-bold">/bln</span></strong>
@@ -470,7 +513,7 @@ const breadcrumbSchema = {
           </div>
 
           <div class="mt-4 rounded-2xl p-4 text-white" style="background: linear-gradient(135deg, #a3172d, #73101f);">
-            <p class="mb-2 text-[11px] font-black uppercase tracking-[0.12em] text-white/80">Outright promo</p>
+            <p class="mb-2 text-[11px] font-black uppercase tracking-[0.12em] text-rose-200">Outright promo</p>
             <div class="flex items-center justify-between gap-4 py-1.5 font-black"><span>Queen</span><span><s class="mr-2 font-medium text-white/55">RM3,850</s>RM3,562</span></div>
             <div class="flex items-center justify-between gap-4 border-t border-white/15 py-1.5 font-black"><span>King</span><span><s class="mr-2 font-medium text-white/55">RM4,150</s>RM3,862</span></div>
           </div>
@@ -491,11 +534,11 @@ const breadcrumbSchema = {
             <span class="shrink-0 rounded-full bg-[#f6d4c4] px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-[#73101f]">Pakej lengkap</span>
           </div>
 
-          <div class="mt-4 overflow-hidden rounded-2xl bg-white/30">
-            <img src={heroBed} alt="Tilam CUCKOO A-LITE dengan bed frame" loading="lazy" class="mx-auto h-60 w-full object-contain p-2 sm:h-60" />
+          <div class="mt-4 overflow-hidden rounded-2xl bg-white">
+            <img src={heroBed} alt="Tilam CUCKOO A-LITE dengan bed frame" loading="lazy" class="mx-auto h-40 w-full object-contain p-2 sm:h-48" />
           </div>
 
-          <div class="mt-6 grid grid-cols-2 gap-3">
+          <div class="mt-5 grid grid-cols-2 gap-3">
             <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
               <small class="block text-xs font-black text-white/70">Queen + Bed Frame</small>
               <strong class="mt-2 block text-3xl font-black tracking-tight sm:text-4xl">RM136<span class="text-sm font-bold">/bln</span></strong>

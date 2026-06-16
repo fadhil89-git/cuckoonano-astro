@@ -4,6 +4,18 @@ import AgentSection from '../../../../components/AgentSection.astro';
 import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
 
 const loungerBase = '/assets/images/products/massage-chair/lounger';
+const pageUrl = 'https://www.cuckoonano.com/products/massage-chair/bespoke-massage-lounger/';
+const heroImage = 'https://www.cuckoonano.com/assets/images/products/massage-chair/lounger/bespoke-massage-02-600x600-1.webp';
+
+const meta = {
+  title: 'CUCKOO BESPOKE Massage Lounger | Kerusi Urut 2-in-1 RM99/Bulan',
+  description:
+    'CUCKOO BESPOKE Massage Lounger ialah kerusi urut 2-in-1 untuk living room: lounger cantik, SL Track, 3D Shiatsu, Zero Gravity dan promo RM12/bulan.',
+  canonical: pageUrl,
+  ogImage: heroImage,
+  ogType: 'product'
+};
+
 const galleryItems = [
   { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-2.webp`, title: 'CUCKOO Massage Lounger 1', alt: 'CUCKOO BESPOKE Massage Lounger gambar 1' },
   { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-3.webp`, title: 'CUCKOO Massage Lounger 2', alt: 'CUCKOO BESPOKE Massage Lounger gambar 2' },
@@ -15,63 +27,141 @@ const galleryItems = [
   { image: `${loungerBase}/kerusi-urut-cuckoo-massage-lounger-bespoke-12.webp`, title: 'CUCKOO Massage Lounger 8', alt: 'CUCKOO BESPOKE Massage Lounger gambar 8' }
 ];
 
+const faqItems = [
+  {
+    q: 'Apa beza Massage Lounger dengan BESPOKE 2 Massage Chair?',
+    a: 'Massage Lounger direka sebagai 2-in-1 — ia berfungsi sebagai lounger cantik untuk living room dan massage chair premium. Saiznya lebih compact (120×65cm) berbanding BESPOKE 2. Harga rental juga lebih rendah — RM99/bulan vs RM148/bulan untuk BESPOKE 2.'
+  },
+  {
+    q: 'Berapa total bayaran kalau ambil pelan rental?',
+    a: 'RM12 × 6 bulan = RM72, lepas tu RM99 × 54 bulan = RM5,346. Total dalam 60 bulan = RM5,418. Selepas 60 bulan, unit jadi hak milik awak. Dalam tempoh 60 bulan, awak dapat servis berkala setiap 6 bulan dan leather change bulan ke-30 secara percuma.'
+  },
+  {
+    q: 'Perlu kad kredit untuk apply?',
+    a: 'Tidak semestinya. Customer boleh guna kad bank atau debit card mengikut syarat semasa. Slip gaji dan penyata bank biasanya tidak diperlukan, tapi kelulusan tetap tertakluk kepada semakan semasa CUCKOO.'
+  },
+  {
+    q: 'Sesuai untuk orang tua atau yang ada masalah sakit belakang?',
+    a: 'Massage Lounger ada pelbagai tahap intensiti urutan yang boleh disesuaikan. Namun untuk mereka yang ada masalah kesihatan kronik, kami sarankan berunding dengan doktor terlebih dahulu.'
+  },
+  {
+    q: 'Boleh dipindah kalau saya berpindah rumah?',
+    a: 'Boleh, tapi ada caj relocation yang dikenakan oleh CUCKOO mengikut terma semasa. Maklumkan kepada ejen terlebih dahulu supaya proses pindahan dapat dirancang dengan baik.'
+  },
+  {
+    q: 'Apa jadi kalau ada masalah teknikal dengan unit?',
+    a: 'CUCKOO ada pasukan servis yang boleh dihubungi terus. Ejen juga boleh membantu follow-up kes servis dengan CUCKOO supaya urusan lebih mudah dan pantas.'
+  },
+  {
+    q: 'Berapa lama proses kelulusan dan pemasangan?',
+    a: 'Proses kelulusan biasanya mengambil masa 1-3 hari bekerja. Penghantaran dan pemasangan dijadualkan selepas kelulusan mengikut slot tersedia. Anggaran keseluruhan biasanya 1-2 minggu, tertakluk kepada stok dan kawasan.'
+  },
+  {
+    q: 'Suri rumah atau yang tak bekerja tetap boleh apply?',
+    a: 'Boleh cuba apply. Proses tetap tertakluk kepada kelulusan semasa CUCKOO. Ejen boleh bantu semak dan guide proses permohonan.'
+  },
+  {
+    q: 'Ada caj tambahan untuk pemasangan di apartmen tanpa lift?',
+    a: 'Ya. Jika tiada lift atau lift rosak, delivery melalui tangga dari tingkat 2 ke atas boleh dikenakan caj tambahan mengikut terma semasa CUCKOO.'
+  },
+  {
+    q: 'Promo RM12 untuk berapa lama dan bila tamat?',
+    a: 'Promo RM12 adalah untuk 6 bulan pertama sahaja. Selepas itu, bayaran kembali kepada RM99/bulan hingga bulan ke-60. Promo tertakluk kepada stok, kelayakan dan terma semasa.'
+  }
+];
+
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'CUCKOO BESPOKE Massage Lounger',
   alternateName: ['Kerusi Urut CUCKOO Massage Lounger', 'CUCKOO Massage Lounger', 'Massage Lounger CUCKOO'],
+  image: [
+    heroImage,
+    'https://www.cuckoonano.com/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-massage-lounger-mode.webp',
+    'https://www.cuckoonano.com/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-massage-chair-mode.webp'
+  ],
   brand: { '@type': 'Brand', name: 'CUCKOO' },
-  url: 'https://www.cuckoonano.com/products/massage-chair/bespoke-massage-lounger/',
+  sku: 'cuckoo-bespoke-massage-lounger',
+  model: 'BESPOKE Massage Lounger',
+  category: 'Massage Chair',
+  color: 'Cosy Caramel',
+  material: ['Metal frame', 'Leather'],
+  url: pageUrl,
   description:
     'CUCKOO BESPOKE Massage Lounger — kerusi urut 2-in-1 yang berfungsi sebagai lounger cantik dan massage chair premium. Custom-fit SL Track, 3D Shiatsu, Zero Gravity, 45°C Thermotherapy, 8 Airbags, Bluetooth Speaker.',
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Massage Track', value: 'Custom-fit SL Track' },
+    { '@type': 'PropertyValue', name: 'Zero Gravity', value: '2-stage: 125° dan 136°' },
+    { '@type': 'PropertyValue', name: 'Thermotherapy', value: 'Lumbar 45°C' },
+    { '@type': 'PropertyValue', name: 'Airbags', value: '8 Airbags' },
+    { '@type': 'PropertyValue', name: 'Product Size', value: '120cm × 65cm × 106cm' },
+    { '@type': 'PropertyValue', name: 'Wall Distance', value: '6cm' }
+  ],
   offers: {
     '@type': 'Offer',
+    url: pageUrl,
     priceCurrency: 'MYR',
     price: '99',
+    description: 'Pelan rental RM99/bulan selepas promo RM12/bulan untuk 6 bulan pertama, tertakluk kepada stok, kelayakan dan terma semasa.',
     availability: 'https://schema.org/InStock',
-    areaServed: { '@type': 'Country', name: 'Malaysia' }
+    itemCondition: 'https://schema.org/NewCondition',
+    areaServed: { '@type': 'Country', name: 'Malaysia' },
+    seller: {
+      '@type': 'Organization',
+      name: 'CUCKOO Nano'
+    }
   }
 };
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
     {
-      '@type': 'Question',
-      name: 'Apa beza Massage Lounger dengan BESPOKE 2?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Massage Lounger direka sebagai 2-in-1 — ia berfungsi sebagai lounger cantik untuk living room dan massage chair premium. Saiznya lebih kompak berbanding BESPOKE 2, sesuai untuk ruang yang lebih kecil.'
-      }
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.cuckoonano.com/'
     },
     {
-      '@type': 'Question',
-      name: 'Berapa harga rental Massage Lounger?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Harga rental adalah RM99/bulan sehingga 60 bulan. Promo semasa menawarkan RM12/bulan untuk 6 bulan pertama, tertakluk kepada terma dan kelayakan semasa.'
-      }
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Produk',
+      item: 'https://www.cuckoonano.com/products/'
     },
     {
-      '@type': 'Question',
-      name: 'Perlu kad kredit untuk apply?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Tidak semestinya. Customer boleh apply menggunakan kad bank atau debit card mengikut syarat semasa.'
-      }
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Kerusi Urut',
+      item: 'https://www.cuckoonano.com/products/massage-chair/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'CUCKOO BESPOKE Massage Lounger',
+      item: pageUrl
     }
   ]
 };
 ---
 
-<BaseLayout
-  title="CUCKOO BESPOKE Massage Lounger | Kerusi Urut 2-in-1 RM99/Bulan"
-  description="CUCKOO BESPOKE Massage Lounger — kerusi urut 2-in-1 yang berfungsi sebagai lounger cantik dan massage chair premium. Promo RM12/bulan untuk 6 bulan pertama. WhatsApp Fadhil sekarang."
-  canonical="https://www.cuckoonano.com/products/massage-chair/bespoke-massage-lounger/"
->
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+<BaseLayout {...meta}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- ============================================================ -->
   <!-- HERO -->
@@ -116,7 +206,10 @@ const faqSchema = {
           <div class="thumb-scroll px-4 pb-4 justify-center">
             <button type="button" data-img-mobile="/assets/images/products/massage-chair/lounger/bespoke-massage-02-600x600-1.webp" class="hero-thumb-mobile shrink-0 rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-ink shadow-sm ring-2 ring-gold">Sisi 1</button>
             <button type="button" data-img-mobile="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-kerusi-urut-1-copy.webp" class="hero-thumb-mobile shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 2</button>
-            <button type="button" data-img-mobile="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-Photoroom.webp" class="hero-thumb-mobile shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 3</button>
+            <button type="button" data-img-mobile="/assets/images/products/massage-chair/lounger/bespoke-massage-01.webp" class="hero-thumb-mobile shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 3</button>
+            <button type="button" data-img-mobile="/assets/images/products/massage-chair/lounger/bespoke-massage-02.webp" class="hero-thumb-mobile shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 4</button>
+            <button type="button" data-img-mobile="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-Photoroom.webp" class="hero-thumb-mobile shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 5</button>
+
           </div>
         </div>
 
@@ -235,7 +328,9 @@ const faqSchema = {
               <div class="thumb-scroll mt-4 justify-center">
                 <button type="button" data-img-desktop="/assets/images/products/massage-chair/lounger/bespoke-massage-02-600x600-1.webp" class="hero-thumb-desktop shrink-0 rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-ink shadow-sm ring-2 ring-gold">Sisi 1</button>
                 <button type="button" data-img-desktop="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-kerusi-urut-1-copy.webp" class="hero-thumb-desktop shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 2</button>
-                <button type="button" data-img-desktop="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-Photoroom.webp" class="hero-thumb-desktop shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 3</button>
+                <button type="button" data-img-desktop="/assets/images/products/massage-chair/lounger/bespoke-massage-01.webp" class="hero-thumb-desktop shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 3</button>
+                <button type="button" data-img-desktop="/assets/images/products/massage-chair/lounger/bespoke-massage-02.webp" class="hero-thumb-desktop shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 4</button>
+                <button type="button" data-img-desktop="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-Photoroom.webp" class="hero-thumb-desktop shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 5</button>
               </div>
 
               <!-- Mini stats -->
@@ -316,7 +411,7 @@ const faqSchema = {
   <!-- 2-IN-1 CONCEPT -->
   <!-- ============================================================ -->
   <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-5xl">
       <div class="mx-auto max-w-3xl text-center fade-up">
         <p class="text-xs font-black uppercase tracking-[0.22em] text-red-brand">Kenapa Massage Lounger?</p>
         <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-ink sm:text-5xl">
@@ -330,10 +425,10 @@ const faqSchema = {
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-8">
         <!-- Card 1: Lounger Mode -->
         <div class="fade-up overflow-hidden rounded-[2rem] bg-stone-50 ring-1 ring-stone-200">
-          <div class="flex aspect-square items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 p-8">
-            <img src="https://via.placeholder.com/400x400/e7e5e4/b5162b?text=Lounger+Mode"
+          <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200 sm:aspect-square">
+            <img src="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-massage-lounger-mode.webp"
                  alt="CUCKOO Massage Lounger — Lounger Mode"
-                 class="h-full w-full max-h-64 rounded-2xl object-cover" />
+                 class="h-full w-full object-cover" />
           </div>
           <div class="p-6 lg:p-8">
             <span class="inline-block rounded-full bg-stone-200 px-4 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-stone-600">Lounger Mode</span>
@@ -348,10 +443,10 @@ const faqSchema = {
 
         <!-- Card 2: Massage Mode -->
         <div class="fade-up overflow-hidden rounded-[2rem] ring-1 ring-red-brand/20" style="background: linear-gradient(135deg, #fff4f6, #ffe8ec);">
-          <div class="flex aspect-square items-center justify-center p-8" style="background: linear-gradient(135deg, #fde8ec, #fbcfd5);">
-            <img src="https://via.placeholder.com/400x400/fde8ec/b5162b?text=Massage+Mode"
+          <div class="aspect-[4/3] overflow-hidden sm:aspect-square" style="background: linear-gradient(135deg, #fde8ec, #fbcfd5);">
+            <img src="/assets/images/products/massage-chair/lounger/cuckoo-bespoke-massage-lounger-massage-chair-mode.webp"
                  alt="CUCKOO Massage Lounger — Massage Chair Mode"
-                 class="h-full w-full max-h-64 rounded-2xl object-cover" />
+                 class="h-full w-full object-cover" />
           </div>
           <div class="p-6 lg:p-8">
             <span class="inline-block rounded-full bg-red-brand px-4 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-white">Massage Chair Mode</span>

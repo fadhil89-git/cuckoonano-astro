@@ -15,6 +15,101 @@ const {
 
 const logoSrc = '/assets/images/brand/logo_cmyk_maroon02-e1546229046344.png.webp';
 const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
+
+const productNavCategories = [
+  {
+    title: 'Penapis Air',
+    href: '/products/water-purifier/',
+    products: [
+      ['Xcel 2', '/products/water-purifier/xcel-2/'],
+      ['King Top 2', '/products/water-purifier/king-top-2/'],
+      ['Prime X3 Outdoor', '/products/water-purifier/prime-x3/'],
+      ['Flo Stand', '/products/water-purifier/flo-stand/'],
+      ['Warrior', '/products/water-purifier/warrior/'],
+      ['Titan', '/products/water-purifier/titan/'],
+      ['Glamour', '/products/water-purifier/glamour/'],
+      ['Grande', '/products/water-purifier/grande/'],
+      ['Vivid', '/products/water-purifier/vivid/'],
+      ['Ace', '/products/water-purifier/ace/'],
+      ['Kiut', '/products/water-purifier/kiut/']
+    ]
+  },
+  {
+    title: 'Penapis Udara',
+    href: '/products/air-purifier/',
+    products: [
+      ['L Model', '/products/air-purifier/l-model/'],
+      ['U Model', '/products/air-purifier/u-model/'],
+      ['R Model', '/products/air-purifier/r-model/'],
+      ['K Model', '/products/air-purifier/k-model/'],
+      ['C+ Humidifier', '/products/air-purifier/c-plus-humidifier/'],
+      ['D Model', '/products/air-purifier/d-model/']
+    ]
+  },
+  {
+    title: 'Aircond',
+    href: '/products/air-conditioner/',
+    products: [
+      ['Vita 5TAR', '/products/air-conditioner/vita-5tar/']
+    ]
+  },
+  {
+    title: 'Samsung',
+    href: '/products/samsung/',
+    products: [
+      ['Bespoke AI Laundry Combo', '/products/samsung/samsung-bespoke-ai-laundry-combo-12-7kg/'],
+      ['65" Mini LED M1EH 4K TV', '/products/samsung/65-mini-led-m1eh-4k-samsung-vision-smart-tv/'],
+      ['Galaxy Tab S10 FE+', '/products/samsung/galaxy-tab-s10-fe-plus/'],
+      ['Refrigerator 583L', '/products/samsung/']
+    ]
+  },
+  {
+    title: 'Kerusi Urut',
+    href: '/products/massage-chair/',
+    products: [
+      ['Bespoke Massage Lounger', '/products/massage-chair/bespoke-massage-lounger/'],
+      ['Bespoke 2', '/products/massage-chair/bespoke-2/'],
+      ['Ogawa Bespoke', '/products/massage-chair/ogawa-bespoke/']
+    ]
+  },
+  {
+    title: 'Tilam',
+    href: '/products/mattress/',
+    products: [
+      ['A-Lite', '/products/mattress/a-lite/'],
+      ['A-Luxe', '/products/mattress/a-luxe/']
+    ]
+  },
+  {
+    title: 'Induction',
+    href: '/products/induction/',
+    products: [
+      ['Inductwo', '/products/induction/inductwo/'],
+      ['Inductrio', '/products/induction/inductrio/']
+    ]
+  },
+  {
+    title: 'Pressure Cooker',
+    href: '/products/pressure-cooker/',
+    products: [
+      ['P10', '/products/pressure-cooker/p10/'],
+      ['M10', '/products/pressure-cooker/m10/'],
+      ['CH10', '/products/pressure-cooker/ch10/']
+    ]
+  },
+  {
+    title: 'Treadmill',
+    href: '/products/treadmill/',
+    products: [
+      ['B-Fit Treadmill', '/products/treadmill/b-fit/']
+    ]
+  }
+];
+
+const desktopProductNavColumns = [
+  productNavCategories.filter((_, index) => index % 2 === 0),
+  productNavCategories.filter((_, index) => index % 2 === 1)
+];
 ---
 <!doctype html>
 <html lang="ms">
@@ -76,22 +171,41 @@ const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
         </a>
         <nav class="hidden items-center gap-7 text-sm font-semibold text-muted lg:flex">
           <a class="nav-link hover:text-brand" href="/">Home</a>
-          <div class="group relative before:absolute before:left-0 before:top-full before:h-5 before:w-full before:content-['']">
-            <button class="nav-link flex items-center gap-1 hover:text-brand" type="button">Produk <span>⌄</span></button>
-            <div class="invisible absolute left-1/2 top-full z-50 mt-2 w-[760px] -translate-x-1/2 rounded-[1.5rem] border border-brand/10 bg-white p-4 opacity-0 shadow-soft transition duration-200 group-hover:visible group-hover:opacity-100">
-              <div class="grid grid-cols-3 gap-2">
-                <a href="/products/water-purifier/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Penapis Air</span><span class="block text-xs text-muted">10 produk</span></a>
-                <a href="/products/air-purifier/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Penapis Udara</span><span class="block text-xs text-muted">6 produk</span></a>
-                <a href="/products/air-conditioner/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Aircond</span><span class="block text-xs text-muted">1 produk</span></a>
-                <a href="/products/samsung/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Samsung</span><span class="block text-xs text-muted">3 produk</span></a>
-                <a href="/products/massage-chair/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Kerusi Urut</span><span class="block text-xs text-muted">2 produk</span></a>
-                <a href="/products/mattress/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Tilam</span><span class="block text-xs text-muted">2 produk</span></a>
-                <a href="/products/induction/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Induction</span><span class="block text-xs text-muted">2 produk</span></a>
-                <a href="/products/pressure-cooker/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Pressure Cooker</span><span class="block text-xs text-muted">2 produk</span></a>
-                <a href="/products/treadmill/" class="rounded-xl px-4 py-3 hover:bg-cream"><span class="font-bold text-ink">Treadmill</span><span class="block text-xs text-muted">1 produk</span></a>
+          <details class="group/products-desktop relative">
+            <summary class="nav-link flex cursor-pointer list-none items-center gap-1 hover:text-brand [&::-webkit-details-marker]:hidden">
+              <span>Produk</span>
+              <span class="transition-transform duration-200 group-open/products-desktop:rotate-180">⌄</span>
+            </summary>
+            <div class="absolute left-1/2 top-full z-50 mt-4 max-h-[min(74vh,38rem)] w-[46rem] -translate-x-1/2 overflow-y-auto rounded-[1.25rem] border border-brand/10 bg-white p-3 shadow-soft">
+              <div class="grid grid-cols-2 gap-1.5">
+                {desktopProductNavColumns.map((column) => (
+                  <div class="grid content-start gap-1.5">
+                    {column.map((category) => (
+                      <details class="group/category rounded-xl bg-white transition-colors open:bg-cream/70 hover:bg-cream/70">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-2.5 [&::-webkit-details-marker]:hidden">
+                          <span>
+                            <span class="block text-sm font-black text-ink">{category.title}</span>
+                            <span class="block text-[11px] font-bold text-muted">{category.products.length} produk</span>
+                          </span>
+                          <span class="text-brand transition-transform duration-200 group-open/category:rotate-45">+</span>
+                        </summary>
+                        <div class="grid gap-1 border-t border-brand/10 px-2 py-2">
+                          <a href={category.href} class="rounded-lg bg-white px-3 py-2 text-xs font-black text-brand hover:bg-cream">
+                            Lihat semua {category.title}
+                          </a>
+                          {category.products.map(([name, href]) => (
+                            <a href={href} class="rounded-lg px-3 py-2 text-xs font-bold text-muted transition-colors hover:bg-white hover:text-brand">
+                              {name}
+                            </a>
+                          ))}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          </details>
           <a class="nav-link hover:text-brand" href="/#promo">Promo</a>
           <a class="nav-link hover:text-brand" href="/goood-deal/">Trade-In</a>
           <a class="nav-link hover:text-brand" href="/service/">Servis</a>
@@ -110,16 +224,28 @@ const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
                   <span>Produk</span>
                   <span class="transition-transform duration-300 group-open/products:rotate-45">+</span>
                 </summary>
-                <div class="grid gap-1 border-t border-brand/10 p-2">
-                  <a href="/products/water-purifier/" class="rounded-xl px-3 py-2 hover:bg-white">Penapis Air</a>
-                  <a href="/products/air-purifier/" class="rounded-xl px-3 py-2 hover:bg-white">Penapis Udara</a>
-                  <a href="/products/air-conditioner/" class="rounded-xl px-3 py-2 hover:bg-white">Aircond</a>
-                  <a href="/products/samsung/" class="rounded-xl px-3 py-2 hover:bg-white">Samsung</a>
-                  <a href="/products/massage-chair/" class="rounded-xl px-3 py-2 hover:bg-white">Kerusi Urut</a>
-                  <a href="/products/mattress/" class="rounded-xl px-3 py-2 hover:bg-white">Tilam</a>
-                  <a href="/products/induction/" class="rounded-xl px-3 py-2 hover:bg-white">Induction</a>
-                  <a href="/products/pressure-cooker/" class="rounded-xl px-3 py-2 hover:bg-white">Pressure Cooker</a>
-                  <a href="/products/treadmill/" class="rounded-xl px-3 py-2 hover:bg-white">Treadmill</a>
+                <div class="grid max-h-[65vh] gap-1 overflow-y-auto border-t border-brand/10 p-2">
+                  {productNavCategories.map((category) => (
+                    <details class="group/category rounded-xl bg-white/70">
+                      <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5 [&::-webkit-details-marker]:hidden">
+                        <span>
+                          <span class="block text-sm font-black text-ink">{category.title}</span>
+                          <span class="block text-[11px] font-bold text-muted">{category.products.length} produk</span>
+                        </span>
+                        <span class="text-brand transition-transform duration-300 group-open/category:rotate-45">+</span>
+                      </summary>
+                      <div class="grid gap-1 border-t border-brand/10 px-2 py-2">
+                        <a href={category.href} class="rounded-lg bg-cream px-3 py-2 text-xs font-black text-brand">
+                          Lihat semua {category.title}
+                        </a>
+                        {category.products.map(([name, href]) => (
+                          <a href={href} class="rounded-lg px-3 py-2 text-xs font-bold text-muted hover:bg-cream hover:text-brand">
+                            {name}
+                          </a>
+                        ))}
+                      </div>
+                    </details>
+                  ))}
                 </div>
               </details>
               <a href="/#promo" class="rounded-2xl px-4 py-3 hover:bg-cream">Promo</a>
