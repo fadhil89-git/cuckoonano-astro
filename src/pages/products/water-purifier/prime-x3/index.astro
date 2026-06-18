@@ -11,6 +11,9 @@ const whatsappPrimeX3Url =
 
 const assetBase = '/assets/images/products/water-purifier/prime-x3';
 const pageUrl = 'https://www.cuckoonano.com/products/water-purifier/prime-x3/';
+const productName = 'CUCKOO Prime X3 Outdoor Water Filter';
+const productSeoName = 'CUCKOO Prime X3 Outdoor Water Filter / Penapis Air Luar Rumah';
+const absoluteUrl = (path) => new URL(path, pageUrl).toString();
 
 const img = {
   heroMain: `${assetBase}/PRIME-X3_1.webp`,
@@ -137,17 +140,74 @@ const faqItems = [
   { q: 'Berapa lama proses pemasangan?', a: 'Pemasangan diuruskan sepenuhnya oleh juruteknik CUCKOO. Tempoh bergantung pada lokasi paip, jarak piping dan aksesori. Semak dengan ejen sebelum confirm order.' }
 ];
 
-const schema = {
+const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
-  name: 'CUCKOO Prime X3 Outdoor Water Filter',
-  brand: { '@type': 'Brand', name: 'CUCKOO' },
-  image: [`https://www.cuckoonano.com${img.heroMain}`, `https://www.cuckoonano.com${img.heroAngle}`],
+  '@id': `${pageUrl}#product`,
+  name: productSeoName,
+  alternateName: [
+    productName,
+    'CUCKOO Prime X3',
+    'Prime X3 Outdoor Filter',
+    'Penapis Air Luar Rumah CUCKOO',
+    'Outdoor Water Filter CUCKOO'
+  ],
+  url: pageUrl,
+  mainEntityOfPage: pageUrl,
+  brand: {
+    '@type': 'Brand',
+    name: 'CUCKOO'
+  },
+  manufacturer: {
+    '@type': 'Organization',
+    name: 'CUCKOO'
+  },
+  category: 'Outdoor whole-house water filter',
+  model: 'Prime X3',
+  sku: 'CUCKOO-PRIME-X3',
+  image: [
+    absoluteUrl(img.heroMain),
+    absoluteUrl(img.heroAngle),
+    absoluteUrl(img.heroSide),
+    absoluteUrl(img.installGrey),
+    absoluteUrl(img.spec)
+  ],
   description:
-    'Outdoor whole-house water filter dengan PVDF 2.0 Ultra-Filtration Membrane, Royal Out-to-In Filtration System, Prime-X Flush, Automated Flushing dan SS304 Stainless Steel Vessel.',
+    'CUCKOO Prime X3 ialah penapis air luar rumah point-of-entry untuk menapis air dari paip utama sebelum digunakan di dapur, bilik air, laundry dan seluruh rumah. Dilengkapi PVDF 2.0 Ultra-Filtration Membrane, Royal Out-to-In Filtration System, Prime-X Flush, Automated Flushing dan SS304 Stainless Steel Vessel.',
+  material: 'SS304 Stainless Steel Vessel',
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Filtration technology', value: 'PVDF 2.0 Ultra-Filtration Membrane' },
+    { '@type': 'PropertyValue', name: 'Filtration system', value: 'Royal Out-to-In Filtration System' },
+    { '@type': 'PropertyValue', name: 'Flush system', value: 'Prime-X Flush and Automated Flushing' },
+    { '@type': 'PropertyValue', name: 'Installation type', value: 'Point-of-entry outdoor water filter' },
+    { '@type': 'PropertyValue', name: 'Service interval', value: 'Scheduled CUCKOO+ service every 6 months' },
+    { '@type': 'PropertyValue', name: 'Power requirement', value: 'Non-electric filter system' }
+  ],
   offers: [
-    { '@type': 'Offer', priceCurrency: 'MYR', price: '12', description: 'Promo RM12/bulan untuk 6 bulan pertama. Bulan 7 hingga 60 ialah RM88/bulan tertakluk kepada promo semasa.' },
-    { '@type': 'Offer', priceCurrency: 'MYR', price: '2100', description: 'Outright promo RM2100 tertakluk kepada promosi semasa.' }
+    {
+      '@type': 'Offer',
+      '@id': `${pageUrl}#rental-offer`,
+      url: pageUrl,
+      name: 'CUCKOO Prime X3 Rental Promo',
+      priceCurrency: 'MYR',
+      price: '12',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'CUCKOO Nano' },
+      description: 'Promo RM12/bulan untuk 6 bulan pertama. Bulan 7 hingga 60 ialah RM88/bulan, tertakluk kepada kelayakan dan promo semasa.'
+    },
+    {
+      '@type': 'Offer',
+      '@id': `${pageUrl}#outright-offer`,
+      url: pageUrl,
+      name: 'CUCKOO Prime X3 Outright Promo',
+      priceCurrency: 'MYR',
+      price: '2100',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'CUCKOO Nano' },
+      description: 'Harga outright promo RM2100, tertakluk kepada stok dan promosi semasa.'
+    }
   ]
 };
 
@@ -169,11 +229,11 @@ const breadcrumbSchema = {
 };
 
 const meta = {
-  title: 'CUCKOO Prime X3 Outdoor Water Filter | Harga, Spec & Promo Terkini',
+  title: 'CUCKOO Prime X3 Outdoor Water Filter | Penapis Air Luar Rumah',
   description:
-    'CUCKOO Prime X3 Outdoor Water Filter menapis air dari paip utama sebelum sampai ke dapur, bilik air, laundry dan seluruh rumah. Semak harga RM12 promo, rental plan 60 bulan dan outright RM2100.',
+    'CUCKOO Prime X3 penapis air luar rumah point-of-entry untuk air seluruh rumah. Semak harga promo RM12/bulan, rental RM88, outright RM2100, spesifikasi PVDF 2.0 dan servis CUCKOO.',
   canonical: pageUrl,
-  ogImage: `https://www.cuckoonano.com${img.heroMain}`,
+  ogImage: absoluteUrl(img.heroMain),
   ogType: 'product'
 };
 ---
@@ -209,16 +269,19 @@ const meta = {
 
         <!-- A · Copy -->
         <div class="order-1 text-center lg:col-start-1 lg:row-start-1 lg:text-left">
-          <div class="mb-5 flex flex-wrap justify-center gap-2 lg:justify-start">
-            <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black uppercase tracking-[.16em] text-brand shadow-soft ring-1 ring-brand/10">🔥 Promo RM12</span>
-            <span class="rounded-full bg-white/70 px-4 py-2 text-xs font-black uppercase tracking-[.16em] text-brand-ink shadow-soft ring-1 ring-brand/10">Outdoor Water Filter</span>
+          <div class="mb-5 flex max-w-full justify-center gap-2 overflow-x-auto px-1 whitespace-nowrap lg:justify-start">
+            <span class="shrink-0 rounded-full bg-white/85 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.13em] text-brand shadow-soft ring-1 ring-brand/10 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[.16em]">🔥 Promo RM12</span>
+            <span class="shrink-0 rounded-full bg-white/70 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.13em] text-brand-ink shadow-soft ring-1 ring-brand/10 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[.16em]">
+              <span class="sm:hidden">Outdoor Filter</span>
+              <span class="hidden sm:inline">Outdoor Water Filter</span>
+            </span>
           </div>
 
           <p class="text-xs font-black uppercase tracking-[.24em] text-brand-gold sm:text-sm">CUCKOO Outdoor Water Filter Malaysia</p>
 
           <h1 class="mt-3 text-[2.1rem] font-black leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-[3.4rem]">
             CUCKOO Prime X3 — Air Bersih Seluruh Rumah
-            <span class="mt-1 block bg-gradient-to-r from-brand to-gold bg-clip-text text-transparent">Dari RM12/Bulan</span>
+            <span class="mt-1 block bg-gradient-to-r from-[#6f0b20] via-[#a3172d] to-[#4a0615] bg-clip-text text-transparent drop-shadow-[0_10px_22px_rgba(111,11,32,.18)]">Dari RM12/bulan</span>
           </h1>
 
           <p class="mx-auto mt-4 max-w-xl text-base leading-8 text-brand-muted sm:text-lg lg:mx-0">
@@ -783,9 +846,9 @@ const meta = {
     </div>
   </div>
 
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
 
   <script is:inline>
     (function () {
