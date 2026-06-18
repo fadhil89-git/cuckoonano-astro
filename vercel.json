@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/cuckoo-vs-coway/",
+      "destination": "/blog/cuckoo-vs-coway/",
+      "permanent": true
+    },
+    {
+      "source": "/cuckoo-vs-coway",
+      "destination": "/blog/cuckoo-vs-coway/",
+      "permanent": true
+    },
+    {
       "source": "/cuckoo-bespoke-2-massage-chair/",
       "destination": "/products/massage-chair/bespoke-2/",
       "permanent": true

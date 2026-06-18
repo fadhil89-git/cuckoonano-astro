@@ -7,7 +7,7 @@ const blogSlugs = readdirSync(new URL('./src/pages/blog/', import.meta.url), {
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name);
 
-const rootRouteSlugs = new Set(['cuckoo-vs-coway']);
+const rootRouteSlugs = new Set([]);
 
 const blogRedirects = Object.fromEntries(
   blogSlugs

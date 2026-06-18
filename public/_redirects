@@ -1,4 +1,6 @@
 # Blog redirects after moving WordPress-style root posts into /blog
+/cuckoo-vs-coway/ /blog/cuckoo-vs-coway/ 301
+/cuckoo-vs-coway /blog/cuckoo-vs-coway/ 301
 /king-top/ /products/water-purifier/king-top-2/ 301
 /king-top /products/water-purifier/king-top-2/ 301
 /king-top-2/ /products/water-purifier/king-top-2/ 301

@@ -3,11 +3,10 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import AgentSection from '../../../../components/AgentSection.astro';
 import CustomerProofSection from '../../../../components/CustomerProofSection.astro';
 import PromoBannerSection from '../../../../components/PromoBannerSection.astro';
-import ProductCategorySection from '../../../../components/ProductCategorySection.astro';
 import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
 
 const base = '/assets/images/products/treadmill';
-const heroImage = `${base}/bfit-angle.png`;
+const heroImage = `${base}/bfit-angle.webp`;
 
 const meta = {
   title: 'CUCKOO B-Fit Treadmill | Harga Rental & Promo RM12',
@@ -18,45 +17,40 @@ const meta = {
   ogType: 'website'
 };
 
-const problems = [
-  {
-    title: 'Tak sempat ke gym',
-    copy: 'Boleh berjalan atau joging terus di rumah selepas kerja, sebelum tidur atau bila ada ruang masa pendek.'
-  },
-  {
-    title: 'Cuaca tak menentu',
-    copy: 'Tidak perlu tunggu cuaca baik. Rutin walking boleh dibuat dalam ruang rumah yang selesa.'
-  },
-  {
-    title: 'Ruang rumah terhad',
-    copy: 'Reka bentuk foldable menjadikan ia lebih sesuai untuk kondo, apartment dan rumah moden.'
-  },
-  {
-    title: 'Nak konsisten bergerak',
-    copy: 'Walking, joging dan larian ringan boleh disesuaikan mengikut tahap kecergasan seisi rumah.'
-  }
-];
-
 // Hero product views — thumbnail switcher (different sides/angles)
 const heroViews = [
-  { label: 'Serong', image: `${base}/bfit-angle.png` },
-  { label: 'Sisi', image: `${base}/bfit-side.png` },
-  { label: 'Belakang', image: `${base}/bfit-back.png` },
-  { label: 'Terlipat', image: `${base}/bfit-folded.png` },
-  { label: 'Konsol', image: `${base}/bfit-console.png` }
+  { label: 'Serong', image: `${base}/bfit-angle.webp` },
+  { label: 'Sisi', image: `${base}/bfit-side.webp` },
+  { label: 'Belakang', image: `${base}/bfit-back.webp` },
+  { label: 'Terlipat', image: `${base}/bfit-folded.webp` },
+  { label: 'Konsol', image: `${base}/bfit-console.webp` }
 ];
 
-// Features — uniform image cards (boleh tukar gambar kemudian)
+// Sedentary hook stats (versi soft — tiada angka rasmi yang tak boleh disokong)
+const sedentaryStats = [
+  { value: '8+ jam', label: 'Masa duduk setiap hari untuk ramai orang dewasa' },
+  { value: '15 min', label: 'Sudah cukup untuk mula gerakkan badan di rumah' }
+];
+
+// Barriers — "what stops you from exercising?"
+const problems = [
+  { no: '01', title: 'Tak sempat ke gym', copy: 'Boleh berjalan atau joging terus di rumah selepas kerja, sebelum tidur atau bila ada ruang masa pendek.' },
+  { no: '02', title: 'Cuaca tak menentu', copy: 'Tidak perlu tunggu cuaca baik. Rutin walking boleh dibuat dalam ruang rumah yang selesa.' },
+  { no: '03', title: 'Ruang rumah terhad', copy: 'Reka bentuk foldable menjadikan ia lebih sesuai untuk kondo, apartment dan rumah moden.' },
+  { no: '04', title: 'Nak konsisten bergerak', copy: 'Walking, joging dan larian ringan boleh disesuaikan mengikut tahap kecergasan seisi rumah.' }
+];
+
+// Features utama — media cards (gaya A-Lite)
 const features = [
   {
     image: `${base}/bfit-walk-to-run.png`,
-    title: '2-in-1 Walk-to-Run',
+    title: 'Walk-to-Run Dynamic Track',
     copy: 'Tukar dari berjalan ke berlari dalam beberapa saat — satu mesin untuk walking santai, joging dan larian ringan.'
   },
   {
     image: `${base}/bfit-folded.png`,
-    title: 'Foldable 20cm — Jimat Ruang',
-    copy: 'Lipat dan simpan bawah katil atau tepi dinding. Sesuai untuk kondo, apartment dan rumah moden yang ruangnya terhad.'
+    title: '2-in-1 Foldable Design',
+    copy: 'Lipat dan simpan bawah katil atau tepi dinding. Folded setinggi 20cm sahaja — sesuai untuk kondo dan apartment.'
   },
   {
     image: `${base}/bfit-side.png`,
@@ -65,19 +59,29 @@ const features = [
   },
   {
     image: `${base}/bfit-angle.png`,
-    title: '15 + 3 Program',
-    copy: '15 preset program (Novice, Intermediate, Advanced) dan 3 custom profile (U1-U3) untuk pelbagai rutin.'
+    title: '15 Personalised Programs',
+    copy: '15 preset program (Novice, Intermediate, Advanced) untuk pelbagai rutin dan tahap kecergasan.'
   },
   {
     image: `${base}/bfit-console.png`,
-    title: 'LED Display',
-    copy: 'Pantau speed, langkah, masa, jarak dan kalori sekali pandang. Kawalan ringkas untuk semua peringkat umur.'
+    title: '3 Custom User Profiles',
+    copy: 'Simpan rutin tersendiri dalam 3 profil custom (U1–U3) — sesuai untuk dikongsi seisi rumah.'
   },
   {
     image: `${base}/bfit-back.png`,
-    title: 'Manual Incline 2-Level',
-    copy: 'Tambah cabaran dan aktifkan lebih banyak otot dengan dua aras kecondongan. Bluetooth speaker dan operasi senyap turut disertakan.'
+    title: 'LED Display + Manual Incline',
+    copy: 'Pantau speed, langkah, masa, jarak dan kalori sekali pandang. Manual incline 2 aras untuk cabaran tambahan.'
   }
+];
+
+// Additional features (HQ: ciri tambahan)
+const additionalFeatures = [
+  { icon: '📱', title: 'Device Holder', copy: 'Letak telefon atau tablet untuk hiburan semasa bersenam.' },
+  { icon: '🔑', title: 'Safety Pin', copy: 'Safety key untuk hentikan belt serta-merta jika perlu.' },
+  { icon: '📟', title: 'Display Panel', copy: 'Paparan LED jelas untuk semua peringkat umur.' },
+  { icon: '🏗️', title: 'Robust Support', copy: 'Rangka kukuh menampung penggunaan harian sehingga 100kg.' },
+  { icon: '🔊', title: 'Bluetooth Speaker', copy: 'Sambung muzik anda dan bergerak ikut rentak kegemaran.' },
+  { icon: '🤫', title: 'Operasi Senyap', copy: 'Motor DC lebih senyap — selesa digunakan dalam ruang rumah.' }
 ];
 
 const rentalIncludes = [
@@ -93,22 +97,31 @@ const outrightIncludes = [
   'Pemilikan penuh tanpa bayaran bulanan'
 ];
 
-const serviceSteps = [
-  {
-    no: '01',
-    title: 'Pemasangan di rumah',
-    copy: 'Team service bantu setup dan terangkan fungsi asas penggunaan.'
-  },
-  {
-    no: '02',
-    title: 'Service berkala setiap 6 bulan',
-    copy: 'Termasuk pemeriksaan asas, wet wiping, belt alignment dan penjagaan berkaitan.'
-  },
-  {
-    no: '03',
-    title: 'Free belt change bulan ke-24',
-    copy: 'Salah satu nilai penting rental plan untuk pastikan belt kekal selesa digunakan.'
-  }
+const includedStrip = [
+  'FREE Delivery',
+  'FREE Installation',
+  'Service Berkala CUCKOO+',
+  'Free Belt Change Bulan 24',
+  'Worry-Free Setup'
+];
+
+// Worry-free installation (HQ: Made With You In Mind)
+const installPoints = [
+  { no: '01', title: 'Juruteknik terlatih', copy: 'Pemasangan dibuat oleh team service CUCKOO yang terlatih, bukan hantar kosong.' },
+  { no: '02', title: 'SOP pemasangan mantap', copy: 'Setiap pemasangan ikut prosedur standard CUCKOO untuk keselamatan dan kestabilan.' },
+  { no: '03', title: 'Penerangan penggunaan', copy: 'Team terangkan fungsi asas dan cara guna sebelum pergi — anda terus boleh mula.' }
+];
+
+// 8-Point Service Check (HQ) — senarai representatif, tertakluk terma semasa
+const serviceCheck = [
+  'Pemeriksaan console & display',
+  'Penjajaran (alignment) belt',
+  'Penjagaan & pelinciran belt',
+  'Wet wiping & pembersihan deck',
+  'Pemeriksaan skru & kekemasan rangka',
+  'Pemeriksaan motor & kuasa',
+  'Ujian fungsi safety key',
+  'Pemeriksaan mekanisme lipatan'
 ];
 
 const doItems = [
@@ -139,73 +152,23 @@ const specs = [
 ];
 
 const galleryItems = [
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-2-1024x768.webp`,
-    title: 'B-Fit setup di rumah',
-    alt: 'CUCKOO B-Fit Treadmill dipasang di rumah'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-1-768x1024.webp`,
-    title: 'Rekaan compact B-Fit',
-    alt: 'Rekaan compact CUCKOO B-Fit Treadmill'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-5.webp`,
-    title: 'B-Fit dalam ruang moden',
-    alt: 'CUCKOO B-Fit Treadmill dalam ruang rumah moden'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-6-768x1024.webp`,
-    title: 'Walking & running setup',
-    alt: 'CUCKOO B-Fit Treadmill untuk walking dan running'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-7-768x1024.webp`,
-    title: 'Console dan handle',
-    alt: 'Console dan handle CUCKOO B-Fit Treadmill'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-8-768x1024.webp`,
-    title: 'Belt dan deck B-Fit',
-    alt: 'Belt dan deck CUCKOO B-Fit Treadmill'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-9.webp`,
-    title: 'B-Fit foldable storage',
-    alt: 'CUCKOO B-Fit Treadmill foldable untuk simpanan'
-  },
-  {
-    image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-12-1024x710.webp`,
-    title: 'B-Fit dari sudut lain',
-    alt: 'CUCKOO B-Fit Treadmill dari sudut berbeza'
-  }
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-2-1024x768.webp`, title: 'B-Fit setup di rumah', alt: 'CUCKOO B-Fit Treadmill dipasang di rumah' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-1-768x1024.webp`, title: 'Rekaan compact B-Fit', alt: 'Rekaan compact CUCKOO B-Fit Treadmill' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-5.webp`, title: 'B-Fit dalam ruang moden', alt: 'CUCKOO B-Fit Treadmill dalam ruang rumah moden' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-6-768x1024.webp`, title: 'Walking & running setup', alt: 'CUCKOO B-Fit Treadmill untuk walking dan running' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-7-768x1024.webp`, title: 'Console dan handle', alt: 'Console dan handle CUCKOO B-Fit Treadmill' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-8-768x1024.webp`, title: 'Belt dan deck B-Fit', alt: 'Belt dan deck CUCKOO B-Fit Treadmill' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-9.webp`, title: 'B-Fit foldable storage', alt: 'CUCKOO B-Fit Treadmill foldable untuk simpanan' },
+  { image: `${base}/gambar-treadmill-cuckoo-b-fit-image-photo-rm99-12-1024x710.webp`, title: 'B-Fit dari sudut lain', alt: 'CUCKOO B-Fit Treadmill dari sudut berbeza' }
 ];
 
 const faqItems = [
-  {
-    q: 'Promo RM12 ini untuk berapa lama?',
-    a: 'Promo RM12/bulan adalah untuk 6 bulan pertama. Selepas itu, rental kembali kepada RM102/bulan mengikut pelan standard, tertakluk kepada kempen semasa.'
-  },
-  {
-    q: 'Apa beza rental dan outright?',
-    a: 'Rental sesuai untuk bayaran bulanan dan termasuk 3 tahun service & warranty berkala. Outright pula beli terus RM3,399 dengan 1 tahun scheduled service & warranty.'
-  },
-  {
-    q: 'Boleh guna untuk walking sahaja?',
-    a: 'Boleh. Kelajuan walking 1-6 km/h sesuai untuk rutin berjalan santai, dan boleh ditingkatkan ke running 1-14 km/h bila dah selesa.'
-  },
-  {
-    q: 'Adakah sesuai untuk apartment atau condo?',
-    a: 'Ya. Design foldable dan compact (folded 20cm) menjadikan ia lebih sesuai untuk rumah dengan ruang terhad. Pastikan ruang penggunaan selamat dan lantai stabil.'
-  },
-  {
-    q: 'Service termasuk apa?',
-    a: 'Untuk rental, service berkala dibuat setiap 6 bulan termasuk pemeriksaan asas, wet wiping dan belt alignment, serta free 1-time belt change pada bulan ke-24.'
-  },
-  {
-    q: 'Berapa had berat pengguna?',
-    a: 'Had berat yang disyorkan ialah 100kg only. Ini penting untuk keselamatan serta jangka hayat motor dan belt.'
-  }
+  { q: 'Promo RM12 ini untuk berapa lama?', a: 'Promo RM12/bulan adalah untuk 6 bulan pertama. Selepas itu, rental kembali kepada RM102/bulan mengikut pelan standard, tertakluk kepada kempen semasa.' },
+  { q: 'Apa beza rental dan outright?', a: 'Rental sesuai untuk bayaran bulanan dan termasuk 3 tahun service & warranty berkala. Outright pula beli terus RM3,399 dengan 1 tahun scheduled service & warranty.' },
+  { q: 'Boleh guna untuk walking sahaja?', a: 'Boleh. Kelajuan walking 1-6 km/h sesuai untuk rutin berjalan santai, dan boleh ditingkatkan ke running 1-14 km/h bila dah selesa.' },
+  { q: 'Adakah sesuai untuk apartment atau condo?', a: 'Ya. Design foldable dan compact (folded 20cm) menjadikan ia lebih sesuai untuk rumah dengan ruang terhad. Pastikan ruang penggunaan selamat dan lantai stabil.' },
+  { q: 'Service termasuk apa?', a: 'Untuk rental, service berkala dibuat setiap 6 bulan termasuk pemeriksaan asas, wet wiping dan belt alignment, serta free 1-time belt change pada bulan ke-24.' },
+  { q: 'Berapa had berat pengguna?', a: 'Had berat yang disyorkan ialah 100kg only. Ini penting untuk keselamatan serta jangka hayat motor dan belt.' }
 ];
 
 const productSchema = {
@@ -255,405 +218,570 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout {...meta}>
-  <div class="bg-brand-cream text-brand-ink antialiased">
-    <!-- HERO -->
-    <section id="hero" class="hero-pattern relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
-      <div class="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.02fr_.98fr] lg:items-center lg:gap-10">
-        <div class="min-w-0">
-          <nav aria-label="Breadcrumb" class="mb-5 flex flex-wrap items-center gap-1 text-xs font-bold text-brand-muted">
-            <a href="/products/" class="hover:text-brand">Produk</a>
-            <span>/</span>
-            <a href="/products/treadmill/" class="hover:text-brand">Treadmill</a>
-            <span>/</span>
-            <span class="text-brand">B-Fit</span>
-          </nav>
-
-          <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible [&::-webkit-scrollbar]:hidden">
-            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Ejen CUCKOO sejak 2017</span>
-            <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Service Setiap 6 Bulan</span>
-          </div>
-
-          <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
-            <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo</span>
-            <span class="text-sm font-black sm:text-base">RM12/bulan untuk 6 bulan pertama</span>
-          </div>
-
-          <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
-            CUCKOO B-Fit Treadmill - Jalan, Joging Dan Lari Dari Rumah
-          </h1>
-
-          <p class="mt-5 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
-            Treadmill 2-in-1 yang compact, foldable dan sesuai untuk rumah moden. Mulakan rutin sihat tanpa perlu keluar ke gym atau bergantung pada cuaca.
-          </p>
-
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#"
-              onclick="this.href=rotatingWhatsapp()"
-              class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
-            >
-              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
-              WhatsApp Semak Promo
-            </a>
-            <a
-              href="#harga"
-              class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30"
-            >
-              Lihat Harga
-            </a>
-          </div>
-
-          <p class="mt-6 text-sm font-bold text-brand-muted">
-            Kemudian RM102/bulan · Outright RM3,399 · tertakluk promo semasa
-          </p>
-        </div>
-
-        <div class="rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6">
-          <div class="relative overflow-hidden rounded-[1.7rem] bg-gradient-to-br from-white to-brand-soft p-4 sm:p-6">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">CUCKOO Treadmill</p>
-                <p class="mt-1 text-lg font-black text-brand">B-Fit (CTM-YT102)</p>
-              </div>
-              <span class="rounded-full bg-brand px-4 py-2 text-xs font-black text-white">Foldable</span>
-            </div>
-
-            <div class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-white/70 p-5 sm:min-h-[390px] lg:min-h-[440px]">
-              <img
-                id="heroProductImage"
-                src={heroImage}
-                alt="CUCKOO B-Fit Treadmill"
-                loading="eager"
-                class="relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl transition duration-300 sm:h-[360px] lg:h-[420px]"
-              />
-            </div>
-
-            <div class="mt-4 flex flex-wrap justify-center gap-2">
-              {heroViews.map((view, index) => (
-                <button
-                  type="button"
-                  data-hero-view={view.image}
-                  class:list={[
-                    'hero-view-thumb rounded-full px-4 py-2 text-xs font-black uppercase tracking-wide shadow-soft transition',
-                    index === 0 ? 'bg-brand text-white ring-2 ring-brand' : 'bg-white text-brand ring-1 ring-brand/15 hover:bg-brand-cream'
-                  ]}
-                >
-                  {view.label}
-                </button>
-              ))}
-            </div>
-
-            <div class="mt-5 grid grid-cols-3 gap-2">
-              <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
-                <p class="text-base font-black text-brand">1-14</p>
-                <p class="text-[11px] font-bold text-brand-muted">km/h</p>
-              </div>
-              <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
-                <p class="text-base font-black text-brand">20cm</p>
-                <p class="text-[11px] font-bold text-brand-muted">folded</p>
-              </div>
-              <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10">
-                <p class="text-base font-black text-brand">100kg</p>
-                <p class="text-[11px] font-bold text-brand-muted">max</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROBLEM -->
-    <section id="kenapa" class="px-4 py-14 sm:px-6 lg:px-8">
-      <div class="mx-auto grid max-w-7xl gap-8 rounded-[2rem] bg-white p-6 shadow-premium lg:grid-cols-[.9fr_1.1fr] lg:p-10">
-        <div>
-          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Kenapa B-Fit</p>
-          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Bila susah keluar bersenam, rumah jadi tempat paling mudah untuk mula.</h2>
-          <p class="mt-4 leading-8 text-brand-muted">
-            Ramai orang bukan tidak mahu sihat. Cuma masa, cuaca, kerja dan jarak ke gym buat rutin susah konsisten. B-Fit membantu anda bergerak walaupun hanya 15 hingga 30 minit sehari.
-          </p>
-          <a href="/blog/kelebihan-treadmill-cuckoo-b-fit/" class="mt-5 inline-flex items-center gap-1 text-sm font-black text-brand hover:underline">
-            Baca: kelebihan treadmill CUCKOO B-Fit →
-          </a>
-        </div>
-        <div class="grid gap-3 sm:grid-cols-2">
-          {problems.map((item, index) => (
-            <article class="rounded-2xl bg-brand-cream p-5">
-              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-sm font-black text-brand shadow-soft">0{index + 1}</span>
-              <h3 class="mt-4 font-black text-brand-ink">{item.title}</h3>
-              <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section id="features" class="px-4 py-14 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="mx-auto max-w-3xl text-center">
-          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Features Utama</p>
-          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Ciri Utama CUCKOO B-Fit Treadmill</h2>
-          <p class="mt-5 leading-8 text-brand-muted">
-            Direka untuk rutin harian di rumah — mula dengan berjalan, naik ke berlari, dan simpan dengan mudah selepas guna.
-          </p>
-        </div>
-
-        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((item) => (
-            <article class="overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-brand/5">
-              <img src={item.image} alt={item.title} loading="lazy" class="h-56 w-full bg-brand-cream object-contain p-4 lg:h-60" />
-              <div class="p-6">
-                <h3 class="font-black text-brand-ink">{item.title}</h3>
-                <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <CustomerProofSection />
-
-    <!-- PRICING -->
-    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="mx-auto max-w-3xl text-center">
-          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga & Promo</p>
-          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Pilih Plan B-Fit Yang Sesuai</h2>
-          <p class="mt-5 leading-8 text-brand-muted">
-            Highlight utama ialah promo RM12 untuk 6 bulan pertama. Selepas tempoh promo, rental kembali kepada harga standard RM102/bulan.
-          </p>
-        </div>
-
-        <div class="mt-10 grid gap-5 lg:grid-cols-2">
-          <article class="relative rounded-[2rem] border-2 border-brand bg-white p-7 shadow-glow">
-            <div class="absolute -top-4 left-7 rounded-full bg-brand px-5 py-2 text-xs font-black uppercase tracking-[.14em] text-white shadow-soft">
-              Pelan Paling Popular
-            </div>
-
-            <p class="mt-3 text-sm font-black uppercase tracking-[.16em] text-brand-gold">Rental Plan</p>
-            <h3 class="mt-4 text-3xl font-black text-brand-ink">RM12 Untuk 6 Bulan Pertama</h3>
-            <p class="mt-3 text-sm leading-7 text-brand-muted">
-              Sesuai untuk mula dengan bayaran permulaan rendah dan disertakan service berkala CUCKOO+.
-            </p>
-
-            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
-              <p class="text-5xl font-black text-brand">
-                RM12<span class="text-base font-black text-brand-muted">/bulan</span>
-              </p>
-              <p class="mt-1 text-sm font-bold text-brand-muted">Bulan 1-6 — lebih kurang RM0.40 sehari</p>
-              <div class="my-4 h-px bg-brand/10"></div>
-              <p class="text-4xl font-black text-brand">
-                RM102<span class="text-base font-black text-brand-muted">/bulan</span>
-              </p>
-              <p class="mt-1 text-sm font-bold text-brand-muted">Selepas promo</p>
-            </div>
-
-            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
-              {rentalIncludes.map((line) => (
-                <li>✓ {line}</li>
-              ))}
-            </ul>
-
-            <a
-              href="#"
-              onclick="this.href=rotatingWhatsapp()"
-              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
-            >
-              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
-              Semak Kelayakan Rental
-            </a>
-          </article>
-
-          <article class="rounded-[2rem] border border-brand/10 bg-white p-7 shadow-soft">
-            <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Beli Terus</p>
-            <h3 class="mt-4 text-3xl font-black text-brand-ink">Outright Purchase</h3>
-            <p class="mt-3 text-sm leading-7 text-brand-muted">
-              Untuk pelanggan yang mahu pemilikan terus tanpa bayaran bulanan.
-            </p>
-
-            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
-              <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Harga Outright</p>
-              <p class="mt-2 text-5xl font-black text-brand">RM3,399</p>
-              <p class="mt-2 text-sm font-bold text-brand-muted">Bayaran sekali sahaja</p>
-            </div>
-
-            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
-              {outrightIncludes.map((line) => (
-                <li>✓ {line}</li>
-              ))}
-            </ul>
-
-            <a
-              href="#"
-              onclick="this.href=rotatingWhatsapp()"
-              class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]"
-            >
-              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
-              Tanya Outright
-            </a>
-          </article>
-        </div>
-
-        <div class="mt-8 rounded-[2rem] bg-white p-5 text-center text-sm font-bold leading-7 text-brand-muted shadow-soft">
-          Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak bayaran permulaan, kelayakan, stok dan promo terkini.
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICE -->
-    <section id="service" class="px-4 py-14 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-6 shadow-premium lg:p-10">
-        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <div>
-            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">CUCKOO+ Care</p>
-            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Pemasangan dan penjagaan berkala diuruskan.</h2>
-            <p class="mt-4 leading-8 text-brand-muted">
-              Untuk rental plan, pelanggan mendapat service berkala selama 3 tahun. Ini membantu treadmill kekal bersih, selamat dan lebih mudah dijaga.
-            </p>
-          </div>
-          <div class="grid gap-4">
-            {serviceSteps.map((step) => (
-              <article class="rounded-3xl border border-brand/10 bg-brand-cream p-6">
-                <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">{step.no}</p>
-                <h3 class="mt-2 font-black text-brand-ink">{step.title}</h3>
-                <p class="mt-2 text-sm leading-7 text-brand-muted">{step.copy}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <ProductGallerySlider
-      id="gallery"
-      eyebrow="Gallery Produk"
-      title="Lihat CUCKOO B-Fit Treadmill Dengan Lebih Dekat"
-      description="Swipe untuk lihat rupa produk, console, reka bentuk foldable dan kegunaan B-Fit di rumah. Klik gambar untuk paparan penuh."
-      items={galleryItems}
-    />
-
-    <!-- SPEC -->
-    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-5xl">
-        <div class="mb-12 text-center">
-          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Spesifikasi</p>
-          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi CUCKOO B-Fit</h2>
-          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
-            Detail teknikal penting untuk bantu anda faham kelajuan, saiz dan syarat asas penggunaan.
-          </p>
-        </div>
-
-        <div class="mb-8 overflow-hidden rounded-[2rem] bg-white p-4 shadow-premium sm:p-6">
-          <img
-            src={`${base}/bfit-dimension-desktop.webp`}
-            alt="Dimensi dan saiz CUCKOO B-Fit Treadmill"
-            loading="lazy"
-            class="hidden h-auto w-full object-contain sm:block"
-          />
-          <img
-            src={`${base}/b-fit-dimension-mobile.webp`}
-            alt="Dimensi dan saiz CUCKOO B-Fit Treadmill"
-            loading="lazy"
-            class="block h-auto w-full object-contain sm:hidden"
-          />
-        </div>
-
-        <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium">
-          {specs.map(([label, value]) => (
-            <div class="grid grid-cols-1 border-b border-brand/10 last:border-b-0 sm:grid-cols-[.42fr_.58fr]">
-              <div class="px-5 py-4 font-black text-brand-ink sm:py-5">{label}</div>
-              <div class="px-5 pb-4 text-brand-muted sm:py-5">{value}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- CARE: DO / DON'T -->
-    <section class="px-4 py-14 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-7xl">
-        <div class="mx-auto max-w-3xl text-center">
-          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Penjagaan Treadmill</p>
-          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Mudah dijaga bila rutin penggunaan betul.</h2>
-        </div>
-        <div class="mt-8 grid gap-5 md:grid-cols-2">
-          <div class="rounded-[2rem] border border-cta-green/20 bg-white p-7 shadow-soft">
-            <h3 class="text-2xl font-black text-cta-green">Patut Buat</h3>
-            <ul class="mt-5 space-y-3 text-sm font-bold leading-7 text-brand-ink">
-              {doItems.map((line) => (
-                <li>✓ {line}</li>
-              ))}
-            </ul>
-          </div>
-          <div class="rounded-[2rem] border border-brand/20 bg-white p-7 shadow-soft">
-            <h3 class="text-2xl font-black text-brand">Elakkan</h3>
-            <ul class="mt-5 space-y-3 text-sm font-bold leading-7 text-brand-ink">
-              {dontItems.map((line) => (
-                <li>✕ {line}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <PromoBannerSection />
-
-    <!-- FAQ -->
-    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-4xl">
-        <div class="text-center">
-          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
-          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">Soalan Lazim CUCKOO B-Fit Treadmill</h2>
-          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">
-            Jawapan ringkas sebelum anda pilih plan atau WhatsApp ejen.
-          </p>
-        </div>
-
-        <div class="mt-8 space-y-3">
-          {faqItems.map((item) => (
-            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
-                <span>{item.q}</span>
-                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">+</span>
-              </summary>
-              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">
-                {item.a}
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <AgentSection />
-  </div>
-
   <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
 
+  <!-- ============================================================ -->
+  <!-- HERO -->
+  <!-- ============================================================ -->
+  <section id="hero" class="relative overflow-hidden bg-brand-dark px-4 py-12 text-white sm:px-6 lg:px-8 lg:py-16">
+    <!-- background layers -->
+    <div class="absolute inset-0"
+         style="background: radial-gradient(circle at 16% 10%, rgba(255,255,255,.14), transparent 26%), radial-gradient(circle at 84% 22%, rgba(216,166,74,.16), transparent 32%), linear-gradient(135deg, #8E1830 0%, #7A0E23 46%, #4B0715 100%);"></div>
+    <div class="hero-grid absolute inset-0 opacity-40"></div>
+    <div class="absolute -right-24 top-0 h-80 w-80 rounded-full bg-[#b5162b]/30 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-[#4B0715]/70 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl">
+      <div class="flex flex-col gap-8 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-14">
+
+        <!-- Head top: badges + eyebrow + headline -->
+        <div class="order-1 min-w-0 text-center lg:order-none lg:col-start-1 lg:row-start-1 lg:text-left">
+          <div class="mb-5 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <span class="rounded-full bg-white/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/20 sm:text-xs">🔥 Promo RM12</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/15 sm:text-xs">Your 24/7 Fitness Partner</span>
+          </div>
+
+          <p class="text-xs font-black uppercase tracking-[0.24em] text-rose-200 sm:text-sm">CUCKOO B-Fit Treadmill</p>
+
+          <h1 class="mx-auto mt-3 max-w-2xl text-balance text-[clamp(1.5rem,7vw,2.1rem)] font-black leading-[1.08] tracking-tight text-white sm:text-5xl sm:leading-[1.03] lg:mx-0 lg:text-6xl">
+            Jalan. Joging. Lari.<br />Terus Dari Rumah.<br />
+            <span class="gold-text">Dari RM12/Bulan.</span>
+          </h1>
+        </div>
+
+        <!-- Text bottom: penerangan + pricing + trust + CTA -->
+        <div class="order-3 min-w-0 text-center lg:order-none lg:col-start-1 lg:row-start-2 lg:text-left">
+          <p class="mx-auto mt-1 max-w-xl text-base leading-8 text-rose-100 sm:text-lg lg:mt-5 lg:mx-0">
+            Treadmill 2-in-1 yang compact, foldable dan sesuai untuk rumah moden. Mulakan rutin sihat tanpa perlu keluar ke gym atau bergantung pada cuaca.
+          </p>
+
+          <!-- Pricing block (glass) -->
+          <div class="mx-auto mt-7 max-w-md rounded-[1.75rem] bg-white/10 p-5 text-left ring-1 ring-white/15 backdrop-blur lg:mx-0">
+            <div class="flex items-end justify-between gap-4">
+              <div>
+                <span class="inline-block rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-amber-900" style="background: linear-gradient(135deg, #fff7de, #ffe7a8, #d6b679);">6 Bulan Pertama</span>
+                <p class="mt-2 text-5xl font-black leading-none tracking-tight text-white">RM12<span class="text-base font-bold text-rose-200">/bln</span></p>
+              </div>
+              <div class="text-right">
+                <p class="text-[11px] font-bold uppercase tracking-wide text-rose-200">Lepas promo</p>
+                <p class="text-2xl font-black text-white">RM102<span class="text-sm font-bold text-rose-200">/bln</span></p>
+              </div>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-4">
+              <span class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-black text-white ring-1 ring-white/10">Outright RM3,399</span>
+              <span class="text-xs font-semibold text-rose-200">Service CUCKOO+ · pemasangan diuruskan</span>
+            </div>
+            <p class="mt-3 text-[11px] font-semibold leading-5 text-rose-200/80">Tertakluk kepada stok, kelayakan & kempen semasa.</p>
+          </div>
+
+          <!-- Trust pills -->
+          <div class="mt-5 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/15">✓ Tak perlu slip gaji</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/15">🛡️ Service setiap 6 bulan</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/15">📦 Free delivery & installation</span>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <a href="#" onclick="this.href=rotatingWhatsapp()"
+               class="inline-flex items-center justify-center gap-2 rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              Semak Promo RM12
+            </a>
+            <a href="#harga"
+               class="inline-flex items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-base font-black text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20">
+              Lihat Harga
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: product card (mobile: terus selepas headline) -->
+        <div class="relative order-2 lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
+          <div class="absolute -inset-6 rounded-[3rem] blur-3xl" style="background: rgba(181,22,43,0.25);"></div>
+          <div class="relative overflow-hidden rounded-[2.5rem] border border-white/15 p-5 shadow-premium"
+               style="background: linear-gradient(135deg, #2d0a10, #4B0715, #1a0508);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 32%, rgba(181,22,43,0.22), transparent 52%);"></div>
+
+            <div class="relative text-center">
+              <div class="mb-4 flex flex-wrap justify-center gap-2">
+                <span class="rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wide text-ink" style="background: #d6b679;">2-in-1</span>
+                <span class="rounded-full bg-white/10 px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/15">Foldable</span>
+              </div>
+
+              <div class="relative flex min-h-[320px] items-center justify-center sm:min-h-[440px]">
+                <div class="absolute bottom-8 h-12 w-4/5 rounded-full blur-2xl" style="background: rgba(181,22,43,0.30);"></div>
+                <img id="heroProductImage" src={heroImage} alt="CUCKOO B-Fit Treadmill" loading="eager" fetchpriority="high" decoding="async" width="560" height="560"
+                     class="floating relative z-10 mx-auto h-auto w-full max-w-[460px] object-contain drop-shadow-2xl transition duration-300 sm:max-w-[560px]" />
+              </div>
+
+              <!-- Image switcher -->
+              <div class="thumb-scroll mt-4 justify-center">
+                {heroViews.map((view, index) => (
+                  <button type="button" data-hero-view={view.image}
+                    class:list={[
+                      'hero-view-thumb shrink-0 rounded-full px-3.5 py-1.5 text-[11px] font-bold ring-1 transition',
+                      index === 0 ? 'bg-white text-brand shadow-sm ring-[#d6b679]' : 'bg-white/5 text-rose-100 ring-white/15 hover:bg-white/10'
+                    ]}>
+                    {view.label}
+                  </button>
+                ))}
+              </div>
+
+              <!-- Mini stats -->
+              <div class="mt-5 grid grid-cols-3 gap-2">
+                <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/10"><p class="text-base font-black text-white">1-14</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-300">km/h</p></div>
+                <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/10"><p class="text-base font-black text-white">20cm</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-300">folded</p></div>
+                <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/10"><p class="text-base font-black text-white">100kg</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-300">max</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gold tag bawah card -->
+          <div class="relative mx-auto mt-4 w-10/12 rounded-3xl px-5 py-4 text-center text-ink shadow-xl ring-1" style="background: #d6b679; --tw-ring-color: rgba(214,182,121,0.4);">
+            <p class="text-[11px] font-bold text-amber-900">Fitness partner di rumah anda</p>
+            <p class="text-sm font-black">Walking · Joging · Running</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SEDENTARY HOOK (light — beri rehat selepas hero gelap) -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-14 sm:px-6 lg:px-8 lg:py-20" style="background: var(--brand-soft);">
+    <div class="mx-auto max-w-5xl text-center fade-up">
+      <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Kenapa B-Fit</p>
+      <h2 class="mx-auto mt-3 max-w-3xl text-balance text-2xl font-black tracking-tight text-brand-ink sm:text-4xl">
+        Ramai dari kita habiskan terlalu banyak masa duduk — tapi belum terlambat untuk ubah.
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-brand-muted sm:text-base">
+        Kerja, perjalanan dan skrin buat badan kurang aktif. Yang anda perlukan bukan masa berjam-jam di gym — cukup beberapa minit bergerak setiap hari, di rumah sendiri.
+      </p>
+      <div class="mx-auto mt-8 grid max-w-xl grid-cols-2 gap-4">
+        {sedentaryStats.map((s) => (
+          <div class="rounded-3xl bg-white p-5 shadow-soft ring-1 ring-brand/10">
+            <p class="text-3xl font-black text-brand sm:text-4xl">{s.value}</p>
+            <p class="mt-2 text-xs leading-5 text-brand-muted sm:text-sm">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PAIN POINTS -->
+  <!-- ============================================================ -->
+  <section id="kenapa" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20" style="background: var(--brand-cream);">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Apa Yang Menghalang Anda?</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-5xl">Bila susah keluar bersenam, rumah jadi tempat paling mudah untuk mula.</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-brand-muted">Ramai orang bukan tidak mahu sihat — cuma masa, cuaca, kerja dan jarak ke gym buat rutin susah konsisten.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {problems.map((item, index) => (
+          <article class:list={[
+            'fade-up rounded-[1.75rem] p-6 shadow-soft',
+            index === 3 ? 'text-white' : 'bg-white ring-1 ring-brand/10'
+          ]} style={index === 3 ? 'background: linear-gradient(135deg, #7A0E23, #4B0715);' : ''}>
+            <div class:list={[
+              'mb-4 flex h-11 w-11 items-center justify-center rounded-2xl text-base font-black',
+              index === 3 ? 'bg-white/15 text-white' : 'bg-brand-soft text-brand'
+            ]}>{item.no}</div>
+            <h3 class:list={['text-base font-black', index === 3 ? 'text-white' : 'text-brand-ink']}>{item.title}</h3>
+            <p class:list={['mt-2 text-sm leading-6', index === 3 ? 'text-white/80' : 'text-brand-muted']}>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- FEATURES UTAMA -->
+  <!-- ============================================================ -->
+  <section id="features" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: var(--brand-soft);">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Features Utama</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand sm:text-5xl">Ciri Utama CUCKOO B-Fit Treadmill</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-brand-muted">Direka untuk rutin harian di rumah — mula dengan berjalan, naik ke berlari, dan simpan dengan mudah selepas guna.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 fade-up sm:grid-cols-2 lg:grid-cols-3">
+        {features.map((item) => (
+          <article class="overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-brand/5">
+            <img src={item.image} alt={item.title} loading="lazy" class="h-56 w-full bg-brand-cream object-contain p-4 lg:h-60" />
+            <div class="p-6">
+              <h3 class="font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-2 text-sm leading-7 text-brand-muted">{item.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center fade-up">
+        <a href="#" onclick="this.href=rotatingWhatsapp()"
+           class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-8 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.28)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+          <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+          WhatsApp Tanya Lanjut
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- ADDITIONAL FEATURES -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20 bg-white">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Ciri Tambahan</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-4xl">Detail kecil yang buat penggunaan lebih selesa</h2>
+      </div>
+
+      <div class="mt-12 grid gap-5 fade-up sm:grid-cols-2 lg:grid-cols-3">
+        {additionalFeatures.map((item) => (
+          <article class="flex items-start gap-4 rounded-[1.5rem] bg-brand-cream p-5 ring-1 ring-brand/10">
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-2xl shadow-soft ring-1 ring-brand/10">{item.icon}</span>
+            <div>
+              <h3 class="font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-1 text-sm leading-6 text-brand-muted">{item.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <CustomerProofSection />
+
+
+  <!-- ============================================================ -->
+  <!-- PRICING -->
+  <!-- ============================================================ -->
+  <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: var(--brand-cream);">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Harga &amp; Promo</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-5xl">Pilih Plan B-Fit Yang Sesuai</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-brand-muted">Highlight utama: promo RM12 untuk 6 bulan pertama. Selepas tempoh promo, rental kembali kepada harga standard RM102/bulan.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8 fade-up">
+
+        <!-- Rental (featured) -->
+        <article class="relative overflow-hidden rounded-[2rem] p-6 text-white shadow-glow sm:p-8"
+                 style="background: radial-gradient(circle at 82% 8%, rgba(255,255,255,.14), transparent 30%), linear-gradient(135deg, #4B0715, #7A0E23 48%, #241719);">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-black tracking-tight sm:text-3xl">Rental Plan</h3>
+            <span class="shrink-0 rounded-full bg-brand-gold px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-brand-ink">Paling Popular</span>
+          </div>
+
+          <div class="mt-5 rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/15">
+            <p class="text-5xl font-black">RM12<span class="text-base font-black text-white/70">/bulan</span></p>
+            <p class="mt-1 text-sm font-bold text-white/70">Bulan 1–6 — lebih kurang RM0.40 sehari</p>
+            <div class="my-4 h-px bg-white/15"></div>
+            <p class="text-3xl font-black">RM102<span class="text-base font-black text-white/70">/bulan</span></p>
+            <p class="mt-1 text-sm font-bold text-white/70">Selepas promo</p>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm font-bold">
+            {rentalIncludes.map((line) => (<li>✓ {line}</li>))}
+          </ul>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+            <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+            Semak Kelayakan Rental
+          </a>
+        </article>
+
+        <!-- Outright -->
+        <article class="overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-brand/10 shadow-premium sm:p-8">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-black tracking-tight text-brand sm:text-3xl">Beli Terus</h3>
+            <span class="shrink-0 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-brand">Outright</span>
+          </div>
+
+          <div class="mt-5 rounded-[1.5rem] bg-brand-cream p-5 ring-1 ring-brand/10">
+            <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Harga Outright</p>
+            <p class="mt-2 text-5xl font-black text-brand">RM3,399</p>
+            <p class="mt-2 text-sm font-bold text-brand-muted">Bayaran sekali sahaja</p>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+            {outrightIncludes.map((line) => (<li>✓ {line}</li>))}
+          </ul>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand px-6 py-4 text-sm font-black text-brand transition hover:-translate-y-0.5 hover:bg-brand-soft">
+            <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+            Tanya Outright
+          </a>
+        </article>
+      </div>
+
+      <!-- Included strip -->
+      <div class="mt-8 grid grid-cols-2 gap-3 fade-up sm:grid-cols-3 lg:grid-cols-5">
+        {includedStrip.map((item) => (
+          <div class="rounded-[1.25rem] bg-brand-soft p-4 text-center text-sm font-black leading-snug text-brand">{item}</div>
+        ))}
+      </div>
+
+      <p class="mx-auto mt-6 max-w-3xl rounded-[1.5rem] bg-white p-5 text-center text-sm font-semibold leading-7 text-brand ring-1 ring-brand/10 fade-up">
+        Harga dan promosi tertakluk kepada kempen semasa. WhatsApp untuk semak bayaran permulaan, kelayakan, stok dan promo terkini.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- RISK REVERSAL: Worry-free install + 8-Point Service Check -->
+  <!-- ============================================================ -->
+  <section id="service" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: var(--brand-soft);">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">CUCKOO+ Care</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand sm:text-4xl">Dipasang dengan teliti. Dijaga secara berkala.</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-brand-muted">Untuk rental plan, pelanggan mendapat service berkala selama 3 tahun supaya treadmill kekal bersih, selamat dan mudah dijaga.</p>
+      </div>
+
+      <!-- Worry-free installation -->
+      <div class="mt-12 grid gap-5 fade-up sm:grid-cols-3">
+        {installPoints.map((step) => (
+          <article class="rounded-[1.75rem] bg-white p-6 shadow-soft ring-1 ring-brand/10">
+            <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">{step.no}</p>
+            <h3 class="mt-2 font-black text-brand-ink">{step.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-brand-muted">{step.copy}</p>
+          </article>
+        ))}
+      </div>
+
+      <!-- 8-Point Service Check -->
+      <div class="mt-8 overflow-hidden rounded-[2rem] bg-white p-6 shadow-premium ring-1 ring-brand/10 fade-up lg:p-8">
+        <div class="text-center">
+          <p class="text-xs font-black uppercase tracking-[.18em] text-brand-gold">8-Point Service Check</p>
+          <h3 class="mt-2 text-xl font-black text-brand sm:text-2xl">Antara yang diperiksa setiap servis berkala</h3>
+        </div>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {serviceCheck.map((item, index) => (
+            <div class="flex items-start gap-3 rounded-2xl bg-brand-cream p-4 ring-1 ring-brand/10">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-black text-white">{index + 1}</span>
+              <p class="text-sm font-bold leading-6 text-brand-ink">{item}</p>
+            </div>
+          ))}
+        </div>
+        <p class="mt-5 text-center text-xs font-semibold text-brand-muted">*Skop servis tertakluk kepada pelan dan terma semasa CUCKOO.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- GALLERY -->
+  <!-- ============================================================ -->
+  <ProductGallerySlider
+    id="gallery"
+    eyebrow="Gallery Produk"
+    title="Lihat CUCKOO B-Fit Treadmill Dengan Lebih Dekat"
+    description="Swipe untuk lihat rupa produk, console, reka bentuk foldable dan kegunaan B-Fit di rumah. Klik gambar untuk paparan penuh."
+    items={galleryItems}
+  />
+
+
+  <!-- ============================================================ -->
+  <!-- SPEC -->
+  <!-- ============================================================ -->
+  <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: var(--brand-cream);">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-12 text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Spesifikasi</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-5xl">Spesifikasi CUCKOO B-Fit</h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">Detail teknikal penting untuk bantu anda faham kelajuan, saiz dan syarat asas penggunaan.</p>
+      </div>
+
+      <div class="mb-8 overflow-hidden rounded-[2rem] bg-white p-4 shadow-premium fade-up sm:p-6">
+        <img src={`${base}/bfit-dimension-desktop.webp`} alt="Dimensi dan saiz CUCKOO B-Fit Treadmill" loading="lazy" class="hidden h-auto w-full object-contain sm:block" />
+        <img src={`${base}/b-fit-dimension-mobile.webp`} alt="Dimensi dan saiz CUCKOO B-Fit Treadmill" loading="lazy" class="block h-auto w-full object-contain sm:hidden" />
+      </div>
+
+      <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium fade-up">
+        {specs.map(([label, value]) => (
+          <div class="grid grid-cols-1 border-b border-brand/10 last:border-b-0 sm:grid-cols-[.42fr_.58fr]">
+            <div class="px-5 py-4 font-black text-brand-ink sm:py-5">{label}</div>
+            <div class="px-5 pb-4 text-brand-muted sm:py-5">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- CARE: DO / DON'T -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20 bg-white">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Penjagaan Treadmill</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-4xl">Mudah dijaga bila rutin penggunaan betul.</h2>
+      </div>
+      <div class="mt-10 grid gap-5 fade-up md:grid-cols-2">
+        <div class="rounded-[2rem] border border-cta-green/20 bg-white p-7 shadow-soft">
+          <h3 class="text-2xl font-black text-cta-green">Patut Buat</h3>
+          <ul class="mt-5 space-y-3 text-sm font-bold leading-7 text-brand-ink">
+            {doItems.map((line) => (<li>✓ {line}</li>))}
+          </ul>
+        </div>
+        <div class="rounded-[2rem] border border-brand/20 bg-white p-7 shadow-soft">
+          <h3 class="text-2xl font-black text-brand">Elakkan</h3>
+          <ul class="mt-5 space-y-3 text-sm font-bold leading-7 text-brand-ink">
+            {dontItems.map((line) => (<li>✕ {line}</li>))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <PromoBannerSection />
+
+
+  <!-- ============================================================ -->
+  <!-- FAQ -->
+  <!-- ============================================================ -->
+  <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: var(--brand-cream);">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">FAQ</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-4xl">Soalan Lazim CUCKOO B-Fit Treadmill</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">Jawapan ringkas sebelum anda pilih plan atau WhatsApp ejen.</p>
+      </div>
+
+      <div class="mt-8 space-y-3 fade-up">
+        {faqItems.map((item) => (
+          <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+              <span>{item.q}</span>
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">+</span>
+            </summary>
+            <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- FINAL CTA -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: linear-gradient(135deg, #8E1830 0%, #7A0E23 50%, #4B0715 100%);">
+    <div class="mx-auto max-w-4xl text-center fade-up">
+      <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-gold">Semak Sekarang</p>
+      <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">Mula Rutin Sihat Dari Rumah Hari Ini</h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-white/80">WhatsApp sekarang untuk semak promo RM12, kelayakan rental, harga outright dan stok terkini B-Fit Treadmill.</p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <span class="rounded-full bg-white/15 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">✓ Service tiap 6 bulan</span>
+        <span class="rounded-full bg-white/15 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">🏃 Walking · Running</span>
+        <span class="rounded-full bg-white/15 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">📦 Pemasangan diuruskan</span>
+        <span class="rounded-full bg-white/15 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">🛡️ 3 tahun warranty (rental)</span>
+      </div>
+
+      <a href="#" onclick="this.href=rotatingWhatsapp()"
+         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-10 py-5 text-lg font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.3)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">
+        <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-6 w-6" />
+        WhatsApp Semak Promo B-Fit
+      </a>
+
+      <p class="mt-5 text-xs font-semibold text-white/70">Percuma untuk bertanya. Tiada komitmen sebelum kelulusan.</p>
+    </div>
+  </section>
+
+
+  <AgentSection />
+
+  <style is:global>
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .floating { animation: floating 5.5s ease-in-out infinite; }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, #fff7de, #d6b679, #b88746);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .thumb-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 2px;
+    }
+    .thumb-scroll::-webkit-scrollbar { display: none; }
+
+    @media (prefers-reduced-motion: reduce) { .fade-up, .floating { transition: none; animation: none; } }
+  </style>
+
   <script is:inline>
+    // --- Hero image switcher ---
     (() => {
       const img = document.getElementById('heroProductImage');
       const thumbs = document.querySelectorAll('.hero-view-thumb');
       if (!img || !thumbs.length) return;
-      const activeCls = ['bg-brand', 'text-white', 'ring-2', 'ring-brand'];
-      const idleCls = ['bg-white', 'text-brand', 'ring-1', 'ring-brand/15'];
+      const activeCls = ['bg-white', 'text-brand', 'shadow-sm', 'ring-[#d6b679]'];
+      const idleCls = ['bg-white/5', 'text-rose-100', 'ring-white/15'];
       thumbs.forEach((btn) => {
         btn.addEventListener('click', () => {
           const src = btn.getAttribute('data-hero-view');
-          if (src) img.src = src;
-          thumbs.forEach((b) => {
-            b.classList.remove(...activeCls);
-            b.classList.add(...idleCls);
-          });
+          if (src) {
+            img.style.transition = 'opacity 0.15s ease';
+            img.style.opacity = '0';
+            setTimeout(() => { img.src = src; img.style.opacity = '1'; }, 150);
+          }
+          thumbs.forEach((b) => { b.classList.remove(...activeCls); b.classList.add(...idleCls); });
           btn.classList.remove(...idleCls);
           btn.classList.add(...activeCls);
         });
       });
+    })();
+
+    // --- Fade-up on scroll ---
+    (() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     })();
   </script>
 </BaseLayout>
