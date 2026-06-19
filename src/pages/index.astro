@@ -177,10 +177,10 @@ const faqSchema = {
   <div class="absolute inset-x-0 top-0 h-px bg-white/10"></div>
 
   <div
-    class="mx-auto grid max-w-7xl gap-6 px-4 pt-9 sm:px-6 sm:pt-11 lg:min-h-[620px] lg:grid-cols-[0.92fr_1.08fr] lg:items-end lg:gap-x-8 lg:px-8 lg:pt-12"
+    class="mx-auto grid max-w-7xl gap-6 px-4 pt-9 sm:px-6 sm:pt-11 lg:min-h-[620px] lg:grid-cols-[0.92fr_1.08fr] lg:grid-rows-[auto_1fr] lg:items-end lg:gap-x-8 lg:px-8 lg:pt-12"
   >
-    <!-- LEFT CONTENT -->
-    <div class="relative z-20 pb-7 sm:pb-8 lg:pb-20">
+    <!-- LEFT CONTENT: INTRO -->
+    <div class="relative z-20 lg:col-start-1 lg:row-start-1 lg:self-end">
       <p class="text-xs font-black uppercase tracking-[.26em] text-[#F2C15A]">
         Ejen CUCKOO Malaysia
       </p>
@@ -190,8 +190,54 @@ const faqSchema = {
       >
         Nak Pasang CUCKOO? Kami Bantu Pilih Model Yang Sesuai.
       </h1>
+    </div>
 
-      <p class="mt-5 max-w-2xl text-base font-semibold leading-8 text-white/82 sm:text-lg">
+    <!-- RIGHT VISUAL: AGENTS ONLY -->
+    <div class="relative min-h-[320px] sm:min-h-[500px] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:min-h-[620px]">
+      <!-- soft glow behind agents -->
+      <div class="absolute left-[52%] top-[50%] h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F2C15A]/13 blur-3xl"></div>
+      <div class="absolute left-[52%] bottom-0 h-52 w-[78%] -translate-x-1/2 rounded-full bg-black/10 blur-3xl"></div>
+
+      <!-- AGENTS -->
+      <div class="absolute inset-x-0 bottom-6 z-10 flex items-end justify-center sm:bottom-10 lg:bottom-0 lg:-translate-x-6">
+        <img
+          src="/assets/images/people/gambar%20ejen%20-%20fadhil.webp"
+          alt="Fadhil ejen CUCKOO sejak 2017"
+          width="1125"
+          height="1398"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="relative z-10 h-[300px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:h-[405px] lg:h-[570px]"
+        />
+
+        <img
+          src="/assets/images/people/gambar%20ejen%20-%20izzah.webp"
+          alt="Izzah ejen CUCKOO sejak 2017"
+          width="1842"
+          height="2304"
+          loading="eager"
+          decoding="async"
+          class="relative z-10 -ml-28 h-[282px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:-ml-36 sm:h-[385px] lg:-ml-52 lg:h-[545px]"
+        />
+      </div>
+
+      <!-- NAME TAG -->
+      <div
+        class="absolute bottom-1 left-1/2 z-20 w-[min(78%,21rem)] -translate-x-1/2 rounded-full border border-brand-gold/45 bg-[#21040D]/82 px-5 py-3 text-center shadow-[0_18px_50px_rgba(0,0,0,.25)] backdrop-blur sm:bottom-10 sm:w-[min(66%,23rem)] lg:bottom-12 lg:-translate-x-[56%]"
+      >
+        <p class="text-[10px] font-black uppercase tracking-[.24em] text-brand-gold sm:text-[11px]">
+          Fadhil & Izzah
+        </p>
+        <p class="mt-1 text-sm font-bold text-cream sm:text-[15px]">
+          Ejen CUCKOO sejak 2017
+        </p>
+      </div>
+    </div>
+
+    <!-- LEFT CONTENT: CTA -->
+    <div class="relative z-20 pb-7 sm:pb-8 lg:col-start-1 lg:row-start-2 lg:pb-20 lg:self-start">
+      <p class="max-w-2xl text-base font-semibold leading-8 text-white/82 sm:text-lg lg:mt-5">
         Pilih penapis air, aircond, washer dryer, peti sejuk, tilam atau massage chair ikut bajet,
         keperluan rumah dan promo terkini.
       </p>
@@ -215,49 +261,6 @@ const faqSchema = {
       <p class="mt-6 max-w-2xl text-xs font-semibold leading-6 text-white/65">
         Ejen individu CUCKOO • Promo tertakluk pada stok, kawasan, kempen dan syarat semasa.
       </p>
-    </div>
-
-    <!-- RIGHT VISUAL: AGENTS ONLY -->
-    <div class="relative min-h-[390px] sm:min-h-[500px] lg:min-h-[620px]">
-      <!-- soft glow behind agents -->
-      <div class="absolute left-[52%] top-[50%] h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F2C15A]/13 blur-3xl"></div>
-      <div class="absolute left-[52%] bottom-0 h-52 w-[78%] -translate-x-1/2 rounded-full bg-black/10 blur-3xl"></div>
-
-      <!-- AGENTS -->
-      <div class="absolute inset-x-0 bottom-20 z-10 flex items-end justify-center sm:bottom-10 lg:bottom-0 lg:-translate-x-6">
-        <img
-          src="/assets/images/people/gambar%20ejen%20-%20fadhil.webp"
-          alt="Fadhil ejen CUCKOO sejak 2017"
-          width="1125"
-          height="1398"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          class="relative z-10 h-[330px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:h-[405px] lg:h-[570px]"
-        />
-
-        <img
-          src="/assets/images/people/gambar%20ejen%20-%20izzah.webp"
-          alt="Izzah ejen CUCKOO sejak 2017"
-          width="1842"
-          height="2304"
-          loading="eager"
-          decoding="async"
-          class="relative z-10 -ml-28 h-[310px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:-ml-36 sm:h-[385px] lg:-ml-52 lg:h-[545px]"
-        />
-      </div>
-
-      <!-- NAME TAG -->
-      <div
-        class="absolute bottom-10 left-1/2 z-20 w-[min(78%,21rem)] -translate-x-1/2 rounded-full border border-brand-gold/45 bg-[#21040D]/82 px-5 py-3 text-center shadow-[0_18px_50px_rgba(0,0,0,.25)] backdrop-blur sm:w-[min(66%,23rem)] lg:bottom-12 lg:-translate-x-[56%]"
-      >
-        <p class="text-[10px] font-black uppercase tracking-[.24em] text-brand-gold sm:text-[11px]">
-          Fadhil & Izzah
-        </p>
-        <p class="mt-1 text-sm font-bold text-cream sm:text-[15px]">
-          Ejen CUCKOO sejak 2017
-        </p>
-      </div>
     </div>
   </div>
 
