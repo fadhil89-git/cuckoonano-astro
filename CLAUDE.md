@@ -236,6 +236,13 @@ Dev server:
 npm run dev
 ```
 
+## Analytics
+
+- Cloudflare Web Analytics is injected once in `src/layouts/BaseLayout.astro`.
+- It reads `PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` from `import.meta.env`.
+- Do not add duplicate Cloudflare beacon scripts in pages, product pages, blog pages, or location pages.
+- Do not remove the conditional Cloudflare script unless analytics is intentionally being retired.
+
 ## Working Style
 
 - Do not touch `/blog` unless asked.
@@ -243,4 +250,3 @@ npm run dev
 - Keep edits scoped.
 - Prefer shared components/data over repeated hardcoded sections.
 - If unsure about SEO-sensitive redirects, flag for manual decision before editing.
-

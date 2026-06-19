@@ -17,6 +17,7 @@ const {
 
 const logoSrc = '/assets/images/brand/logo_cmyk_maroon02-e1546229046344.png.webp';
 const faviconSrc = '/assets/images/brand/cropped-favicon-cuckoo-fadhil-x.webp';
+const cloudflareToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN;
 
 const productNavCategories = [
   {
@@ -374,5 +375,12 @@ const desktopProductNavColumns = [
       });
     </script>
     <Analytics />
+    {cloudflareToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={`{"token":"${cloudflareToken}"}`}
+      ></script>
+    )}
   </body>
 </html>
