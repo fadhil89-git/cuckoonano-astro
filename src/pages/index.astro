@@ -167,7 +167,7 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout {...meta}>
+<BaseLayout {...meta} preloadImages={['/assets/images/people/gambar%20ejen%20-%20fadhil.webp']}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section
@@ -228,14 +228,21 @@ const faqSchema = {
         <img
           src="/assets/images/people/gambar%20ejen%20-%20fadhil.webp"
           alt="Fadhil ejen CUCKOO sejak 2017"
+          width="1125"
+          height="1398"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
           class="relative z-10 h-[330px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:h-[405px] lg:h-[570px]"
         />
 
         <img
           src="/assets/images/people/gambar%20ejen%20-%20izzah.webp"
           alt="Izzah ejen CUCKOO sejak 2017"
+          width="1842"
+          height="2304"
           loading="eager"
+          decoding="async"
           class="relative z-10 -ml-28 h-[310px] w-auto object-contain object-bottom drop-shadow-[0_26px_48px_rgba(0,0,0,.36)] sm:-ml-36 sm:h-[385px] lg:-ml-52 lg:h-[545px]"
         />
       </div>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 
 const {
   title = 'CUCKOO Malaysia',
@@ -10,7 +11,8 @@ const {
   showWaterHalal = false,
   showHeader = true,
   showFooter = true,
-  showFloatingWhatsapp = true
+  showFloatingWhatsapp = true,
+  preloadImages = []
 } = Astro.props;
 
 const logoSrc = '/assets/images/brand/logo_cmyk_maroon02-e1546229046344.png.webp';
@@ -157,6 +159,9 @@ const desktopProductNavColumns = [
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/webp" href={faviconSrc} />
     <link rel="apple-touch-icon" href={faviconSrc} />
+    {preloadImages.map((href) => (
+      <link rel="preload" as="image" href={href} fetchpriority="high" />
+    ))}
   </head>
   <body class="overflow-x-hidden bg-cream text-ink antialiased">
     <!-- Google Tag Manager (noscript) -->
@@ -167,7 +172,7 @@ const desktopProductNavColumns = [
     <header class="sticky top-0 z-40 border-b border-brand/10 bg-white/90 backdrop-blur-xl">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="/" class="flex h-12 w-36 items-center justify-center rounded-2xl" aria-label="CUCKOO Nano Home">
-          <img src={logoSrc} alt="CUCKOO" class="max-h-7 w-auto object-contain" loading="eager" />
+          <img src={logoSrc} alt="CUCKOO" width="214" height="32" class="max-h-7 w-auto object-contain" loading="eager" />
         </a>
         <nav class="hidden items-center gap-7 text-sm font-semibold text-muted lg:flex">
           <a class="nav-link hover:text-brand" href="/">Home</a>
@@ -319,13 +324,13 @@ const desktopProductNavColumns = [
     )}
 {showFloatingWhatsapp && (
 <a data-floating-whatsapp href="#" onclick="this.href=rotatingWhatsapp()" class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-sm font-black text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 sm:px-6 sm:py-4 sm:text-base">
-  <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5 sm:h-6 sm:w-6" />
+  <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" width="256" height="256" class="h-5 w-5 sm:h-6 sm:w-6" />
   <span>Semak Promo</span>
 </a>
 )}
-    <script is:inline src="/assets/js/site-data.js"></script>
-    <script is:inline src="/assets/js/blog-items.js"></script>
-    <script is:inline src="/assets/js/main.js"></script>
+    <script is:inline defer src="/assets/js/site-data.js"></script>
+    <script is:inline defer src="/assets/js/blog-items.js"></script>
+    <script is:inline defer src="/assets/js/main.js"></script>
     <script is:inline>
       (() => {
         const hero = document.querySelector('[data-home-hero], #hero');
@@ -368,5 +373,6 @@ const desktopProductNavColumns = [
         gtagSendEvent(href);
       });
     </script>
+    <Analytics />
   </body>
 </html>
