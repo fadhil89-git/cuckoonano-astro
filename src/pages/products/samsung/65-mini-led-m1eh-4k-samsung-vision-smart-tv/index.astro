@@ -1,14 +1,846 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
 
-const meta = {
-  "title": "65\" Mini LED M1EH 4K Samsung Vision Smart TV CUCKOO | Samsung",
-  "description": "Semak maklumat 65\" Mini LED M1EH 4K Samsung Vision Smart TV CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/samsung/65-mini-led-m1eh-4k-samsung-vision-smart-tv/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/65-mini-led-m1eh-4k-samsung-vision-smart-tv.webp",
-  "ogType": "website"
+const base = '/assets/images/products/samsung/oled-tv';
+
+// Gambar produk rasmi Samsung (background putih bersih, tiada sticker)
+const tvAngleL = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552158898.avif`; // angle kiri
+const tvAngleR = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552158900.avif`; // angle kanan
+const tvFront  = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552158899.avif`; // depan + Mini LED
+const tvSlim   = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552158901.avif`; // sisi nipis
+const tvBezel  = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552158902.avif`; // bezel close-up
+const tvPorts  = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552171410.avif`; // port belakang
+const tvDimens = `${base}/my-mini-led-m1eh-ua65m1ehakxxm-552158917.avif`; // dimensi
+const tvRemote = `${base}/my-mini-led-tv-ua65m1ehakxxm-----mini-led-m-eh--k-samsung-vision-ai-smart-tv------black-552158878.avif`; // remote
+
+const heroImg = tvAngleL;                                              // default hero
+
+// Full-bleed showcase media (Komen 2 & 3)
+const showcaseVidDesktop = `${base}/my-feature--nbsp-552132597.webm`; // showcase video (desktop)
+const showcaseVidMobile  = `${base}/my-feature--nbsp-552132598.webm`; // showcase video (mobile)
+const privacyImgMobile   = `${base}/my-feature-your-privacy--secured--551629436.webp`; // Knox privacy (mobile)
+const smartThingsVid     = `${base}/2025-smart-tv-06-smart-home-f03-1-smartthings-pc-others.mp4`; // SmartThings
+const metalDesktop = `${base}/my-feature-elegant-metal-stream-design-to-upgrade-your-space-551629399.avif`; // MetalStream (desktop)
+const metalMobile  = `${base}/my-feature-elegant-metal-stream-design-to-upgrade-your-space-551629400.avif`; // MetalStream (mobile)
+
+// FEATURE MEDIA — gambar/video feature rasmi Samsung
+const featMiniLedVid = `${base}/my-feature-our-advanced-mini-led-technology-551629418.webm`; // Mini LED (video)
+const featMotion  = `${base}/my-feature-improved-picture-clarity-with-smooth-motion-551629433.webp`;                                            // Motion Xcelerator / gaming
+const featSmart   = `${base}/my-feature-ask-your-companion-anything--samsung-vision-ai-is-here--551629406.avif`; // Vision AI
+const featColour  = tvFront;                                                                 // warna pada skrin
+const featConnect = tvPorts;                                                                 // connectivity
+const featDesign  = tvSlim;                                                                  // design slim
+
+// SOUND (gaya Samsung — 3 sub-feature)
+const soundHero     = `${base}/my-feature--nbsp-552132612.avif`;              // Dynamic Sound Pack scene
+const soundOTS      = `${base}/uk-feature-object-tracking-sound-lite-552306116.avif`;
+const soundQSym     = `${base}/uk-feature-q-symphony-552306114.avif`;
+const soundAdaptive = `${base}/uk-feature-adaptive-sound-552306118.avif`;
+
+// Trust / pengalaman jangka panjang
+const sevenYears = `${base}/my-feature-enjoy-7-years-of-new-tv-experiences-552365655.avif`;
+const privacyImg = `${base}/my-feature-your-privacy--secured--551629435.avif`;
+
+const pageUrl = 'https://www.cuckoonano.com/products/samsung/65-mini-led-m1eh-4k-samsung-vision-smart-tv/';
+// OG image kekal webp untuk keserasian preview WhatsApp/FB (AVIF kurang disokong scraper)
+const ogImg = `https://www.cuckoonano.com${base}/M1EH-4K-TV-img-01.webp`;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Samsung 65" Mini LED M1EH 4K Vision AI Smart TV',
+  alternateName: [
+    'TV Samsung 65 inch Mini LED 4K',
+    'Cuckoo Samsung Smart TV 65 inci',
+    'Samsung Vision AI Smart TV M1EH'
+  ],
+  category: 'Television',
+  brand: { '@type': 'Brand', name: 'Samsung' },
+  sku: 'UA65M1EHAKXXM',
+  description:
+    'TV Samsung 65 inch Mini LED M1EH 4K Vision AI Smart TV melalui CUCKOO. Mini LED Processor 4K, Motion Xcelerator, Tizen Smart TV dan bayaran bulanan Cuckoo dari RM153/bulan di Malaysia.',
+  url: pageUrl,
+  image: ogImg,
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'MYR',
+    price: '153',
+    url: pageUrl,
+    availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '153',
+      priceCurrency: 'MYR',
+      unitText: 'MONTH'
+    },
+    seller: { '@type': 'Organization', name: 'CUCKOO' }
+  }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Berapa harga TV Samsung 65" Mini LED 4K ini?', acceptedAnswer: { '@type': 'Answer', text: 'Boleh dimiliki melalui pelan rental Cuckoo dari RM153/bulan untuk 3 tahun, atau beli terus RM4,599. Sahkan stok dan promo terkini melalui WhatsApp sebelum order.' } },
+    { '@type': 'Question', name: 'Boleh ansuran bulanan untuk TV Cuckoo ni?', acceptedAnswer: { '@type': 'Answer', text: 'Boleh. TV ini ditawarkan dengan bayaran bulanan dari RM153/bulan untuk tempoh 3 tahun, tertakluk kepada kelayakan dan terma semasa.' } },
+    { '@type': 'Question', name: 'TV ini saiz berapa dan resolusi apa?', acceptedAnswer: { '@type': 'Answer', text: 'TV ini bersaiz 65 inci dengan resolusi 4K (3840 x 2160) menggunakan teknologi Mini LED.' } },
+    { '@type': 'Question', name: 'Sesuai untuk tengok bola dan action movie?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. Motion Xcelerator dan Soccer/Football Mode membantu pergerakan pada skrin nampak lebih smooth untuk bola, action movie dan gaming.' } },
+    { '@type': 'Question', name: 'Boleh connect phone ke TV?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. TV ini menyokong Mobile to TV, Sound Mirroring, Apple AirPlay dan Google Cast.' } },
+    { '@type': 'Question', name: 'Ada Wi-Fi dan Bluetooth?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. Model ini menyokong Wi-Fi 5 dan Bluetooth 5.3, serta 3 port HDMI (eARC) dan 1 USB-A.' } },
+    { '@type': 'Question', name: 'Boleh pasang pada dinding (wall mount)?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. Model ini menyokong VESA 200 x 200 dan Full Motion Slim Wall Mount Support (Y22). Saiz tanpa stand: 1444 x 831 x 77 mm.' } },
+    { '@type': 'Question', name: 'Apa waranti yang disediakan?', acceptedAnswer: { '@type': 'Answer', text: 'Disediakan waranti standard 2 tahun + 1 tahun lanjutan eksklusif Cuckoo. Tertakluk kepada terma semasa.' } },
+    { '@type': 'Question', name: 'Apa beza rental dan outright?', acceptedAnswer: { '@type': 'Answer', text: 'Rental ialah RM153/bulan untuk 3 tahun, manakala outright ialah beli terus pada RM4,599. Kedua-duanya tertakluk kepada stok dan terma semasa.' } },
+    { '@type': 'Question', name: 'Macam mana nak semak stok dan order?', acceptedAnswer: { '@type': 'Answer', text: 'Tekan WhatsApp dan saya akan bantu semak stok, promo, kawasan delivery, kesesuaian saiz ruang dan proses order.' } }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.cuckoonano.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://www.cuckoonano.com/products/' },
+    { '@type': 'ListItem', position: 3, name: 'Samsung', item: 'https://www.cuckoonano.com/products/samsung/' },
+    { '@type': 'ListItem', position: 4, name: '65" Mini LED M1EH 4K Samsung Vision AI Smart TV', item: pageUrl }
+  ]
 };
 ---
-<BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Samsung</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">65" Mini LED M1EH 4K Samsung Vision Smart TV CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat 65" Mini LED M1EH 4K Samsung Vision Smart TV, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/samsung/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-brand-soft"><img src="/assets/images/Gambar%20Produk%20png/m1eh-4k-tv-1.webp" alt="65&quot; Mini LED M1EH 4K Samsung Vision Smart TV" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih 65" Mini LED M1EH 4K Samsung Vision Smart TV?</h2><p>Bahagian ini ialah rangka awal untuk page produk 65" Mini LED M1EH 4K Samsung Vision Smart TV. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Samsung.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="samsung"></div><div data-agent-block></div>
+
+<BaseLayout
+  title='TV Samsung 65" Mini LED 4K Vision AI | CUCKOO RM153/Bulan'
+  description="TV Samsung 65 inch Mini LED M1EH 4K Vision AI Smart TV melalui CUCKOO — gambar lebih terang, motion smooth untuk bola & gaming, dari RM153/bulan ansuran di Malaysia. Semak promo melalui WhatsApp."
+  canonical={pageUrl}
+  ogImage={ogImg}
+  ogType="website"
+  preloadImages={[heroImg]}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-[#16080c] px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-16">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(122,31,43,0.42),transparent_34%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_32%),linear-gradient(135deg,#16080c_0%,#2a0b12_48%,#070407_100%)]"></div>
+    <div class="absolute -right-24 top-6 h-96 w-96 rounded-full bg-rose-500/10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-amber-400/10 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl">
+      <!-- Mobile Hero -->
+      <div class="md:hidden">
+        <div class="mx-auto max-w-md text-center">
+          <div class="mb-3 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-amber-400/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-amber-100 ring-1 ring-amber-300/30">Dari RM153/Bulan</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/15">65" Mini LED 4K</span>
+          </div>
+
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-rose-200">CUCKOO x Samsung</p>
+
+          <p class="mt-3 text-3xl font-black leading-[1.03] tracking-tight text-white">
+            TV Samsung 65" Mini LED 4K<br />
+            <span class="bg-gradient-to-r from-[#FFD46B] via-[#FFC233] to-[#F59E0B] bg-clip-text text-transparent">Vision AI Smart TV</span>
+          </p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-4 shadow-premium">
+          <div class="rounded-[1.5rem] bg-white p-3">
+            <img id="heroProductImageMobile" src={heroImg} alt="TV Samsung 65 inch Mini LED M1EH 4K Vision AI Smart TV melalui CUCKOO" width="1080" height="864" fetchpriority="high" decoding="async" class="mx-auto h-[230px] w-full object-contain transition duration-300" />
+          </div>
+          <div class="mt-3 flex flex-wrap justify-center gap-2">
+            <button type="button" data-hero-product={tvAngleL} class="hero-product-thumb-mobile rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-amber-300">Sisi 1</button>
+            <button type="button" data-hero-product={tvAngleR} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 2</button>
+            <button type="button" data-hero-product={tvFront} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Depan</button>
+            <button type="button" data-hero-product={tvSlim} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi</button>
+            <button type="button" data-hero-product={tvPorts} class="hero-product-thumb-mobile rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20">Port</button>
+          </div>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">65"</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Skrin</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">4K</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Mini LED</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">AI</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Vision</p></div>
+          </div>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md rounded-[1.75rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur">
+          <p class="text-center text-sm font-semibold leading-6 text-rose-100">Upgrade ruang tamu dengan TV 65" yang lebih terang, smooth &amp; pintar — tanpa modal besar.</p>
+          <div class="mt-4 rounded-[1.45rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#FFD46B] px-4 py-4 text-brand-dark shadow-soft ring-1 ring-amber-200">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-amber-800">Rental dari</p>
+                <p class="mt-1 text-4xl font-black tracking-tight text-slate-950">RM153<span class="text-base text-slate-700">/bulan</span></p>
+              </div>
+              <div class="text-right text-xs font-black leading-5 text-slate-700"><p>Beli terus</p><p>RM4,599</p></div>
+            </div>
+          </div>
+          <p class="mt-3 text-center text-xs font-semibold leading-5 text-rose-100">Pelan rental 3 tahun. Tertakluk kepada stok, kelayakan dan terma semasa.</p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta">📲 Semak Promo TV RM153</a>
+        </div>
+      </div>
+
+      <!-- Desktop Hero -->
+      <div class="hidden items-center gap-10 md:grid lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
+        <div class="order-1 text-center lg:text-left">
+          <div class="mb-5 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <span class="rounded-full bg-amber-400/15 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-amber-100 ring-1 ring-amber-300/30">Dari RM153/Bulan</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-white ring-1 ring-white/15">CUCKOO x Samsung</span>
+          </div>
+
+          <p class="mb-3 text-sm font-black uppercase tracking-[0.24em] text-rose-200">Smart Healthy Home Series</p>
+
+          <h1 class="mx-auto max-w-4xl text-balance text-4xl font-black leading-[1.03] tracking-tight text-white sm:text-5xl lg:mx-0 lg:text-6xl">
+            TV Samsung 65" Mini LED 4K Vision AI <span class="bg-gradient-to-r from-[#FFD46B] via-[#FFC233] to-[#F59E0B] bg-clip-text text-transparent">Dari RM153/Bulan</span>
+          </h1>
+
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg lg:mx-0">Upgrade ruang tamu dengan TV 65 inci Mini LED 4K: gambar lebih terang, contrast lebih hidup, motion lebih smooth untuk bola &amp; gaming, dan lebih pintar dengan Samsung Vision AI — semua tanpa perlu keluar modal besar.</p>
+
+          <div id="promo" class="mx-auto mt-6 max-w-2xl rounded-[2rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur lg:mx-0">
+            <div class="grid gap-3 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+              <div class="rounded-[1.5rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#FFD46B] px-5 py-5 text-center text-brand-dark shadow-soft ring-1 ring-amber-200">
+                <p class="text-xs font-black uppercase tracking-[0.22em] text-amber-700">Pelan rental dari</p>
+                <p class="mt-2 text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">RM153</p>
+                <p class="text-base font-black text-brand-dark">/bulan</p>
+              </div>
+              <div class="space-y-3 text-white">
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Beli terus RM4,599</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Pelan rental 3 tahun</div>
+                <p class="text-sm font-semibold leading-6 text-rose-100">Order di sini dan semak kelayakan untuk dapatkan free gift daripada kami.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">📲 Semak Promo TV RM153</a>
+            <a href="#product-features" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white px-7 py-4 text-base font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 sm:text-lg">Lihat Kelebihan</a>
+          </div>
+
+          <p class="mt-5 text-sm font-semibold text-rose-100">Boleh WhatsApp untuk semak stok, kawasan delivery, saiz ruang TV dan kelayakan order.</p>
+        </div>
+
+        <!-- Product Visual -->
+        <div class="order-2 mt-2 lg:mt-0">
+          <div class="relative mx-auto max-w-[440px] sm:max-w-[520px] lg:max-w-[640px]">
+            <div class="absolute -inset-8 rounded-[3rem] bg-amber-400/10 blur-3xl"></div>
+            <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl"></div>
+
+            <div class="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-5 shadow-premium sm:p-6">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(245,158,11,0.16),transparent_42%),radial-gradient(circle_at_18%_15%,rgba(255,255,255,0.10),transparent_32%)]"></div>
+
+              <div class="relative text-center">
+                <div class="mb-5 flex flex-wrap justify-center gap-2">
+                  <span class="rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-wide text-white shadow-sm">Mini LED 4K</span>
+                  <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-rose-100 ring-1 ring-white/15">Vision AI</span>
+                </div>
+
+                <div class="rounded-[1.75rem] bg-white p-4">
+                  <img id="heroProductImage" src={heroImg} alt="Samsung 65 inch Mini LED M1EH 4K Vision AI Smart TV — Cuckoo ansuran bulanan" width="1080" height="864" fetchpriority="high" decoding="async" class="mx-auto h-[300px] w-full object-contain transition duration-300 sm:h-[360px]" />
+                </div>
+
+                <div class="mt-5 flex flex-wrap justify-center gap-2">
+                  <button type="button" data-hero-product={tvAngleL} class="hero-product-thumb rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-amber-300">Sisi 1</button>
+                  <button type="button" data-hero-product={tvAngleR} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi 2</button>
+                  <button type="button" data-hero-product={tvFront} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Depan</button>
+                  <button type="button" data-hero-product={tvSlim} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Sisi</button>
+                  <button type="button" data-hero-product={tvPorts} class="hero-product-thumb rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20">Port</button>
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">65"</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Skrin</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">4K</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Mini LED</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">Tizen</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Smart TV</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mx-auto mt-4 w-[88%] rounded-3xl bg-brand-maroon px-5 py-4 text-center text-white shadow-xl ring-1 ring-rose-300/30">
+              <p class="text-[11px] font-bold text-rose-200 sm:text-xs">Highlight Utama</p>
+              <p class="text-sm font-black sm:text-base">Lebih Besar, Lebih Terang &amp; Lebih Smart</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <section class="bg-gradient-to-r from-[#16080c] via-brand-maroon to-[#2f0b10] px-4 py-6 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">📺 65" Mini LED 4K</p><p class="mt-1 font-semibold text-rose-100">Skrin besar, gambar hidup</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">⚽ Motion Xcelerator</p><p class="mt-1 font-semibold text-rose-100">Bola &amp; gaming smooth</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🤖 Samsung Vision AI</p><p class="mt-1 font-semibold text-rose-100">Smart TV Tizen</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🛡️ Waranti 2+1 Tahun</p><p class="mt-1 font-semibold text-rose-100">Eksklusif CUCKOO</p></div>
+    </div>
+  </section>
+
+  <!-- Pain Point -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Upgrade Ruang Tamu</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">TV Lama Dah Rasa Kecil Untuk Ruang Tamu?</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Kalau TV lama 43", 50" atau 55" dah mula rasa kecil, gambar kurang terang, apps makin perlahan dan motion tak cukup smooth untuk bola atau action movie — mungkin sudah sampai masa upgrade ke TV 65" yang lebih premium.</p>
+
+          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+            <p class="text-sm font-black uppercase tracking-[0.22em] text-promo-gold">Solusi Lebih Premium</p>
+            <p class="mt-3 text-2xl font-black leading-tight">Skrin 65" Mini LED 4K + Vision AI, dengan bayaran bulanan mudah.</p>
+            <p class="mt-3 leading-7 text-rose-100">Sesuai untuk keluarga yang nak naik taraf pengalaman hiburan rumah.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[2rem] bg-rose-50 p-6 shadow-soft ring-1 ring-rose-100"><p class="text-3xl">📏</p><h3 class="mt-4 text-xl font-black text-brand-dark">Skrin Lama Rasa Kecil</h3><p class="mt-3 leading-7 text-stone-600">Ruang tamu besar perlukan skrin yang lebih puas untuk semua orang.</p></div>
+          <div class="rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">🔅</p><h3 class="mt-4 text-xl font-black text-brand-dark">Gambar Kurang Terang</h3><p class="mt-3 leading-7 text-stone-600">Terutama bila tengok waktu siang atau scene gelap kurang detail.</p></div>
+          <div class="rounded-[2rem] bg-amber-50 p-6 shadow-soft ring-1 ring-amber-100"><p class="text-3xl">⚽</p><h3 class="mt-4 text-xl font-black text-brand-dark">Motion Kurang Smooth</h3><p class="mt-3 leading-7 text-stone-600">Bola, action movie dan gaming rasa kurang kemas &amp; kabur.</p></div>
+          <div class="rounded-[2rem] bg-emerald-50 p-6 shadow-soft ring-1 ring-emerald-100"><p class="text-3xl">✅</p><h3 class="mt-4 text-xl font-black text-emerald-900">Upgrade Tanpa Modal Besar</h3><p class="mt-3 leading-7 text-stone-600">Dengan rental RM153/bulan, boleh naik taraf ke TV premium tanpa bayar sekali gus.</p></div>
+        </div>
+      </div>
+
+      <!-- Sekali gus vs bulan-bulan (Komen 2) -->
+      <div class="mt-12">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Kenapa Ramai Pilih Rental</p>
+          <h3 class="mt-3 text-balance text-2xl font-black tracking-tight sm:text-4xl">Tak Perlu Keluar RM4,599 Sekali Gus</h3>
+          <p class="mt-4 text-lg leading-8 text-stone-600">Halangan utama upgrade TV bukan harga sebenar — tapi kena keluar duit besar serentak. Rental buat ia jadi senang masuk bajet bulanan.</p>
+        </div>
+
+        <div class="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2">
+          <div class="rounded-[2rem] bg-stone-50 p-7 shadow-soft ring-1 ring-stone-200">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-stone-500">Bayar Sekali Gus</p>
+            <p class="mt-3 text-4xl font-black tracking-tight text-stone-700">RM4,599<span class="text-base font-bold text-stone-500"> depan</span></p>
+            <ul class="mt-5 space-y-2 text-base font-semibold leading-7 text-stone-600">
+              <li>✕ Kena keluar modal besar serentak</li>
+              <li>✕ Ganggu cashflow bulan tu</li>
+              <li>✕ Selalu tertangguh "nanti dulu"</li>
+            </ul>
+          </div>
+          <div class="relative rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-7 text-white shadow-premium ring-1 ring-rose-300/30">
+            <span class="absolute -top-3 right-6 rounded-full bg-promo-gold px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md">Pilihan Bijak</span>
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-promo-gold">Bayar Bulan-Bulan</p>
+            <p class="mt-3 text-4xl font-black tracking-tight">RM153<span class="text-base font-bold text-rose-100">/bulan</span></p>
+            <ul class="mt-5 space-y-2 text-base font-semibold leading-7 text-rose-50">
+              <li>✓ ≈ RM5 sehari, senang masuk bajet</li>
+              <li>✓ Upgrade terus tanpa tunggu kumpul duit</li>
+              <li>✓ Waranti 2 + 1 tahun eksklusif CUCKOO</li>
+            </ul>
+            <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-6 flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Semak Pelan Bulanan</a>
+          </div>
+        </div>
+        <p class="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold text-stone-500">*Pelan rental 3 tahun. Tertakluk kepada kelayakan, stok dan terma semasa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Video — full bleed (Komen 3) -->
+  <section class="bg-[#070407]">
+    <video src={showcaseVidDesktop} autoplay muted loop playsinline preload="metadata" aria-label="Samsung 65 inch Mini LED 4K Vision AI Smart TV showcase" class="hidden w-full md:block"></video>
+    <video src={showcaseVidMobile} autoplay muted loop playsinline preload="metadata" aria-label="Samsung 65 inch Mini LED 4K Vision AI Smart TV showcase" class="w-full md:hidden"></video>
+  </section>
+
+  <!-- Product Feature Details -->
+  <!-- Media feature guna aset rasmi Samsung (lihat var di frontmatter). -->
+  <section id="product-features" class="relative overflow-hidden bg-[#070407] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
+    <div class="pointer-events-none absolute inset-x-0 h-72 bg-[radial-gradient(circle_at_top,rgba(122,31,43,0.36)_0,transparent_42%)]"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">Teknologi Utama</p>
+        <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">Gambar Lebih Hidup, Pengalaman Lebih Pintar</h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Fokus kepada fungsi yang paling membantu pengalaman menonton harian — bukan spesifikasi teknikal yang panjang.</p>
+      </div>
+
+      <!-- Feature 1: Mini LED Picture -->
+      <div class="mt-14 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-[#2f0b10] to-[#070407] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">01 / Mini LED 4K</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Gambar Lebih Terang, Contrast Lebih Hidup</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Mini LED membantu kawalan cahaya lebih tepat — scene gelap nampak lebih dalam, scene terang lebih jelas, dan detail kecil lebih mudah dilihat dalam resolusi 4K.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Mini LED HDR</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">HDR10+</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">4K Upscaling</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10">
+          <video src={featMiniLedVid} autoplay muted loop playsinline preload="metadata" aria-label="Teknologi Mini LED pada TV Samsung 65 inch" class="aspect-video w-full object-cover"></video>
+        </div>
+      </div>
+
+      <!-- Feature 2: Motion / Sports -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#12070b] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10 lg:order-1">
+          <img src={featMotion} alt="Motion Xcelerator untuk bola dan gaming pada TV Samsung 65 inch" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+        </div>
+        <div class="order-1 p-3 sm:p-5 lg:order-2">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">02 / Motion Xcelerator</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Lebih Smooth Untuk Bola, Movie &amp; Gaming</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Motion Xcelerator membantu pergerakan pada skrin nampak lebih lancar — sesuai untuk scene pantas seperti bola sepak, racing, action movie dan gaming.</p>
+          <div class="mt-7 space-y-3 text-base font-bold text-stone-200">
+            <p>✓ Soccer / Football Mode</p>
+            <p>✓ Auto Game Mode &amp; VRR</p>
+            <p>✓ Gerakan lebih kemas, kurang kabur</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Vision AI / Smart -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-[#2f0b10] to-[#070407] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">03 / Samsung Vision AI</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">TV Yang Lebih Pintar &amp; Personal</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Dengan Samsung Vision AI dan Tizen Smart TV, pengalaman menonton terasa lebih personal, lebih responsif dan lebih mudah untuk cari hiburan pada skrin besar.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Tizen Smart TV</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Bixby Voice</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Daily+ &amp; Karaoke</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10">
+          <img src={featSmart} alt="Samsung Vision AI Smart TV Tizen pada TV 65 inch Cuckoo" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- More Features Compact -->
+      <div class="mt-8 rounded-[2.25rem] bg-white p-6 text-brand-ink shadow-premium ring-1 ring-white/10 sm:p-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Fungsi Tambahan</p>
+          <h3 class="mt-3 text-2xl font-black tracking-tight text-brand-dark sm:text-4xl">Lagi Sebab TV Ni Menyenangkan</h3>
+          <p class="mt-4 leading-7 text-stone-600">Ringkas, mudah scan, dan fokus kepada fungsi yang bantu hiburan harian lebih praktikal.</p>
+        </div>
+
+        <div class="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0">
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={featColour} alt="Warna natural dan contrast TV Samsung 65 inch 4K" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] bg-white object-contain" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Pure Spectrum Colour</p><h4 class="mt-2 text-xl font-black text-brand-dark">Warna Lebih Natural</h4><p class="mt-3 leading-7 text-stone-600">Warna kaya &amp; seimbang tanpa terlalu berlebihan, sesuai untuk semua jenis content.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={featConnect} alt="Sambungan dan port belakang TV Samsung 65 inch dengan phone dan smart home" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] bg-white object-contain" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Smart Connectivity</p><h4 class="mt-2 text-xl font-black text-brand-dark">Senang Connect Phone</h4><p class="mt-3 leading-7 text-stone-600">AirPlay, Google Cast, Wi-Fi 5, Bluetooth 5.3 dan 3 port HDMI untuk semua peranti.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={featDesign} alt="Reka bentuk slim bezel-less TV Samsung 65 inch Mini LED" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] bg-white object-contain" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Design Kemas</p><h4 class="mt-2 text-xl font-black text-brand-dark">Bezel-less &amp; Slim</h4><p class="mt-3 leading-7 text-stone-600">Reka bentuk Metal Stream 3 bezel-less yang kemas atas console atau wall mount.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={sevenYears} alt="7 tahun One UI Tizen OS upgrade untuk TV Samsung 65 inch" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] bg-black object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">7 Years OS Upgrade</p><h4 class="mt-2 text-xl font-black text-brand-dark">Pengalaman Sentiasa Baharu</h4><p class="mt-3 leading-7 text-stone-600">One UI Tizen dengan 7 tahun OS upgrade — apps &amp; ciri kekal terkini untuk tahun-tahun mendatang.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-10 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-400">*Ciri dan prestasi mungkin berbeza mengikut content, tetapan dan persekitaran. Rujuk maklumat produk rasmi untuk detail penuh.</p>
+    </div>
+  </section>
+
+  <!-- Sound (Samsung style) -->
+  <section id="sound" class="relative overflow-hidden bg-[#0b0b0d] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-72 bg-[radial-gradient(circle_at_bottom,rgba(122,31,43,0.32)_0,transparent_46%)]"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">Dynamic Sound Pack</p>
+        <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">One Immersive Sound Experience</h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Bunyi yang bergerak mengikut aksi pada skrin — movie night, bola dan konsert terasa lebih hidup dan berdimensi.</p>
+      </div>
+
+
+      <!-- Sound sub-features -->
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div class="overflow-hidden rounded-[2rem] bg-[#141417] shadow-premium ring-1 ring-white/10">
+          <img src={soundOTS} alt="Object Tracking Sound Lite pada TV Samsung 65 inch" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+          <div class="p-6">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-promo-gold">Object Tracking Sound Lite</p>
+            <h3 class="mt-2 text-xl font-black">Bunyi Ikut Pergerakan</h3>
+            <p class="mt-3 leading-7 text-stone-300">Audio bergerak mengikut objek pada skrin, jadi aksi terasa datang dari arah yang betul.</p>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-[#141417] shadow-premium ring-1 ring-white/10">
+          <img src={soundQSym} alt="Q-Symphony pada TV Samsung 65 inch dengan soundbar" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+          <div class="p-6">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-promo-gold">Q-Symphony</p>
+            <h3 class="mt-2 text-xl font-black">TV + Soundbar Serentak</h3>
+            <p class="mt-3 leading-7 text-stone-300">Speaker TV dan soundbar Samsung berbunyi bersama untuk audio yang lebih penuh dan luas.</p>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-[#141417] shadow-premium ring-1 ring-white/10">
+          <img src={soundAdaptive} alt="Adaptive Sound pada TV Samsung 65 inch" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+          <div class="p-6">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-promo-gold">Adaptive Sound</p>
+            <h3 class="mt-2 text-xl font-black">Optimum Ikut Scene</h3>
+            <p class="mt-3 leading-7 text-stone-300">TV laraskan bunyi secara automatik ikut jenis content — dialog jelas, aksi padu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Samsung Knox Security — full bleed (Komen 2) -->
+  <section class="bg-[#070407] text-white">
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+      <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">Samsung Knox Security</p>
+      <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">Privasi Anda. Terjamin.</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Samsung Knox Security membantu memastikan TV anda sentiasa dilindungi. Data sensitif seperti kata laluan kekal terjaga, peranti IoT yang disambung dipantau secara aktif, dan aplikasi atau laman web berbahaya disekat secara automatik. Dengan kemas kini keselamatan berterusan, TV anda kekal selamat dan sedia untuk tontonan yang lebih tenang.</p>
+    </div>
+    <picture>
+      <source media="(min-width: 768px)" srcset={privacyImg} />
+      <img src={privacyImgMobile} alt="Samsung Knox Security melindungi privasi dan data pada TV Samsung 65 inch" loading="lazy" decoding="async" class="w-full" />
+    </picture>
+  </section>
+
+  <!-- SmartThings — full bleed (Komen 2) -->
+  <section class="bg-[#0b0b0d] text-white">
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+      <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">SmartThings</p>
+      <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">Rumah Lebih Pintar Dengan SmartThings</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Optimumkan peranti rumah anda untuk gaya hidup yang lebih pintar. Nikmati pengalaman rumah pintar yang disesuaikan dengan ribuan peranti serasi SmartThings yang memudahkan urusan harian anda.</p>
+    </div>
+    <video src={smartThingsVid} autoplay muted loop playsinline preload="metadata" aria-label="SmartThings rumah pintar pada TV Samsung 65 inch" class="w-full"></video>
+  </section>
+
+  <!-- MetalStream Design — full bleed (Komen 2) -->
+  <section class="bg-[#070407] text-white">
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+      <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">MetalStream Design</p>
+      <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">Reka Bentuk Logam Elegan Yang Menaik Taraf Ruang Anda</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Diilhamkan daripada reka bentuk pesawat, MetalStream Design menampilkan badan logam yang mewah. Tanpa perlukan bezel tambahan, satu kepingan logam tunggal digunakan untuk menghasilkan bezel yang nipis, membolehkan pengalaman menonton yang benar-benar immersive.</p>
+    </div>
+    <picture>
+      <source media="(min-width: 768px)" srcset={metalDesktop} />
+      <img src={metalMobile} alt="MetalStream Design badan logam slim bezel-less pada TV Samsung 65 inch" loading="lazy" decoding="async" class="w-full" />
+    </picture>
+  </section>
+
+  <!-- Promo Banner -->
+  <section id="promo-banner" class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] bg-gradient-to-br from-[#16080c] via-brand-maroon to-[#070407] p-6 shadow-premium sm:p-8 lg:p-10">
+      <div class="grid items-center gap-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="text-white">
+          <p class="inline-flex rounded-full bg-promo-gold px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white shadow-md">Promo Tertakluk Stok Semasa</p>
+          <h2 class="mt-5 text-balance text-3xl font-black leading-tight sm:text-5xl">TV Samsung 65" Mini LED 4K Dari RM153/Bulan</h2>
+          <p class="mt-4 text-base leading-8 text-rose-100 sm:text-lg">Pilih pelan rental RM153/bulan (3 tahun) atau beli terus RM4,599.</p>
+
+          <!-- Visual anchor: gambar TV -->
+          <div class="mt-6 overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-white/15 to-white/5 p-3 ring-1 ring-white/15">
+            <div class="rounded-[1.4rem] bg-white p-3">
+              <img src={tvFront} alt="TV Samsung 65 inch Mini LED 4K Vision AI Smart TV" loading="lazy" decoding="async" class="mx-auto h-[200px] w-full object-contain sm:h-[230px]" />
+            </div>
+          </div>
+
+          <!-- Dealmaker callout -->
+          <div class="mt-5 rounded-2xl bg-white/10 p-4 ring-1 ring-promo-gold/30">
+            <p class="text-base font-black leading-7 text-white sm:text-lg">Tak perlu keluar <span class="text-promo-gold">RM4,599 sekali gus</span> — cukup <span class="text-promo-gold">RM153/bulan</span> (≈ RM5 sehari) untuk upgrade terus.</p>
+          </div>
+
+          <!-- Pill ringkas -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold ring-1 ring-white/15">📺 65" Mini LED 4K</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold ring-1 ring-white/15">🛡️ Waranti 2 + 1 Tahun</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-bold ring-1 ring-white/15">📆 Rental 3 Tahun</span>
+          </div>
+
+          <p class="mt-5 text-sm font-semibold leading-7 text-rose-100">Lihat juga <a href="/products/samsung/" class="font-black text-white underline underline-offset-4 hover:text-promo-gold">semua produk CUCKOO x Samsung</a> atau <a href="/products/" class="font-black text-white underline underline-offset-4 hover:text-promo-gold">kategori produk CUCKOO</a> yang lain.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-[0_25px_80px_rgba(0,0,0,0.22)] sm:p-8">
+          <p class="mb-3 inline-flex rounded-full bg-rose-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon">Consultation Percuma</p>
+          <h3 class="text-2xl font-black leading-tight sm:text-4xl">Semak Promo TV RM153</h3>
+          <p class="mt-4 leading-7 text-stone-600">Saya bantu semak promo, rental vs outright, stok, delivery dan kesesuaian saiz ruang tamu.</p>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Harga dan promo terkini</p></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Kelayakan dan bayaran permulaan</p></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Delivery, wall mount &amp; saiz ruang</p></div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-5 text-center text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">📲 Semak Promo TV RM153</a>
+          <p class="mt-4 text-center text-sm font-semibold text-stone-500">Stok dan promo bergantung kepada availability semasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Gift Section -->
+  <section id="free-gift" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#fff7ed] via-white to-[#fff1f2] p-6 shadow-premium ring-1 ring-orange-100 sm:p-8 lg:p-10">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="order-2 lg:order-1">
+          <p class="inline-flex rounded-full bg-promo-gold px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-md">Free Gift Terpilih</p>
+          <h2 class="mt-5 text-balance text-3xl font-black tracking-tight text-brand-dark sm:text-5xl">Order Di Sini &amp; Dapatkan Free Gift Daripada Kami</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-700">Customer yang order melalui kami berpeluang dapat free gift set pisau CUCKOO. Tekan WhatsApp untuk semak promo, stok, pemasangan dan kelayakan free gift.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">🎁 Free gift set pisau CUCKOO</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Semak kelayakan melalui WhatsApp</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Tertakluk stok semasa</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Ejen bantu explain promo</div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">🎁 Semak Promo + Free Gift</a>
+          <p class="mt-4 text-sm font-semibold text-stone-500">*Free gift tertakluk kepada terma, stok dan availability semasa.</p>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="relative mx-auto max-w-[520px]"><div class="absolute -inset-4 rounded-[2.5rem] bg-orange-200/50 blur-3xl"></div><div class="relative overflow-hidden rounded-[2.25rem] bg-white p-5 shadow-premium ring-1 ring-orange-100"><div class="rounded-[1.75rem] bg-gradient-to-br from-orange-50 via-white to-rose-50 p-5 text-center"><span class="mb-4 inline-flex rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-wide text-white">Set Pisau CUCKOO</span><img src="/assets/images/gift/SET-PISAU-CUCKOO.webp" alt="Free gift set pisau CUCKOO" loading="lazy" decoding="async" class="mx-auto h-auto w-full max-w-[430px] rounded-[1.5rem] object-cover shadow-soft" /><div class="mt-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-orange-100"><p class="text-sm font-bold text-stone-500">Bonus Untuk Customer Terpilih</p><p class="mt-1 text-2xl font-black text-brand-dark">Set Pisau CUCKOO</p></div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="real-gallery" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Gambar Produk</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Tengok Rupa Sebenar Sebelum Buat Keputusan</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Lihat TV dari beberapa sudut supaya anda lebih yakin dengan saiz, design dan kesesuaian ruang tamu.</p>
+          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+            <p class="text-sm font-black uppercase tracking-[0.18em] text-promo-gold">Real Product View</p>
+            <p class="mt-3 text-lg font-black leading-7">Swipe atau tekan butang kiri kanan untuk lihat gambar produk.</p>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-5">
+          <div class="relative overflow-hidden rounded-[1.75rem] bg-stone-100">
+            <img id="productSliderImage" src={tvAngleL} alt="Samsung 65 inch Mini LED 4K Vision AI Smart TV gambar produk 1" loading="lazy" decoding="async" class="h-[420px] w-full bg-white object-contain sm:h-[500px]" />
+            <button type="button" id="productSliderPrev" class="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" id="productSliderNext" class="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+          </div>
+          <div id="productSliderDots" class="mt-5 flex flex-wrap justify-center gap-2"></div>
+          <div class="mt-5 grid grid-cols-3 gap-3 text-center text-xs font-bold text-stone-600">
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">65" Mini LED 4K</div>
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Bezel-less Slim</div>
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Vision AI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs -->
+  <section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Spesifikasi Ringkas</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Detail Utama Produk</h2>
+        <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-600">Maklumat penting untuk customer yang nak detail teknikal sebelum buat keputusan.</p>
+      </div>
+
+      <div class="mt-10 overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-soft">
+        <table class="w-full text-left text-sm sm:text-base">
+          <tbody class="divide-y divide-stone-200">
+            <tr><th class="w-2/5 bg-stone-50 p-5 font-black">Nama Produk</th><td class="p-5 font-semibold">65" Mini LED M1EH 4K Samsung Vision AI Smart TV (2026)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Model Code</th><td class="p-5 font-semibold">UA65M1EHAKXXM</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Saiz Skrin / Resolusi</th><td class="p-5 font-semibold">65" / 4K (3840 x 2160)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Picture Engine</th><td class="p-5 font-semibold">Mini LED Processor 4K, Mini LED HDR, HDR10+</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Motion / Gaming</th><td class="p-5 font-semibold">Motion Xcelerator, Auto Game Mode (ALLM), VRR, HGiG</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Audio</th><td class="p-5 font-semibold">OTS Lite, Q-Symphony, Adaptive Sound, 20W (2ch)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Smart TV</th><td class="p-5 font-semibold">Tizen, Samsung Vision AI, Bixby, Daily+, Karaoke Mic</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Connectivity</th><td class="p-5 font-semibold">Wi-Fi 5, Bluetooth 5.3, HDMI ×3 (eARC), USB-A ×1, LAN, AirPlay, Google Cast</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Design</th><td class="p-5 font-semibold">Metal Stream, 3 Bezel-less, Black</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Saiz (tanpa stand)</th><td class="p-5 font-semibold">1444 x 831 x 77 mm · VESA 200 x 200 · 14.2kg</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Tenaga</th><td class="p-5 font-semibold">170W (max) · Energy Efficiency Class 2</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Harga Rental</th><td class="p-5 font-semibold">RM153/bulan (3 tahun)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Harga Outright</th><td class="p-5 font-semibold">RM4,599 — free 2-year standard + 1-year CUCKOO extended warranty</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-500">*Spesifikasi, harga dan fungsi tertakluk kepada model, stok dan maklumat rasmi semasa. Tekan WhatsApp untuk semak detail dan kesesuaian ruang tamu anda.</p>
+    </div>
+  </section>
+
+  <!-- Testimoni Customer -->
+  <section id="review" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Testimoni Customer</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Apa Kata Customer Yang Pernah Berurusan Dengan Saya</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara feedback customer yang pernah saya bantu sebelum ini sebagai ejen CUCKOO.</p>
+      </div>
+
+      <!-- Testimoni slider — 1 layer, click & slide (Komen 4) -->
+      <div class="relative mt-12">
+        <div id="testiTrack" class="flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-1.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 1" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-2.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 2" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-3.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 3" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-4.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 4" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2025/08/testimoni-aircond-cuckoo-vita-s-1.jpg" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 5" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-5.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 6" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        </div>
+        <button type="button" id="testiPrev" aria-label="Testimoni sebelumnya" class="absolute -left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:left-3">‹</button>
+        <button type="button" id="testiNext" aria-label="Testimoni seterusnya" class="absolute -right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:right-3">›</button>
+      </div>
+
+      <div class="mt-12 grid gap-4 text-center sm:grid-cols-3">
+        <div class="rounded-2xl bg-stone-50 p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ Berpengalaman sejak 2017</div>
+        <div class="rounded-2xl bg-stone-50 p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ 1000+ customer dibantu</div>
+        <div class="rounded-2xl bg-stone-50 p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ Support sebelum &amp; selepas order</div>
+      </div>
+
+      <p class="mt-6 text-center text-sm font-semibold leading-6 text-stone-500">*Testimoni adalah berdasarkan pengalaman customer yang pernah berurusan dengan saya sebagai ejen CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- Contact / Agent (shared component) -->
+  <AgentSection />
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">FAQ</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Soalan Lazim Tentang TV Samsung 65" Cuckoo</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Soalan penting yang biasa customer tanya sebelum semak promo dan buat tempahan.</p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100" open><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Berapa harga TV Samsung 65" Mini LED 4K ini?</summary><p class="mt-4 leading-7 text-stone-600">Boleh dimiliki melalui pelan rental Cuckoo dari RM153/bulan untuk 3 tahun, atau beli terus RM4,599. Sahkan stok dan promo terkini melalui WhatsApp sebelum order.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Boleh ansuran bulanan untuk TV Cuckoo ni?</summary><p class="mt-4 leading-7 text-stone-600">Boleh. TV ini ditawarkan dengan bayaran bulanan dari RM153/bulan untuk tempoh 3 tahun, tertakluk kepada kelayakan dan terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">TV ini saiz berapa dan resolusi apa?</summary><p class="mt-4 leading-7 text-stone-600">TV ini bersaiz 65 inci dengan resolusi 4K (3840 x 2160) menggunakan teknologi Mini LED.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Sesuai untuk tengok bola dan action movie?</summary><p class="mt-4 leading-7 text-stone-600">Ya. Motion Xcelerator dan Soccer/Football Mode membantu pergerakan pada skrin nampak lebih smooth untuk bola, action movie dan gaming.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Boleh connect phone ke TV?</summary><p class="mt-4 leading-7 text-stone-600">Ya. TV ini menyokong Mobile to TV, Sound Mirroring, Apple AirPlay dan Google Cast.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Ada Wi-Fi dan Bluetooth?</summary><p class="mt-4 leading-7 text-stone-600">Ya. Model ini menyokong Wi-Fi 5 dan Bluetooth 5.3, serta 3 port HDMI (eARC) dan 1 USB-A.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Boleh pasang pada dinding (wall mount)?</summary><p class="mt-4 leading-7 text-stone-600">Ya. Model ini menyokong VESA 200 x 200 dan Full Motion Slim Wall Mount Support (Y22). Saiz tanpa stand: 1444 x 831 x 77 mm.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa waranti yang disediakan?</summary><p class="mt-4 leading-7 text-stone-600">Disediakan waranti standard 2 tahun + 1 tahun lanjutan eksklusif Cuckoo. Tertakluk kepada terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa beza rental dan outright?</summary><p class="mt-4 leading-7 text-stone-600">Rental ialah RM153/bulan untuk 3 tahun, manakala outright ialah beli terus pada RM4,599. Kedua-duanya tertakluk kepada stok dan terma semasa.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Macam mana nak semak stok dan order?</summary><p class="mt-4 leading-7 text-stone-600">Tekan WhatsApp dan saya akan bantu semak stok, promo, kawasan delivery, kesesuaian saiz ruang dan proses order.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-white px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium sm:p-12 lg:p-16">
+      <div class="mx-auto max-w-3xl">
+        <p class="inline-flex rounded-full bg-white/12 px-5 py-2 text-xs font-black uppercase tracking-[0.24em] text-rose-100 ring-1 ring-white/15">Ready Untuk Upgrade?</p>
+        <h2 class="mt-6 text-balance text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">Upgrade Ruang Tamu Dengan TV Samsung 65" 4K</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Lebih besar. Lebih terang. Lebih pintar. Klik WhatsApp untuk semak promo dan dapatkan consultation percuma.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-9 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Sekarang</a>
+          <a href="#promo" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-9 py-5 text-lg font-black text-white backdrop-blur transition hover:bg-white/20">Tengok Promo</a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-rose-100">
+          <span>✓ Consultation Percuma</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Rental 3 Tahun</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Waranti 2+1 Tahun</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .text-balance { text-wrap: balance; }
+</style>
+
+<script is:inline>
+  // Hero product image switcher (butang Sisi) — sama gaya page aircond
+  function setupHeroProductSwitcher(imageId, buttonClass, inactiveClass, activeClass) {
+    const image = document.getElementById(imageId);
+    const buttons = document.querySelectorAll('.' + buttonClass);
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!image) return;
+        image.src = button.dataset.heroProduct;
+        buttons.forEach((thumb) => { thumb.className = buttonClass + ' ' + inactiveClass; });
+        button.className = buttonClass + ' ' + activeClass;
+      });
+    });
+  }
+
+  setupHeroProductSwitcher(
+    'heroProductImage',
+    'hero-product-thumb',
+    'rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/20',
+    'rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-amber-300'
+  );
+
+  setupHeroProductSwitcher(
+    'heroProductImageMobile',
+    'hero-product-thumb-mobile',
+    'rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-white ring-1 ring-white/20',
+    'rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-brand-maroon shadow-sm ring-2 ring-amber-300'
+  );
+
+  const tvBase = '/assets/images/products/samsung/oled-tv';
+  const productSlides = [
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552158898.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — pandangan sudut kiri' },
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552158900.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — pandangan sudut kanan' },
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552158899.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — pandangan depan' },
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552158901.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — profil slim dari sisi' },
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552158902.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — bezel close-up' },
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552171410.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — port belakang HDMI dan USB' },
+    { src: `${tvBase}/my-mini-led-m1eh-ua65m1ehakxxm-552158917.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — dimensi produk' },
+    { src: `${tvBase}/my-mini-led-tv-ua65m1ehakxxm-----mini-led-m-eh--k-samsung-vision-ai-smart-tv------black-552158878.avif`, alt: 'Samsung 65 inch Mini LED 4K Vision AI Smart TV — alat kawalan jauh (remote)' }
+  ];
+
+  let currentProductSlide = 0;
+  const productSliderImage = document.getElementById('productSliderImage');
+  const productSliderPrev = document.getElementById('productSliderPrev');
+  const productSliderNext = document.getElementById('productSliderNext');
+  const productSliderDots = document.getElementById('productSliderDots');
+
+  function renderProductSlide(index) {
+    const slide = productSlides[index];
+    productSliderImage.src = slide.src;
+    productSliderImage.alt = slide.alt;
+    productSliderDots.innerHTML = '';
+    productSlides.forEach((item, dotIndex) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Lihat gambar produk ' + (dotIndex + 1));
+      dot.className = dotIndex === index
+        ? 'h-3 w-8 rounded-full bg-brand-maroon transition'
+        : 'h-3 w-3 rounded-full bg-stone-300 transition hover:bg-brand-maroon';
+      dot.addEventListener('click', () => { currentProductSlide = dotIndex; renderProductSlide(currentProductSlide); });
+      productSliderDots.appendChild(dot);
+    });
+  }
+
+  if (productSliderPrev && productSliderNext) {
+    productSliderPrev.addEventListener('click', () => {
+      currentProductSlide = currentProductSlide === 0 ? productSlides.length - 1 : currentProductSlide - 1;
+      renderProductSlide(currentProductSlide);
+    });
+    productSliderNext.addEventListener('click', () => {
+      currentProductSlide = currentProductSlide === productSlides.length - 1 ? 0 : currentProductSlide + 1;
+      renderProductSlide(currentProductSlide);
+    });
+  }
+
+  if (productSliderImage) { renderProductSlide(currentProductSlide); }
+
+  // Testimoni slider — click buttons + drag to slide (Komen 4)
+  const testiTrack = document.getElementById('testiTrack');
+  const testiPrev = document.getElementById('testiPrev');
+  const testiNext = document.getElementById('testiNext');
+
+  if (testiTrack) {
+    const stepWidth = () => {
+      const slide = testiTrack.querySelector('.testi-slide');
+      const gap = parseFloat(getComputedStyle(testiTrack).columnGap || '20') || 20;
+      return slide ? slide.getBoundingClientRect().width + gap : testiTrack.clientWidth * 0.8;
+    };
+
+    if (testiPrev) testiPrev.addEventListener('click', () => testiTrack.scrollBy({ left: -stepWidth(), behavior: 'smooth' }));
+    if (testiNext) testiNext.addEventListener('click', () => testiTrack.scrollBy({ left: stepWidth(), behavior: 'smooth' }));
+
+    // Drag to slide (pointer)
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+    testiTrack.addEventListener('pointerdown', (e) => {
+      isDown = true; moved = false;
+      startX = e.clientX;
+      startScroll = testiTrack.scrollLeft;
+      testiTrack.classList.add('cursor-grabbing');
+    });
+    testiTrack.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+      const delta = e.clientX - startX;
+      if (Math.abs(delta) > 4) moved = true;
+      testiTrack.scrollLeft = startScroll - delta;
+    });
+    const endDrag = () => { isDown = false; testiTrack.classList.remove('cursor-grabbing'); };
+    testiTrack.addEventListener('pointerup', endDrag);
+    testiTrack.addEventListener('pointerleave', endDrag);
+    testiTrack.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  }
+</script>

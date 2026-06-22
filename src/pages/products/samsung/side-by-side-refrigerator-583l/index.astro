@@ -1,0 +1,671 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+
+const base = '/assets/images/products/samsung/refrigerator';
+const heroImg = `${base}/583L-Refrigerator.webp`;
+const kvImg = `${base}/RS4000DC_PC_KV-02.webp`;
+const brandImg = `${base}/Refrigerator-cuckoo-samsung.webp`;
+const smartImg = `${base}/RS4000DC_PC_Main08-1.webp`;
+const energyGif = `${base}/REF-1_off-ezgif.com-optimize.gif`;
+const spaceGif = `${base}/REF-2.gif`;
+const coolingImg = `${base}/RS4000DC_PC_Main06.webp`;
+const noFrostImg = `${base}/RS4000DC_PC_Main07.webp`;
+const designImg = `${base}/RS4000DC_PC_Main09.webp`;
+const accessImg = `${base}/RS4000DC_PC_Main05.webp`;
+const compressorImg = `${base}/Fridge-Digital-Converter-Compressor_Updated-cuckoo.com_.my_.webp`;
+const measureImg = `${base}/RS4000DC_PC_How-to-measure-02.webp`;
+
+const pageUrl = 'https://www.cuckoonano.com/products/samsung/side-by-side-refrigerator-583l/';
+const ogImg = `https://www.cuckoonano.com${heroImg}`;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Cuckoo x Samsung 583L Side By Side Refrigerator',
+  alternateName: [
+    'Peti Sejuk Side By Side Cuckoo x Samsung 583L',
+    'Cuckoo Fridge Malaysia 583L',
+    'Samsung 583L Side By Side Refrigerator'
+  ],
+  category: 'Refrigerator',
+  brand: { '@type': 'Brand', name: 'Samsung' },
+  sku: 'F-SBSREFSLV/2W',
+  description:
+    'Peti sejuk side by side Cuckoo x Samsung 583L dengan SmartThings AI Energy. Ruang besar 583L (375L fridge + 208L freezer), kawalan pintar, jimat tenaga, No Frost dan bayaran bulanan Cuckoo dari RM85/bulan di Malaysia.',
+  url: pageUrl,
+  image: ogImg,
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'MYR',
+    price: '85',
+    url: pageUrl,
+    availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '85',
+      priceCurrency: 'MYR',
+      unitText: 'MONTH'
+    },
+    seller: { '@type': 'Organization', name: 'CUCKOO' }
+  }
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Berapa harga peti sejuk side by side Cuckoo x Samsung 583L?', acceptedAnswer: { '@type': 'Answer', text: 'Boleh dimiliki melalui pelan rental Cuckoo dari RM85/bulan untuk 5 tahun, atau beli terus pada harga RM4,099. Sahkan stok dan promo terkini melalui WhatsApp sebelum order.' } },
+    { '@type': 'Question', name: 'Boleh sewa peti sejuk Cuckoo secara bulanan?', acceptedAnswer: { '@type': 'Answer', text: 'Boleh. Peti sejuk Cuckoo x Samsung 583L ditawarkan dengan bayaran bulanan dari RM85/bulan untuk tempoh 5 tahun, tertakluk kepada kelayakan dan terma semasa. WhatsApp kami untuk semak pelan rental yang sesuai.' } },
+    { '@type': 'Question', name: 'Apa kelebihan SmartThings AI Energy?', acceptedAnswer: { '@type': 'Answer', text: 'SmartThings membolehkan anda pantau dan kawal suhu peti sejuk dari telefon, dan terima alert jika pintu tertinggal terbuka. AI Energy Mode pula membantu jimat tenaga sehingga 10% dengan melaras compressor mengikut corak penggunaan.' } },
+    { '@type': 'Question', name: 'Peti ais side by side sesuai untuk siapa?', acceptedAnswer: { '@type': 'Answer', text: 'Sesuai untuk keluarga moden yang stok dapurnya sentiasa penuh, dan rumah yang mahukan ruang simpanan lebih luas serta dapur yang nampak lebih kemas dan premium.' } },
+    { '@type': 'Question', name: 'Apa beza peti sejuk side by side dan peti sejuk biasa?', acceptedAnswer: { '@type': 'Answer', text: 'Peti sejuk side by side mempunyai bahagian fridge dan freezer bersebelahan (kiri-kanan), memberi ruang lebih lapang dan mudah disusun berbanding peti sejuk biasa dua pintu atas-bawah, sambil kekal kemas dengan reka bentuk flat door.' } },
+    { '@type': 'Question', name: 'Adakah peti sejuk 583L sesuai untuk keluarga besar?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. Kapasiti 583L (375L fridge + 208L freezer) memberi ruang luas untuk stok mingguan keluarga besar — lauk, sayur, buah, minuman dan makanan sejuk beku boleh disimpan sekali gus dengan lebih teratur.' } },
+    { '@type': 'Question', name: 'Perlu semak ukuran dapur dulu?', acceptedAnswer: { '@type': 'Answer', text: 'Ya. Saiz unit ialah 912mm lebar x 1780mm tinggi x 654mm dalam. Semak lebar pintu, laluan masuk, lif (untuk kondo) dan ruang bukaan pintu sebelum confirm.' } },
+    { '@type': 'Question', name: 'Apa waranti yang disediakan?', acceptedAnswer: { '@type': 'Answer', text: 'Untuk pelan rental, disediakan waranti eksklusif 5 tahun. Untuk beli terus, disediakan waranti standard 2 tahun + 1 tahun lanjutan Cuckoo. Compressor disokong waranti 10 tahun. Tertakluk kepada terma semasa.' } }
+  ]
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.cuckoonano.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://www.cuckoonano.com/products/' },
+    { '@type': 'ListItem', position: 3, name: 'Samsung', item: 'https://www.cuckoonano.com/products/samsung/' },
+    { '@type': 'ListItem', position: 4, name: 'Side-by-Side Refrigerator 583L', item: pageUrl }
+  ]
+};
+---
+
+<BaseLayout
+  title="Peti Sejuk Side By Side Cuckoo x Samsung 583L | RM85/Bulan"
+  description="Peti sejuk side by side Cuckoo x Samsung 583L dengan SmartThings AI Energy — ruang besar, kawalan pintar dan bayaran bulanan Cuckoo dari RM85/bulan di Malaysia."
+  canonical={pageUrl}
+  ogImage={ogImg}
+  ogType="website"
+  preloadImages={[heroImg]}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-[#16080c] px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-16">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(122,31,43,0.42),transparent_34%),radial-gradient(circle_at_85%_20%,rgba(245,158,11,0.18),transparent_32%),linear-gradient(135deg,#16080c_0%,#2a0b12_48%,#070407_100%)]"></div>
+    <div class="absolute -right-24 top-6 h-96 w-96 rounded-full bg-rose-500/10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-amber-400/10 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl">
+      <!-- Mobile Hero -->
+      <div class="md:hidden">
+        <div class="mx-auto max-w-md text-center">
+          <div class="mb-3 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-amber-400/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-amber-100 ring-1 ring-amber-300/30">Dari RM85/Bulan</span>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white ring-1 ring-white/15">583L Side-by-Side</span>
+          </div>
+
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-rose-200">CUCKOO x Samsung</p>
+
+          <p class="mt-3 text-3xl font-black leading-[1.03] tracking-tight text-white">
+            Peti Sejuk Side By Side<br />
+            <span class="bg-gradient-to-r from-[#FFD46B] via-[#FFC233] to-[#F59E0B] bg-clip-text text-transparent">Cuckoo x Samsung 583L</span>
+          </p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-4 shadow-premium">
+          <div class="rounded-[1.5rem] bg-white/25 p-3">
+            <img src={heroImg} alt="Peti sejuk side by side Cuckoo x Samsung 583L SmartThings AI Energy" width="1080" height="1080" fetchpriority="high" decoding="async" class="mx-auto h-[240px] w-full object-contain" />
+          </div>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">583L</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Total</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">375L</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Fridge</p></div>
+            <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">208L</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Freezer</p></div>
+          </div>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md rounded-[1.75rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur">
+          <p class="text-center text-sm font-semibold leading-6 text-rose-100">Peti sejuk besar yang pintar &amp; jimat tenaga — pantau dari telefon, tanpa modal besar.</p>
+          <div class="mt-4 rounded-[1.45rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#FFD46B] px-4 py-4 text-brand-dark shadow-soft ring-1 ring-amber-200">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-amber-800">Pelan rental dari</p>
+                <p class="mt-1 text-4xl font-black tracking-tight text-slate-950">RM85<span class="text-base text-slate-700">/bulan</span></p>
+              </div>
+              <div class="text-right text-xs font-black leading-5 text-slate-700"><p>Beli terus</p><p>RM4,099</p></div>
+            </div>
+          </div>
+          <p class="mt-3 text-center text-xs font-semibold leading-5 text-rose-100">Pelan rental 5 tahun. Tertakluk kepada stok, kelayakan dan terma semasa.</p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-md">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta">📲 Semak Promo Peti 583L</a>
+        </div>
+      </div>
+
+      <!-- Desktop Hero -->
+      <div class="hidden items-center gap-10 md:grid lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
+        <div class="order-1 text-center lg:text-left">
+          <div class="mb-5 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <span class="rounded-full bg-amber-400/15 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-amber-100 ring-1 ring-amber-300/30">Dari RM85/Bulan</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-white ring-1 ring-white/15">CUCKOO x Samsung</span>
+          </div>
+
+          <p class="mb-3 text-sm font-black uppercase tracking-[0.24em] text-rose-200">Smart Healthy Home Series</p>
+
+          <h1 class="mx-auto max-w-4xl text-balance text-4xl font-black leading-[1.03] tracking-tight text-white sm:text-5xl lg:mx-0 lg:text-6xl">
+            Peti Sejuk Side By Side Cuckoo x Samsung 583L <span class="bg-gradient-to-r from-[#FFD46B] via-[#FFC233] to-[#F59E0B] bg-clip-text text-transparent">Dari RM85/Bulan</span>
+          </h1>
+
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg lg:mx-0">Peti ais side by side 583L untuk keluarga moden: ruang simpanan besar, kawalan pintar SmartThings dan AI Energy yang membantu jadikan peti sejuk jimat elektrik — semua tanpa perlu keluar modal besar sekali gus. Cuckoo fridge Malaysia dengan bayaran bulanan.</p>
+
+          <div id="promo" class="mx-auto mt-6 max-w-2xl rounded-[2rem] bg-white/10 p-4 text-left shadow-premium ring-1 ring-white/15 backdrop-blur lg:mx-0">
+            <div class="grid gap-3 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+              <div class="rounded-[1.5rem] bg-gradient-to-br from-[#FFF7DE] via-[#FFE7A8] to-[#FFD46B] px-5 py-5 text-center text-brand-dark shadow-soft ring-1 ring-amber-200">
+                <p class="text-xs font-black uppercase tracking-[0.22em] text-amber-700">Pelan rental dari</p>
+                <p class="mt-2 text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">RM85</p>
+                <p class="text-base font-black text-brand-dark">/bulan</p>
+              </div>
+              <div class="space-y-3 text-white">
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Beli terus RM4,099</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 font-extrabold ring-1 ring-white/10">Pelan rental 5 tahun</div>
+                <p class="text-sm font-semibold leading-6 text-rose-100">Order di sini dan semak kelayakan untuk dapatkan free gift daripada kami.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">📲 Semak Promo Peti 583L</a>
+            <a href="#benefits" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white px-7 py-4 text-base font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 sm:text-lg">Lihat Kelebihan</a>
+          </div>
+
+          <p class="mt-5 text-sm font-semibold text-rose-100">Boleh WhatsApp untuk semak stok, kawasan delivery, ukuran dapur dan kelayakan order.</p>
+        </div>
+
+        <!-- Product Visual -->
+        <div class="order-2 mt-2 lg:mt-0">
+          <div class="relative mx-auto max-w-[440px] sm:max-w-[520px] lg:max-w-[620px]">
+            <div class="absolute -inset-8 rounded-[3rem] bg-amber-400/10 blur-3xl"></div>
+            <div class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl"></div>
+
+            <div class="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-5 shadow-premium sm:p-6">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(245,158,11,0.16),transparent_42%),radial-gradient(circle_at_18%_15%,rgba(255,255,255,0.10),transparent_32%)]"></div>
+
+              <div class="relative text-center">
+                <div class="mb-5 flex flex-wrap justify-center gap-2">
+                  <span class="rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-wide text-white shadow-sm">SmartThings</span>
+                  <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-rose-100 ring-1 ring-white/15">AI Energy</span>
+                </div>
+
+                <div class="rounded-[1.75rem] bg-white/25 p-4">
+                  <img src={heroImg} alt="Side by side refrigerator Malaysia — peti sejuk Cuckoo x Samsung 583L Gentle Silver Matt" width="1080" height="1080" fetchpriority="high" decoding="async" class="mx-auto h-[300px] w-full object-contain sm:h-[360px]" />
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">583L</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Total</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">375L</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Fridge</p></div>
+                  <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">208L</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Freezer</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mx-auto mt-4 w-[88%] rounded-3xl bg-brand-maroon px-5 py-4 text-center text-white shadow-xl ring-1 ring-rose-300/30">
+              <p class="text-[11px] font-bold text-rose-200 sm:text-xs">Highlight Utama</p>
+              <p class="text-sm font-black sm:text-base">Besar, Pintar &amp; Jimat Tenaga</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <section class="bg-gradient-to-r from-[#16080c] via-brand-maroon to-[#2f0b10] px-4 py-6 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">🧊 583L Side-by-Side</p><p class="mt-1 font-semibold text-rose-100">Ruang luas untuk keluarga</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">📱 SmartThings</p><p class="mt-1 font-semibold text-rose-100">Pantau dari telefon</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">⚡ AI Energy</p><p class="mt-1 font-semibold text-rose-100">Bantu jimat sehingga 10%</p></div>
+      <div class="rounded-2xl bg-white/10 px-5 py-4 ring-1 ring-white/15"><p class="text-lg font-black">❄️ No Frost</p><p class="mt-1 font-semibold text-rose-100">Tak payah defrost manual</p></div>
+    </div>
+  </section>
+
+  <!-- Pain Point -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Masalah Harian</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Peti Sejuk Kecil Buat Stok Dapur Cepat Sesak</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Bila keluarga membesar dan suka stok mingguan, peti lama jadi penuh, makanan bersepah dan bil elektrik makin naik.</p>
+
+          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+            <p class="text-sm font-black uppercase tracking-[0.22em] text-promo-gold">Solusi Lebih Praktikal</p>
+            <p class="mt-3 text-2xl font-black leading-tight">Ruang besar 583L + kawalan pintar + jimat tenaga dalam satu peti.</p>
+            <p class="mt-3 leading-7 text-rose-100">Sesuai untuk keluarga moden yang stok dapurnya memang sentiasa bergerak.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-[2rem] bg-rose-50 p-6 shadow-soft ring-1 ring-rose-100"><p class="text-3xl">🧺</p><h3 class="mt-4 text-xl font-black text-brand-dark">Stok Mingguan Cepat Penuh</h3><p class="mt-3 leading-7 text-stone-600">Lauk, frozen food, sayur, buah dan minuman susah nak susun dalam peti kecil.</p></div>
+          <div class="rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">💸</p><h3 class="mt-4 text-xl font-black text-brand-dark">Bil Elektrik Tinggi</h3><p class="mt-3 leading-7 text-stone-600">Peti lama tanpa inverter & AI Energy boleh guna lebih banyak tenaga setiap bulan.</p></div>
+          <div class="rounded-[2rem] bg-amber-50 p-6 shadow-soft ring-1 ring-amber-100"><p class="text-3xl">🧊</p><h3 class="mt-4 text-xl font-black text-brand-dark">Ais Tebal & Defrost</h3><p class="mt-3 leading-7 text-stone-600">Peti tanpa No Frost menyusahkan dengan ais tebal dan kerja buang ais manual.</p></div>
+          <div class="rounded-[2rem] bg-emerald-50 p-6 shadow-soft ring-1 ring-emerald-100"><p class="text-3xl">✅</p><h3 class="mt-4 text-xl font-black text-emerald-900">Upgrade Tanpa Modal Besar</h3><p class="mt-3 leading-7 text-stone-600">Dengan pelan rental RM85/bulan, boleh upgrade ke peti premium tanpa bayar sekali gus.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="inline-flex rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-md">Kenapa Berbaloi</p>
+        <h2 class="mt-5 text-balance text-3xl font-black tracking-tight sm:text-5xl">Kenapa Pilih Cuckoo x Samsung Side By Side Refrigerator?</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Bukan sekadar peti sejuk besar — peti ais side by side ini solusi untuk dapur yang lebih kemas, pintar dan jimat elektrik.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-50 text-3xl">🧊</div><h3 class="text-xl font-black text-brand-dark">Ruang Luas 583L</h3><p class="mt-4 leading-7 text-stone-600">Stok seminggu tak sesak. Susun lauk, frozen food, sayur dan minuman dengan lebih teratur.</p></div>
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 text-3xl">📱</div><h3 class="text-xl font-black text-brand-dark">Kawal Dari Telefon</h3><p class="mt-4 leading-7 text-stone-600">SmartThings bantu pantau suhu, cooling mode dan alert bila pintu tertinggal terbuka.</p></div>
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-50 text-3xl">⚡</div><h3 class="text-xl font-black text-brand-dark">Jimat Tenaga Pintar</h3><p class="mt-4 leading-7 text-stone-600">AI Energy Mode bantu kurangkan penggunaan tenaga sehingga 10% mengikut corak penggunaan.</p></div>
+        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-3xl">🛡️</div><h3 class="text-xl font-black text-brand-dark">Compressor 10 Tahun</h3><p class="mt-4 leading-7 text-stone-600">Digital Inverter Compressor yang senyap, efisien dan disokong waranti 10 tahun.</p></div>
+      </div>
+
+      <div class="mt-10 overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-6">
+        <img src={brandImg} alt="Cuckoo fridge Malaysia 583L side by side refrigerator dengan SmartThings AI Energy" loading="lazy" decoding="async" class="mx-auto w-full max-w-3xl rounded-[1.5rem] object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Feature Details -->
+  <section id="product-features" class="relative overflow-hidden bg-[#070407] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24">
+    <div class="pointer-events-none absolute inset-x-0 h-72 bg-[radial-gradient(circle_at_top,rgba(122,31,43,0.36)_0,transparent_42%)]"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-promo-gold ring-1 ring-white/15">Teknologi Utama</p>
+        <h2 class="mt-5 text-balance text-4xl font-black tracking-tight sm:text-6xl">SmartThings AI Energy Untuk Kawalan Lebih Pintar</h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-stone-300">Sebagai SmartThings refrigerator Malaysia, peti ini fokus pada fungsi yang paling membantu rutin dapur harian — bukan spesifikasi teknikal yang panjang.</p>
+      </div>
+
+      <!-- Feature 1: SmartThings -->
+      <div class="mt-14 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-[#2f0b10] to-[#070407] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">01 / SmartThings</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Pantau &amp; Kawal Dari Mana Sahaja</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Wi-Fi terbina dalam membolehkan anda semak suhu, ubah cooling mode dan terima alert jika pintu tertinggal terbuka — terus dari telefon.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Kawal suhu</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">Alert pintu</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">SmartThings Food</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-white/10">
+          <img src={smartImg} alt="SmartThings refrigerator Malaysia — kawal suhu peti sejuk Cuckoo dari telefon" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- Feature 2: AI Energy -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-[#12070b] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[0.95fr_1.05fr] lg:p-8">
+        <div class="order-2 overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10 lg:order-1">
+          <img src={energyGif} alt="Peti sejuk jimat elektrik dengan AI Energy Mode — Cuckoo Samsung 583L" width="800" height="450" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+        </div>
+        <div class="order-1 p-3 sm:p-5 lg:order-2">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">02 / AI Energy Mode</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Jimat Tenaga Sehingga 10%</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">AI Energy Mode dalam SmartThings melaras kelajuan compressor dan kitaran defrost mengikut corak penggunaan dan persekitaran, supaya penggunaan tenaga lebih cekap.</p>
+          <div class="mt-7 space-y-3 text-base font-bold text-stone-200">
+            <p>✓ Bantu kurangkan bil elektrik</p>
+            <p>✓ Laras automatik ikut penggunaan</p>
+            <p>✓ 385 kWh/tahun (label tenaga)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: SpaceMax -->
+      <div class="mt-8 grid items-center gap-8 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-[#2f0b10] to-[#070407] p-5 shadow-premium ring-1 ring-white/10 lg:grid-cols-[1.05fr_0.95fr] lg:p-8">
+        <div class="p-3 sm:p-5">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">03 / SpaceMax™</p>
+          <h3 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Ruang Dalam Besar, Saiz Luar Kemas</h3>
+          <p class="mt-5 text-lg leading-8 text-stone-300">Teknologi SpaceMax™ membuatkan dinding lebih nipis, jadi ruang simpanan dalaman lebih besar tanpa menambah saiz luar atau menjejaskan kecekapan tenaga.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">583L total</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">375L fridge</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-center font-bold ring-1 ring-white/10">208L freezer</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-black shadow-premium ring-1 ring-white/10">
+          <img src={spaceGif} alt="Ruang simpanan besar peti sejuk side by side 583L dengan SpaceMax" width="800" height="450" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- More Features Compact -->
+      <div class="mt-8 rounded-[2.25rem] bg-white p-6 text-brand-ink shadow-premium ring-1 ring-white/10 sm:p-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Fungsi Tambahan</p>
+          <h3 class="mt-3 text-2xl font-black tracking-tight text-brand-dark sm:text-4xl">Lagi Sebab Peti Ni Menyenangkan</h3>
+          <p class="mt-4 leading-7 text-stone-600">Ringkas, mudah scan, dan fokus kepada fungsi yang bantu rutin dapur lebih praktikal.</p>
+        </div>
+
+        <div class="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-2">
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={coolingImg} alt="All-Around Cooling peti ais side by side Samsung 583L sejuk sekata" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">All-Around Cooling</p><h4 class="mt-2 text-xl font-black text-brand-dark">Sejuk Sekata Setiap Sudut</h4><p class="mt-3 leading-7 text-stone-600">Udara sejuk diagihkan sekata supaya makanan kekal segar di mana sahaja diletak.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={noFrostImg} alt="No Frost peti sejuk Cuckoo Samsung 583L tanpa ais tebal" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">No Frost</p><h4 class="mt-2 text-xl font-black text-brand-dark">Tiada Ais Tebal Menyusahkan</h4><p class="mt-3 leading-7 text-stone-600">Kurangkan masalah ais tebal dan kerja defrost manual yang membuang masa.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={accessImg} alt="Power Cool dan Power Freeze peti sejuk Samsung 583L" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Power Cool &amp; Freeze</p><h4 class="mt-2 text-xl font-black text-brand-dark">Sejuk &amp; Beku Lebih Cepat</h4><p class="mt-3 leading-7 text-stone-600">Sejukkan minuman atau bekukan makanan dengan lebih pantas bila diperlukan.</p>
+          </div>
+          <div class="min-w-[82%] snap-center rounded-[1.75rem] bg-stone-50 p-5 shadow-sm ring-1 ring-stone-100 md:min-w-0">
+            <img src={designImg} alt="Reka bentuk Gentle Silver Matt peti sejuk side by side 583L flat door" loading="lazy" decoding="async" class="aspect-video w-full rounded-[1.25rem] object-cover" />
+            <p class="mt-5 text-sm font-black uppercase tracking-[0.18em] text-brand-maroon">Modern Design</p><h4 class="mt-2 text-xl font-black text-brand-dark">Flat Door, Nampak Premium</h4><p class="mt-3 leading-7 text-stone-600">Gentle Silver Matt, flat door dan recess handle untuk dapur yang lebih kemas.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-10 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-400">*Ciri dan prestasi mungkin berbeza mengikut penggunaan, persekitaran dan tetapan. Rujuk maklumat produk rasmi untuk detail penuh. Fungsi pintar memerlukan WiFi dan akaun Samsung.</p>
+    </div>
+  </section>
+
+  <!-- Compressor Warranty -->
+  <section class="overflow-hidden bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 rounded-[2.5rem] bg-gradient-to-br from-[#16080c] via-brand-maroon to-[#070407] p-6 text-white shadow-premium ring-1 ring-white/10 sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+        <div>
+          <p class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-promo-gold ring-1 ring-white/15">Digital Inverter Compressor</p>
+          <h2 class="mt-5 text-balance text-3xl font-black tracking-tight sm:text-5xl">Senyap, Efisien &amp; Disokong Waranti 10 Tahun</h2>
+          <p class="mt-5 text-lg leading-8 text-rose-100">Compressor melaras kelajuan mengikut keperluan penyejukan, jadi ia lebih senyap, guna tenaga lebih cekap dan tahan lama — disokong waranti 10 tahun pada compressor.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Operasi lebih senyap</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Lebih jimat tenaga</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Tahan lama</div>
+            <div class="rounded-2xl bg-white/10 p-5 font-bold ring-1 ring-white/15">✓ Waranti compressor 10 tahun</div>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-premium ring-1 ring-white/20">
+          <img src={compressorImg} alt="Digital Inverter Compressor peti sejuk Samsung 583L dengan waranti 10 tahun" loading="lazy" decoding="async" class="w-full rounded-[1.5rem] object-contain" />
+        </div>
+      </div>
+      <p class="mx-auto mt-6 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-500">*Waranti 10 tahun terhad kepada compressor sahaja. Kos buruh mungkin tidak termasuk. Tertakluk kepada terma waranti semasa.</p>
+    </div>
+  </section>
+
+  <!-- Kitchen Fit Check -->
+  <section id="kitchen-fit" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Semak Ruang Dapur</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Sebelum Order, Semak Laluan &amp; Ruang Dahulu</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Peti side-by-side bersaiz besar. Pastikan laluan masuk, lif dan ruang bukaan pintu mencukupi supaya proses penghantaran &amp; pemasangan lancar.</p>
+          <div class="mt-7 grid grid-cols-3 gap-3 text-center">
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100"><p class="text-xs font-bold uppercase tracking-wide text-stone-500">Lebar</p><p class="mt-1 text-2xl font-black text-brand-dark">912mm</p></div>
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100"><p class="text-xs font-bold uppercase tracking-wide text-stone-500">Tinggi</p><p class="mt-1 text-2xl font-black text-brand-dark">1780mm</p></div>
+            <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-stone-100"><p class="text-xs font-bold uppercase tracking-wide text-stone-500">Dalam</p><p class="mt-1 text-2xl font-black text-brand-dark">654mm</p></div>
+          </div>
+          <ul class="mt-6 space-y-3 text-base font-semibold text-stone-700">
+            <li>✓ Semak lebar pintu utama, pintu dapur dan laluan masuk</li>
+            <li>✓ Untuk apartment/kondo, semak saiz lif &amp; laluan koridor</li>
+            <li>✓ Sediakan ruang sisi &amp; belakang untuk ventilasi haba</li>
+            <li>✓ Pastikan pintu fridge boleh dibuka dengan selesa</li>
+          </ul>
+        </div>
+        <div class="overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-6">
+          <img src={measureImg} alt="Cara ukur ruang dapur untuk peti sejuk side by side 583L" loading="lazy" decoding="async" class="w-full rounded-[1.5rem] object-contain" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banner -->
+  <section id="promo-banner" class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] bg-gradient-to-br from-[#16080c] via-brand-maroon to-[#070407] p-6 shadow-premium sm:p-8 lg:p-10">
+      <div class="grid items-center gap-7 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="text-white">
+          <p class="inline-flex rounded-full bg-promo-gold px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white shadow-md">Promo Tertakluk Stok Semasa</p>
+          <h2 class="mt-5 text-balance text-3xl font-black leading-tight sm:text-5xl">Cuckoo Fridge Malaysia Dengan Bayaran Bulanan</h2>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Sewa peti sejuk Cuckoo dengan pelan rental RM85/bulan untuk 5 tahun, atau beli terus RM4,099. Tekan WhatsApp untuk semak stok, kawasan delivery dan kelayakan. Lihat juga <a href="/products/samsung/" class="font-black text-white underline underline-offset-4 hover:text-promo-gold">semua produk CUCKOO x Samsung</a> atau <a href="/products/" class="font-black text-white underline underline-offset-4 hover:text-promo-gold">kategori produk CUCKOO</a> yang lain.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Rental RM85/bulan (5 tahun)</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Beli terus RM4,099</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Free delivery &amp; installation*</div>
+            <div class="rounded-2xl bg-white/10 p-4 font-bold ring-1 ring-white/10">✓ Tertakluk stok, kelayakan &amp; terma</div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 shadow-[0_25px_80px_rgba(0,0,0,0.22)] sm:p-8">
+          <p class="mb-3 inline-flex rounded-full bg-rose-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-brand-maroon">Consultation Percuma</p>
+          <h3 class="text-2xl font-black leading-tight sm:text-4xl">Semak Promo Peti 583L</h3>
+          <p class="mt-4 leading-7 text-stone-600">Saya bantu semak promo, rental vs outright, stok, delivery, installation dan kesesuaian ruang dapur.</p>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Harga dan promo terkini</p></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Kelayakan dan bayaran permulaan</p></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-black text-green-700">✓</span><p class="font-extrabold">Delivery, installation &amp; ukuran dapur</p></div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-5 text-center text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:text-lg">📲 Semak Promo Peti 583L</a>
+          <p class="mt-4 text-center text-sm font-semibold text-stone-500">Stok dan promo bergantung kepada availability semasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Gift Section -->
+  <section id="free-gift" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#fff7ed] via-white to-[#fff1f2] p-6 shadow-premium ring-1 ring-orange-100 sm:p-8 lg:p-10">
+      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="order-2 lg:order-1">
+          <p class="inline-flex rounded-full bg-promo-gold px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-md">Free Gift Terpilih</p>
+          <h2 class="mt-5 text-balance text-3xl font-black tracking-tight text-brand-dark sm:text-5xl">Order Di Sini &amp; Dapatkan Free Gift Daripada Kami</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-700">Customer yang order melalui kami berpeluang dapat free gift set pisau CUCKOO. Tekan WhatsApp untuk semak promo, stok, pemasangan dan kelayakan free gift.</p>
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">🎁 Free gift set pisau CUCKOO</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Semak kelayakan melalui WhatsApp</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Tertakluk stok semasa</div>
+            <div class="rounded-2xl bg-white p-5 font-bold shadow-sm">✓ Ejen bantu explain promo</div>
+          </div>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">🎁 Semak Promo + Free Gift</a>
+          <p class="mt-4 text-sm font-semibold text-stone-500">*Free gift tertakluk kepada terma, stok dan availability semasa.</p>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="relative mx-auto max-w-[520px]"><div class="absolute -inset-4 rounded-[2.5rem] bg-orange-200/50 blur-3xl"></div><div class="relative overflow-hidden rounded-[2.25rem] bg-white p-5 shadow-premium ring-1 ring-orange-100"><div class="rounded-[1.75rem] bg-gradient-to-br from-orange-50 via-white to-rose-50 p-5 text-center"><span class="mb-4 inline-flex rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-wide text-white">Set Pisau CUCKOO</span><img src="/assets/images/gift/SET-PISAU-CUCKOO.webp" alt="Free gift set pisau CUCKOO" loading="lazy" decoding="async" class="mx-auto h-auto w-full max-w-[430px] rounded-[1.5rem] object-cover shadow-soft" /><div class="mt-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-orange-100"><p class="text-sm font-bold text-stone-500">Bonus Untuk Customer Terpilih</p><p class="mt-1 text-2xl font-black text-brand-dark">Set Pisau CUCKOO</p></div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="real-gallery" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Gambar Produk Sebenar</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Tengok Rupa Sebenar Sebelum Buat Keputusan</h2>
+          <p class="mt-5 text-lg leading-8 text-stone-600">Lihat peti dari beberapa sudut supaya anda lebih yakin dengan saiz, design dan kesesuaian ruang dapur.</p>
+          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+            <p class="text-sm font-black uppercase tracking-[0.18em] text-promo-gold">Real Product View</p>
+            <p class="mt-3 text-lg font-black leading-7">Swipe atau tekan butang kiri kanan untuk lihat gambar produk.</p>
+          </div>
+        </div>
+
+        <div class="overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-5">
+          <div class="relative overflow-hidden rounded-[1.75rem] bg-stone-100">
+            <img id="productSliderImage" src={`${base}/Refrigerator-2.webp`} alt="Samsung Side-by-Side Refrigerator 583L gambar produk 1" loading="lazy" decoding="async" class="h-[420px] w-full object-contain sm:h-[500px]" />
+            <button type="button" id="productSliderPrev" class="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" id="productSliderNext" class="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+          </div>
+          <div id="productSliderDots" class="mt-5 flex flex-wrap justify-center gap-2"></div>
+          <div class="mt-5 grid grid-cols-3 gap-3 text-center text-xs font-bold text-stone-600">
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">583L Kapasiti</div>
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Gentle Silver Matt</div>
+            <div class="rounded-2xl bg-stone-50 px-3 py-3">Side-by-Side</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs -->
+  <section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Spesifikasi Ringkas</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Detail Utama Produk</h2>
+        <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-600">Maklumat penting yang customer perlu tahu sebelum semak kesesuaian ruang, pemasangan dan penggunaan harian.</p>
+      </div>
+
+      <div class="mt-10 overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-soft">
+        <table class="w-full text-left text-sm sm:text-base">
+          <tbody class="divide-y divide-stone-200">
+            <tr><th class="w-2/5 bg-stone-50 p-5 font-black">Nama Produk</th><td class="p-5 font-semibold">583L Refrigerator Side-by-Side — SmartThings AI Energy</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Model Code</th><td class="p-5 font-semibold">F-SBSREFSLV/2W (RS4000DC series)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Kapasiti Total</th><td class="p-5 font-semibold">583L (Fridge 375L / Freezer 208L)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Jenis</th><td class="p-5 font-semibold">Side-by-Side, Mono Cooling, No Frost</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Warna / Design</th><td class="p-5 font-semibold">Gentle Silver Matt, Flat Door, Recess Handle</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Saiz Unit (L×T×D)</th><td class="p-5 font-semibold">912mm × 1780mm × 654mm</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Berat</th><td class="p-5 font-semibold">91kg</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Cooling Feature</th><td class="p-5 font-semibold">All-Around Cooling, Power Cool, Power Freeze</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Compressor</th><td class="p-5 font-semibold">Digital Inverter (waranti 10 tahun)</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Refrigerant</th><td class="p-5 font-semibold">R-600A</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Penggunaan Tenaga</th><td class="p-5 font-semibold">385 kWh/tahun</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Smart Control</th><td class="p-5 font-semibold">WiFi Embedded + SmartThings App</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Harga Rental</th><td class="p-5 font-semibold">RM85/bulan (5 tahun) — free 5-year exclusive warranty</td></tr>
+            <tr><th class="bg-stone-50 p-5 font-black">Harga Outright</th><td class="p-5 font-semibold">RM4,099 — free 2-year standard + 1-year CUCKOO extended warranty</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-4xl text-center text-sm font-semibold leading-7 text-stone-500">*Spesifikasi, harga dan fungsi tertakluk kepada model, stok dan maklumat rasmi semasa. Tekan WhatsApp untuk semak detail pemasangan dan kesesuaian ruang dapur anda.</p>
+    </div>
+  </section>
+
+  <!-- Testimoni Customer -->
+  <section id="review" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Testimoni Customer</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Apa Kata Customer Yang Pernah Berurusan Dengan Saya</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara feedback customer yang pernah saya bantu sebelum ini sebagai ejen CUCKOO.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-1.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 1" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-2.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 2" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-3.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 3" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-4.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 4" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2025/08/testimoni-aircond-cuckoo-vita-s-1.jpg" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 5" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-5.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 6" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+      </div>
+
+      <div class="mt-12 grid gap-4 text-center sm:grid-cols-3">
+        <div class="rounded-2xl bg-stone-50 p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ Berpengalaman sejak 2017</div>
+        <div class="rounded-2xl bg-stone-50 p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ 1000+ customer dibantu</div>
+        <div class="rounded-2xl bg-stone-50 p-5 font-bold text-stone-700 shadow-sm ring-1 ring-stone-100">✓ Support sebelum &amp; selepas order</div>
+      </div>
+
+      <p class="mt-6 text-center text-sm font-semibold leading-6 text-stone-500">*Testimoni adalah berdasarkan pengalaman customer yang pernah berurusan dengan saya sebagai ejen CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- Contact / Agent (shared component) -->
+  <AgentSection />
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">FAQ</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Soalan Lazim Tentang Peti Sejuk Side By Side Cuckoo</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Soalan penting yang biasa customer tanya sebelum semak promo dan buat tempahan.</p>
+      </div>
+
+      <div class="mt-10 space-y-4">
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100" open><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Berapa harga peti sejuk side by side Cuckoo x Samsung 583L?</summary><p class="mt-4 leading-7 text-stone-600">Boleh dimiliki melalui pelan rental Cuckoo dari RM85/bulan untuk 5 tahun, atau beli terus pada harga RM4,099. Sahkan stok dan promo terkini melalui WhatsApp sebelum order.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Boleh sewa peti sejuk Cuckoo secara bulanan?</summary><p class="mt-4 leading-7 text-stone-600">Boleh. Peti sejuk Cuckoo x Samsung 583L ditawarkan dengan bayaran bulanan dari RM85/bulan untuk tempoh 5 tahun, tertakluk kepada kelayakan dan terma semasa. WhatsApp kami untuk semak pelan rental yang sesuai.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa kelebihan SmartThings AI Energy?</summary><p class="mt-4 leading-7 text-stone-600">SmartThings membolehkan anda pantau dan kawal suhu peti sejuk dari telefon, dan terima alert jika pintu tertinggal terbuka. AI Energy Mode pula membantu jimat tenaga sehingga 10% dengan melaras compressor mengikut corak penggunaan.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Peti ais side by side sesuai untuk siapa?</summary><p class="mt-4 leading-7 text-stone-600">Sesuai untuk keluarga moden yang stok dapurnya sentiasa penuh, dan rumah yang mahukan ruang simpanan lebih luas serta dapur yang nampak lebih kemas dan premium.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa beza peti sejuk side by side dan peti sejuk biasa?</summary><p class="mt-4 leading-7 text-stone-600">Peti sejuk side by side mempunyai bahagian fridge dan freezer bersebelahan (kiri-kanan), memberi ruang lebih lapang dan mudah disusun berbanding peti sejuk biasa dua pintu atas-bawah, sambil kekal kemas dengan reka bentuk flat door.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Adakah peti sejuk 583L sesuai untuk keluarga besar?</summary><p class="mt-4 leading-7 text-stone-600">Ya. Kapasiti 583L (375L fridge + 208L freezer) memberi ruang luas untuk stok mingguan keluarga besar — lauk, sayur, buah, minuman dan makanan sejuk beku boleh disimpan sekali gus dengan lebih teratur.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Perlu semak ukuran dapur dulu?</summary><p class="mt-4 leading-7 text-stone-600">Ya. Saiz unit ialah 912mm lebar × 1780mm tinggi × 654mm dalam. Semak lebar pintu, laluan masuk, lif (untuk kondo) dan ruang bukaan pintu sebelum confirm.</p></details>
+        <details class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100"><summary class="cursor-pointer list-none text-lg font-black text-brand-dark">Apa waranti yang disediakan?</summary><p class="mt-4 leading-7 text-stone-600">Untuk pelan rental, disediakan waranti eksklusif 5 tahun. Untuk beli terus, disediakan waranti standard 2 tahun + 1 tahun lanjutan Cuckoo. Compressor disokong waranti 10 tahun. Tertakluk kepada terma semasa.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-white px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium sm:p-12 lg:p-16">
+      <div class="mx-auto max-w-3xl">
+        <p class="inline-flex rounded-full bg-white/12 px-5 py-2 text-xs font-black uppercase tracking-[0.24em] text-rose-100 ring-1 ring-white/15">Ready Untuk Upgrade?</p>
+        <h2 class="mt-6 text-balance text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">Upgrade Peti Sejuk Rumah Kepada 583L</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Lebih luas. Lebih pintar. Lebih jimat. Klik WhatsApp untuk semak promo dan dapatkan consultation percuma.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-9 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Sekarang</a>
+          <a href="#promo" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-9 py-5 text-lg font-black text-white backdrop-blur transition hover:bg-white/20">Tengok Promo</a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-rose-100">
+          <span>✓ Consultation Percuma</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Rental 5 Tahun</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Support Installation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .text-balance { text-wrap: balance; }
+</style>
+
+<script is:inline>
+  const productSlides = [
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-2.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 1' },
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-3.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 2' },
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-4.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 3' },
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-5.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 4' },
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-6.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 5' },
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-7.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 6' },
+    { src: '/assets/images/products/samsung/refrigerator/Refrigerator-8.webp', alt: 'Samsung Side-by-Side Refrigerator 583L gambar produk 7' }
+  ];
+
+  let currentProductSlide = 0;
+  const productSliderImage = document.getElementById('productSliderImage');
+  const productSliderPrev = document.getElementById('productSliderPrev');
+  const productSliderNext = document.getElementById('productSliderNext');
+  const productSliderDots = document.getElementById('productSliderDots');
+
+  function renderProductSlide(index) {
+    const slide = productSlides[index];
+    productSliderImage.src = slide.src;
+    productSliderImage.alt = slide.alt;
+    productSliderDots.innerHTML = '';
+    productSlides.forEach((item, dotIndex) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Lihat gambar produk ' + (dotIndex + 1));
+      dot.className = dotIndex === index
+        ? 'h-3 w-8 rounded-full bg-brand-maroon transition'
+        : 'h-3 w-3 rounded-full bg-stone-300 transition hover:bg-brand-maroon';
+      dot.addEventListener('click', () => { currentProductSlide = dotIndex; renderProductSlide(currentProductSlide); });
+      productSliderDots.appendChild(dot);
+    });
+  }
+
+  if (productSliderPrev && productSliderNext) {
+    productSliderPrev.addEventListener('click', () => {
+      currentProductSlide = currentProductSlide === 0 ? productSlides.length - 1 : currentProductSlide - 1;
+      renderProductSlide(currentProductSlide);
+    });
+    productSliderNext.addEventListener('click', () => {
+      currentProductSlide = currentProductSlide === productSlides.length - 1 ? 0 : currentProductSlide + 1;
+      renderProductSlide(currentProductSlide);
+    });
+  }
+
+  if (productSliderImage) { renderProductSlide(currentProductSlide); }
+</script>

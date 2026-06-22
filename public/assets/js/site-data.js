@@ -618,7 +618,7 @@ const SITE = {
         {
           "id": "side-by-side-refrigerator-583l",
           "name": "Side-by-Side Refrigerator 583L",
-          "url": "/products/samsung/",
+          "url": "/products/samsung/side-by-side-refrigerator-583l/",
           "category": "samsung",
           "image": "/assets/images/products/samsung/refrigerator/583L-Refrigerator.webp",
           "desc": "Peti sejuk besar CUCKOO x Samsung untuk keluarga moden yang perlukan ruang lebih luas.",
