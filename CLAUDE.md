@@ -191,6 +191,50 @@ SEO recommendation for B-Fit:
   - FAQPage
   - BreadcrumbList if consistent with site pattern
 
+## Samsung Side-by-Side Refrigerator 583L Page
+
+Page: `src/pages/products/samsung/side-by-side-refrigerator-583l/index.astro`
+
+Final URL: `/products/samsung/side-by-side-refrigerator-583l/`
+
+Assets folder: `public/assets/images/products/samsung/refrigerator/`
+
+Product facts (single source of truth for this page):
+
+- Model: 583L Refrigerator Side-by-Side, SmartThings AI Energy.
+- Model code / SKU / MPN: `F-SBSREFSLV/2W` (RS4000DC series).
+- Capacity: 583L total (375L fridge + 208L freezer).
+- Type: Side-by-Side, Mono Cooling, No Frost.
+- Design / colour: Gentle Silver Matt, flat door, recess handle.
+- Unit size (W x H x D): 912mm x 1780mm x 654mm. Weight: 91kg.
+- Cooling: All-Around Cooling, Power Cool, Power Freeze.
+- Compressor: Digital Inverter (10-year warranty). Refrigerant R-600A.
+- Energy: 385 kWh/year. AI Energy Mode helps save up to ~10%.
+- Smart: WiFi Embedded + SmartThings (Control, Energy, Home Care, Food).
+- Pricing: rental from RM85/bulan (60 bulan / 5 tahun); outright RM4,099.
+- Warranty: rental = 5-year exclusive; outright = 2-year standard + 1-year CUCKOO extended; compressor 10 years.
+- Free gift: set pisau CUCKOO (tertakluk terma/stok/kelayakan).
+- WhatsApp CTAs use the global `rotatingWhatsapp()` helper (do not hardcode wa.me here).
+
+Interactive sections (vanilla JS in the page's single `is:inline` script, no new deps):
+
+- Hero product image: 5-sisi slider (arrows + dots + swipe + click-to-zoom). NO auto-rotate (user preference). Images: `Refrigerator-cuckoo-samsung.webp`, then `Refrigerator-3/4/5/6-Photoroom.webp`. `heroPrimary` is slide 1 and is the preload/LCP image.
+- "Masalah Harian" section: problem -> solution slider. Left column = problem statement + maroon Solusi box + the 4 tab buttons (Masalah 1/2/3 + Penyelesaian, bottom). Right column = image (fills column height via `flex-1` + `lg:h-full`) + readable caption card below. AUTO-rotate every 5s, resets on click/swipe. Solution tab/card uses emerald accent. Images: `peti-sejuk-penuh.webp`, `peti-sejuk-bil-letrik-mahal.webp`, `peti-sejuk-frost-beku.webp`, `peti-sejuk-cuckoo-baru.webp`. Image here is NOT clickable (no zoom).
+- "Gambar Produk Sebenar" gallery: borderless big image slider (`Refrigerator-2..8.webp`) with click-to-zoom lightbox.
+- "How to measure" (Kitchen Fit): responsive `<picture>` — desktop `my-feature-how-to-measure-542859111.avif`, mobile `...112.avif` — click-to-zoom.
+- Testimoni: swipe slider (drag + arrows), same pattern as the TV page.
+- Shared zoom lightbox (`#zoomLightbox`) used by gallery + measure; hero handles its own zoom call. Elements opt in with `data-zoom` (generic) or `data-hero-zoom` (hero).
+- Free Delivery + Warranty strip uses `free-shipping-icon.png` + `warranty-icon.png`.
+- SmartThings sub-feature strip uses `RS4000DC_PC_Main08-2/3/4.webp`.
+
+SEO (already done — keep in sync if content changes):
+
+- Meta title/description, canonical, OG image, `preloadImages` all set in `BaseLayout` props.
+- All `<img>` have descriptive Malay alt text (keep this rule for any new image).
+- JSON-LD: `Product` (image array, brand+manufacturer Samsung, model RS4000DC, sku/mpn, color, `additionalProperty` specs, dual `offers` rental RM85/month + outright RM4099, each with `itemCondition` NewCondition + `priceValidUntil`), `FAQPage` (8 Q&A), `BreadcrumbList`.
+- `priceValidUntil` is a constant in frontmatter — bump it when promo period changes.
+- Sitemap: URL present in `public/sitemap.xml` (removed an old duplicate laundry-combo entry while here).
+
 ## Design Guidance
 
 - Follow the existing site style, especially product pages like:

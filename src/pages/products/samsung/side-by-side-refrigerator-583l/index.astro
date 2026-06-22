@@ -3,7 +3,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import AgentSection from '../../../../components/AgentSection.astro';
 
 const base = '/assets/images/products/samsung/refrigerator';
-const heroImg = `${base}/583L-Refrigerator.webp`;
+const heroImg = `${base}/Refrigerator-cuckoo-samsung.webp`;
 const kvImg = `${base}/RS4000DC_PC_KV-02.webp`;
 const brandImg = `${base}/Refrigerator-cuckoo-samsung.webp`;
 const smartImg = `${base}/RS4000DC_PC_Main08-1.webp`;
@@ -14,10 +14,34 @@ const noFrostImg = `${base}/RS4000DC_PC_Main07.webp`;
 const designImg = `${base}/RS4000DC_PC_Main09.webp`;
 const accessImg = `${base}/RS4000DC_PC_Main05.webp`;
 const compressorImg = `${base}/Fridge-Digital-Converter-Compressor_Updated-cuckoo.com_.my_.webp`;
-const measureImg = `${base}/RS4000DC_PC_How-to-measure-02.webp`;
+const smartEnergyImg = `${base}/RS4000DC_PC_Main08-2.webp`;
+const smartCareImg = `${base}/RS4000DC_PC_Main08-3.webp`;
+const smartFoodImg = `${base}/RS4000DC_PC_Main08-4.webp`;
+const freeShippingIcon = `${base}/free-shipping-icon.png`;
+const warrantyIcon = `${base}/warranty-icon.png`;
+const measureImgDesktop = `${base}/my-feature-how-to-measure-542859111.avif`;
+const measureImgMobile = `${base}/my-feature-how-to-measure-542859112.avif`;
+
+const heroSlides = [
+  `${base}/Refrigerator-cuckoo-samsung.webp`,
+  `${base}/Refrigerator-3-Photoroom.webp`,
+  `${base}/Refrigerator-4-Photoroom.webp`,
+  `${base}/Refrigerator-5-Photoroom.webp`,
+  `${base}/Refrigerator-6-Photoroom.webp`
+];
+const heroPrimary = heroSlides[0];
 
 const pageUrl = 'https://www.cuckoonano.com/products/samsung/side-by-side-refrigerator-583l/';
-const ogImg = `https://www.cuckoonano.com${heroImg}`;
+const site = 'https://www.cuckoonano.com';
+const ogImg = `${site}${heroImg}`;
+const priceValidUntil = '2026-12-31';
+const productImages = [
+  `${site}${base}/583L-Refrigerator.webp`,
+  `${site}${base}/Refrigerator-cuckoo-samsung.webp`,
+  `${site}${base}/Refrigerator-4.webp`,
+  `${site}${base}/Refrigerator-5.webp`
+];
+const seller = { '@type': 'Organization', name: 'CUCKOO', url: site };
 
 const productSchema = {
   '@context': 'https://schema.org',
@@ -30,25 +54,55 @@ const productSchema = {
   ],
   category: 'Refrigerator',
   brand: { '@type': 'Brand', name: 'Samsung' },
+  manufacturer: { '@type': 'Organization', name: 'Samsung' },
+  model: 'RS4000DC',
   sku: 'F-SBSREFSLV/2W',
+  mpn: 'F-SBSREFSLV/2W',
+  color: 'Gentle Silver Matt',
   description:
     'Peti sejuk side by side Cuckoo x Samsung 583L dengan SmartThings AI Energy. Ruang besar 583L (375L fridge + 208L freezer), kawalan pintar, jimat tenaga, No Frost dan bayaran bulanan Cuckoo dari RM85/bulan di Malaysia.',
   url: pageUrl,
-  image: ogImg,
-  offers: {
-    '@type': 'Offer',
-    priceCurrency: 'MYR',
-    price: '85',
-    url: pageUrl,
-    availability: 'https://schema.org/InStock',
-    priceSpecification: {
-      '@type': 'UnitPriceSpecification',
-      price: '85',
+  image: productImages,
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Kapasiti Total', value: '583L' },
+    { '@type': 'PropertyValue', name: 'Kapasiti Fridge', value: '375L' },
+    { '@type': 'PropertyValue', name: 'Kapasiti Freezer', value: '208L' },
+    { '@type': 'PropertyValue', name: 'Penggunaan Tenaga', value: '385 kWh/tahun' },
+    { '@type': 'PropertyValue', name: 'Dimensi (L x T x D)', value: '912mm x 1780mm x 654mm' },
+    { '@type': 'PropertyValue', name: 'Smart Control', value: 'WiFi Embedded + SmartThings App' },
+    { '@type': 'PropertyValue', name: 'Compressor', value: 'Digital Inverter (waranti 10 tahun)' }
+  ],
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Pelan rental Cuckoo (60 bulan)',
       priceCurrency: 'MYR',
-      unitText: 'MONTH'
+      price: '85',
+      url: pageUrl,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil,
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '85',
+        priceCurrency: 'MYR',
+        unitText: 'MONTH',
+        referenceQuantity: { '@type': 'QuantitativeValue', value: '60', unitText: 'MONTH' }
+      },
+      seller
     },
-    seller: { '@type': 'Organization', name: 'CUCKOO' }
-  }
+    {
+      '@type': 'Offer',
+      name: 'Beli terus (outright)',
+      priceCurrency: 'MYR',
+      price: '4099',
+      url: pageUrl,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil,
+      seller
+    }
+  ]
 };
 
 const faqSchema = {
@@ -84,7 +138,7 @@ const breadcrumbSchema = {
   canonical={pageUrl}
   ogImage={ogImg}
   ogType="website"
-  preloadImages={[heroImg]}
+  preloadImages={[heroPrimary]}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
@@ -113,10 +167,14 @@ const breadcrumbSchema = {
           </p>
         </div>
 
-        <div class="mx-auto mt-5 max-w-md overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-4 shadow-premium">
-          <div class="rounded-[1.5rem] bg-white/25 p-3">
-            <img src={heroImg} alt="Peti sejuk side by side Cuckoo x Samsung 583L SmartThings AI Energy" width="1080" height="1080" fetchpriority="high" decoding="async" class="mx-auto h-[240px] w-full object-contain" />
+        <div class="mx-auto mt-5 max-w-md overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-[#1a0b10] via-[#3a101b] to-[#080407] p-3 shadow-premium">
+          <div data-hero-stage class="relative rounded-[1.5rem] bg-white/20 p-2">
+            <img data-hero-img data-hero-zoom src={heroPrimary} alt="Peti sejuk side by side Cuckoo x Samsung 583L SmartThings AI Energy" width="1080" height="1080" fetchpriority="high" decoding="async" class="mx-auto h-[330px] w-full cursor-zoom-in object-contain transition-opacity duration-300" />
+            <button type="button" data-hero-prev aria-label="Gambar sebelum" class="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" data-hero-next aria-label="Gambar seterusnya" class="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+            <span class="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-full bg-black/45 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur">🔍 Zoom</span>
           </div>
+          <div data-hero-dots class="mt-3 flex justify-center gap-2"></div>
           <div class="mt-3 grid grid-cols-3 gap-2 text-center">
             <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">583L</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Total</p></div>
             <div class="rounded-2xl bg-white/10 px-2 py-3 ring-1 ring-white/15"><p class="text-sm font-black text-white">375L</p><p class="text-[10px] font-bold uppercase tracking-wide text-rose-100">Fridge</p></div>
@@ -197,9 +255,13 @@ const breadcrumbSchema = {
                   <span class="rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-wide text-rose-100 ring-1 ring-white/15">AI Energy</span>
                 </div>
 
-                <div class="rounded-[1.75rem] bg-white/25 p-4">
-                  <img src={heroImg} alt="Side by side refrigerator Malaysia — peti sejuk Cuckoo x Samsung 583L Gentle Silver Matt" width="1080" height="1080" fetchpriority="high" decoding="async" class="mx-auto h-[300px] w-full object-contain sm:h-[360px]" />
+                <div data-hero-stage class="relative rounded-[1.75rem] bg-white/20 p-3">
+                  <img data-hero-img data-hero-zoom src={heroPrimary} alt="Side by side refrigerator Malaysia — peti sejuk Cuckoo x Samsung 583L Gentle Silver Matt" width="1080" height="1080" fetchpriority="high" decoding="async" class="mx-auto h-[380px] w-full cursor-zoom-in object-contain transition-opacity duration-300 sm:h-[480px]" />
+                  <button type="button" data-hero-prev aria-label="Gambar sebelum" class="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+                  <button type="button" data-hero-next aria-label="Gambar seterusnya" class="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+                  <span class="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/45 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">🔍 Klik untuk zoom</span>
                 </div>
+                <div data-hero-dots class="mt-4 flex justify-center gap-2"></div>
 
                 <div class="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
                   <div class="rounded-2xl bg-white/95 px-2 py-3 shadow-sm ring-1 ring-white/20"><p class="text-base font-black text-slate-950 sm:text-lg">583L</p><p class="text-[10px] font-bold uppercase tracking-wide text-stone-500">Total</p></div>
@@ -232,47 +294,55 @@ const breadcrumbSchema = {
   <!-- Pain Point -->
   <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
     <div class="mx-auto max-w-7xl">
-      <div class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
+      <div class="grid items-stretch gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <!-- KIRI: problem statement + solusi + 4 button -->
+        <div class="flex flex-col">
           <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Masalah Harian</p>
           <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-5xl">Peti Sejuk Kecil Buat Stok Dapur Cepat Sesak</h2>
           <p class="mt-5 text-lg leading-8 text-stone-600">Bila keluarga membesar dan suka stok mingguan, peti lama jadi penuh, makanan bersepah dan bil elektrik makin naik.</p>
 
-          <div class="mt-7 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
+          <div class="mt-8 rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-6 text-white shadow-premium">
             <p class="text-sm font-black uppercase tracking-[0.22em] text-promo-gold">Solusi Lebih Praktikal</p>
             <p class="mt-3 text-2xl font-black leading-tight">Ruang besar 583L + kawalan pintar + jimat tenaga dalam satu peti.</p>
             <p class="mt-3 leading-7 text-rose-100">Sesuai untuk keluarga moden yang stok dapurnya memang sentiasa bergerak.</p>
           </div>
+
+          <!-- 4 button: 3 masalah + 1 solusi (bawah sekali) -->
+          <div class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <button type="button" data-problem-btn data-index="0" class="flex flex-col gap-0.5 rounded-2xl border border-brand-maroon bg-brand-maroon px-3 py-3 text-left text-sm font-black text-white shadow-md transition">
+              <span class="text-[10px] font-black uppercase tracking-[0.14em] opacity-70">Masalah 1</span>
+              <span>Stok Penuh</span>
+            </button>
+            <button type="button" data-problem-btn data-index="1" class="flex flex-col gap-0.5 rounded-2xl border border-stone-200 bg-white px-3 py-3 text-left text-sm font-black text-stone-600 shadow-sm transition hover:border-brand-maroon/40">
+              <span class="text-[10px] font-black uppercase tracking-[0.14em] opacity-70">Masalah 2</span>
+              <span>Bil Elektrik</span>
+            </button>
+            <button type="button" data-problem-btn data-index="2" class="flex flex-col gap-0.5 rounded-2xl border border-stone-200 bg-white px-3 py-3 text-left text-sm font-black text-stone-600 shadow-sm transition hover:border-brand-maroon/40">
+              <span class="text-[10px] font-black uppercase tracking-[0.14em] opacity-70">Masalah 3</span>
+              <span>Ais Tebal</span>
+            </button>
+            <button type="button" data-problem-btn data-index="3" data-solution="true" class="flex flex-col gap-0.5 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-3 text-left text-sm font-black text-emerald-800 shadow-sm transition hover:border-emerald-400">
+              <span class="text-[10px] font-black uppercase tracking-[0.14em] opacity-70">Penyelesaian</span>
+              <span>✓ Solusi Cuckoo</span>
+            </button>
+          </div>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div class="rounded-[2rem] bg-rose-50 p-6 shadow-soft ring-1 ring-rose-100"><p class="text-3xl">🧺</p><h3 class="mt-4 text-xl font-black text-brand-dark">Stok Mingguan Cepat Penuh</h3><p class="mt-3 leading-7 text-stone-600">Lauk, frozen food, sayur, buah dan minuman susah nak susun dalam peti kecil.</p></div>
-          <div class="rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100"><p class="text-3xl">💸</p><h3 class="mt-4 text-xl font-black text-brand-dark">Bil Elektrik Tinggi</h3><p class="mt-3 leading-7 text-stone-600">Peti lama tanpa inverter & AI Energy boleh guna lebih banyak tenaga setiap bulan.</p></div>
-          <div class="rounded-[2rem] bg-amber-50 p-6 shadow-soft ring-1 ring-amber-100"><p class="text-3xl">🧊</p><h3 class="mt-4 text-xl font-black text-brand-dark">Ais Tebal & Defrost</h3><p class="mt-3 leading-7 text-stone-600">Peti tanpa No Frost menyusahkan dengan ais tebal dan kerja buang ais manual.</p></div>
-          <div class="rounded-[2rem] bg-emerald-50 p-6 shadow-soft ring-1 ring-emerald-100"><p class="text-3xl">✅</p><h3 class="mt-4 text-xl font-black text-emerald-900">Upgrade Tanpa Modal Besar</h3><p class="mt-3 leading-7 text-stone-600">Dengan pelan rental RM85/bulan, boleh upgrade ke peti premium tanpa bayar sekali gus.</p></div>
+        <!-- KANAN: gambar isi penuh tinggi + caption -->
+        <div class="flex flex-col gap-4">
+          <div data-problem-stage class="relative min-h-[300px] flex-1 overflow-hidden rounded-[2rem] bg-stone-100 shadow-premium ring-1 ring-stone-200">
+            <img data-problem-img src={`${base}/peti-sejuk-penuh.webp`} alt="Peti sejuk kecil penuh sesak dengan stok dapur mingguan" loading="lazy" decoding="async" class="h-[300px] w-full object-cover transition-opacity duration-300 sm:h-[380px] lg:h-full" />
+            <button type="button" data-problem-prev aria-label="Sebelum" class="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" data-problem-next aria-label="Seterusnya" class="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+          </div>
+
+          <!-- Caption (senang baca) -->
+          <div data-problem-card class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-5 shadow-soft sm:min-h-[150px] sm:p-6">
+            <p data-problem-eyebrow class="text-xs font-black uppercase tracking-[0.2em] text-brand-maroon">Masalah 1</p>
+            <h3 data-problem-title class="mt-1.5 text-2xl font-black tracking-tight text-brand-dark">Stok Mingguan Cepat Penuh</h3>
+            <p data-problem-desc class="mt-2.5 text-base leading-7 text-stone-600">Lauk, frozen food, sayur, buah dan minuman susah nak susun dalam peti kecil.</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Benefits -->
-  <section id="benefits" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-    <div class="mx-auto max-w-7xl">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="inline-flex rounded-full bg-brand-maroon px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-white shadow-md">Kenapa Berbaloi</p>
-        <h2 class="mt-5 text-balance text-3xl font-black tracking-tight sm:text-5xl">Kenapa Pilih Cuckoo x Samsung Side By Side Refrigerator?</h2>
-        <p class="mt-5 text-lg leading-8 text-stone-600">Bukan sekadar peti sejuk besar — peti ais side by side ini solusi untuk dapur yang lebih kemas, pintar dan jimat elektrik.</p>
-      </div>
-
-      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-50 text-3xl">🧊</div><h3 class="text-xl font-black text-brand-dark">Ruang Luas 583L</h3><p class="mt-4 leading-7 text-stone-600">Stok seminggu tak sesak. Susun lauk, frozen food, sayur dan minuman dengan lebih teratur.</p></div>
-        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 text-3xl">📱</div><h3 class="text-xl font-black text-brand-dark">Kawal Dari Telefon</h3><p class="mt-4 leading-7 text-stone-600">SmartThings bantu pantau suhu, cooling mode dan alert bila pintu tertinggal terbuka.</p></div>
-        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-50 text-3xl">⚡</div><h3 class="text-xl font-black text-brand-dark">Jimat Tenaga Pintar</h3><p class="mt-4 leading-7 text-stone-600">AI Energy Mode bantu kurangkan penggunaan tenaga sehingga 10% mengikut corak penggunaan.</p></div>
-        <div class="rounded-[2rem] bg-white p-7 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-3xl">🛡️</div><h3 class="text-xl font-black text-brand-dark">Compressor 10 Tahun</h3><p class="mt-4 leading-7 text-stone-600">Digital Inverter Compressor yang senyap, efisien dan disokong waranti 10 tahun.</p></div>
-      </div>
-
-      <div class="mt-10 overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-6">
-        <img src={brandImg} alt="Cuckoo fridge Malaysia 583L side by side refrigerator dengan SmartThings AI Energy" loading="lazy" decoding="async" class="mx-auto w-full max-w-3xl rounded-[1.5rem] object-contain" />
       </div>
     </div>
   </section>
@@ -301,6 +371,25 @@ const breadcrumbSchema = {
         </div>
         <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium ring-1 ring-white/10">
           <img src={smartImg} alt="SmartThings refrigerator Malaysia — kawal suhu peti sejuk Cuckoo dari telefon" loading="lazy" decoding="async" class="aspect-video w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- SmartThings sub-functions -->
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        <div class="overflow-hidden rounded-[2rem] bg-white/5 p-3 shadow-premium ring-1 ring-white/10">
+          <div class="overflow-hidden rounded-[1.5rem] bg-white"><img src={smartEnergyImg} alt="SmartThings Energy — pantau penggunaan tenaga peti sejuk Samsung dari telefon" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" /></div>
+          <p class="mt-4 px-2 text-sm font-black uppercase tracking-[0.18em] text-promo-gold">SmartThings Energy</p>
+          <p class="mt-1 px-2 pb-2 text-sm leading-6 text-stone-300">Pantau penggunaan tenaga dan dapatkan tip jimat elektrik terus dari app.</p>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-white/5 p-3 shadow-premium ring-1 ring-white/10">
+          <div class="overflow-hidden rounded-[1.5rem] bg-white"><img src={smartCareImg} alt="SmartThings Home Care — notifikasi penyelenggaraan peti sejuk Samsung" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" /></div>
+          <p class="mt-4 px-2 text-sm font-black uppercase tracking-[0.18em] text-promo-gold">SmartThings Home Care</p>
+          <p class="mt-1 px-2 pb-2 text-sm leading-6 text-stone-300">Terima notifikasi status peti dan peringatan penyelenggaraan supaya senang dijaga.</p>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] bg-white/5 p-3 shadow-premium ring-1 ring-white/10">
+          <div class="overflow-hidden rounded-[1.5rem] bg-white"><img src={smartFoodImg} alt="SmartThings Food — urus bahan makanan dan expiry reminder peti sejuk Samsung" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" /></div>
+          <p class="mt-4 px-2 text-sm font-black uppercase tracking-[0.18em] text-promo-gold">SmartThings Food</p>
+          <p class="mt-1 px-2 pb-2 text-sm leading-6 text-stone-300">Urus senarai bahan makanan, expiry reminder dan idea resepi ikut stok sedia ada.</p>
         </div>
       </div>
 
@@ -413,8 +502,35 @@ const breadcrumbSchema = {
             <li>✓ Pastikan pintu fridge boleh dibuka dengan selesa</li>
           </ul>
         </div>
-        <div class="overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-6">
-          <img src={measureImg} alt="Cara ukur ruang dapur untuk peti sejuk side by side 583L" loading="lazy" decoding="async" class="w-full rounded-[1.5rem] object-contain" />
+        <button type="button" data-zoom class="group relative block w-full overflow-hidden rounded-[2rem]">
+          <picture>
+            <source media="(max-width: 767px)" srcset={measureImgMobile} />
+            <source media="(min-width: 768px)" srcset={measureImgDesktop} />
+            <img src={measureImgDesktop} alt="Cara ukur ruang dapur untuk peti sejuk side by side 583L" loading="lazy" decoding="async" class="w-full cursor-zoom-in object-contain transition duration-500 group-hover:scale-[1.02]" />
+          </picture>
+          <span class="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">🔍 Klik untuk zoom</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Easy, Seamless Shopping -->
+  <section class="bg-white px-4 pb-4 pt-2 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="flex items-center gap-5 rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100">
+          <img src={freeShippingIcon} alt="Free delivery peti sejuk Samsung 583L" width="64" height="64" loading="lazy" decoding="async" class="h-14 w-14 shrink-0 object-contain" />
+          <div>
+            <h3 class="text-xl font-black text-brand-dark">Free Delivery</h3>
+            <p class="mt-1 leading-7 text-stone-600">Penghantaran &amp; pemasangan diuruskan — tertakluk kepada kawasan.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5 rounded-[2rem] bg-stone-50 p-6 shadow-soft ring-1 ring-stone-100">
+          <img src={warrantyIcon} alt="Waranti peti sejuk Cuckoo x Samsung 583L" width="64" height="64" loading="lazy" decoding="async" class="h-14 w-14 shrink-0 object-contain" />
+          <div>
+            <h3 class="text-xl font-black text-brand-dark">Warranty</h3>
+            <p class="mt-1 leading-7 text-stone-600">Rental: waranti eksklusif 5 tahun. Beli terus: 2+1 tahun. Compressor 10 tahun.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -489,11 +605,12 @@ const breadcrumbSchema = {
           </div>
         </div>
 
-        <div class="overflow-hidden rounded-[2.25rem] bg-white p-4 shadow-premium ring-1 ring-stone-100 sm:p-5">
-          <div class="relative overflow-hidden rounded-[1.75rem] bg-stone-100">
-            <img id="productSliderImage" src={`${base}/Refrigerator-2.webp`} alt="Samsung Side-by-Side Refrigerator 583L gambar produk 1" loading="lazy" decoding="async" class="h-[420px] w-full object-contain sm:h-[500px]" />
+        <div>
+          <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-stone-50 to-white">
+            <img id="productSliderImage" data-zoom src={`${base}/Refrigerator-2.webp`} alt="Samsung Side-by-Side Refrigerator 583L gambar produk 1" loading="lazy" decoding="async" class="h-[460px] w-full cursor-zoom-in object-contain transition-opacity duration-300 sm:h-[600px]" />
             <button type="button" id="productSliderPrev" class="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
             <button type="button" id="productSliderNext" class="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+            <span class="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">🔍 Klik untuk zoom</span>
           </div>
           <div id="productSliderDots" class="mt-5 flex flex-wrap justify-center gap-2"></div>
           <div class="mt-5 grid grid-cols-3 gap-3 text-center text-xs font-bold text-stone-600">
@@ -549,13 +666,18 @@ const breadcrumbSchema = {
         <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara feedback customer yang pernah saya bantu sebelum ini sebagai ejen CUCKOO.</p>
       </div>
 
-      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-1.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 1" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
-        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-2.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 2" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
-        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-3.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 3" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
-        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-4.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 4" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
-        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2025/08/testimoni-aircond-cuckoo-vita-s-1.jpg" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 5" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
-        <div class="overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 transition hover:-translate-y-1 hover:shadow-premium"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-5.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 6" class="aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+      <!-- Testimoni slider — swipe kiri/kanan + butang, jimat ruang -->
+      <div class="relative mt-12">
+        <div id="testiTrack" class="flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-1.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 1" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-2.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 2" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-3.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 3" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-4.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 4" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2025/08/testimoni-aircond-cuckoo-vita-s-1.jpg" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 5" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+          <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]"><div class="overflow-hidden rounded-[1.5rem] bg-stone-100"><img src="https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-5.webp" alt="Testimoni customer CUCKOO berurusan dengan Fadhil 6" class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" /></div></div>
+        </div>
+        <button type="button" id="testiPrev" aria-label="Testimoni sebelumnya" class="absolute -left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:left-3">‹</button>
+        <button type="button" id="testiNext" aria-label="Testimoni seterusnya" class="absolute -right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:right-3">›</button>
       </div>
 
       <div class="mt-12 grid gap-4 text-center sm:grid-cols-3">
@@ -614,6 +736,12 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <!-- Zoom lightbox -->
+  <div id="zoomLightbox" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+    <button type="button" id="zoomClose" aria-label="Tutup gambar" class="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-2xl font-black text-brand-maroon shadow-lg">×</button>
+    <img id="zoomImage" src="" alt="" class="max-h-[90vh] w-auto max-w-[94vw] rounded-2xl object-contain shadow-premium" />
+  </div>
 </BaseLayout>
 
 <style is:global>
@@ -668,4 +796,211 @@ const breadcrumbSchema = {
   }
 
   if (productSliderImage) { renderProductSlide(currentProductSlide); }
+
+  // Hero product slider — 5 sisi (mobile + desktop synced)
+  const heroSlideSrcs = [
+    '/assets/images/products/samsung/refrigerator/Refrigerator-cuckoo-samsung.webp',
+    '/assets/images/products/samsung/refrigerator/Refrigerator-3-Photoroom.webp',
+    '/assets/images/products/samsung/refrigerator/Refrigerator-4-Photoroom.webp',
+    '/assets/images/products/samsung/refrigerator/Refrigerator-5-Photoroom.webp',
+    '/assets/images/products/samsung/refrigerator/Refrigerator-6-Photoroom.webp'
+  ];
+  const heroImgs = Array.from(document.querySelectorAll('[data-hero-img]'));
+  const heroDotWraps = Array.from(document.querySelectorAll('[data-hero-dots]'));
+  let heroIndex = 0;
+
+  function renderHero(index) {
+    heroIndex = (index + heroSlideSrcs.length) % heroSlideSrcs.length;
+    heroImgs.forEach((img) => { img.src = heroSlideSrcs[heroIndex]; });
+    heroDotWraps.forEach((wrap) => {
+      wrap.innerHTML = '';
+      heroSlideSrcs.forEach((_, dotIndex) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Lihat sisi ' + (dotIndex + 1));
+        dot.className = dotIndex === heroIndex
+          ? 'h-2.5 w-7 rounded-full bg-white transition'
+          : 'h-2.5 w-2.5 rounded-full bg-white/40 transition hover:bg-white/70';
+        dot.addEventListener('click', () => { renderHero(dotIndex); });
+        wrap.appendChild(dot);
+      });
+    });
+  }
+
+  if (heroImgs.length) {
+    document.querySelectorAll('[data-hero-prev]').forEach((btn) =>
+      btn.addEventListener('click', () => { renderHero(heroIndex - 1); }));
+    document.querySelectorAll('[data-hero-next]').forEach((btn) =>
+      btn.addEventListener('click', () => { renderHero(heroIndex + 1); }));
+
+    // Swipe kiri/kanan + klik untuk zoom
+    document.querySelectorAll('[data-hero-stage]').forEach((stage) => {
+      const img = stage.querySelector('[data-hero-zoom]');
+      let sx = 0, sy = 0, swiped = false;
+      stage.addEventListener('touchstart', (e) => {
+        sx = e.touches[0] ? e.touches[0].clientX : 0;
+        sy = e.touches[0] ? e.touches[0].clientY : 0;
+        swiped = false;
+      }, { passive: true });
+      stage.addEventListener('touchend', (e) => {
+        const t = e.changedTouches[0];
+        if (!t) return;
+        const dx = t.clientX - sx, dy = t.clientY - sy;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          swiped = true;
+          renderHero(heroIndex + (dx < 0 ? 1 : -1));
+        }
+      }, { passive: true });
+      if (img) {
+        img.addEventListener('click', () => {
+          if (swiped) { swiped = false; return; }
+          openZoom(img.currentSrc || img.src, img.alt);
+        });
+      }
+    });
+
+    renderHero(0);
+  }
+
+  // Problem -> solution slider (Masalah Harian)
+  const PBASE = '/assets/images/products/samsung/refrigerator';
+  const problems = [
+    { img: PBASE + '/peti-sejuk-penuh.webp', eyebrow: 'Masalah 1', title: 'Stok Mingguan Cepat Penuh', desc: 'Lauk, frozen food, sayur, buah dan minuman susah nak susun dalam peti kecil.', alt: 'Peti sejuk kecil penuh sesak dengan stok dapur mingguan' },
+    { img: PBASE + '/peti-sejuk-bil-letrik-mahal.webp', eyebrow: 'Masalah 2', title: 'Bil Elektrik Tinggi', desc: 'Peti lama tanpa inverter & AI Energy boleh guna lebih banyak tenaga setiap bulan.', alt: 'Bil elektrik tinggi akibat peti sejuk lama tidak jimat tenaga' },
+    { img: PBASE + '/peti-sejuk-frost-beku.webp', eyebrow: 'Masalah 3', title: 'Ais Tebal & Defrost', desc: 'Peti tanpa No Frost menyusahkan dengan ais tebal dan kerja buang ais manual.', alt: 'Ais tebal beku dalam peti sejuk lama tanpa No Frost' },
+    { img: PBASE + '/peti-sejuk-cuckoo-baru.webp', eyebrow: 'Penyelesaian', title: 'Upgrade Tanpa Modal Besar', desc: 'Dengan pelan rental RM85/bulan, upgrade ke peti premium 583L tanpa perlu bayar sekali gus.', alt: 'Peti sejuk Cuckoo x Samsung 583L baru sebagai penyelesaian', solution: true }
+  ];
+
+  const pStage = document.querySelector('[data-problem-stage]');
+  const pImg = document.querySelector('[data-problem-img]');
+  const pCard = document.querySelector('[data-problem-card]');
+  const pEyebrow = document.querySelector('[data-problem-eyebrow]');
+  const pTitle = document.querySelector('[data-problem-title]');
+  const pDesc = document.querySelector('[data-problem-desc]');
+  const pBtns = Array.from(document.querySelectorAll('[data-problem-btn]'));
+  let pIndex = 0;
+
+  const pBtnBase = 'flex flex-col gap-0.5 rounded-2xl px-3 py-3 text-left text-sm font-black shadow-sm transition';
+  const pBtnIdle = 'border border-stone-200 bg-white text-stone-600 hover:border-brand-maroon/40';
+  const pBtnActive = 'border border-brand-maroon bg-brand-maroon text-white shadow-md';
+  const pBtnIdleSol = 'border border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-400';
+  const pBtnActiveSol = 'border border-emerald-600 bg-emerald-600 text-white shadow-md';
+
+  function renderProblem(index) {
+    if (!problems.length) return;
+    pIndex = (index + problems.length) % problems.length;
+    const p = problems[pIndex];
+    if (pImg) { pImg.src = p.img; pImg.alt = p.alt; }
+    if (pCard) {
+      pCard.className = 'mt-4 rounded-[1.5rem] border p-5 shadow-soft sm:min-h-[150px] sm:p-6 ' + (p.solution ? 'border-emerald-200 bg-emerald-50' : 'border-stone-200 bg-stone-50');
+    }
+    if (pEyebrow) {
+      pEyebrow.textContent = p.eyebrow;
+      pEyebrow.className = 'text-xs font-black uppercase tracking-[0.2em] ' + (p.solution ? 'text-emerald-700' : 'text-brand-maroon');
+    }
+    if (pTitle) pTitle.className = 'mt-1.5 text-2xl font-black tracking-tight ' + (p.solution ? 'text-emerald-900' : 'text-brand-dark');
+    if (pTitle) pTitle.textContent = p.title;
+    if (pDesc) pDesc.textContent = p.desc;
+    pBtns.forEach((btn) => {
+      const bi = Number(btn.dataset.index || 0);
+      const isSol = btn.dataset.solution === 'true';
+      const active = bi === pIndex;
+      btn.className = pBtnBase + ' ' + (active ? (isSol ? pBtnActiveSol : pBtnActive) : (isSol ? pBtnIdleSol : pBtnIdle));
+    });
+  }
+
+  let pTimer = null;
+  function restartPTimer() {
+    if (pTimer) clearInterval(pTimer);
+    pTimer = setInterval(() => renderProblem(pIndex + 1), 5000);
+  }
+
+  if (pStage) {
+    pBtns.forEach((btn) => btn.addEventListener('click', () => { renderProblem(Number(btn.dataset.index || 0)); restartPTimer(); }));
+    document.querySelectorAll('[data-problem-prev]').forEach((b) => b.addEventListener('click', () => { renderProblem(pIndex - 1); restartPTimer(); }));
+    document.querySelectorAll('[data-problem-next]').forEach((b) => b.addEventListener('click', () => { renderProblem(pIndex + 1); restartPTimer(); }));
+
+    // Swipe kiri/kanan (tanpa zoom)
+    let psx = 0, psy = 0;
+    pStage.addEventListener('touchstart', (e) => {
+      psx = e.touches[0] ? e.touches[0].clientX : 0;
+      psy = e.touches[0] ? e.touches[0].clientY : 0;
+    }, { passive: true });
+    pStage.addEventListener('touchend', (e) => {
+      const t = e.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - psx, dy = t.clientY - psy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { renderProblem(pIndex + (dx < 0 ? 1 : -1)); restartPTimer(); }
+    }, { passive: true });
+
+    renderProblem(0);
+    restartPTimer();
+  }
+
+  // Testimoni slider — butang + drag to slide
+  const testiTrack = document.getElementById('testiTrack');
+  const testiPrev = document.getElementById('testiPrev');
+  const testiNext = document.getElementById('testiNext');
+
+  if (testiTrack) {
+    const stepWidth = () => {
+      const slide = testiTrack.querySelector('.testi-slide');
+      const gap = parseFloat(getComputedStyle(testiTrack).columnGap || '20') || 20;
+      return slide ? slide.getBoundingClientRect().width + gap : testiTrack.clientWidth * 0.8;
+    };
+
+    if (testiPrev) testiPrev.addEventListener('click', () => testiTrack.scrollBy({ left: -stepWidth(), behavior: 'smooth' }));
+    if (testiNext) testiNext.addEventListener('click', () => testiTrack.scrollBy({ left: stepWidth(), behavior: 'smooth' }));
+
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+    testiTrack.addEventListener('pointerdown', (e) => {
+      isDown = true; moved = false;
+      startX = e.clientX;
+      startScroll = testiTrack.scrollLeft;
+      testiTrack.classList.add('cursor-grabbing');
+    });
+    testiTrack.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+      const delta = e.clientX - startX;
+      if (Math.abs(delta) > 4) moved = true;
+      testiTrack.scrollLeft = startScroll - delta;
+    });
+    const endDrag = () => { isDown = false; testiTrack.classList.remove('cursor-grabbing'); };
+    testiTrack.addEventListener('pointerup', endDrag);
+    testiTrack.addEventListener('pointerleave', endDrag);
+    testiTrack.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  }
+
+  // Zoom lightbox — any [data-zoom] element opens its current image
+  const zoomLightbox = document.getElementById('zoomLightbox');
+  const zoomImage = document.getElementById('zoomImage');
+
+  function openZoom(src, alt) {
+    if (!zoomLightbox || !zoomImage || !src) return;
+    zoomImage.src = src;
+    zoomImage.alt = alt || '';
+    zoomLightbox.classList.remove('hidden');
+    zoomLightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeZoom() {
+    if (!zoomLightbox) return;
+    zoomLightbox.classList.add('hidden');
+    zoomLightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-zoom]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const img = el.tagName === 'IMG' ? el : el.querySelector('img');
+      const src = el.getAttribute('data-zoom-src') || (img && (img.currentSrc || img.src));
+      openZoom(src, img && img.alt);
+    });
+  });
+  if (zoomLightbox) {
+    zoomLightbox.addEventListener('click', (e) => {
+      if (e.target === zoomLightbox || e.target.id === 'zoomClose') closeZoom();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeZoom(); });
+  }
 </script>
