@@ -1,0 +1,880 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import AgentSection from '../../../../components/AgentSection.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+
+const base = '/assets/images/products/mattress/flex';
+
+// Hero product views (color/angle switcher)
+const heroSofa = `${base}/cuckoo-flex-daybed-grey-sofa-product-image.webp`;
+const heroBed = `${base}/cuckoo-flex-daybed-grey-bed-product-image.webp`;
+const blueFront = `${base}/cuckoo-flex-daybed-blue-front-product-image.webp`;
+const blueSofa = `${base}/cuckoo-flex-daybed-blue-sofa-product-image.webp`;
+const blueAngle = `${base}/cuckoo-flex-daybed-blue-angle-product-image.webp`;
+const blueSide = `${base}/cuckoo-flex-daybed-adjustable-side-angle-blue.webp`;
+
+const heroViews = [
+  { label: 'Sofa · Grey', img: heroSofa, alt: 'CUCKOO FLEX Daybed mod sofa warna Meta Grey' },
+  { label: 'Bed · Grey', img: heroBed, alt: 'CUCKOO FLEX Daybed mod bed warna Meta Grey' },
+  { label: 'Sofa · Blue', img: blueSofa, alt: 'CUCKOO FLEX Daybed mod sofa warna Yale Blue' },
+  { label: 'Depan · Blue', img: blueFront, alt: 'CUCKOO FLEX Daybed pandangan hadapan warna Yale Blue' },
+  { label: 'Sudut · Blue', img: blueAngle, alt: 'CUCKOO FLEX Daybed pandangan sudut warna Yale Blue' }
+];
+
+// Product / lifestyle imagery
+const blueRoom = `${base}/cuckoo-flex-daybed-blue-sofa-room-product-image.webp`;
+const roadshow = `${base}/cuckoo-flex-daybed-roadshow-display.webp`;
+
+// Gallery imagery
+const galFoldedGrey = `${base}/cuckoo-flex-daybed-folded-sofa-mode-grey.webp`;
+const galFoldedBlue = `${base}/cuckoo-flex-daybed-folded-sofa-mode-blue.webp`;
+const galUnfoldedGrey = `${base}/cuckoo-flex-daybed-unfolded-bed-mode-grey.webp`;
+const galDiscover = `${base}/cuckoo-flex-daybed-discover-product-social-post.webp`;
+const galYaleBlue = `${base}/cuckoo-flex-daybed-yale-blue-cover-social-post.webp`;
+const gal8Angle = `${base}/cuckoo-flex-8-angle-comfort-daybed-social-post.webp`;
+const galFullLatex = `${base}/cuckoo-flex-full-latex-daybed-social-post.webp`;
+
+// HQ lifestyle banner (after pain points)
+const heroBgDesktop = `${base}/cuckoo-flex-daybed-sofa-bed-malaysia-hero-desktop.webp`;
+const hqHighlights = [
+  { icon: `${base}/cuckoo-flex-flexible-daybed-icon.png`, label: 'Supremely Versatile 8-Angle Comfort' },
+  { icon: `${base}/cuckoo-flex-laidback-daybed-icon.png`, label: '100% Full Latex On Top Layer' },
+  { icon: `${base}/cuckoo-flex-enjoyable-daybed-icon.png`, label: 'Easy Switch Between Sofa & Bed' },
+  { icon: `${base}/cuckoo-flex-xpressive-daybed-icon.png`, label: 'FREE Daybed Cleaning Service' },
+  { icon: `${base}/cuckoo-flex-three-seater-daybed-icon.png`, label: 'FREE Delivery & Installation' }
+];
+
+// Feature GIFs (responsive desktop/mobile)
+const versatileGif = `${base}/cuckoo-flex-daybed-supremely-versatile-sofa-bed.gif`;
+const versatileMobileGif = `${base}/cuckoo-flex-daybed-versatile-demo-mobile.gif`;
+const easySwitchGif = `${base}/cuckoo-flex-daybed-easy-switch-sofa-bed.gif`;
+const makingSceneGif = `${base}/cuckoo-flex-daybed-making-scene-video.gif`;
+
+// Section assets
+const latexLayers = `${base}/cuckoo-flex-full-natural-latex-daybed-layers-desktop.webp`;
+const latexLayersMb = `${base}/cuckoo-flex-full-natural-latex-daybed-layers-mobile.webp`;
+const specDesktop = `${base}/cuckoo-flex-daybed-specification-dimensions-desktop.png`;
+const specMobile = `${base}/cuckoo-flex-daybed-specification-dimensions-mobile.png`;
+const serviceBanner = `${base}/cuckoo-flex-daybed-wonderklean-service-banner.webp`;
+const cleaningServiceMobile = `${base}/cuckoo-flex-daybed-wonderklean-cleaning-service-mobile.webp`;
+const cleaningIconsMobile = `${base}/cuckoo-flex-daybed-wonderklean-cleaning-icons-desktop.webp`;
+
+const features = [
+  {
+    badge: 'Sofa & Bed 2-in-1',
+    title: 'Sofa & Bed Dalam Satu Produk',
+    copy: 'CUCKOO FLEX boleh digunakan sebagai sofa santai pada waktu siang dan bertukar menjadi tempat berbaring untuk berehat. Sesuai untuk menonton TV, membaca buku atau melepak selepas hari yang panjang.',
+    tags: ['Sofa santai', 'Tempat berbaring'],
+    media: heroBed,
+    fit: 'cover'
+  },
+  {
+    badge: '8-Angle Comfort',
+    title: 'Laras 8 Sudut Ikut Keselesaan Anda',
+    copy: 'Nikmati keselesaan mengikut gaya anda sendiri dengan pelbagai sudut boleh laras. Ubah posisi FLEX ikut aktiviti — duduk santai, bersandar atau berbaring sepenuhnya.',
+    tags: ['8 sudut boleh laras', 'Posisi fleksibel'],
+    media: versatileGif,
+    mediaMobile: versatileMobileGif,
+    fit: 'contain'
+  },
+  {
+    badge: 'Mudah Tukar & Jimat Ruang',
+    title: 'Tukar Sofa ke Bed Dengan Mudah',
+    copy: 'FLEX boleh ditukar daripada sofa kepada bed, atau sebaliknya, dengan mudah. Pilihan tepat untuk rumah yang mahukan perabot lebih fleksibel sambil menjimatkan ruang.',
+    tags: ['Switch mudah', 'Jimat ruang'],
+    media: easySwitchGif,
+    mediaMobile: makingSceneGif,
+    fit: 'contain'
+  },
+  {
+    badge: 'Reka Bentuk Stylish',
+    title: 'Stylish & Mudah Padan Dengan Dekorasi Rumah',
+    copy: 'Dengan warna Meta Grey sebagai pilihan default, CUCKOO FLEX tampil moden dan mudah dipadankan dengan pelbagai gaya dekorasi — dari ruang tamu keluarga hingga studio dan apartment.',
+    tags: ['Meta Grey default', 'Moden & kemas'],
+    media: blueRoom,
+    fit: 'cover'
+  }
+];
+
+const galleryItems = [
+  { image: galFoldedGrey, title: 'CUCKOO FLEX mod sofa Meta Grey', copy: 'FLEX dalam mod sofa warna Meta Grey.', alt: 'CUCKOO FLEX Daybed mod sofa terlipat warna Meta Grey' },
+  { image: galFoldedBlue, title: 'CUCKOO FLEX mod sofa Yale Blue', copy: 'FLEX dalam mod sofa warna Yale Blue.', alt: 'CUCKOO FLEX Daybed mod sofa terlipat warna Yale Blue' },
+  { image: blueSide, title: 'CUCKOO FLEX boleh laras', copy: 'FLEX dilaras antara mod sofa dan bed.', alt: 'CUCKOO FLEX Daybed posisi boleh laras warna Yale Blue' },
+  { image: galUnfoldedGrey, title: 'CUCKOO FLEX mod bed Meta Grey', copy: 'FLEX dalam mod bed warna Meta Grey.', alt: 'CUCKOO FLEX Daybed mod bed terbuka warna Meta Grey' },
+  { image: roadshow, title: 'CUCKOO FLEX di roadshow', copy: 'Rupa sebenar CUCKOO FLEX Daybed di roadshow.', alt: 'Paparan sebenar CUCKOO FLEX Daybed di roadshow CUCKOO' },
+  { image: galDiscover, title: 'Discover CUCKOO FLEX', copy: 'Kenali CUCKOO FLEX Daybed dengan lebih dekat.', alt: 'Poster discover produk CUCKOO FLEX Daybed' },
+  { image: galYaleBlue, title: 'Yale Blue Daybed Cover', copy: 'Extra Yale Blue Daybed Cover untuk FLEX.', alt: 'Poster extra Yale Blue Daybed Cover CUCKOO FLEX' },
+  { image: gal8Angle, title: '8-Angle Comfort', copy: 'Laras 8 sudut keselesaan FLEX.', alt: 'Poster 8-Angle Comfort CUCKOO FLEX Daybed' },
+  { image: galFullLatex, title: '100% Full Latex', copy: '100% full latex pada lapisan atas FLEX.', alt: 'Poster 100% Full Latex CUCKOO FLEX Daybed' }
+];
+
+const PRICE_VALID_UNTIL = '2026-12-31';
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO FLEX Daybed',
+  alternateName: ['CUCKOO FLEX Sofa Daybed', 'Daybed Sofa CUCKOO', 'CUCKOO FLEX Co-Created with Napure'],
+  image: [
+    `https://www.cuckoonano.com${heroSofa}`,
+    `https://www.cuckoonano.com${heroBed}`,
+    `https://www.cuckoonano.com${blueAngle}`
+  ],
+  brand: { '@type': 'Brand', name: 'CUCKOO' },
+  manufacturer: { '@type': 'Organization', name: 'CUCKOO Co-Created with Napure' },
+  category: 'Daybed Sofa',
+  color: 'Meta Grey',
+  url: 'https://www.cuckoonano.com/products/mattress/flex/',
+  description:
+    'CUCKOO FLEX Daybed — daybed serbaguna yang boleh digunakan sebagai sofa atau tempat berbaring. 8-Angle Comfort, 100% Full Latex pada lapisan atas, scheduled service dan pilihan rental RM140/bulan atau outright RM3,900.',
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Capacity', value: '3-Seater' },
+    { '@type': 'PropertyValue', name: 'Top Layer', value: '100% Full Latex' },
+    { '@type': 'PropertyValue', name: 'Adjustable', value: '8-Angle Comfort' },
+    { '@type': 'PropertyValue', name: 'Weight Supported', value: 'Up to 100kg' }
+  ],
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Rental Plan 3 Tahun',
+      priceCurrency: 'MYR',
+      price: '140',
+      itemCondition: 'https://schema.org/NewCondition',
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: PRICE_VALID_UNTIL,
+      areaServed: { '@type': 'Country', name: 'Malaysia' }
+    },
+    {
+      '@type': 'Offer',
+      name: 'Outright Purchase',
+      priceCurrency: 'MYR',
+      price: '3900',
+      itemCondition: 'https://schema.org/NewCondition',
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: PRICE_VALID_UNTIL,
+      areaServed: { '@type': 'Country', name: 'Malaysia' }
+    }
+  ]
+};
+
+const faqItems = [
+  { q: 'Apa itu daybed sofa?', a: 'Daybed sofa ialah perabot serbaguna yang boleh digunakan sebagai sofa dan juga sebagai tempat berbaring. Ia sesuai untuk ruang rumah yang mahukan fungsi santai, rehat dan tidur sementara dalam satu produk.' },
+  { q: 'Adakah CUCKOO FLEX sesuai untuk rumah di Malaysia?', a: 'Ya. CUCKOO FLEX sesuai untuk rumah Malaysia seperti apartment, kondominium, rumah teres atau ruang keluarga yang mahukan perabot fleksibel. Ia boleh digunakan sebagai sofa harian dan juga tempat rehat tambahan apabila diperlukan.' },
+  { q: 'Boleh ke tidur atas CUCKOO FLEX setiap malam?', a: 'CUCKOO FLEX boleh digunakan untuk berbaring dan berehat dengan selesa. Namun, untuk penggunaan tidur setiap malam, ia bergantung kepada keselesaan badan dan keperluan sokongan individu. Jika anda mencari tempat tidur utama jangka panjang, tilam khusus mungkin lebih sesuai.' },
+  { q: 'Adakah CUCKOO FLEX datang siap pasang?', a: 'CUCKOO FLEX datang bersama penghantaran dan pemasangan percuma. Jadi pelanggan tidak perlu risau tentang proses pemasangan sendiri.' },
+  { q: 'Apa kelebihan 8-Angle Comfort?', a: '8-Angle Comfort membolehkan anda melaras sudut daybed mengikut keselesaan. Anda boleh gunakan posisi berbeza untuk duduk, bersandar, membaca, menonton TV atau berbaring.' },
+  { q: 'Apakah material utama CUCKOO FLEX?', a: 'CUCKOO FLEX menggunakan 100% full latex pada lapisan atas. Material ini membantu memberikan rasa selesa, sokongan yang baik dan ketahanan untuk kegunaan harian.' },
+  { q: 'Adakah CUCKOO FLEX sesuai untuk ruang kecil?', a: 'Ya. Disebabkan ia boleh digunakan sebagai sofa dan bed, CUCKOO FLEX sesuai untuk ruang yang mahu dimanfaatkan dengan lebih praktikal, terutama rumah yang tidak mahu terlalu banyak perabot berasingan.' },
+  { q: 'Adakah harga termasuk servis?', a: 'Ya. Untuk pembelian outright, pelanggan mendapat 1 tahun scheduled service & warranty. Untuk rental plan, pelanggan mendapat scheduled service setiap 4 bulan sepanjang tempoh pelan.' },
+  { q: 'Berapa berat maksimum yang boleh ditampung?', a: 'CUCKOO FLEX menyokong berat sehingga 100kg.' },
+  { q: 'Apa warna CUCKOO FLEX?', a: 'Warna default ialah Meta Grey. Pelanggan juga mendapat extra Yale Blue Daybed Cover mengikut tawaran pelan yang dipilih.' }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a }
+  }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.cuckoonano.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://www.cuckoonano.com/products/' },
+    { '@type': 'ListItem', position: 3, name: 'Tilam', item: 'https://www.cuckoonano.com/products/mattress/' },
+    { '@type': 'ListItem', position: 4, name: 'FLEX Daybed', item: 'https://www.cuckoonano.com/products/mattress/flex/' }
+  ]
+};
+---
+
+<BaseLayout
+  title="CUCKOO FLEX Daybed | Sofa Bed 2-in-1 Promo RM12, Rental RM140 & Outright RM3,900"
+  description="CUCKOO FLEX Daybed — sofa daybed serbaguna yang bertukar antara sofa dan bed. 8-Angle Comfort, 100% Full Latex top layer, scheduled service, free delivery. Promo RM12/bulan 6 bulan pertama, rental RM140/bulan atau outright RM3,900. WhatsApp ejen untuk semak."
+  canonical="https://www.cuckoonano.com/products/mattress/flex/"
+  ogImage={`https://www.cuckoonano.com${heroSofa}`}
+  preloadImages={[heroSofa]}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- ============================================================ -->
+  <!-- HERO (maroon) -->
+  <!-- ============================================================ -->
+  <section class="relative overflow-hidden px-4 py-10 text-white sm:px-6 lg:px-8 lg:py-16"
+           style="background: radial-gradient(circle at 72% 20%, rgba(216,180,120,.30), transparent 38%), linear-gradient(135deg, #3a0a12 0%, #5e1019 52%, #7a1f2b 100%);">
+    <div class="relative mx-auto max-w-7xl">
+
+      <!-- MOBILE HERO -->
+      <div class="lg:hidden">
+        <div class="mx-auto max-w-md text-center">
+          <div class="mb-3 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full bg-[#d8c69a] px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#5a0f18]">🔥 Promo RM12</span>
+            <span class="rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-white ring-1 ring-white/15">Sofa & Bed 2-in-1</span>
+            <span class="rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-white ring-1 ring-white/15">8-Angle Comfort</span>
+          </div>
+          <p class="text-[11px] font-black uppercase tracking-[0.22em] text-[#d8c69a]">CUCKOO Daybed Malaysia</p>
+          <h1 class="mt-2 text-[1.85rem] font-black leading-[1.05] tracking-tight text-white">
+            CUCKOO <span class="gold-text">FLEX</span> Daybed
+          </h1>
+          <p class="mx-auto mt-3 max-w-xs text-sm leading-6 text-[#f0e6d6]/90">
+            Sofa daybed serbaguna yang bertukar antara sofa santai dan tempat berbaring — dengan 8-angle comfort dan 100% full latex pada lapisan atas.
+          </p>
+        </div>
+
+        <!-- Mobile product card -->
+        <div class="mx-auto mt-5 max-w-sm overflow-hidden rounded-[2rem] bg-white/10 p-3 ring-1 ring-white/15 backdrop-blur">
+          <div class="overflow-hidden rounded-[1.5rem] bg-white/50 p-2">
+            <img id="heroImgMobile" src={heroSofa}
+                 alt="CUCKOO FLEX Daybed mod sofa warna Meta Grey"
+                 class="mx-auto h-auto w-full max-w-[440px] object-contain transition duration-300" />
+          </div>
+          <div class="mt-3 flex flex-wrap justify-center gap-1.5">
+            {heroViews.map((v, i) => (
+              <button type="button" data-img-mobile={v.img} data-alt={v.alt} class={`hero-thumb-mobile shrink-0 rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-wide ${i === 0 ? 'bg-[#F6D77B] text-[#5a0f18] shadow-sm ring-2 ring-black/10' : 'bg-[#FFF7EA] text-[#7a1f2b] ring-1 ring-black/10'}`}>{v.label}</button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Pricing card mobile -->
+        <div class="mx-auto mt-5 max-w-sm rounded-[1.75rem] bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur">
+          <div class="rounded-[1.4rem] p-4 text-center shadow-[inset_0_0_0_1px_rgba(255,255,255,.5)]" style="background: linear-gradient(135deg, #fff7de 0%, #ffe7a8 52%, #d8b25e 100%);">
+            <p class="text-[11px] font-black uppercase tracking-[0.18em] text-[#7b4e14]">Promo · 6 Bulan Pertama</p>
+            <p class="mt-1 text-4xl font-black tracking-tight text-[#5a0f18]">RM12<span class="text-base font-bold text-[#7b4e14]">/bulan</span></p>
+            <p class="mt-1 text-[11px] font-bold text-[#7b4e14]/85">Lepas promo RM140/bulan · atau outright RM3,900</p>
+          </div>
+          <div class="mt-3 grid gap-2">
+            <div class="rounded-xl bg-white/10 px-3 py-2.5 text-xs font-black text-white ring-1 ring-white/15">Scheduled service setiap 4 bulan</div>
+            <div class="rounded-xl bg-white/10 px-3 py-2.5 text-xs font-black text-white ring-1 ring-white/15">Free 1 extra Yale Blue Daybed Cover</div>
+            <div class="rounded-xl bg-white/10 px-3 py-2.5 text-xs font-black text-white ring-1 ring-white/15">Free delivery &amp; installation*</div>
+          </div>
+          <p class="mt-3 text-center text-[10px] font-semibold leading-5 text-[#d8c69a]/80">*Tertakluk kepada stok, kelayakan, kawasan pemasangan dan terma semasa.</p>
+        </div>
+
+        <div class="mx-auto mt-4 max-w-sm">
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta transition hover:bg-cta-dark">
+            📲 Semak Harga &amp; Kelayakan
+          </a>
+        </div>
+      </div><!-- end mobile hero -->
+
+
+      <!-- DESKTOP HERO -->
+      <div class="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-14">
+        <div>
+          <div class="mb-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-[#d8c69a] px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#5a0f18]">🔥 Promo RM12 Sekarang</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white ring-1 ring-white/15">Sofa & Bed 2-in-1</span>
+            <span class="rounded-full bg-white/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white ring-1 ring-white/15">100% Full Latex</span>
+          </div>
+
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-[#d8c69a]">CUCKOO Daybed Malaysia</p>
+
+          <h1 class="mt-3 max-w-2xl text-balance text-5xl font-black leading-[1.03] tracking-tight text-white xl:text-6xl">
+            CUCKOO <span class="gold-text">FLEX</span> Daybed
+          </h1>
+
+          <p class="mt-5 max-w-xl text-lg leading-8 text-[#f0e6d6]/90">
+            It's always a good time to FLEX. Sofa daybed serbaguna yang bertukar antara sofa santai dan tempat berbaring — dengan 8-angle comfort dan 100% full latex pada lapisan atas.
+          </p>
+
+          <!-- Pricing block -->
+          <div class="mt-7 max-w-xl rounded-[2rem] bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur">
+            <div class="grid grid-cols-[auto_1fr] items-center gap-4">
+              <div class="rounded-[1.5rem] px-6 py-5 text-center shadow-[inset_0_0_0_1px_rgba(255,255,255,.5)]" style="background: linear-gradient(135deg, #fff7de 0%, #ffe7a8 52%, #d8b25e 100%);">
+                <p class="text-[11px] font-black uppercase tracking-[0.2em] text-[#7b4e14]">6 Bulan Pertama</p>
+                <p class="mt-1 text-5xl font-black tracking-tight text-[#5a0f18]">RM12</p>
+                <p class="text-sm font-black text-[#7b4e14]">/bulan</p>
+              </div>
+              <div class="space-y-2.5">
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-extrabold text-white ring-1 ring-white/10">Lepas promo RM140/bulan · rental 3 tahun</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-extrabold text-white ring-1 ring-white/10">Atau outright — RM3,900</div>
+                <div class="rounded-2xl bg-white/10 px-4 py-3 text-sm font-extrabold text-white ring-1 ring-white/10">Free 1 extra Yale Blue Daybed Cover</div>
+                <p class="px-1 text-xs font-semibold leading-5 text-[#d8c69a]/80">Promo RM12 tertakluk kepada produk, stok, kelayakan dan kempen semasa.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#" onclick="this.href=rotatingWhatsapp()"
+               class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+              📲 Semak Harga &amp; Kelayakan
+            </a>
+            <a href="#features"
+               class="inline-flex items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-base font-black text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20">
+              Lihat Features
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: product card -->
+        <div class="relative">
+          <div class="relative overflow-hidden rounded-[2.5rem] bg-white/10 p-5 shadow-[0_30px_80px_rgba(75,13,24,.45)] ring-1 ring-white/15 backdrop-blur">
+            <div class="mb-4 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full bg-[#7a1f2b] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">3-Seater</span>
+              <span class="rounded-full bg-white/10 px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white ring-1 ring-white/15">Meta Grey</span>
+            </div>
+
+            <div class="overflow-hidden rounded-[1.75rem] bg-white/50 p-4">
+              <img id="heroImgDesktop" src={heroSofa}
+                   alt="CUCKOO FLEX Daybed mod sofa warna Meta Grey"
+                   class="mx-auto h-auto w-full max-w-[480px] object-contain transition duration-300" />
+            </div>
+
+            <div class="mt-4 flex flex-wrap justify-center gap-2">
+              {heroViews.map((v, i) => (
+                <button type="button" data-img-desktop={v.img} data-alt={v.alt} class={`hero-thumb-desktop shrink-0 rounded-full px-4 py-2 text-xs font-black uppercase tracking-wide ${i === 0 ? 'bg-[#F6D77B] text-[#5a0f18] shadow-sm ring-2 ring-black/10' : 'bg-[#FFF7EA] text-[#7a1f2b] ring-1 ring-black/10'}`}>{v.label}</button>
+              ))}
+            </div>
+
+            <div class="mt-5 grid grid-cols-3 gap-2">
+              <div class="rounded-2xl bg-white/10 px-2 py-3 text-center ring-1 ring-white/10"><p class="text-base font-black text-white">8 Sudut</p><p class="text-[10px] font-bold uppercase tracking-wide text-[#d8c69a]">Boleh Laras</p></div>
+              <div class="rounded-2xl bg-white/10 px-2 py-3 text-center ring-1 ring-white/10"><p class="text-base font-black text-white">100kg</p><p class="text-[10px] font-bold uppercase tracking-wide text-[#d8c69a]">Disokong</p></div>
+              <div class="rounded-2xl bg-white/10 px-2 py-3 text-center ring-1 ring-white/10"><p class="text-base font-black text-white">2 Warna</p><p class="text-[10px] font-bold uppercase tracking-wide text-[#d8c69a]">Grey / Blue</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end desktop hero -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- TRUST STRIP -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-8 text-white sm:px-6 lg:px-8" style="background: #7a1f2b;">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-4">
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">Sofa & Bed 2-in-1</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Satu produk untuk santai dan rehat</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">8-Angle Comfort</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Laras sudut ikut keselesaan anda</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">100% Full Latex</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Lapisan atas selesa &amp; tahan lama</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+        <p class="text-base font-black">Free Delivery &amp; Service</p>
+        <p class="mt-1 text-xs leading-snug text-[#f0e6d6]/80">Penghantaran, pemasangan &amp; servis berjadual</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PAIN POINTS -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #ededf0;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Masalah Ruang Rumah</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Ruang Terhad, Tapi Masih Perlu Tempat Santai & Rehat?</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Sofa biasa makan ruang, dan tetamu yang menginap pula perlukan tempat tidur tambahan. CUCKOO FLEX selesaikan kedua-duanya dalam satu perabot.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="fade-up rounded-[1.75rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#efe9dd] text-base font-black text-[#9a2a33]">01</div>
+          <h3 class="text-base font-black text-[#7a1322]">Ruang rumah terhad</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Apartment atau kondominium selalunya tidak cukup ruang untuk sofa dan katil berasingan.</p>
+        </div>
+        <div class="fade-up rounded-[1.75rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#efe9dd] text-base font-black text-[#9a2a33]">02</div>
+          <h3 class="text-base font-black text-[#7a1322]">Perlu extra sleeping space</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Bila ada tetamu menginap, anda perlukan tempat berbaring tambahan tanpa beli katil baru.</p>
+        </div>
+        <div class="fade-up rounded-[1.75rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#efe9dd] text-base font-black text-[#9a2a33]">03</div>
+          <h3 class="text-base font-black text-[#7a1322]">Perabot tak fleksibel</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Perabot yang hanya satu fungsi buat ruang rumah cepat penuh dan kurang praktikal.</p>
+        </div>
+        <div class="fade-up rounded-[1.75rem] p-6 text-white shadow-[0_18px_44px_rgba(75,13,24,.25)]" style="background: linear-gradient(135deg, #7a1f2b, #4b0d18);">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-base font-black text-white">★</div>
+          <h3 class="text-base font-black">Nak bayaran lebih mudah</h3>
+          <p class="mt-2 text-sm leading-6 text-[#f0e6d6]/85">FLEX boleh dipilih secara rental RM140/bulan untuk 3 tahun dengan servis berjadual.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- HQ LIFESTYLE BANNER -->
+  <!-- ============================================================ -->
+  <section class="overflow-hidden" style="background: linear-gradient(135deg, #3a0a12 0%, #5e1019 55%, #7a1f2b 100%);">
+    <div class="relative">
+      <img src={heroBgDesktop} alt="CUCKOO FLEX Daybed di ruang tamu moden — it's always a good time to FLEX" loading="lazy" class="block w-full" />
+      <!-- legibility gradient -->
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-2/3" style="background: linear-gradient(180deg, rgba(20,8,12,.45) 0%, rgba(20,8,12,0) 100%);"></div>
+      <!-- headline overlay -->
+      <div class="absolute inset-x-0 top-0 px-4 pt-7 text-center sm:pt-12 lg:pt-16">
+        <h2 class="mx-auto max-w-3xl text-balance text-xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-md sm:text-3xl lg:text-5xl">It's Always a Good Time to FLEX.</h2>
+        <p class="mx-auto mt-3 hidden max-w-xl text-sm leading-6 text-white/90 drop-shadow sm:block sm:text-base">Day or night. Rain or shine. By yourself or with those who matter. CUCKOO FLEX is there for you — comforting, welcoming, and ready to take your relaxation further. Just FLEX it.</p>
+      </div>
+    </div>
+
+    <!-- highlights row -->
+    <div class="px-4 pb-12 pt-9 sm:px-6 lg:px-8 lg:pb-16">
+      <div class="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+        {hqHighlights.map((h) => (
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-2xl ring-1 ring-white/25">
+              <img src={h.icon} alt={h.label} loading="lazy" class="h-11 w-11 object-contain" />
+            </div>
+            <p class="mt-3 max-w-[10rem] text-[11px] font-black uppercase leading-tight tracking-wide text-white sm:text-sm">{h.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- FEATURES -->
+  <!-- ============================================================ -->
+  <section id="features" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Kenapa Pilih CUCKOO FLEX</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Satu Daybed, Banyak Fungsi Untuk Rumah Moden</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Direka untuk gaya hidup moden — sesuai untuk ruang tamu, bilik keluarga, studio, apartment atau ruang rehat di rumah.</p>
+      </div>
+
+      <div class="mt-12 space-y-6">
+        {features.map((f, i) => (
+          <div class="fade-up grid items-center gap-8 overflow-hidden rounded-[2rem] bg-[#ededf0] p-6 ring-1 ring-black/10 lg:grid-cols-2 lg:p-8">
+            <div class={`overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-black/10 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+              {f.mediaMobile ? (
+                <picture>
+                  <source media="(min-width: 640px)" srcset={f.media} />
+                  <img src={f.mediaMobile} alt={`${f.badge} CUCKOO FLEX Daybed`} loading="lazy" decoding="async" class="mx-auto h-72 w-full object-contain p-2 sm:h-80 lg:aspect-[4/3] lg:h-auto" />
+                </picture>
+              ) : (
+                <img src={f.media} alt={`${f.badge} CUCKOO FLEX Daybed`} loading="lazy" class={f.fit === 'contain' ? 'mx-auto h-72 w-full object-contain p-2 sm:h-80 lg:aspect-[4/3] lg:h-auto' : 'h-64 w-full object-cover sm:h-80 lg:aspect-[4/3] lg:h-auto'} />
+              )}
+            </div>
+            <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
+              <span class="inline-block rounded-full bg-[#efe9dd] px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-[#9a2a33]">{f.badge}</span>
+              <h3 class="mt-3 text-2xl font-black tracking-tight text-[#7a1322] sm:text-3xl">{f.title}</h3>
+              <p class="mt-3 text-base leading-7 text-[#5d6f80]">{f.copy}</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                {f.tags.map((t) => <span class="rounded-full bg-[#efe9dd] px-4 py-2 text-xs font-black text-[#9a2a33]">{t}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- LATEX LAYER BREAKDOWN (dark maroon) -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24"
+           style="background: linear-gradient(135deg, #3a0a12 0%, #5e1019 55%, #7a1f2b 100%);">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#d8c69a]">100% Full Latex On Top Layer</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">Lapisan Demi Lapisan Untuk Keselesaan & Sokongan</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#f0e6d6]/85">Lapisan atas FLEX menggunakan 100% full latex yang membantu memberikan keseimbangan antara keselesaan, sokongan dan ketahanan untuk kegunaan harian.</p>
+      </div>
+
+      <div class="mt-12 fade-up rounded-[2rem] bg-white/95 p-5 ring-1 ring-white/15 sm:p-8">
+        <img src={latexLayers} alt="Lapisan CUCKOO FLEX Daybed: Cover, 100% Natural Latex, Hard Foam, Plywood, Metal Frame, Polyurethane Foam" loading="lazy" class="mx-auto hidden w-full max-w-3xl object-contain sm:block" />
+        <img src={latexLayersMb} alt="Lapisan CUCKOO FLEX Daybed: Cover, 100% Natural Latex, Hard Foam, Plywood, Metal Frame, Polyurethane Foam" loading="lazy" class="mx-auto w-full max-w-md object-contain sm:hidden" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SESUAI UNTUK SIAPA -->
+  <!-- ============================================================ -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Sesuai Untuk Siapa</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">CUCKOO FLEX Sesuai Untuk Ruang Anda</h2>
+      </div>
+
+      <div class="mx-auto mt-10 grid max-w-4xl gap-3 fade-up sm:grid-cols-2">
+        {[
+          'Rumah apartment atau kondominium',
+          'Ruang tamu rumah keluarga',
+          'Bilik santai atau bilik bacaan',
+          'Rumah yang perlukan extra sleeping space',
+          'Pasangan muda atau keluarga kecil',
+          'Ruang rehat pejabat atau studio',
+          'Sesiapa yang mahukan sofa yang boleh dijadikan tempat berbaring'
+        ].map((item) => (
+          <div class="flex items-start gap-3 rounded-2xl bg-[#ededf0] px-5 py-4 ring-1 ring-black/10">
+            <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#9a2a33] text-xs font-black text-white">✓</span>
+            <span class="text-sm font-bold leading-6 text-[#7a1322]">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- COLOURS -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #efe9dd;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Pilihan Warna</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Daybed Cover Dalam 2 Warna</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Meta Grey sebagai warna default, dan anda turut mendapat extra Yale Blue Daybed Cover mengikut tawaran pelan yang dipilih.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 fade-up sm:grid-cols-2 lg:gap-8">
+        <article class="overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] sm:p-8">
+          <div class="overflow-hidden rounded-2xl bg-[#ededf0]">
+            <img src={heroSofa} alt="CUCKOO FLEX Daybed warna Meta Grey" loading="lazy" class="mx-auto h-64 w-full object-contain p-2 sm:h-72" />
+          </div>
+          <div class="mt-5 flex items-center gap-3">
+            <span class="h-7 w-7 rounded-full ring-2 ring-black/10" style="background:#6b7079;"></span>
+            <div>
+              <p class="text-lg font-black text-[#7a1322]">Meta Grey</p>
+              <p class="text-xs font-bold uppercase tracking-wide text-[#9a2a33]">Warna Default</p>
+            </div>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] sm:p-8">
+          <div class="overflow-hidden rounded-2xl bg-[#ededf0]">
+            <img src={blueFront} alt="CUCKOO FLEX Daybed warna Yale Blue" loading="lazy" class="mx-auto h-64 w-full object-contain p-2 sm:h-72" />
+          </div>
+          <div class="mt-5 flex items-center gap-3">
+            <span class="h-7 w-7 rounded-full ring-2 ring-black/10" style="background:#1f44b8;"></span>
+            <div>
+              <p class="text-lg font-black text-[#7a1322]">Yale Blue</p>
+              <p class="text-xs font-bold uppercase tracking-wide text-[#9a2a33]">Extra Cover Percuma*</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="mx-auto mt-6 max-w-2xl text-center text-xs font-semibold leading-6 text-[#5d6f80] fade-up">*Extra Yale Blue Daybed Cover tertakluk kepada pelan yang dipilih dan terma promosi semasa.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- PRICING -->
+  <!-- ============================================================ -->
+  <section id="pricing" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: radial-gradient(circle at top left, rgba(123,31,43,.10), transparent 40%), linear-gradient(180deg, #ededf0 0%, #efe9dd 100%);">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Harga CUCKOO FLEX Daybed</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Pilih Rental Atau Outright</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Pilih sama ada mahu rental bulanan yang lebih mudah, atau pembelian outright sekali gus.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8 fade-up">
+
+        <!-- Rental (featured) -->
+        <article class="relative overflow-hidden rounded-[2rem] p-6 text-white shadow-[0_24px_70px_rgba(75,13,24,.30)] sm:p-8"
+                 style="background: radial-gradient(circle at top right, rgba(216,180,120,.22), transparent 40%), linear-gradient(145deg, #4b0d18 0%, #6e1620 58%, #7a1f2b 100%);">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-black tracking-tight sm:text-3xl">Rental Plan</h3>
+            <span class="shrink-0 rounded-full bg-[#d8c69a] px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-[#7a1322]">Popular</span>
+          </div>
+
+          <div class="mt-5 rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
+            <p class="text-[11px] font-black uppercase tracking-[0.12em] text-[#d8c69a]">Promo · 6 Bulan Pertama</p>
+            <p class="mt-1 text-4xl font-black tracking-tight text-white">RM12<span class="text-base font-bold text-[#f0e6d6]/80">/bulan</span></p>
+            <p class="mt-1 text-xs font-bold text-[#f0e6d6]/80">Lepas promo RM140/bulan · tempoh 3 tahun</p>
+          </div>
+
+          <ul class="mt-5 space-y-2.5">
+            <li class="flex items-start gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-bold text-white ring-1 ring-white/10"><span class="text-[#d8c69a]">✓</span> Promo RM12/bulan untuk 6 bulan pertama*</li>
+            <li class="flex items-start gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-bold text-white ring-1 ring-white/10"><span class="text-[#d8c69a]">✓</span> Percuma scheduled service setiap 4 bulan</li>
+            <li class="flex items-start gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-bold text-white ring-1 ring-white/10"><span class="text-[#d8c69a]">✓</span> Percuma 1 extra Yale Blue Daybed Cover pada bulan ke-24</li>
+            <li class="flex items-start gap-3 rounded-xl bg-white/10 px-4 py-3 text-sm font-bold text-white ring-1 ring-white/10"><span class="text-[#d8c69a]">✓</span> Free delivery &amp; installation</li>
+          </ul>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-6 flex w-full items-center justify-center rounded-2xl bg-cta-green px-6 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+            📲 Tanya Promo RM12/bulan
+          </a>
+        </article>
+
+        <!-- Outright -->
+        <article class="overflow-hidden rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] sm:p-8">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-black tracking-tight text-[#7a1322] sm:text-3xl">Outright Purchase</h3>
+            <span class="shrink-0 rounded-full bg-[#efe9dd] px-3 py-1.5 text-[11px] font-black uppercase tracking-wide text-[#9a2a33]">Beli Terus</span>
+          </div>
+
+          <div class="mt-5 rounded-2xl bg-[#ededf0] p-4 ring-1 ring-black/10">
+            <p class="text-[11px] font-black uppercase tracking-[0.12em] text-[#9a2a33]">Bayaran Sekali Gus</p>
+            <p class="mt-1 text-4xl font-black tracking-tight text-[#7a1322]">RM3,900</p>
+          </div>
+
+          <ul class="mt-5 space-y-2.5">
+            <li class="flex items-start gap-3 rounded-xl bg-[#f1eee9] px-4 py-3 text-sm font-bold text-[#7a1322] ring-1 ring-black/10"><span class="text-[#9a2a33]">✓</span> Percuma 1 tahun scheduled service &amp; warranty</li>
+            <li class="flex items-start gap-3 rounded-xl bg-[#f1eee9] px-4 py-3 text-sm font-bold text-[#7a1322] ring-1 ring-black/10"><span class="text-[#9a2a33]">✓</span> Percuma 1 extra Yale Blue Daybed Cover</li>
+            <li class="flex items-start gap-3 rounded-xl bg-[#f1eee9] px-4 py-3 text-sm font-bold text-[#7a1322] ring-1 ring-black/10"><span class="text-[#9a2a33]">✓</span> Free delivery &amp; installation</li>
+          </ul>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()"
+             class="mt-6 flex w-full items-center justify-center rounded-2xl border-2 border-[#7a1f2b] px-6 py-4 text-base font-black text-[#9a2a33] transition hover:-translate-y-0.5 hover:bg-[#efe9dd]">
+            📲 Tanya Harga Outright RM3,900
+          </a>
+        </article>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-3xl rounded-[1.5rem] bg-white p-5 text-center text-sm font-semibold leading-7 text-[#7a1322] ring-1 ring-black/10 fade-up">
+        *Promo RM12/bulan untuk 6 bulan pertama tertakluk kepada produk, stok, kelayakan dan kempen semasa. Termasuk penghantaran, pemasangan dan servis mengikut pelan CUCKOO. Semua harga, stok, promo dan kelayakan tertakluk kepada terma semasa CUCKOO.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- SERVICE (CUCKOO+ / WonderKlean) -->
+  <!-- ============================================================ -->
+  <section id="service" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #ededf0;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Free Delivery, Installation & Service</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">CUCKOO Bantu Jaga FLEX Anda</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#5d6f80]">Nikmati penghantaran, pemasangan dan servis berjadual supaya pengalaman menggunakan FLEX lebih mudah dan menyenangkan.</p>
+      </div>
+
+      <div class="mt-12 overflow-hidden rounded-[2rem] bg-white p-4 ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] fade-up sm:p-6">
+        <img src={serviceBanner} alt="Servis CUCKOO+ untuk FLEX Daybed: lint removing, vacuum cleaning, wiping the frame, dust mite spray dan free delivery & installation" loading="lazy" class="mx-auto hidden w-full max-w-4xl rounded-[1.25rem] object-contain sm:block" />
+        <div class="space-y-4 sm:hidden">
+          <img src={cleaningServiceMobile} alt="Servis pembersihan CUCKOO+ Service Group untuk FLEX Daybed" loading="lazy" class="mx-auto w-full max-w-md rounded-[1.25rem] object-contain" />
+          <img src={cleaningIconsMobile} alt="Langkah servis WonderKlean FLEX Daybed: lint removing, vacuum cleaning, wiping the frame, dust mite spray dan free delivery & installation" loading="lazy" class="mx-auto w-full max-w-md rounded-[1.25rem] object-contain" />
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-5 fade-up sm:grid-cols-3">
+        <div class="rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <p class="text-4xl font-black tracking-tight text-[#9a2a33]">4 Bulan</p>
+          <h3 class="mt-3 text-xl font-black text-[#7a1322]">Scheduled Service</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Servis berjadual setiap 4 bulan untuk pelan rental sepanjang tempoh.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <p class="text-4xl font-black tracking-tight text-[#9a2a33]">1 Tahun</p>
+          <h3 class="mt-3 text-xl font-black text-[#7a1322]">Service & Warranty (Outright)</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Pembelian outright termasuk 1 tahun scheduled service &amp; warranty.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-6 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.05)]">
+          <p class="text-4xl font-black tracking-tight text-[#9a2a33]">Free</p>
+          <h3 class="mt-3 text-xl font-black text-[#7a1322]">Delivery & Installation</h3>
+          <p class="mt-2 text-sm leading-6 text-[#5d6f80]">Penghantaran dan pemasangan diuruskan oleh CUCKOO, tertakluk kepada terma semasa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- GALLERY -->
+  <!-- ============================================================ -->
+  <ProductGallerySlider
+    id="galeri"
+    eyebrow="Galeri Gambar"
+    title="Galeri CUCKOO FLEX Daybed"
+    description="Swipe untuk lihat rupa FLEX dalam mod sofa dan bed. Klik gambar untuk paparan penuh."
+    items={galleryItems}
+  />
+
+
+  <!-- ============================================================ -->
+  <!-- SPECIFICATIONS -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #efe9dd;">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">Spesifikasi</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Spesifikasi & Dimensi FLEX</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#5d6f80]">Dimensi dalam mod bed (terbuka) dan mod sofa (terlipat).</p>
+      </div>
+
+      <div class="mt-12 fade-up overflow-hidden rounded-[1.5rem] p-4 ring-1 ring-black/10 shadow-[0_12px_34px_rgba(75,13,24,.12)] sm:p-8" style="background: linear-gradient(135deg, #414043 0%, #414043 100%);">
+        <img src={specDesktop} alt="Dimensi CUCKOO FLEX Daybed: mod bed 198cm × 77cm × 49cm dan mod sofa 198cm × 40cm × 97cm" loading="lazy" class="mx-auto hidden w-full max-w-4xl object-contain sm:block" />
+        <img src={specMobile} alt="Dimensi CUCKOO FLEX Daybed: mod bed 198cm × 77cm × 49cm dan mod sofa 198cm × 40cm × 97cm" loading="lazy" class="mx-auto w-full max-w-md object-contain sm:hidden" />
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-[2rem] bg-white ring-1 ring-black/10 shadow-[0_24px_70px_rgba(75,13,24,.10)] fade-up">
+        <div class="p-6 lg:p-8">
+          <p class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-[#9a2a33]">Spesifikasi Teknikal</p>
+          <div class="grid gap-x-10 sm:grid-cols-2">
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Brand</span><span class="text-right text-sm font-bold text-[#7a1322]">CUCKOO Co-Created with Napure</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Product Name</span><span class="text-right text-sm font-bold text-[#7a1322]">CUCKOO FLEX Daybed</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Colour</span><span class="text-right text-sm font-bold text-[#7a1322]">Meta Grey (default)</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Capacity</span><span class="text-right text-sm font-bold text-[#7a1322]">3-Seater</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Top Layer</span><span class="text-right text-sm font-bold text-[#7a1322]">100% Full Latex</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Adjustable</span><span class="text-right text-sm font-bold text-[#7a1322]">8-Angle Comfort</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Dimensi (Folded / Sofa)</span><span class="text-right text-sm font-bold text-[#7a1322]">198cm × 97cm × 40cm</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Dimensi (Unfolded / Bed)</span><span class="text-right text-sm font-bold text-[#7a1322]">198cm × 49cm × 77cm</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Carton Box</span><span class="text-right text-sm font-bold text-[#7a1322]">208cm × 101cm × 22.5cm</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Gross Weight</span><span class="text-right text-sm font-bold text-[#7a1322]">45.2kg</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Net Weight</span><span class="text-right text-sm font-bold text-[#7a1322]">43kg</span></div>
+            <div class="flex items-start justify-between gap-4 border-b border-black/10 py-3 sm:border-b-0"><span class="text-xs font-black uppercase tracking-wide text-[#5d6f80]">Weight Supported</span><span class="text-right text-sm font-bold text-[#7a1322]">Up to 100kg</span></div>
+          </div>
+          <p class="mt-4 text-[11px] font-semibold text-[#5d6f80]">Nota: Ukuran adalah anggaran dengan toleransi sehingga ±5%. Maklumat tertakluk kepada spesifikasi rasmi dan terma semasa CUCKOO.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- AGENT / CONTACT -->
+  <!-- ============================================================ -->
+  <AgentSection />
+
+
+  <!-- ============================================================ -->
+  <!-- FAQ -->
+  <!-- ============================================================ -->
+  <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: #ededf0;">
+    <div class="mx-auto max-w-4xl">
+      <div class="mx-auto max-w-3xl text-center fade-up">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-[#9a2a33]">FAQ</p>
+        <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-[#7a1322] sm:text-5xl">Soalan Yang Customer Selalu Tanya</h2>
+      </div>
+
+      <div class="mt-10 space-y-3 fade-up">
+        {faqItems.map((item) => (
+          <div class="faq-item overflow-hidden rounded-2xl bg-white ring-1 ring-black/10 shadow-[0_10px_28px_rgba(75,13,24,.04)]">
+            <button class="faq-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left" type="button">
+              <span class="text-sm font-black text-[#7a1322] sm:text-base">{item.q}</span>
+              <span class="faq-icon shrink-0 text-xl font-black text-[#9a2a33]">+</span>
+            </button>
+            <div class="faq-answer px-6">
+              <p class="pb-5 text-sm leading-7 text-[#5d6f80]">{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- FINAL CTA (maroon) -->
+  <!-- ============================================================ -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" style="background: linear-gradient(145deg, #4b0d18, #7a1f2b);">
+    <div class="mx-auto max-w-4xl text-center fade-up">
+      <p class="text-xs font-black uppercase tracking-[0.22em] text-[#d8c69a]">It's Always a Good Time to FLEX</p>
+      <h2 class="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">Nak Tahu FLEX Sesuai Untuk Ruang Anda?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#f0e6d6]/85">WhatsApp sekarang untuk semak harga terkini, pilihan warna, rental/outright, promo, stok dan kelayakan.</p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">🛋️ Sofa & Bed 2-in-1</span>
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">↕️ 8-Angle Comfort</span>
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">📦 Penghantaran percuma</span>
+        <span class="rounded-full bg-white/12 px-4 py-2 text-xs font-bold text-white ring-1 ring-white/20">🧰 Servis setiap 4 bulan</span>
+      </div>
+
+      <a href="#" onclick="this.href=rotatingWhatsapp()"
+         class="mt-8 inline-flex items-center justify-center rounded-2xl bg-cta-green px-10 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+        📲 WhatsApp Saya Sekarang
+      </a>
+
+      <p class="mt-5 text-xs font-semibold text-[#d8c69a]/80">Percuma untuk bertanya. Tiada komitmen sebelum kelulusan.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .gold-text {
+    background: linear-gradient(135deg, #fff3cf 0%, #e8c87e 45%, #bf9a4e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .faq-answer.open { max-height: 400px; }
+  .faq-icon { transition: transform 0.3s ease; }
+  .faq-icon.open { transform: rotate(45deg); }
+
+  @media (prefers-reduced-motion: reduce) { .fade-up { transition: none; } }
+</style>
+
+<script is:inline>
+  // --- Hero image switcher: mobile ---
+  (function () {
+    const img = document.getElementById('heroImgMobile');
+    const btns = document.querySelectorAll('.hero-thumb-mobile');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (img) {
+          img.style.transition = 'opacity 0.15s ease';
+          img.style.opacity = '0';
+          setTimeout(() => { img.src = btn.dataset.imgMobile; if (btn.dataset.alt) img.alt = btn.dataset.alt; img.style.opacity = '1'; }, 150);
+        }
+        btns.forEach((b) => {
+          b.className = 'hero-thumb-mobile shrink-0 rounded-full bg-[#FFF7EA] px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-[#7a1f2b] ring-1 ring-black/10';
+        });
+        btn.className = 'hero-thumb-mobile shrink-0 rounded-full bg-[#F6D77B] px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-[#5a0f18] shadow-sm ring-2 ring-black/10';
+      });
+    });
+  })();
+
+  // --- Hero image switcher: desktop ---
+  (function () {
+    const img = document.getElementById('heroImgDesktop');
+    const btns = document.querySelectorAll('.hero-thumb-desktop');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (img) {
+          img.style.transition = 'opacity 0.15s ease';
+          img.style.opacity = '0';
+          setTimeout(() => { img.src = btn.dataset.imgDesktop; if (btn.dataset.alt) img.alt = btn.dataset.alt; img.style.opacity = '1'; }, 150);
+        }
+        btns.forEach((b) => {
+          b.className = 'hero-thumb-desktop shrink-0 rounded-full bg-[#FFF7EA] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#7a1f2b] ring-1 ring-black/10';
+        });
+        btn.className = 'hero-thumb-desktop shrink-0 rounded-full bg-[#F6D77B] px-4 py-2 text-xs font-black uppercase tracking-wide text-[#5a0f18] shadow-sm ring-2 ring-black/10';
+      });
+    });
+  })();
+
+  // --- FAQ accordion ---
+  document.querySelectorAll('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const ans = item.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+      const open = ans.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach((a) => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach((i) => i.classList.remove('open'));
+      if (!open) { ans.classList.add('open'); icon.classList.add('open'); }
+    });
+  });
+
+  // --- Fade-up on scroll ---
+  (function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  })();
+</script>

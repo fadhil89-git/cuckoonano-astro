@@ -1,14 +1,1005 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
+const base = '/assets/images/products/air-purifier/u-model';
+const site = 'https://www.cuckoonano.com';
+const pageUrl = `${site}/products/air-purifier/u-model/`;
+const priceValidUntil = '2026-12-31';
+const dateModified = '2026-06-24';
+
+// ---- Single source of truth: fakta U Model ----
+const u = {
+  name: 'CUCKOO U Model',
+  type: 'Air Purifier / Penapis Udara',
+  coverage: '1161 sq ft (107.9m²)',
+  weight: '14kg',
+  power: 'AC 220–240V / 50Hz',
+  ratedPower: '80W / 1.5A',
+  noise: '53.7 dBA',
+  size: '410(W) × 410(D) × 895(H) mm',
+  stages: '4-Stage Filtration System',
+  filters: 'Pre-Filter · Allergen Filter · True HEPA+ H14 · Deodorisation Filter',
+  priceOutright: 4400,
+  rentalY1to3: 143,
+  rentalY4to5: 138,
+  rentalMonths: 60,
+  carePackage: 770 // setahun
+};
+
+// Gambar produk studio (disahkan) untuk slider hero
+const heroSlides = [
+  { src: `${base}/cuckoo-u-model-front-led-on.webp`, alt: 'Penapis Udara CUCKOO U Model — paparan hadapan dengan LED biru menyala' },
+  { src: `${base}/cuckoo-u-model-front-white.webp`, alt: 'Penapis Udara CUCKOO U Model — paparan hadapan' },
+  { src: `${base}/cuckoo-u-model-studio-podium.webp`, alt: 'Penapis Udara CUCKOO U Model di atas podium studio premium' }
+];
+const heroFirst = heroSlides[0].src;
+const ogImg = `${site}${base}/cuckoo-u-model-banner-1161-sqft-coverage.webp`;
+
+const featureIcons = [
+  { icon: `${base}/cuckoo-u-model-icon-coverage-1161.png`, label: 'Liputan 1161 sq ft' },
+  { icon: `${base}/cuckoo-u-model-icon-360-absorption.png`, label: '360° Absorption' },
+  { icon: `${base}/cuckoo-u-model-icon-air-quality.png`, label: '8-Colour Air Quality' },
+  { icon: `${base}/cuckoo-u-model-icon-commercial.png`, label: 'Gred Komersial' },
+  { icon: `${base}/cuckoo-u-model-icon-easy-control.png`, label: '10 Operating Modes' }
+];
+
+const filtration = [
+  { n: '1', title: 'Pre-Filter', desc: 'Menangkap pencemar besar seperti habuk, rambut dan bulu haiwan.' },
+  { n: '2', title: 'Allergen Filter', desc: 'Membantu menangkap bahan penyebab alahan yang terapung di udara.' },
+  { n: '3', title: 'True HEPA+ H14 Filter', desc: 'Menapis partikel halus & diuji menyingkir 99.995% partikel udara. Dengan copper sulphide coating — antibakteria, antivirus & antikulat.' },
+  { n: '4', title: 'Deodorisation Filter', desc: 'Mengurangkan bau kurang menyenangkan & gas berbahaya — masakan, asap, haiwan dan ruang tertutup.' }
+];
+
+const copperAdvantages = [
+  { title: 'Antibakteria & antivirus', desc: 'Bantu kurangkan risiko pencemaran mikrob bawaan udara pada permukaan filter.' },
+  { title: 'Kurangkan bau', desc: 'Bantu kurangkan bau daripada masakan, haiwan peliharaan atau asap rokok.' },
+  { title: 'Kekalkan kecekapan filter', desc: 'Permukaan filter dilindungi daripada pertumbuhan kulat dan bakteria.' },
+  { title: 'Penapisan tambahan', desc: 'Bantu memerangkap dan menyahaktif patogen bawaan udara dengan lebih berkesan.' },
+  { title: 'Perlindungan tahan lama', desc: 'Memberi perlindungan lebih lama terhadap pencemaran mikrob di udara.' },
+  { title: 'Permukaan mudah dibersih', desc: 'Permukaan self-cleaning memudahkan pembersihan komponen dalaman.' }
+];
+
+const ledLevels = [
+  { c: '#2f6fed', label: 'Baik' },
+  { c: '#38bdf8', label: 'Sederhana' },
+  { c: '#22c55e', label: 'Sederhana' },
+  { c: '#84cc16', label: 'Sederhana' },
+  { c: '#eab308', label: 'Kurang Baik' },
+  { c: '#f97316', label: 'Kurang Baik' },
+  { c: '#a855f7', label: 'Kurang Baik' },
+  { c: '#ef4444', label: 'Sangat Teruk' }
+];
+
+const modes = [
+  { icon: `${base}/cuckoo-u-model-mode-smart.png`, title: 'Smart Mode', desc: 'Mengesan kualiti udara & melaras kelajuan kipas secara automatik.' },
+  { icon: `${base}/cuckoo-u-model-mode-eco.png`, title: 'ECO Mode', desc: 'Apabila udara kekal bersih, penggunaan tenaga dikawal lebih cekap.' },
+  { icon: `${base}/cuckoo-u-model-mode-repeat.png`, title: 'Repeat Mode', desc: 'Beroperasi & berhenti automatik ikut tempoh masa yang ditetapkan.' },
+  { icon: `${base}/cuckoo-u-model-mode-fine-dust.png`, title: 'Fine Dust Mode', desc: 'Bertindak automatik mengurangkan habuk halus apabila dikesan.' },
+  { icon: `${base}/cuckoo-u-model-mode-sleep.png`, title: 'Sleep Mode', desc: 'Mengurangkan isipadu udara & beroperasi lebih senyap untuk waktu tidur.' },
+  { icon: `${base}/cuckoo-u-model-mode-baby.png`, title: 'Baby Mode', desc: 'Isipadu udara & bunyi minimum dengan mood lamp untuk tidur lebih selesa.' },
+  { icon: `${base}/cuckoo-u-model-mode-energy-eye.png`, title: 'Energy Eye Mode', desc: 'Apabila bilik gelap, semua indikator dimatikan secara automatik.' },
+  { icon: `${base}/cuckoo-u-model-mode-manual.png`, title: 'Manual Mode', desc: 'Pilih sendiri tahap kekuatan kipas mengikut keperluan anda.' },
+  { icon: `${base}/cuckoo-u-model-mode-turbo-plus.png`, title: 'Turbo Plus Mode', desc: 'Membersihkan habuk dengan cepat pada kelajuan kipas maksimum.' },
+  { icon: `${base}/cuckoo-u-model-mode-refresh.png`, title: 'Refresh Mode', desc: 'Beri amaran apabila udara dalaman tidak sihat & ruang perlu pengudaraan.' }
+];
+
+// Kesan habuk & pencemar dalaman (pill dalam kotak bukti filter)
+const dustEffects = ['Cetus alahan & asma', 'Selsema & bersin', 'Mata & tekak gatal', 'Bau hapak terperangkap', 'Habuk pada perabot', 'Jangkitan bawaan udara'];
+
+const places = [
+  'Rumah besar / konsep open-plan',
+  'Ruang tamu besar & ruang keluarga',
+  'Bilik tidur utama',
+  'Pejabat / ofis',
+  'Bilik meeting / boardroom',
+  'Masjid & surau',
+  'Sekolah & kelas',
+  'Tadika & taska',
+  'Klinik & ruang menunggu',
+  'Homestay & Airbnb',
+  'Showroom & kedai',
+  'Gym & studio senaman'
+];
+
+const productPhotos = [
+  { file: 'cuckoo-u-model-front-led-on', alt: 'CUCKOO U Model — paparan hadapan dengan LED biru menyala' },
+  { file: 'cuckoo-u-model-front-white', alt: 'CUCKOO U Model — paparan hadapan kemas' },
+  { file: 'cuckoo-u-model-studio-podium', alt: 'CUCKOO U Model di atas podium studio premium' },
+  { file: 'cuckoo-u-model-real-home-room', alt: 'CUCKOO U Model di ruang rumah sebenar dengan indikator hijau' },
+  { file: 'cuckoo-u-model-real-living-room', alt: 'CUCKOO U Model di ruang tamu dengan indikator udara menyala' },
+  { file: 'cuckoo-u-model-real-room-quiet', alt: 'CUCKOO U Model di sudut ruang dalaman' }
+].map((p, index) => ({ image: `${base}/${p.file}.webp`, title: `Gambar Produk #${index + 1}`, alt: p.alt }));
+
+const faqs = [
+  { q: 'Apa fungsi CUCKOO U Model Air Purifier?', a: 'CUCKOO U Model membantu membersihkan udara dalam ruang besar dengan menapis habuk, alergen, bau, gas berbahaya, partikel halus dan pencemar udara melalui sistem penapisan 4 peringkat.' },
+  { q: 'Berapa luas coverage CUCKOO U Model?', a: 'CUCKOO U Model mempunyai coverage sehingga 1161 sq ft (107.9m²), sesuai untuk rumah besar, pejabat, sekolah, tadika, masjid, klinik, showroom dan ruang komersial.' },
+  { q: 'Adakah CUCKOO U Model sesuai untuk commercial use?', a: 'Ya. CUCKOO U Model sesuai untuk kegunaan komersial kerana mempunyai coverage besar, 360° absorption, sensor kualiti udara, TVOC Sensor, PM1.0 Sensor dan sistem penapisan True HEPA+ H14.' },
+  { q: 'Adakah CUCKOO U Model sesuai untuk rumah yang ada anak kecil?', a: 'Ya. Ia membantu mengurangkan habuk, bau dan partikel udara, serta mempunyai Baby Mode dan Sleep Mode untuk operasi yang lebih senyap dan selesa.' },
+  { q: 'Adakah CUCKOO U Model sesuai untuk orang yang ada alahan atau asma?', a: 'CUCKOO U Model boleh membantu mengurangkan habuk, debunga, bulu haiwan dan partikel halus yang boleh mengganggu keselesaan pernafasan. Namun, ia bukan alat rawatan perubatan dan tidak menggantikan nasihat doktor.' },
+  { q: 'Adakah CUCKOO U Model boleh membantu ketika musim jerebu?', a: 'Ya. Sistem penapisan HEPA+ membantu menapis partikel halus di udara termasuk fine dust yang biasa berlaku ketika musim jerebu, menjadikan udara dalaman lebih bersih apabila kualiti udara luar kurang baik.' },
+  { q: 'Apa fungsi TVOC Sensor?', a: 'TVOC Sensor membantu mengesan gas atau bau daripada bahan seperti cat, bahan binaan, produk pembersih, asap dan pencemar udara lain yang tidak kelihatan.' },
+  { q: 'Apa fungsi PM1.0 Fine Dust Sensor?', a: 'PM1.0 Fine Dust Sensor membantu mengesan partikel udara yang sangat halus supaya air purifier boleh bertindak dengan lebih tepat berdasarkan keadaan udara semasa.' },
+  { q: 'Adakah CUCKOO U Model bising?', a: 'CUCKOO U Model mempunyai tahap bunyi sekitar 53.7 dBA. Ia juga mempunyai Sleep Mode dan Baby Mode untuk operasi yang lebih senyap apabila diperlukan.' },
+  { q: 'Adakah CUCKOO U Model jimat elektrik?', a: 'CUCKOO U Model mempunyai ECO Mode dan Energy Eye Mode yang membantu mengawal penggunaan tenaga berdasarkan keadaan udara dan kecerahan bilik.' },
+  { q: 'Apa beza U Model dengan R Model dan K Model?', a: 'U Model mempunyai coverage paling besar (sehingga 1161 sq ft) dan menggunakan True HEPA+ H14 Filter — lebih sesuai untuk ruang besar dan kegunaan komersial. R Model lebih compact & stylish untuk bilik atau ruang sederhana, manakala K Model sesuai untuk ruang lebih besar daripada R tetapi lebih kecil berbanding U.' },
+  { q: 'Adakah CUCKOO U Model sesuai untuk masjid atau surau?', a: 'Ya. CUCKOO U Model sesuai untuk masjid atau surau kerana ruang ini digunakan ramai orang dan memerlukan udara yang lebih segar, terutama jika menggunakan penghawa dingin.' },
+  { q: 'Adakah CUCKOO U Model sesuai untuk tadika atau taska?', a: 'Ya. Ia sesuai untuk ruang aktiviti, ruang tidur atau ruang menunggu di tadika dan taska kerana membantu mengurangkan habuk, bau dan partikel udara supaya ruang lebih selesa untuk kanak-kanak.' },
+  { q: 'Adakah CUCKOO U Model sesuai untuk klinik?', a: 'Ya, ia boleh digunakan di ruang menunggu, kaunter pendaftaran atau bilik konsultasi untuk membantu meningkatkan keselesaan udara. Namun, ia bukan pengganti sistem ventilasi, sanitasi atau peralatan perubatan khusus.' },
+  { q: 'Kenapa perlu pilih rental plan?', a: 'Rental plan sesuai untuk pelanggan yang tidak mahu bayar jumlah besar secara terus. Dengan bayaran bulanan, pelanggan boleh menikmati CUCKOO U Model bersama servis dan warranty sepanjang tempoh pelan.' }
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO U Model Air Purifier',
+  alternateName: ['Penapis Udara CUCKOO U Model', 'CUCKOO U Model Air Purifier Malaysia'],
+  category: 'Air Purifier',
+  brand: { '@type': 'Brand', name: 'CUCKOO' },
+  manufacturer: { '@type': 'Organization', name: 'CUCKOO' },
+  model: 'U Model',
+  description:
+    'Penapis udara CUCKOO U Model untuk ruang besar & kegunaan komersial — liputan sehingga 1161 sq ft, 360° absorption, sistem penapisan 4 peringkat True HEPA+ H14 (99.995%), PM1.0 & TVOC sensor, Plasma Ioniser dan 10 operating modes. Sewa dari RM143/bulan atau beli RM4,400 di Malaysia.',
+  url: pageUrl,
+  image: [
+    ogImg,
+    `${site}${base}/cuckoo-u-model-front-led-on.webp`,
+    `${site}${base}/cuckoo-u-model-4-stage-filtration-99995.webp`
+  ],
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Coverage', value: u.coverage },
+    { '@type': 'PropertyValue', name: 'Filtration', value: u.filters },
+    { '@type': 'PropertyValue', name: 'Power Consumption', value: u.power },
+    { '@type': 'PropertyValue', name: 'Rated Power', value: u.ratedPower },
+    { '@type': 'PropertyValue', name: 'Noise Level', value: u.noise },
+    { '@type': 'PropertyValue', name: 'Dimensi (W×D×H)', value: u.size },
+    { '@type': 'PropertyValue', name: 'Berat', value: u.weight }
+  ],
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Pelan rental CUCKOO (60 bulan)',
+      priceCurrency: 'MYR',
+      price: String(u.rentalY4to5),
+      url: pageUrl,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil,
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: String(u.rentalY4to5),
+        priceCurrency: 'MYR',
+        unitText: 'MONTH',
+        referenceQuantity: { '@type': 'QuantitativeValue', value: String(u.rentalMonths), unitText: 'MONTH' }
+      },
+      seller: { '@type': 'Organization', name: 'CUCKOO', url: site }
+    },
+    {
+      '@type': 'Offer',
+      name: 'Beli terus (outright)',
+      priceCurrency: 'MYR',
+      price: String(u.priceOutright),
+      url: pageUrl,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil,
+      seller: { '@type': 'Organization', name: 'CUCKOO', url: site }
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: `${site}/products/` },
+    { '@type': 'ListItem', position: 3, name: 'Air Purifier', item: `${site}/products/air-purifier/` },
+    { '@type': 'ListItem', position: 4, name: 'U Model', item: pageUrl }
+  ]
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Penapis Udara CUCKOO U Model',
+  description:
+    'Maklumat lengkap CUCKOO U Model Air Purifier — liputan 1161 sq ft untuk ruang besar & komersial, harga, promo, spesifikasi, sistem penapisan True HEPA+ H14, gambar produk dan FAQ.',
+  url: pageUrl,
+  inLanguage: 'ms-MY',
+  dateModified,
+  isPartOf: { '@type': 'WebSite', name: 'CUCKOONANO', url: site },
+  primaryImageOfPage: { '@type': 'ImageObject', url: ogImg },
+  breadcrumb: breadcrumbSchema
+};
+
 const meta = {
-  "title": "U Model CUCKOO | Penapis Udara",
-  "description": "Semak maklumat U Model CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/air-purifier/u-model/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/u-model.webp",
-  "ogType": "website"
+  title: 'Penapis Udara CUCKOO U Model | Liputan 1161 sq ft, Harga & Promo',
+  description:
+    'CUCKOO U Model: penapis udara gred komersial ruang besar — liputan 1161 sq ft, True HEPA+ H14 (99.995%), PM1.0 & TVOC sensor, 10 modes. Sewa dari RM143/bulan.',
+  canonical: pageUrl,
+  ogImage: ogImg,
+  ogType: 'website'
 };
 ---
-<BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Penapis Udara</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">U Model CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat U Model, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/air-purifier/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-brand-soft"><img src="/assets/images/Gambar%20Produk%20png/u-model.webp" alt="U Model" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih U Model?</h2><p>Bahagian ini ialah rangka awal untuk page produk U Model. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Penapis Udara.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="air-purifier"></div><div data-agent-block></div>
+
+<BaseLayout {...meta} preloadImages={[heroFirst]}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(webPageSchema)} />
+
+  <!-- HERO -->
+  <section id="hero" class="relative overflow-hidden bg-brand-cream px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+    <div class="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_.98fr]">
+      <!-- KIRI -->
+      <div>
+        <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Liputan 1161 sq ft</span>
+          <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Gred Komersial</span>
+          <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Antiviral &amp; Antifungal</span>
+        </div>
+
+        <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+          <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Liputan Terluas</span>
+          <span class="text-sm font-black sm:text-base">Sehingga 1161 sq ft · 360° absorption</span>
+        </div>
+
+        <h1 class="text-[2.3rem] font-black leading-[1.08] tracking-tight text-brand-ink sm:text-5xl lg:text-[3.4rem]">
+          CUCKOO U Model — Penapis Udara Ruang Besar &amp; Komersial
+        </h1>
+
+        <!-- Gambar produk (mobile) -->
+        <div class="mt-6 lg:hidden">
+          <div id="heroStageM" class="product-blob accent-ring relative mx-auto max-w-sm overflow-hidden rounded-[1.7rem] p-6">
+            <div class="absolute bottom-10 left-1/2 h-14 w-[70%] -translate-x-1/2 rounded-full bg-brand-gold/20 blur-2xl"></div>
+            <img id="heroImgM" src={heroSlides[0].src} alt={heroSlides[0].alt} width="800" height="1000" loading="eager" fetchpriority="high" class="relative z-10 mx-auto h-[260px] w-auto object-contain drop-shadow-2xl" />
+            <button type="button" id="heroPrevM" aria-label="Gambar sebelumnya" class="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" id="heroNextM" aria-label="Gambar seterusnya" class="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+          </div>
+          <div id="heroDotsM" class="mt-4 flex justify-center gap-2"></div>
+        </div>
+
+        <p class="mt-5 max-w-xl text-base leading-8 text-brand-muted sm:text-lg">
+          Penapis udara premium untuk ruang besar — rumah besar, pejabat, masjid, sekolah, tadika, klinik, homestay dan showroom. True HEPA+ H14, PM1.0 &amp; TVOC sensor, Plasma Ioniser dan 10 operating modes untuk udara lebih bersih, segar dan selesa.
+        </p>
+
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center gap-2 rounded-full bg-cta-green px-7 py-4 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Promo U Model</a>
+          <a href="#korporat" class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30">🏢 Untuk Pejabat / Komersial</a>
+        </div>
+
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <a href="#harga" class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow transition hover:-translate-y-1">
+            <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Pelan Rental</p>
+            <p class="mt-2 text-4xl font-black leading-none">RM{u.rentalY1to3}<span class="text-sm font-black">/bulan</span></p>
+            <p class="mt-1 text-xs font-bold text-white/75">Termasuk 5 tahun servis &amp; warranty</p>
+          </a>
+          <a href="#harga" class="rounded-[1.35rem] border border-brand/10 bg-white px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25">
+            <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Beli Terus</p>
+            <p class="mt-2 text-xl font-black text-brand">RM{u.priceOutright.toLocaleString()}</p>
+            <p class="mt-2 text-sm font-bold text-brand-muted">Lihat detail harga →</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- KANAN (desktop) -->
+      <div class="hidden rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:block">
+        <div class="product-blob accent-ring relative overflow-hidden rounded-[1.7rem] p-4 sm:p-6 lg:p-8">
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">360° Absorption</span>
+            <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">True HEPA+ H14</span>
+          </div>
+
+          <div id="heroStageD" class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/80 to-white/35 p-5 sm:min-h-[390px] lg:min-h-[440px]">
+            <div class="absolute bottom-12 h-16 w-[72%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+            <img id="heroImgD" src={heroSlides[0].src} alt={heroSlides[0].alt} width="800" height="1000" loading="eager" fetchpriority="high" class="relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[425px]" />
+            <button type="button" id="heroPrevD" aria-label="Gambar sebelumnya" class="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+            <button type="button" id="heroNextD" aria-label="Gambar seterusnya" class="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+            <div id="heroDotsD" class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2"></div>
+          </div>
+
+          <div class="mt-5 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full border border-brand/15 bg-brand-soft px-4 py-2 text-xs font-black text-brand">Coverage 1161 sq ft</span>
+            <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">8-Colour LED</span>
+            <span class="rounded-full border border-brand-gold/30 bg-amber-50 px-4 py-2 text-xs font-black text-brand-gold">99.995% H14</span>
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">True HEPA+ H14</p></div>
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">10 Modes</p></div>
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">PM1.0 + TVOC</p></div>
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">Plasma Ioniser</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strip ikon ciri -->
+    <div class="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      {featureIcons.map((f) => (
+        <div class="flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-soft ring-1 ring-brand/10">
+          <img src={f.icon} alt={f.label} width="36" height="36" loading="lazy" class="h-9 w-9 shrink-0 object-contain" />
+          <span class="text-xs font-black text-brand">{f.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <section class="bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] px-4 py-14 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">1161<span class="ml-1 text-xl font-bold text-white/70">sq ft</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Liputan terluas — ruang besar</p>
+      </div>
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">360<span class="ml-1 text-xl font-bold text-white/70">°</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Penyerapan udara semua arah</p>
+      </div>
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">99.995<span class="ml-1 text-xl font-bold text-white/70">%</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Partikel disingkir (True HEPA+ H14)</p>
+      </div>
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">53.7<span class="ml-1 text-xl font-bold text-white/70">dBA</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Senyap walaupun ruang besar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE SHOWCASE (banner cutaway) -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Unmatched in Coverage</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Satu unit untuk seluruh ruang besar anda</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">CUCKOO U Model menapis udara sehingga <strong class="text-brand-maroon">1161 sq ft</strong> dengan 360° absorption — sesuai untuk rumah besar, pejabat, ruang solat, dewan kuliah, klinik dan ruang komersial yang luas.</p>
+      </div>
+      <div class="mt-10 overflow-hidden rounded-[2rem] bg-brand-soft p-3 shadow-soft ring-1 ring-brand-maroon/10 sm:p-5">
+        <img src={`${base}/cuckoo-u-model-banner-1161-sqft-coverage.webp`} alt="CUCKOO U Model menapis udara sehingga 1161 sq ft di pejabat, klinik, dewan dan rumah" loading="lazy" class="h-full w-full rounded-[1.5rem] object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 360 ABSORPTION -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+      <div class="overflow-hidden rounded-[2rem] bg-[#ebeee9] p-4 shadow-soft ring-1 ring-brand-maroon/10">
+        <img src={`${base}/cuckoo-u-model-360-absorption.webp`} alt="360° absorption CUCKOO U Model menyedut udara dari semua arah" loading="lazy" class="h-full w-full rounded-[1.5rem] object-contain" />
+      </div>
+      <div>
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">360° Absorption</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Menyedut udara dari semua arah</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Reka bentuk menara membolehkan U Model menarik udara dari setiap arah — pembersihan udara lebih menyeluruh merentasi ruang yang besar, bukan hanya di satu sudut.</p>
+        <div class="mt-7 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-brand-maroon/10"><p class="text-sm font-bold text-stone-700">Aliran udara menyeluruh untuk ruang luas</p></div>
+          <div class="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-brand-maroon/10"><p class="text-sm font-bold text-stone-700">Sesuai diletakkan di tengah ruang terbuka</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USEFUL / RUANG BESAR & KOMERSIAL -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Useful untuk Ruang Besar</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Bila ramai berkumpul, kualiti udara jadi penting</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Udara dalaman boleh <strong class="text-brand-maroon">2 hingga 5 kali</strong> lebih tercemar berbanding udara luar. Bila ramai orang berkumpul dalam ruang tertutup berhawa dingin untuk masa yang lama, udara yang sama beredar berulang kali.</p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 rounded-2xl bg-brand-soft p-4 ring-1 ring-brand-maroon/10"><span class="text-cta-green">✓</span><p class="text-sm font-semibold text-stone-700">Liputan luas — kurang unit diperlukan untuk ruang besar</p></li>
+          <li class="flex items-start gap-3 rounded-2xl bg-brand-soft p-4 ring-1 ring-brand-maroon/10"><span class="text-cta-green">✓</span><p class="text-sm font-semibold text-stone-700">Penapisan kuat &amp; pengesanan udara tepat untuk ruang sesak</p></li>
+          <li class="flex items-start gap-3 rounded-2xl bg-brand-soft p-4 ring-1 ring-brand-maroon/10"><span class="text-cta-green">✓</span><p class="text-sm font-semibold text-stone-700">Udara lebih segar untuk staf, pelanggan, jemaah &amp; pelajar</p></li>
+        </ul>
+        <a href="#korporat" class="mt-7 inline-flex items-center justify-center rounded-full bg-cta-green px-7 py-4 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">🏢 Lihat Tawaran Untuk Pejabat</a>
+      </div>
+      <div class="order-1 overflow-hidden rounded-[2rem] bg-brand-soft p-3 shadow-soft ring-1 ring-brand-maroon/10 lg:order-2">
+        <img src={`${base}/cuckoo-u-model-studio-podium.webp`} alt="CUCKOO U Model untuk ruang besar & komersial" loading="lazy" class="h-full w-full rounded-[1.5rem] object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-STAGE FILTRATION + H14 -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Unbeatable Filtering Power</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">4 peringkat penapisan, True HEPA+ H14</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Diuji menyingkir <strong class="text-brand-maroon">99.995% partikel udara</strong> — setiap lapisan menapis perkara berbeza, dari habuk kasar hingga fine dust, bau dan gas berbahaya.</p>
+      </div>
+
+      <!-- Gambar diagram filter (atas) -->
+      <div class="mt-10 overflow-hidden rounded-[2rem] bg-[#ecefea] p-4 shadow-soft ring-1 ring-brand-maroon/10 sm:p-6">
+        <img src={`${base}/cuckoo-u-model-4-stage-filtration-dark.webp`} alt="Sistem penapisan 4 peringkat CUCKOO U Model menyingkir 99.995% partikel udara" loading="lazy" class="mx-auto h-full w-full rounded-[1.25rem] object-contain" />
+      </div>
+
+      <!-- Kotak penerangan jenis filter (bawah) -->
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {filtration.map((f) => (
+          <div class="rounded-[1.5rem] bg-white p-6 shadow-soft ring-1 ring-brand-maroon/10">
+            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-lg font-black text-promo-gold">{f.n}</div>
+            <h3 class="mt-4 text-base font-black text-brand-ink">{f.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-stone-600">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bukti filter -->
+      <div class="mx-auto mt-10 grid max-w-5xl items-center gap-6 overflow-hidden rounded-[2rem] bg-white p-5 shadow-soft ring-1 ring-brand-maroon/10 sm:grid-cols-[0.85fr_1.15fr]">
+        <div class="overflow-hidden rounded-[1.5rem] bg-stone-100">
+          <img src={`${base}/cuckoo-u-model-used-filter-dust-proof.webp`} alt="Filter CUCKOO U Model dipenuhi habuk halus selepas digunakan — bukti penapisan" loading="lazy" class="h-full w-full object-cover" />
+        </div>
+        <div>
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-brand-maroon">Bukti Sebenar</p>
+          <h3 class="mt-2 text-2xl font-black text-brand-ink">Lihat sendiri habuk yang ditangkap</h3>
+          <p class="mt-3 text-sm leading-7 text-stone-600">Inilah habuk &amp; pencemar yang terperangkap dalam filter selepas digunakan — semua ini sepatutnya tidak masuk ke dalam paru-paru anda.</p>
+          <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-stone-400">Tanpa penapisan, habuk ini boleh menyebabkan:</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {dustEffects.map((d) => (
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3.5 py-2 text-xs font-bold text-brand-maroon ring-1 ring-brand-maroon/10">⚠️ {d}</span>
+            ))}
+          </div>
+          <p class="mt-5 text-xs font-semibold leading-6 text-stone-500">Servis &amp; pertukaran filter berkala diuruskan sepenuhnya oleh CUCKOO+ Care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COPPER SULPHIDE COATING -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-7 text-white shadow-premium sm:p-10 lg:p-14">
+      <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">Copper Sulphide Coating</p>
+      <h2 class="mt-4 max-w-2xl text-balance text-3xl font-black leading-tight tracking-tight sm:text-4xl">Kelebihan copper sulphide coating dalam U Model</h2>
+
+      <div class="mt-10 grid items-center gap-8 lg:grid-cols-[1.1fr_1.1fr_0.9fr]">
+        <ul class="space-y-6">
+          {copperAdvantages.slice(0, 3).map((c) => (
+            <li>
+              <h3 class="flex items-start gap-2.5 text-base font-black"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-promo-gold"></span>{c.title}</h3>
+              <p class="mt-1.5 pl-[18px] text-sm leading-6 text-rose-100">{c.desc}</p>
+            </li>
+          ))}
+        </ul>
+        <ul class="space-y-6">
+          {copperAdvantages.slice(3, 6).map((c) => (
+            <li>
+              <h3 class="flex items-start gap-2.5 text-base font-black"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-promo-gold"></span>{c.title}</h3>
+              <p class="mt-1.5 pl-[18px] text-sm leading-6 text-rose-100">{c.desc}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="overflow-hidden rounded-[1.75rem] bg-white/95 p-3 shadow-soft ring-1 ring-white/20">
+          <img src={`${base}/cuckoo-u-model-airflow-graphic.webp`} alt="Aliran udara bersih melalui filter copper sulphide CUCKOO U Model" loading="lazy" class="mx-auto h-full w-full rounded-[1.25rem] object-contain" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIR QUALITY DETECTION (PM1.0 + TVOC) -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[#16181c] via-[#1b1e24] to-[#0b0c0e] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">Ultra-Effective Air Quality Detection</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Sensor pintar untuk yang mata tak nampak</h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <!-- Fine Dust Sensor -->
+        <div class="flex flex-col overflow-hidden rounded-[2rem] bg-white/[0.06] ring-1 ring-white/10 backdrop-blur">
+          <div class="overflow-hidden bg-black/40">
+            <img src={`${base}/cuckoo-u-model-pm-bubbles-sensor.webp`} alt="Fine Dust Sensor mengesan PM2.5, PM1.0 dan PM10" loading="lazy" class="h-60 w-full object-cover sm:h-72" />
+          </div>
+          <div class="p-6 sm:p-7">
+            <h3 class="text-xl font-black sm:text-2xl">Pengesanan tepat dengan Fine Dust Sensor</h3>
+            <p class="mt-3 text-sm leading-7 text-white/75">Mengesan pencemar udara sehalus <strong class="text-white">PM1.0</strong> — partikel sangat kecil yang tidak dapat dilihat dengan mata kasar — supaya U Model bertindak lebih tepat terhadap fine dust.</p>
+            <div class="mt-5 inline-flex overflow-hidden rounded-2xl bg-white p-3">
+              <img src={`${base}/cuckoo-u-model-pm1-fine-dust-sensor.webp`} alt="Skala pengesanan PM10, PM2.5 dan PM1.0" loading="lazy" class="h-12 w-auto object-contain" />
+            </div>
+          </div>
+        </div>
+
+        <!-- TVOC Sensor -->
+        <div class="flex flex-col overflow-hidden rounded-[2rem] bg-white/[0.06] ring-1 ring-white/10 backdrop-blur">
+          <div class="overflow-hidden bg-black/40">
+            <img src={`${base}/cuckoo-u-model-tvoc-living-room.webp`} alt="TVOC Sensor mengesan gas & bau tidak kelihatan dalam ruang dalaman" loading="lazy" class="h-60 w-full object-cover sm:h-72" />
+          </div>
+          <div class="p-6 sm:p-7">
+            <h3 class="text-xl font-black sm:text-2xl">Smart sensing dengan TVOC Sensor</h3>
+            <p class="mt-3 text-sm leading-7 text-white/75">Untuk elemen tidak sihat lain yang tidak kelihatan, TVOC Sensor sentiasa memantau. <strong class="text-white">TVOC</strong> ialah gas atau bau daripada cat, bahan binaan dan bahan pembersih yang boleh berbahaya bila terkumpul dalam ruang tertutup.</p>
+            <div class="mt-5 inline-flex overflow-hidden rounded-2xl bg-white p-3">
+              <img src={`${base}/cuckoo-u-model-tvoc-level-badge.webp`} alt="Tahap TVOC — Good, Normal, Bad" loading="lazy" class="h-12 w-auto object-contain" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8-COLOUR LED INDICATOR -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">8-Colour LED Indicator</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Nampak tahap udara melalui 8 warna</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Paparan LED 8 aras menunjukkan kualiti udara semasa secara visual — anda bukan sekadar percaya, anda <em>tengok</em> bila udara bersih, sederhana atau perlu perhatian.</p>
+        <div class="mt-7 flex items-center gap-1.5">
+          {ledLevels.map((l) => (
+            <span class="h-8 flex-1 rounded-md" style={`background:${l.c}`} title={l.label}></span>
+          ))}
+        </div>
+        <div class="mt-3 flex justify-between text-xs font-bold text-stone-500">
+          <span>Baik</span>
+          <span>Sederhana</span>
+          <span>Kurang Baik</span>
+          <span>Sangat Teruk</span>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-[2rem] bg-stone-50 p-4 shadow-soft ring-1 ring-brand-maroon/10">
+        <img src={`${base}/cuckoo-u-model-air-quality-detection-colours.webp`} alt="Pengesanan kualiti udara CUCKOO U Model — Excellent, Good, Moderate, Bad" loading="lazy" class="h-full w-full rounded-[1.5rem] object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PLASMA IONISER -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+      <div class="overflow-hidden rounded-[2rem] bg-[#0f1a18] p-4 shadow-soft ring-1 ring-brand-maroon/10">
+        <img src={`${base}/cuckoo-u-model-plasma-ioniser-ca-mark.webp`} alt="CUCKOO Plasma Ioniser dan pensijilan CA Mark dari KACA" loading="lazy" class="h-full w-full rounded-[1.5rem] object-contain" />
+      </div>
+      <div>
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Unlocks Freshness</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">CUCKOO Plasma Ioniser</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Plasma Ioniser terbina dalam menghasilkan ion udara negatif yang mencas pencemar halus dan mengikatnya bersama — membantu menyingkir kontaminan bawaan udara untuk udara yang lebih segar sepanjang hari.</p>
+        <p class="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-black text-brand-maroon shadow-soft ring-1 ring-brand-maroon/10">✓ Disahkan CA Mark — Korea Air Cleaning Association (KACA)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIET 53.7 dBA -->
+  <section class="bg-[#0b0c0e] px-4 pt-16 text-white sm:px-6 lg:px-8 lg:pt-20">
+    <div class="mx-auto max-w-5xl text-center">
+      <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">Unexpectedly Peaceful</p>
+      <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Berkuasa, tapi senyap pada 53.7 dBA</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">Walaupun menapis ruang besar, U Model bekerja dengan tenang — sehingga anda hampir tak perasan ia menyala.</p>
+    </div>
+    <picture>
+      <source media="(min-width: 768px)" srcset={`${base}/cuckoo-u-model-peaceful-noise-desktop.webp`} />
+      <img src={`${base}/cuckoo-u-model-peaceful-noise-mobile.webp`} alt="Tahap bunyi CUCKOO U Model hanya 53.7 dBA berbanding 20 dBA dan 80 dBA" loading="lazy" class="mx-auto mt-8 h-auto w-full max-w-4xl object-contain" />
+    </picture>
+  </section>
+
+  <!-- 10 MODES -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream to-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <!-- gambar produk + aliran udara sebagai background (kanan, desktop) -->
+    <img src={`${base}/cuckoo-u-model-10-modes-product.webp`} alt="" aria-hidden="true" loading="lazy" class="pointer-events-none absolute -right-6 bottom-0 hidden h-[94%] w-auto max-w-[48%] select-none object-contain object-bottom lg:block xl:right-0" />
+
+    <div class="relative z-10 mx-auto max-w-7xl">
+      <div class="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-9 lg:max-w-[60%] lg:grid-cols-3">
+        <!-- heading (span penuh; Smart Mode duduk di kanan-atas dalam desktop) -->
+        <div class="col-span-2">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">User Experience Made Easy</p>
+          <div class="mt-3 flex items-end gap-3">
+            <span class="text-6xl font-black leading-none tracking-tight text-brand sm:text-7xl">10</span>
+            <span class="pb-1.5 text-2xl font-black tracking-tight text-brand-ink sm:text-3xl">Mode Operasi</span>
+          </div>
+          <p class="mt-4 max-w-md text-base leading-7 text-stone-600">Diprogram secara intuitif untuk memenuhi setiap keperluan — keselesaan, kebersihan dan penjimatan tenaga.</p>
+        </div>
+
+        {modes.map((m) => (
+          <div>
+            <img src={m.icon} alt={`Ikon ${m.title} CUCKOO U Model`} width="48" height="48" loading="lazy" class="h-12 w-12 object-contain" />
+            <h3 class="mt-3 text-base font-black text-brand-ink">{m.title}</h3>
+            <p class="mt-1.5 text-sm leading-6 text-stone-500">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SESUAI DIPASANG DI MANA -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Sesuai Dipasang Di Mana</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Untuk rumah besar &amp; ruang komersial</h2>
+      </div>
+      <div class="mt-10 grid items-center gap-8 lg:grid-cols-2">
+        <div class="overflow-hidden rounded-[2rem] bg-brand-soft p-3 shadow-soft ring-1 ring-brand-maroon/10">
+          <img src={`${base}/cuckoo-u-model-real-home-room.webp`} alt="CUCKOO U Model di ruang rumah sebenar" loading="lazy" class="h-full w-full rounded-[1.5rem] object-cover" />
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          {places.map((item) => (
+            <div class="flex items-start gap-3 rounded-2xl bg-brand-soft p-5 ring-1 ring-brand-maroon/10">
+              <span class="mt-0.5 text-cta-green">✓</span>
+              <p class="text-sm font-semibold leading-6 text-stone-700">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-sm font-semibold leading-7 text-stone-500">Nota: Air purifier membantu meningkatkan kualiti udara dalaman, tetapi ia bukan alat rawatan perubatan dan tidak menggantikan nasihat doktor, sistem ventilasi atau SOP kebersihan.</p>
+    </div>
+  </section>
+
+  <!-- KHAS UNTUK PEJABAT / KORPORAT / KERAJAAN -->
+  <section id="korporat" class="bg-brand-cream px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <!-- KIRI: grafik produk -->
+        <div class="relative overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-brand-maroon/10">
+          <span class="absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-xs font-black text-promo-gold shadow-glow">🏢 Untuk Pejabat &amp; Organisasi</span>
+          <img src={`${base}/cuckoo-u-model-1161-coverage-lifestyle.webp`} alt="CUCKOO U Model untuk pejabat — liputan sehingga 1161 sq ft" loading="lazy" class="h-full w-full rounded-[1.5rem] object-contain" />
+        </div>
+
+        <!-- KANAN: kandungan -->
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Pejabat Kerajaan &amp; Swasta</p>
+          <h2 class="mt-4 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-4xl">Udara bersih untuk ruang kerja anda</h2>
+          <p class="mt-4 text-base leading-7 text-stone-600">Satu unit menapis sehingga <strong class="text-brand-maroon">1161 sq ft</strong> — penyelesaian kemas untuk jabatan, GLC &amp; syarikat swasta.</p>
+
+          <div class="mt-7 grid gap-3 sm:grid-cols-2">
+            <div class="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-brand-maroon/10">
+              <span class="text-2xl">🏢</span>
+              <div><h3 class="text-sm font-black text-brand-ink">Liputan luas</h3><p class="mt-1 text-xs leading-5 text-stone-500">Kurang unit untuk ruang besar.</p></div>
+            </div>
+            <div class="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-brand-maroon/10">
+              <span class="text-2xl">💼</span>
+              <div><h3 class="text-sm font-black text-brand-ink">Rental bulanan</h3><p class="mt-1 text-xs leading-5 text-stone-500">Tanpa belanja modal besar.</p></div>
+            </div>
+            <div class="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-brand-maroon/10">
+              <span class="text-2xl">🛠️</span>
+              <div><h3 class="text-sm font-black text-brand-ink">Servis diuruskan</h3><p class="mt-1 text-xs leading-5 text-stone-500">Penyelenggaraan berkala.</p></div>
+            </div>
+            <div class="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-brand-maroon/10">
+              <span class="text-2xl">🧾</span>
+              <div><h3 class="text-sm font-black text-brand-ink">Sebut harga rasmi</h3><p class="mt-1 text-xs leading-5 text-stone-500">Untuk kelulusan & procurement.</p></div>
+            </div>
+          </div>
+
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-7 inline-flex w-full items-center justify-center rounded-2xl bg-cta-green px-8 py-4 text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark sm:w-auto">🧾 Minta Sebut Harga / Quotation</a>
+        </div>
+      </div>
+
+      <!-- Sektor sesuai -->
+      <div class="mt-10 flex flex-wrap justify-center gap-2.5">
+        {[
+          'Pejabat kerajaan & agensi',
+          'GLC & badan berkanun',
+          'Korporat & SME swasta',
+          'Klinik & sekolah',
+          'Masjid & institusi',
+          'Dewan & ruang pelanggan'
+        ].map((s) => (
+          <span class="rounded-full border border-brand-maroon/15 bg-white px-4 py-2 text-xs font-bold text-stone-600 shadow-sm">{s}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI GAMBAR PRODUK -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Gambar Produk</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight text-brand-ink sm:text-4xl">Tengok rupa sebenar CUCKOO U Model</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Swipe atau tekan butang kiri kanan. Klik gambar untuk zoom.</p>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-4xl">
+        <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-white to-stone-50">
+          <img id="gImg" src={productPhotos[0].image} alt={productPhotos[0].alt} loading="lazy" decoding="async" class="h-[320px] w-full cursor-zoom-in object-contain p-4 sm:h-[480px]" />
+          <button type="button" id="gPrev" aria-label="Gambar sebelumnya" class="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">‹</button>
+          <button type="button" id="gNext" aria-label="Gambar seterusnya" class="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-white">›</button>
+          <span class="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">🔍 Klik untuk zoom</span>
+        </div>
+        <div id="gDots" class="mt-5 flex flex-wrap justify-center gap-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section id="review" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Testimoni Customer</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Apa kata customer yang pernah berurusan dengan saya</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara feedback customer yang pernah saya bantu sebagai ejen CUCKOO.</p>
+      </div>
+
+      <div class="relative mt-12">
+        <div id="testiTrack" class="flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]">
+              <div class="overflow-hidden rounded-[1.5rem] bg-stone-100">
+                <img src={`https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-${n}.webp`} alt={`Testimoni customer CUCKOO berurusan dengan Fadhil ${n}`} class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <button type="button" id="testiPrev" aria-label="Testimoni sebelumnya" class="absolute -left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:left-3">‹</button>
+        <button type="button" id="testiNext" aria-label="Testimoni seterusnya" class="absolute -right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:right-3">›</button>
+      </div>
+      <p class="mt-6 text-center text-sm font-semibold leading-6 text-stone-500">*Testimoni berdasarkan pengalaman customer yang pernah berurusan dengan saya sebagai ejen CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="harga" class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Harga &amp; Pelan</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Satu unit untuk seluruh ruang besar anda</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Daripada beli berbilang unit kecil, U Model memberi liputan 1161 sq ft dalam satu unit premium.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <!-- Outright -->
+        <div class="flex flex-col rounded-[2rem] bg-white p-8 shadow-soft ring-1 ring-stone-200">
+          <p class="text-xs font-black uppercase tracking-widest text-stone-500">Beli Terus / Outright</p>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="text-4xl font-black text-brand-ink">RM{u.priceOutright.toLocaleString()}</span>
+          </div>
+          <p class="mt-2 text-sm font-semibold text-stone-600">Termasuk percuma 1 tahun servis &amp; warranty.</p>
+          <ul class="mt-5 space-y-2 text-sm font-medium text-stone-600">
+            <li class="flex gap-2"><span class="text-cta-green">✓</span> Bayar sekali, terus milik</li>
+            <li class="flex gap-2"><span class="text-cta-green">✓</span> Penghantaran &amp; pemasangan diuruskan CUCKOO</li>
+          </ul>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-7 inline-flex items-center justify-center rounded-2xl border border-brand/15 bg-white px-7 py-4 text-center text-base font-black text-brand shadow-soft transition hover:border-brand/30">WhatsApp Untuk Beli Terus</a>
+        </div>
+
+        <!-- Rental (highlighted) -->
+        <div class="relative flex flex-col overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium">
+          <span class="absolute right-5 top-5 rounded-full bg-promo-gold px-3 py-1 text-xs font-black text-brand-ink">Paling Popular</span>
+          <p class="text-xs font-black uppercase tracking-widest text-rose-100">Pelan Rental ({u.rentalMonths} bulan)</p>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="text-4xl font-black">RM{u.rentalY1to3}</span>
+            <span class="text-sm font-bold text-rose-100">/bulan</span>
+          </div>
+          <p class="mt-2 text-sm font-semibold text-rose-100">Tahun 1–3: RM{u.rentalY1to3}/bln · Tahun 4–5: RM{u.rentalY4to5}/bln</p>
+          <ul class="mt-5 space-y-2 text-sm font-medium text-rose-50">
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Percuma 5 tahun servis &amp; warranty</li>
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Servis, cuci &amp; pertukaran filter berkala</li>
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Penghantaran &amp; pemasangan PERCUMA</li>
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Sesuai untuk rumah besar &amp; premis komersial</li>
+          </ul>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-7 inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-center text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Semak Kelayakan Rental</a>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-2xl bg-white p-5 text-center text-sm font-semibold text-stone-600 shadow-soft ring-1 ring-brand-maroon/10">
+        CUCKOO+ Care Service Package: <strong class="text-brand-maroon">RM{u.carePackage}/tahun</strong>. Harga &amp; promo tertakluk kepada terma dan tempoh kempen semasa.
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOTION TERKINI -->
+  <div data-promo></div>
+
+  <!-- SPECIFICATIONS -->
+  <section id="spesifikasi" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Spesifikasi Produk</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Penapis Udara CUCKOO U Model</h2>
+      </div>
+
+      <div class="mt-10 grid items-start gap-8 lg:grid-cols-[1fr_1.2fr]">
+        <div class="overflow-hidden rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-200">
+          <img src={`${base}/UModel-Spec-001@2x.webp`} alt="Penapis Udara CUCKOO U Model" loading="lazy" class="h-full w-full object-contain" />
+        </div>
+        <div class="overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-soft">
+          <table class="w-full text-left text-sm sm:text-base">
+            <tbody class="divide-y divide-stone-200">
+              <tr><th class="w-2/5 bg-stone-50 p-4 font-black">Model</th><td class="p-4 font-semibold">{u.name}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Jenis Produk</th><td class="p-4 font-semibold">{u.type}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Coverage</th><td class="p-4 font-semibold">{u.coverage}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Power Consumption</th><td class="p-4 font-semibold">{u.power}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Rated Power</th><td class="p-4 font-semibold">{u.ratedPower}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Noise Level</th><td class="p-4 font-semibold">{u.noise}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Filtration</th><td class="p-4 font-semibold">{u.stages} — {u.filters}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Saiz Produk</th><td class="p-4 font-semibold">{u.size}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Berat Produk</th><td class="p-4 font-semibold">{u.weight}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-sm font-semibold leading-7 text-stone-500">*Spesifikasi &amp; harga tertakluk kepada maklumat rasmi dan kempen semasa. WhatsApp untuk semak promo dan kesesuaian ruang anda.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">FAQ</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Soalan lazim tentang CUCKOO U Model</h2>
+      </div>
+      <div class="mt-10 space-y-4">
+        {faqs.map((f, i) => (
+          <details class="group rounded-2xl bg-stone-50 p-6 shadow-sm ring-1 ring-stone-100" open={i === 0}>
+            <summary class="cursor-pointer list-none text-lg font-black text-brand-dark">{f.q}</summary>
+            <p class="mt-4 leading-7 text-stone-600">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="bg-brand-soft px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium sm:p-12 lg:p-16">
+      <div class="mx-auto max-w-3xl">
+        <p class="inline-flex rounded-full bg-white/12 px-5 py-2 text-xs font-black uppercase tracking-[0.24em] text-rose-100 ring-1 ring-white/15">Ready Untuk Udara Lebih Bersih?</p>
+        <h2 class="mt-6 text-balance text-3xl font-black leading-tight tracking-tight sm:text-5xl">Bawa pulang CUCKOO U Model hari ini</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Liputan 1161 sq ft. True HEPA+ H14. Servis berkala diuruskan. Klik WhatsApp untuk semak promo dan dapatkan consultation percuma — untuk rumah besar atau premis komersial anda.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-9 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Promo U Model</a>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-9 py-5 text-lg font-black text-white backdrop-blur transition hover:bg-white/20">🏢 Sebut Harga Komersial</a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-rose-100">
+          <span>✓ Consultation Percuma</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Servis Berkala</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Pemasangan Diuruskan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zoom lightbox -->
+  <div id="zoomLightbox" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+    <button type="button" id="zoomClose" aria-label="Tutup gambar" class="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-2xl font-black text-brand-maroon shadow-lg">×</button>
+    <img id="zoomImage" src="" alt="" class="max-h-[90vh] w-auto max-w-[94vw] rounded-2xl object-contain shadow-premium" />
+  </div>
+
+  <!-- DYNAMIC COMPONENTS -->
+  <div data-product-selector data-initial="air-purifier"></div>
+  <div data-agent-block></div>
 </BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  .text-balance { text-wrap: balance; }
+  .product-blob { background: radial-gradient(circle at 40% 35%, rgba(216,166,74,.28), transparent 38%), radial-gradient(circle at 65% 58%, rgba(122,14,35,.18), transparent 42%), linear-gradient(145deg, #fff8f2, #ffffff); }
+  .accent-ring { box-shadow: 0 30px 80px rgba(20,20,20,.16); }
+</style>
+
+<script is:inline define:vars={{ gSlides: productPhotos.map((p) => ({ src: p.image, alt: p.alt })), heroSlides }}>
+  // Hero — slider gambar produk (mobile + desktop selari)
+  let hi = 0;
+  const heroImgM = document.getElementById('heroImgM');
+  const heroImgD = document.getElementById('heroImgD');
+  const heroDotsM = document.getElementById('heroDotsM');
+  const heroDotsD = document.getElementById('heroDotsD');
+
+  function buildHeroDots(container) {
+    if (!container) return;
+    container.innerHTML = '';
+    heroSlides.forEach((_, di) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Lihat gambar ' + (di + 1));
+      dot.dataset.i = String(di);
+      dot.className = di === hi ? 'h-2.5 w-6 rounded-full bg-brand-maroon transition' : 'h-2.5 w-2.5 rounded-full bg-stone-300 transition hover:bg-brand-maroon';
+      dot.addEventListener('click', () => renderHero(di));
+      container.appendChild(dot);
+    });
+  }
+
+  function renderHero(index) {
+    hi = (index + heroSlides.length) % heroSlides.length;
+    const s = heroSlides[hi];
+    if (heroImgM) { heroImgM.src = s.src; heroImgM.alt = s.alt; }
+    if (heroImgD) { heroImgD.src = s.src; heroImgD.alt = s.alt; }
+    buildHeroDots(heroDotsM);
+    buildHeroDots(heroDotsD);
+  }
+
+  ['heroPrevM', 'heroPrevD'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => renderHero(hi - 1));
+  });
+  ['heroNextM', 'heroNextD'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => renderHero(hi + 1));
+  });
+
+  ['heroStageM', 'heroStageD'].forEach((id) => {
+    const stage = document.getElementById(id);
+    if (!stage) return;
+    let sx = 0;
+    stage.addEventListener('touchstart', (e) => { sx = e.touches[0] ? e.touches[0].clientX : 0; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      const t = e.changedTouches[0]; if (!t) return;
+      const dx = t.clientX - sx;
+      if (Math.abs(dx) > 40) renderHero(hi + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+  });
+
+  if (heroImgM || heroImgD) renderHero(0);
+
+  // Galeri gambar produk — slider gambar besar + zoom
+  let gi = 0;
+  const gImg = document.getElementById('gImg');
+  const gDots = document.getElementById('gDots');
+  const gPrev = document.getElementById('gPrev');
+  const gNext = document.getElementById('gNext');
+
+  function renderG(index) {
+    gi = (index + gSlides.length) % gSlides.length;
+    if (gImg) { gImg.src = gSlides[gi].src; gImg.alt = gSlides[gi].alt; }
+    if (gDots) {
+      gDots.innerHTML = '';
+      gSlides.forEach((_, di) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Lihat gambar ' + (di + 1));
+        dot.className = di === gi ? 'h-3 w-8 rounded-full bg-brand-maroon transition' : 'h-3 w-3 rounded-full bg-stone-300 transition hover:bg-brand-maroon';
+        dot.addEventListener('click', () => renderG(di));
+        gDots.appendChild(dot);
+      });
+    }
+  }
+  if (gPrev) gPrev.addEventListener('click', () => renderG(gi - 1));
+  if (gNext) gNext.addEventListener('click', () => renderG(gi + 1));
+  if (gImg) {
+    renderG(0);
+    let sx = 0, swiped = false;
+    const stage = gImg.parentElement;
+    stage.addEventListener('touchstart', (e) => { sx = e.touches[0] ? e.touches[0].clientX : 0; swiped = false; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      const t = e.changedTouches[0]; if (!t) return;
+      const dx = t.clientX - sx;
+      if (Math.abs(dx) > 40) { swiped = true; renderG(gi + (dx < 0 ? 1 : -1)); }
+    }, { passive: true });
+    gImg.addEventListener('click', () => { if (swiped) { swiped = false; return; } openZoom(gImg.currentSrc || gImg.src, gImg.alt); });
+  }
+
+  // Zoom lightbox
+  const zoomLightbox = document.getElementById('zoomLightbox');
+  const zoomImage = document.getElementById('zoomImage');
+  function openZoom(src, alt) {
+    if (!zoomLightbox || !zoomImage || !src) return;
+    zoomImage.src = src; zoomImage.alt = alt || '';
+    zoomLightbox.classList.remove('hidden'); zoomLightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeZoom() {
+    if (!zoomLightbox) return;
+    zoomLightbox.classList.add('hidden'); zoomLightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  if (zoomLightbox) {
+    zoomLightbox.addEventListener('click', (e) => { if (e.target === zoomLightbox || e.target.id === 'zoomClose') closeZoom(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeZoom(); });
+  }
+
+  // Testimoni slider — butang + drag
+  const testiTrack = document.getElementById('testiTrack');
+  const testiPrev = document.getElementById('testiPrev');
+  const testiNext = document.getElementById('testiNext');
+  if (testiTrack) {
+    const stepWidth = () => {
+      const slide = testiTrack.querySelector('.testi-slide');
+      const gap = parseFloat(getComputedStyle(testiTrack).columnGap || '20') || 20;
+      return slide ? slide.getBoundingClientRect().width + gap : testiTrack.clientWidth * 0.8;
+    };
+    if (testiPrev) testiPrev.addEventListener('click', () => testiTrack.scrollBy({ left: -stepWidth(), behavior: 'smooth' }));
+    if (testiNext) testiNext.addEventListener('click', () => testiTrack.scrollBy({ left: stepWidth(), behavior: 'smooth' }));
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+    testiTrack.addEventListener('pointerdown', (e) => { isDown = true; moved = false; startX = e.clientX; startScroll = testiTrack.scrollLeft; testiTrack.classList.add('cursor-grabbing'); });
+    testiTrack.addEventListener('pointermove', (e) => { if (!isDown) return; const delta = e.clientX - startX; if (Math.abs(delta) > 4) moved = true; testiTrack.scrollLeft = startScroll - delta; });
+    const endDrag = () => { isDown = false; testiTrack.classList.remove('cursor-grabbing'); };
+    testiTrack.addEventListener('pointerup', endDrag);
+    testiTrack.addEventListener('pointerleave', endDrag);
+    testiTrack.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  }
+</script>

@@ -689,7 +689,7 @@ const SITE = {
       "items": [
         {
           "id": "bespoke-2",
-          "name": "Bespoke 2",
+          "name": "Bespoke 2 Massage Chair",
           "url": "/products/massage-chair/bespoke-2/",
           "category": "massage-chair",
           "image": "/assets/images/products/massage-chair/bespoke-2/cuckoo%20bespoke%202%20massage%20chair%20kerusi%20urut%204.webp",
@@ -776,6 +776,27 @@ const SITE = {
             "100% natural latex*",
             "Graphene & VitaShield Tech",
             "7 Zone Spine Support"
+          ]
+        },
+        {
+          "id": "flex",
+          "name": "FLEX Daybed",
+          "url": "/products/mattress/flex/",
+          "category": "mattress",
+          "image": "/assets/images/products/mattress/flex/cuckoo-flex-daybed-grey-sofa-product-image.webp",
+          "desc": "Sofa daybed serbaguna CUCKOO x Napure yang bertukar antara sofa dan bed dengan 8-angle comfort.",
+          "price": "RM12/bulan*",
+          "bullets": [
+            "Sofa & bed 2-in-1",
+            "8-Angle Comfort",
+            "100% Full Latex top layer",
+            "3-Seater · Meta Grey"
+          ],
+          "specs": ["2-in-1", "8-Angle", "100kg"],
+          "highlights": [
+            "Sofa & bed dalam satu produk",
+            "8-Angle Comfort boleh laras",
+            "100% Full Latex on top layer"
           ]
         }
       ]
