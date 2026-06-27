@@ -1,14 +1,958 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+
+const base = '/assets/images/products/air-purifier/c-humidifier';
+const site = 'https://www.cuckoonano.com';
+const pageUrl = `${site}/products/air-purifier/c-plus-humidifier/`;
+const priceValidUntil = '2026-12-31';
+const dateModified = '2026-06-27';
+
+// ---- Single source of truth: fakta C+ Model ----
+const c = {
+  name: 'CUCKOO C+ Model',
+  type: 'Penapis Udara + Humidifier',
+  coverage: '402 sq ft (37.4m²)',
+  weight: '9.2kg',
+  size: '430(W) × 276(D) × 550(H) mm',
+  power: '25W',
+  humidify: '300mL/h',
+  tank: '2.5L',
+  sensor: 'Fine Dust Sensor · Humidification Sensor',
+  stages: '5-Stage Filtration System',
+  filters: 'Pre-Filter · Harmful Gas Relax Filter · Deodorisation Filter · True HEPA H14 · Humidification Filter',
+  voice: 'English · Malay · Chinese · Korean',
+  priceOutright: 3100,
+  promoFirst6: 12,
+  rentalY1to3: 121,
+  rentalY4to5: 116,
+  rentalMonths: 60,
+  carePackage: 660
+};
+
+const heroImg = `${base}/penapis-udara-cuckoo-c-plus-humidifier-air-purifier-malaysia.webp`;
+const ogImg = `${site}${heroImg}`;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'CUCKOO C+ Model Air Purifier + Humidifier',
+  alternateName: ['Penapis Udara CUCKOO C+ Humidifier', 'CUCKOO C+ Air Purifier Humidifier Malaysia'],
+  category: 'Air Purifier',
+  brand: { '@type': 'Brand', name: 'CUCKOO' },
+  manufacturer: { '@type': 'Organization', name: 'CUCKOO' },
+  model: 'C+ Model',
+  description:
+    'CUCKOO C+ Model — gabungan air purifier + humidifier 2-in-1 dengan True HEPA H14 Filter, 5-stage filtration, tangki air 2.5L (300mL/h), Plasma Ioniser, 11 operating modes dan voice guide 4 bahasa. Liputan 402 sq ft. Promo dari RM12/bulan atau beli terus RM3,100 di Malaysia.',
+  url: pageUrl,
+  image: [
+    ogImg,
+    `${site}${base}/penapis-udara-cuckoo-c-plus-humidifier-bilik-tidur.webp`,
+    `${site}${base}/penapis-udara-cuckoo-c-plus-humidifier-bilik-anak.webp`
+  ],
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Coverage', value: c.coverage },
+    { '@type': 'PropertyValue', name: 'Filtration', value: c.filters },
+    { '@type': 'PropertyValue', name: 'Humidifying Capability', value: c.humidify },
+    { '@type': 'PropertyValue', name: 'Water Tank Size', value: c.tank },
+    { '@type': 'PropertyValue', name: 'Sensor', value: c.sensor },
+    { '@type': 'PropertyValue', name: 'Voice Navigation', value: c.voice },
+    { '@type': 'PropertyValue', name: 'Power Consumption', value: c.power },
+    { '@type': 'PropertyValue', name: 'Dimensi (W×D×H)', value: c.size },
+    { '@type': 'PropertyValue', name: 'Berat', value: c.weight }
+  ],
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Pelan rental CUCKOO (60 bulan)',
+      priceCurrency: 'MYR',
+      price: String(c.rentalY4to5),
+      url: pageUrl,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil,
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: String(c.rentalY4to5),
+        priceCurrency: 'MYR',
+        unitText: 'MONTH',
+        referenceQuantity: { '@type': 'QuantitativeValue', value: String(c.rentalMonths), unitText: 'MONTH' }
+      },
+      seller: { '@type': 'Organization', name: 'CUCKOO', url: site }
+    },
+    {
+      '@type': 'Offer',
+      name: 'Beli terus (outright)',
+      priceCurrency: 'MYR',
+      price: String(c.priceOutright),
+      url: pageUrl,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil,
+      seller: { '@type': 'Organization', name: 'CUCKOO', url: site }
+    }
+  ]
+};
+
+const faqs = [
+  { q: 'Apa itu CUCKOO C+ Model?', a: 'CUCKOO C+ Model ialah produk 2-in-1 yang menggabungkan fungsi air purifier dan humidifier. Ia membantu menapis udara serta menambah kelembapan udara dalam ruang rumah.' },
+  { q: 'Apa beza air purifier dan humidifier?', a: 'Air purifier membantu menapis udara daripada habuk, bau, alergen dan partikel halus. Humidifier pula membantu menambah kelembapan udara supaya ruang tidak terlalu kering.' },
+  { q: 'Adakah CUCKOO C+ hanya humidifier sahaja?', a: 'Tidak. CUCKOO C+ ialah gabungan air purifier dan humidifier. Ia mempunyai sistem penapisan udara 5 peringkat dan juga fungsi humidification.' },
+  { q: 'Berapa luas coverage CUCKOO C+?', a: 'CUCKOO C+ mempunyai recommended coverage sekitar 37.4m² / 402.57 sq ft, sesuai untuk bilik tidur, ruang keluarga kecil, apartment atau ruang rumah sederhana.' },
+  { q: 'Berapa besar tangki air CUCKOO C+?', a: 'CUCKOO C+ mempunyai water tank bersaiz 2.5L, dengan humidifying capability sehingga 300mL/h.' },
+  { q: 'Adakah CUCKOO C+ menggunakan HEPA H14?', a: 'Ya. CUCKOO C+ menggunakan True HEPA H14 Filter yang membantu menapis PM2.5, fine dust dan partikel jerebu sekecil 0.3 microns.' },
+  { q: 'Apakah filter yang digunakan oleh CUCKOO C+?', a: 'CUCKOO C+ menggunakan Pre-Filter, Harmful Gas Relax Filter, Deodorisation Filter, True HEPA H14 Filter dan Humidification Filter dalam 5-Stage Filtration System.' },
+  { q: 'Adakah CUCKOO C+ sesuai untuk bilik tidur?', a: 'Ya. CUCKOO C+ sesuai untuk bilik tidur, terutama bilik yang selalu menggunakan aircond atau terasa kering. Baby Mode dan Auto Humidity Mode menjadikannya lebih selesa untuk penggunaan waktu malam.' },
+  { q: 'Adakah CUCKOO C+ sesuai untuk bayi dan anak kecil?', a: 'Ya, CUCKOO C+ sesuai digunakan di rumah yang mempunyai bayi atau anak kecil. Namun, ia bukan alat rawatan perubatan. Jika anak mempunyai masalah kesihatan serius, dapatkan nasihat doktor.' },
+  { q: 'Adakah CUCKOO C+ boleh membantu mengurangkan bau?', a: 'Ya. Deodorisation Filter membantu mengurangkan bau kurang menyenangkan seperti bau asap, bau masakan, bau haiwan peliharaan dan bau ruang tertutup.' },
+  { q: 'Adakah CUCKOO C+ membantu ketika musim jerebu?', a: 'Ya. True HEPA H14 Filter membantu menapis PM2.5, fine dust dan partikel jerebu. Yellow Dust Mode juga sesuai digunakan apabila kualiti udara kurang baik.' },
+  { q: 'Bila filter CUCKOO C+ perlu ditukar?', a: 'Pre-Filter perlu dibersihkan setiap 2 minggu. Harmful Gas Relax Filter dan Humidification Filter ditukar setiap 4 bulan. Deodorisation Filter dan True HEPA H14 Filter ditukar setiap 12 bulan.' },
+  { q: 'Adakah CUCKOO C+ jimat elektrik?', a: 'CUCKOO C+ menggunakan kuasa 25W dan dilengkapi Energy Eye Mode untuk membantu penggunaan tenaga yang lebih bijak.' },
+  { q: 'Adakah CUCKOO C+ sesuai untuk ruang besar?', a: 'CUCKOO C+ sesuai untuk ruang sekitar 402 sq ft. Untuk ruang yang sangat besar seperti pejabat besar atau ruang tamu besar, model lain seperti D Model atau K Model mungkin lebih sesuai.' },
+  { q: 'Berapa harga promo CUCKOO C+?', a: 'Untuk promo semasa, bayaran ialah RM12 sebulan untuk 6 bulan pertama, kemudian RM121 sebulan untuk bulan ke-7 hingga 36, dan RM116 sebulan untuk bulan ke-37 hingga 60. Tertakluk kepada stok, kawasan, kelulusan dan terma semasa.' }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: `${site}/products/` },
+    { '@type': 'ListItem', position: 3, name: 'Air Purifier', item: `${site}/products/air-purifier/` },
+    { '@type': 'ListItem', position: 4, name: 'C+ Humidifier', item: pageUrl }
+  ]
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Penapis Udara CUCKOO C+ Model (Air Purifier + Humidifier)',
+  description:
+    'Maklumat lengkap CUCKOO C+ Model — air purifier + humidifier 2-in-1: harga, promo, spesifikasi, True HEPA H14, 5-stage filtration, fungsi humidifier dan FAQ.',
+  url: pageUrl,
+  inLanguage: 'ms-MY',
+  dateModified,
+  isPartOf: { '@type': 'WebSite', name: 'CUCKOONANO', url: site },
+  primaryImageOfPage: { '@type': 'ImageObject', url: ogImg },
+  breadcrumb: breadcrumbSchema
+};
+
+// Masalah pelanggan (problem section)
+const problems = [
+  { icon: '🌫️', title: 'Rumah cepat berhabuk', desc: 'Baru lap, esok berdebu balik di perabot, lantai dan permukaan rumah.' },
+  { icon: '🐱', title: 'Ada kucing / haiwan', desc: 'Bulu haiwan peliharaan berterbangan dan mudah terkumpul dalam ruang.' },
+  { icon: '🏗️', title: 'Dekat jalan & pembinaan', desc: 'Berhampiran jalan besar, tapak pembinaan, pembakaran terbuka atau kawasan berdebu.' },
+  { icon: '👃', title: 'Bau terperangkap', desc: 'Bau masakan, asap rokok dan bau ruang tertutup yang kurang menyenangkan.' },
+  { icon: '❄️', title: 'Bilik aircond kering', desc: 'Bilik berhawa dingin sering terasa terlalu kering dan kurang selesa.' },
+  { icon: '💧', title: 'Kulit & tekak kering', desc: 'Kulit, hidung atau tekak terasa kering akibat udara yang kurang lembap.' },
+  { icon: '🤧', title: 'Sensitif dengan habuk', desc: 'Mudah bersin atau terganggu dengan habuk halus, debunga dan udara berdebu.' },
+  { icon: '🏡', title: 'Mahu udara lebih selesa', desc: 'Mahukan udara rumah yang lebih bersih, segar dan selesa untuk seisi keluarga.' }
+];
+
+// Jadual pertukaran filter (rasmi)
+const filterTable = [
+  { level: 'Level 1', type: 'Pre-Filter', fn: 'Membantu menapis habuk besar di udara.', life: '2 minggu', action: 'Cuci' },
+  { level: 'Level 2', type: 'Harmful Gas Easy Filter S', fn: 'Membantu mengurangkan sulfur dioxide dan nitrogen dioxide.', life: '4 bulan', action: 'Tukar' },
+  { level: 'Level 3', type: 'Deodorisation Filter', fn: 'Membantu mengurangkan ammonia, acetaldehyde, acetic acid, gas tertentu dan bau kurang menyenangkan.', life: '12 bulan', action: 'Tukar' },
+  { level: 'Level 4–7', type: 'Ultra PM2.5 Filter (Anti-Bacterial · Anti-Mold · Anti-Virus · Allergen)', fn: 'Membantu menapis habuk halus (micro dust) dan asap rokok. Lapisan dengan ciri anti-bakteria, anti-kulat, anti-alergen & anti-virus.', life: '12 bulan', action: 'Tukar' },
+  { level: '—', type: 'Humidification Filter', fn: 'Membantu penyerapan air & kecekapan penyejatan untuk melembapkan udara.', life: '1 minggu / 4 bulan', action: 'Cuci / Tukar', humid: true }
+];
+
+// Filter kotor (agitate slider) — kesan habuk pada kesihatan & kebersihan
+const dirtyFilters = [
+  { img: `${base}/penapis-udara-cuckoo-c-plus-humidifier-filter-kotor-1.webp`, title: 'Habuk tebal dalam 1 filter sahaja', desc: 'Inilah habuk yang terperangkap dalam filter — semua ini sepatutnya tidak masuk ke dalam paru-paru anda.' },
+  { img: `${base}/penapis-udara-cuckoo-c-plus-humidifier-filter-kotor-2.webp`, title: 'Filter dekat ruang tamu', desc: 'Ruang yang paling kerap diguna selalunya paling tebal habuk — tanpa anda perasan.' },
+  { img: `${base}/penapis-udara-cuckoo-c-plus-humidifier-filter-kotor-3.webp`, title: 'Habuk halus & PM2.5', desc: 'Zarah halus yang mata tak nampak boleh menyebabkan bersin, hidung & mata gatal dan kurang selesa bernafas.' },
+  { img: `${base}/penapis-udara-cuckoo-c-plus-humidifier-filter-kotor-4.webp`, title: 'Bulu haiwan & debunga', desc: 'Bulu haiwan, debunga dan habuk rumah bercampur dalam udara yang anda hirup setiap hari.' },
+  { img: `${base}/penapis-udara-cuckoo-c-plus-humidifier-filter-kotor-5.webp`, title: 'Ditangkap sebelum beredar semula', desc: 'CUCKOO C+ membantu menangkap habuk ini supaya udara rumah lebih bersih dan rumah tak cepat berdebu.' }
+];
+
+// Galeri rumah sebenar
+const realGalleryItems = Array.from({ length: 15 }, (_, index) => {
+  const n = index + 1;
+  return {
+    image: `${base}/penapis-udara-cuckoo-c-plus-humidifier-rumah-${n}.webp`,
+    title: `Gambar Sebenar #${n}`,
+    copy: 'Gambar sebenar penapis udara CUCKOO C+ Humidifier di rumah pelanggan.',
+    alt: `Gambar sebenar penapis udara CUCKOO C+ Humidifier di rumah pelanggan ${n}`
+  };
+});
+
+// 11 operating modes (emoji)
+const modes = [
+  { emoji: '🔄', title: 'Auto Mode', desc: 'Melaras pembersihan udara & kelajuan kipas automatik ikut tahap kebersihan udara.' },
+  { emoji: '🌙', title: 'Baby Mode', desc: 'Mengurangkan bunyi & gangguan cahaya, sesuai ketika bayi atau anak kecil berehat.' },
+  { emoji: '🔒', title: 'Lock Mode', desc: 'Mengunci butang supaya tetapan tidak berubah secara tidak sengaja.' },
+  { emoji: '💧', title: 'Auto Humidity Mode', desc: 'Memaparkan & membantu mengawal tahap kelembapan udara sekeliling.' },
+  { emoji: '⏱️', title: 'Repeat Mode', desc: 'Membolehkan operasi mengikut tetapan masa tertentu.' },
+  { emoji: '👁️', title: 'Energy Eye Mode', desc: 'Mengesan keadaan gelap & matikan indikator untuk jimat tenaga.' },
+  { emoji: '💨', title: 'Turbo Mode', desc: 'Meningkatkan kelajuan kipas untuk mempercepatkan pembersihan udara.' },
+  { emoji: '🔔', title: 'Filter Replacement Indicator', desc: 'Memberi peringatan apabila filter perlu ditukar.' },
+  { emoji: '✨', title: 'Sterilisation Mode', desc: 'Mengaktifkan Plasma Ioniser untuk menyokong proses pembersihan udara.' },
+  { emoji: '🏠', title: 'Room Care Mode', desc: 'Melaras kelajuan kipas mengikut saiz ruang untuk pembersihan lebih sesuai.' },
+  { emoji: '🌪️', title: 'Yellow Dust Mode', desc: 'Sesuai apabila ada habuk halus, partikel jerebu atau udara luar kurang baik.' }
+];
+
+// Manfaat air purifier
+const purifierBenefits = [
+  'Membantu menapis habuk dan debu halus',
+  'Membantu mengurangkan bau kurang menyenangkan',
+  'Membantu menapis bulu haiwan peliharaan yang berterbangan',
+  'Membantu mengurangkan partikel jerebu dan PM2.5',
+  'Membantu menjadikan udara dalam rumah lebih bersih dan segar'
+];
+
+// Manfaat humidifier (bahasa selamat)
+const humidifierBenefits = [
+  'Membantu melembapkan udara dalam rumah',
+  'Membantu mengurangkan rasa kering pada kulit',
+  'Membantu melindungi rambut & kulit kepala daripada kekeringan',
+  'Membantu tidur terasa lebih selesa bila udara bilik tidak terlalu kering',
+  'Sesuai untuk bilik yang menggunakan aircond',
+  'Membantu menjadikan ruang rumah terasa lebih nyaman',
+  'Membantu memberi suasana lebih baik untuk tanaman indoor',
+  'Membantu mengekalkan kelembapan ruang untuk perabot kayu'
+];
+
+const voiceLangs = [
+  { flag: '🇬🇧', label: 'English' },
+  { flag: '🇲🇾', label: 'Bahasa Malaysia' },
+  { flag: '🇨🇳', label: 'Chinese / 中文' },
+  { flag: '🇰🇷', label: 'Korean / 한국어' }
+];
+
+const audience = [
+  { emoji: '🌬️', title: 'Mahu purifier + humidifier', desc: 'Keluarga yang mahu udara lebih bersih dan lebih lembap dalam satu produk.' },
+  { emoji: '👶', title: 'Ada bayi / anak kecil', desc: 'Rumah dengan bayi atau anak kecil yang mahukan udara lebih selesa.' },
+  { emoji: '🐾', title: 'Ada haiwan peliharaan', desc: 'Bantu kurangkan bulu haiwan, habuk dan bau dalam rumah.' },
+  { emoji: '❄️', title: 'Bilik kerap guna aircond', desc: 'Bilik tidur berhawa dingin yang sering terasa kering.' },
+  { emoji: '🏢', title: 'Apartment & kondominium', desc: 'Apartment, kondo atau bilik tidur utama bersaiz sederhana.' },
+  { emoji: '🛣️', title: 'Kawasan berdebu', desc: 'Rumah berdekatan jalan besar atau kawasan yang kerap berdebu.' }
+];
+
+const productPhotos = [
+  { file: 'penapis-udara-cuckoo-c-plus-humidifier-air-purifier-malaysia', alt: 'Penapis udara CUCKOO C+ Humidifier — paparan hadapan studio' },
+  { file: 'penapis-udara-cuckoo-c-plus-humidifier-bilik-tidur', alt: 'CUCKOO C+ Humidifier di bilik tidur bersebelahan kerusi' },
+  { file: 'penapis-udara-cuckoo-c-plus-humidifier-bilik-anak', alt: 'CUCKOO C+ Humidifier di bilik anak dengan teddy bear' },
+  { file: 'penapis-udara-cuckoo-c-plus-humidifier-tepi-katil', alt: 'CUCKOO C+ Humidifier di tepi katil bilik tidur' }
+].map((p, index) => ({ image: `${base}/${p.file}.webp`, title: `Gambar Produk #${index + 1}`, alt: p.alt }));
 
 const meta = {
-  "title": "C+ Humidifier CUCKOO | Penapis Udara",
-  "description": "Semak maklumat C+ Humidifier CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/air-purifier/c-plus-humidifier/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/c-plus-humidifier.webp",
-  "ogType": "website"
+  title: 'Penapis Udara CUCKOO C+ | Air Purifier + Humidifier H14',
+  description:
+    'CUCKOO C+ Model: air purifier + humidifier 2-in-1 — True HEPA H14, 5-stage filtration, tangki 2.5L, 11 modes & voice guide 4 bahasa. Promo dari RM12/bulan.',
+  canonical: pageUrl,
+  ogImage: ogImg,
+  ogType: 'website'
 };
 ---
-<BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Penapis Udara</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">C+ Humidifier CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat C+ Humidifier, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/air-purifier/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-brand-soft"><img src="/assets/images/Gambar%20Produk%20png/cuckoo-c-plus.webp" alt="C+ Humidifier" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih C+ Humidifier?</h2><p>Bahagian ini ialah rangka awal untuk page produk C+ Humidifier. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Penapis Udara.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="air-purifier"></div><div data-agent-block></div>
+
+<BaseLayout {...meta} preloadImages={[heroImg]}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(webPageSchema)} />
+
+  <!-- HERO -->
+  <section id="hero" class="relative overflow-hidden bg-brand-cream px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="absolute left-1/2 top-0 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"></div>
+
+    <div class="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_.98fr]">
+      <!-- KIRI: kandungan -->
+      <div>
+        <div class="mb-5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Air Purifier + Humidifier</span>
+          <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">True HEPA H14</span>
+          <span class="shrink-0 whitespace-nowrap rounded-full border border-brand/10 bg-white/80 px-4 py-2 text-xs font-bold text-brand shadow-soft">Voice Guide 4 Bahasa</span>
+        </div>
+
+        <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
+          <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
+          <span class="text-sm font-black sm:text-base">RM{c.promoFirst6} x 6 bulan pertama</span>
+        </div>
+
+        <h1 class="text-[2.3rem] font-black leading-[1.08] tracking-tight text-brand-ink sm:text-5xl lg:text-[3.4rem]">
+          CUCKOO C+ Model — Air Purifier + Humidifier 2-in-1
+        </h1>
+
+        <!-- Gambar produk (mobile sahaja) -->
+        <div class="mt-6 lg:hidden">
+          <div class="product-blob accent-ring relative mx-auto max-w-sm overflow-hidden rounded-[1.7rem] p-6">
+            <div class="absolute bottom-10 left-1/2 h-14 w-[70%] -translate-x-1/2 rounded-full bg-brand-gold/20 blur-2xl"></div>
+            <img src={heroImg} alt="Penapis Udara CUCKOO C+ Humidifier — paparan hadapan" width="800" height="900" loading="eager" fetchpriority="high" class="relative z-10 mx-auto h-[260px] w-auto object-contain drop-shadow-2xl" />
+          </div>
+        </div>
+
+        <p class="mt-5 max-w-xl text-base leading-8 text-brand-muted sm:text-lg">
+          Penapis udara dan humidifier dalam satu produk — bukan sahaja membantu menapis habuk, bau, alergen dan PM2.5 dengan True HEPA H14, malah menambah kelembapan udara supaya bilik tidur, bilik anak dan apartment terasa lebih bersih, segar dan selesa.
+        </p>
+
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center gap-2 rounded-full bg-cta-green px-7 py-4 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Promo C+</a>
+          <a href="#harga" class="inline-flex items-center justify-center rounded-full border border-brand/15 bg-white px-7 py-4 text-sm font-black text-brand shadow-soft hover:border-brand/30">Lihat Pelan Harga</a>
+        </div>
+
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-[1.35rem] bg-brand px-5 py-5 text-white shadow-glow">
+            <p class="text-xs font-black uppercase tracking-[.16em] text-brand-gold">Promo Terkini</p>
+            <p class="mt-2 text-4xl font-black leading-none">RM{c.promoFirst6}<span class="text-sm font-black">/bulan</span></p>
+            <p class="mt-1 text-xs font-bold text-white/75">6 bulan pertama</p>
+          </div>
+          <a href="#harga" class="rounded-[1.35rem] border border-brand/10 bg-white px-5 py-5 shadow-soft transition hover:-translate-y-1 hover:border-brand/25">
+            <p class="text-xs font-black uppercase tracking-[.14em] text-brand-gold">Beli Terus</p>
+            <p class="mt-2 text-xl font-black text-brand">RM{c.priceOutright.toLocaleString()}</p>
+            <p class="mt-2 text-sm font-bold text-brand-muted">Lihat detail harga →</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- KANAN: kad produk (desktop sahaja) -->
+      <div class="hidden rounded-[2rem] border border-white/80 bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6 lg:block">
+        <div class="product-blob accent-ring relative overflow-hidden rounded-[1.7rem] p-4 sm:p-6 lg:p-8">
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">2-in-1</span>
+            <span class="rounded-full bg-white/85 px-4 py-2 text-xs font-black text-brand shadow-soft">True HEPA H14</span>
+          </div>
+
+          <div class="relative mt-5 flex min-h-[300px] items-center justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-white/80 to-white/35 p-5 sm:min-h-[390px] lg:min-h-[440px]">
+            <div class="absolute bottom-12 h-16 w-[72%] rounded-full bg-brand-gold/20 blur-2xl"></div>
+            <img src={heroImg} alt="Penapis Udara CUCKOO C+ Humidifier dengan True HEPA H14" width="800" height="900" loading="eager" fetchpriority="high" class="relative z-10 h-[290px] w-auto object-contain drop-shadow-2xl sm:h-[380px] lg:h-[425px]" />
+          </div>
+
+          <div class="mt-5 flex flex-wrap justify-center gap-2">
+            <span class="rounded-full border border-brand/15 bg-brand-soft px-4 py-2 text-xs font-black text-brand">Coverage 402 sq ft</span>
+            <span class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-black text-stone-700">Tangki 2.5L</span>
+            <span class="rounded-full border border-brand-gold/30 bg-amber-50 px-4 py-2 text-xs font-black text-brand-gold">5-Stage Filter</span>
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">True HEPA H14</p></div>
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">Humidifier 300mL/h</p></div>
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">11 Modes</p></div>
+          <div class="rounded-2xl bg-white/85 px-3 py-3 text-center shadow-soft ring-1 ring-brand/10"><p class="text-xs font-black text-brand">Plasma Ioniser</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEC STRIP -->
+  <section class="bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] px-4 py-14 text-white sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-6xl items-center gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">402<span class="ml-1 text-xl font-bold text-white/70">sq ft</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Liputan sesuai bilik & apartment</p>
+      </div>
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">H14<span class="ml-1 text-xl font-bold text-white/70"></span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">True HEPA H14 — gred tinggi</p>
+      </div>
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">2.5<span class="ml-1 text-xl font-bold text-white/70">L</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Tangki air · humidify 300mL/h</p>
+      </div>
+      <div class="text-center">
+        <p class="text-5xl font-black tracking-tight text-promo-gold sm:text-6xl">5<span class="ml-1 text-xl font-bold text-white/70">stage</span></p>
+        <p class="mt-2 text-sm font-bold text-white/70">Penapisan 5 peringkat + humidifier</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MASALAH UDARA DALAM RUMAH -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Masalah Udara Dalam Rumah</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Masalah udara rumah yang selalu berlaku</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Udara dalam rumah boleh berhabuk, berbau dan terlalu kering — terutama di bilik berhawa dingin. CUCKOO C+ membantu menjadikannya lebih bersih dan lebih selesa.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {problems.map((p) => (
+          <div class="rounded-[1.75rem] bg-stone-50 p-7 ring-1 ring-stone-100">
+            <span class="text-3xl">{p.icon}</span>
+            <h3 class="mt-4 text-lg font-black text-brand-ink">{p.title}</h3>
+            <p class="mt-2 text-sm leading-6 text-stone-600">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mx-auto mt-10 max-w-3xl rounded-[2rem] bg-gradient-to-br from-brand-soft to-rose-soft p-7 text-center ring-1 ring-brand-maroon/10">
+        <p class="text-lg font-bold leading-8 text-brand-ink">Inilah sebab <strong class="text-brand-maroon">CUCKOO C+ Model</strong> wujud — gabungan air purifier &amp; humidifier untuk membantu udara rumah anda lebih bersih, segar dan tidak terlalu kering.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KENAPA PILIH C+ BERBANDING AIR PURIFIER BIASA -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">2-in-1 Purifier + Humidifier</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Kenapa pilih C+ berbanding air purifier biasa?</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Air purifier biasa hanya menapis udara. CUCKOO C+ menapis <strong class="text-brand-maroon">dan</strong> menambah kelembapan — dua fungsi dalam satu produk.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-[2rem] bg-white p-8 shadow-soft ring-1 ring-brand-maroon/10">
+          <span class="inline-flex rounded-full bg-brand-soft px-4 py-2 text-xs font-black text-brand-maroon">🌬️ Air Purifier</span>
+          <h3 class="mt-4 text-xl font-black text-brand-ink">Tapis udara lebih bersih</h3>
+          <p class="mt-3 text-sm leading-7 text-stone-600">Membantu menapis habuk, bau, alergen, asap, PM2.5, fine dust dan partikel jerebu — menggunakan True HEPA H14 Filter dan 5-Stage Filtration System.</p>
+        </div>
+        <div class="rounded-[2rem] bg-white p-8 shadow-soft ring-1 ring-brand-maroon/10">
+          <span class="inline-flex rounded-full bg-brand-soft px-4 py-2 text-xs font-black text-brand-maroon">💧 Humidifier</span>
+          <h3 class="mt-4 text-xl font-black text-brand-ink">Tambah kelembapan udara</h3>
+          <p class="mt-3 text-sm leading-7 text-stone-600">Membantu menambah kelembapan udara supaya ruang tidak terlalu kering — sesuai untuk bilik tidur, bilik anak, apartment dan bilik yang kerap guna aircond.</p>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          'True HEPA H14 Filter',
+          '5-Stage Filtration System',
+          'Humidification Filter khas',
+          'Tangki air 2.5L',
+          'Humidifying capability 300mL/h',
+          'Power consumption hanya 25W',
+          'Voice guide 4 bahasa',
+          'Plasma Ioniser terbina dalam',
+          'Servis berkala CUCKOO (pelan rental)'
+        ].map((item) => (
+          <div class="flex items-start gap-3 rounded-2xl bg-white p-4 ring-1 ring-brand-maroon/10">
+            <span class="text-cta-green">✓</span>
+            <p class="text-sm font-semibold leading-6 text-stone-700">{item}</p>
+          </div>
+        ))}
+      </div>
+
+      <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-air-perfected.webp`} alt="CUCKOO C+ — Ultra PM2.5 filter, Plasma Ioniser, voice navigation, jimat tenaga dan disahkan CA Mark dari KACA" loading="lazy" class="mx-auto mt-8 w-full max-w-4xl rounded-[2rem] object-contain shadow-soft" />
+    </div>
+  </section>
+
+  <!-- KENAPA KELEMBAPAN PENTING -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Kenapa Kelembapan Penting</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Udara kering buat ruang kurang selesa</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Udara yang terlalu kering boleh menyebabkan rasa tidak selesa seperti kulit kering, tekak kering dan tidur yang kurang lena. Fungsi humidifier CUCKOO C+ membantu menambah kelembapan udara supaya ruang terasa lebih nyaman — terutama di bilik berhawa dingin.</p>
+        <div class="mt-7 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl bg-brand-soft p-5 ring-1 ring-brand-maroon/10"><p class="text-sm font-bold text-stone-700">Superfine humidification — partikel kelembapan halus</p></div>
+          <div class="rounded-2xl bg-brand-soft p-5 ring-1 ring-brand-maroon/10"><p class="text-sm font-bold text-stone-700">Sesuai untuk bilik tidur & bilik anak</p></div>
+        </div>
+      </div>
+      <div class="order-1 overflow-hidden rounded-[2rem] bg-brand-soft p-3 shadow-soft ring-1 ring-brand-maroon/10 lg:order-2">
+        <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-bilik-anak.webp`} alt="CUCKOO C+ Humidifier di bilik anak untuk udara lebih bersih dan lembap" loading="lazy" class="h-full w-full rounded-[1.5rem] object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-STAGE FILTRATION -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">5-Stage Filtration System</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Setiap lapisan, satu udara lebih bersih</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Setiap lapisan menapis perkara berbeza — dari habuk kasar hingga gas tertentu, PM2.5 dan fungsi kelembapan udara.</p>
+      </div>
+
+      <!-- Diagram filter (borderless, latar putih) -->
+      <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-stage-filtration.webp`} alt="Sistem penapisan CUCKOO C+ — Pre-Filter, Harmful Gas Filter, Deodorisation Filter dan True HEPA H14 Filter" loading="lazy" class="mx-auto mt-10 w-full max-w-4xl object-contain" />
+
+      <!-- Jadual pertukaran filter -->
+      <h3 class="mt-12 text-center text-xl font-black text-brand-ink sm:text-2xl">Jadual filter &amp; pertukaran</h3>
+      <div class="mt-6 overflow-hidden rounded-[1.5rem] ring-1 ring-stone-200">
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[760px] text-left text-sm">
+            <thead>
+              <tr class="bg-brand text-white">
+                <th class="p-4 font-black">Peringkat</th>
+                <th class="p-4 font-black">Jenis Filter</th>
+                <th class="p-4 font-black">Fungsi</th>
+                <th class="p-4 text-center font-black">Jangka Hayat</th>
+                <th class="p-4 text-center font-black">Cuci / Tukar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-200">
+              {filterTable.map((f) => (
+                <tr class={f.humid ? 'bg-sky-50' : 'bg-white'}>
+                  <td class="whitespace-nowrap p-4 font-black text-brand-ink">{f.level}</td>
+                  <td class="p-4 font-bold text-brand-ink">{f.type}</td>
+                  <td class="p-4 leading-6 text-stone-600">{f.fn}</td>
+                  <td class="whitespace-nowrap p-4 text-center font-semibold text-stone-700">{f.life}</td>
+                  <td class="p-4 text-center">
+                    <span class={`inline-flex whitespace-nowrap rounded-full px-3 py-1 text-xs font-black ${f.humid ? 'bg-sky-100 text-sky-700' : 'bg-brand-soft text-brand-maroon'}`}>{f.action}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mx-auto mt-5 max-w-3xl text-center text-xs font-semibold leading-6 text-stone-500">True HEPA H14 menggabungkan 4 lapisan Ultra PM2.5 (Level 4–7) dalam satu peringkat penapisan. Baris biru ialah Humidification Filter untuk fungsi humidifier. Jadual tertakluk kepada panduan rasmi CUCKOO &amp; keadaan penggunaan.</p>
+    </div>
+  </section>
+
+  <!-- FILTER KOTOR (AGITATE SLIDER) -->
+  <section class="bg-[#0b0c0e] px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-promo-gold">Bukti Sebenar</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Inilah yang anda hirup tanpa sedar</h2>
+        <p class="mt-5 text-lg leading-8 text-white/70">Habuk, debunga, bulu haiwan dan zarah halus terkumpul di udara rumah setiap hari. Lihat sendiri apa yang terperangkap dalam filter — semua ini sepatutnya tidak masuk ke dalam paru-paru anda.</p>
+      </div>
+
+      <!-- Kesan habuk (agitate points) -->
+      <div class="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-3">
+        <div class="rounded-2xl bg-white/[0.06] p-5 ring-1 ring-white/10"><p class="text-sm font-bold text-white/80">🤧 Cetus bersin, hidung & mata gatal serta kurang selesa bernafas</p></div>
+        <div class="rounded-2xl bg-white/[0.06] p-5 ring-1 ring-white/10"><p class="text-sm font-bold text-white/80">🏠 Rumah cepat berdebu — habuk terkumpul pada perabot & lantai</p></div>
+        <div class="rounded-2xl bg-white/[0.06] p-5 ring-1 ring-white/10"><p class="text-sm font-bold text-white/80">👃 Bau & asap terperangkap dalam ruang tertutup</p></div>
+      </div>
+
+      <!-- Slider filter kotor -->
+      <div class="relative mt-10">
+        <div id="dirtyTrack" class="flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {dirtyFilters.map((f) => (
+            <div class="dirty-slide w-[82%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white/[0.06] ring-1 ring-white/10 sm:w-[48%] lg:w-[32%]">
+              <div class="relative">
+                <img src={f.img} alt={`Filter CUCKOO C+ dipenuhi habuk — ${f.title}`} loading="lazy" class="dirty-img h-64 w-full cursor-zoom-in object-cover sm:h-72" />
+                <span class="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur">🔍 Zoom</span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-black text-white">{f.title}</h3>
+                <p class="mt-1.5 text-sm leading-6 text-white/70">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button type="button" id="dirtyPrev" aria-label="Gambar sebelumnya" class="absolute -left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-stone-50 sm:left-3">‹</button>
+        <button type="button" id="dirtyNext" aria-label="Gambar seterusnya" class="absolute -right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg transition hover:bg-stone-50 sm:right-3">›</button>
+      </div>
+      <p class="mt-6 text-center text-sm font-semibold leading-6 text-white/50">*Gambar filter sebenar selepas digunakan. Servis & pertukaran filter berkala diuruskan mengikut pelan CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- MANFAAT AIR PURIFIER & HUMIDIFIER -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Manfaat Untuk Rumah</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Udara lebih bersih &amp; lebih lembap</h2>
+      </div>
+
+      <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-udara-lembap-bilik.webp`} alt="CUCKOO C+ Humidifier di bilik tidur — nikmati udara yang bersih dan lebih lembap" loading="lazy" class="mx-auto mt-10 w-full max-w-4xl rounded-[2rem] object-contain shadow-soft" />
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <!-- Air purifier -->
+        <div class="rounded-[2rem] bg-brand-soft p-8 ring-1 ring-brand-maroon/10">
+          <h3 class="flex items-center gap-2 text-xl font-black text-brand-ink">🌬️ Manfaat Air Purifier</h3>
+          <ul class="mt-5 space-y-3">
+            {purifierBenefits.map((b) => (
+              <li class="flex items-start gap-3"><span class="mt-0.5 text-cta-green">✓</span><p class="text-sm font-semibold leading-6 text-stone-700">{b}</p></li>
+            ))}
+          </ul>
+        </div>
+        <!-- Humidifier -->
+        <div class="rounded-[2rem] bg-brand-soft p-8 ring-1 ring-brand-maroon/10">
+          <h3 class="flex items-center gap-2 text-xl font-black text-brand-ink">💧 Manfaat Humidifier</h3>
+          <ul class="mt-5 space-y-3">
+            {humidifierBenefits.map((b) => (
+              <li class="flex items-start gap-3"><span class="mt-0.5 text-cta-green">✓</span><p class="text-sm font-semibold leading-6 text-stone-700">{b}</p></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-sm font-semibold leading-7 text-stone-500">Nota: Humidifier dan air purifier membantu menjadikan udara lebih selesa, tetapi ia bukan alat rawatan perubatan. Untuk masalah kesihatan seperti asma, alergi atau pernafasan, dapatkan nasihat doktor.</p>
+    </div>
+  </section>
+
+  <!-- PLASMA IONISER -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl text-center">
+      <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">CUCKOO Plasma Ioniser</p>
+      <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Bantu segarkan udara dengan ion negatif</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-600">Plasma Ioniser menyokong proses pembersihan udara dengan menghasilkan ion negatif yang membantu mengumpulkan partikel halus supaya udara lebih mudah ditapis dan terasa lebih segar.</p>
+      <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-plasma-ioniser.webp`} alt="Proses CUCKOO Plasma Ioniser — menghasilkan ion, mengikat pencemar dan menghasilkan udara yang lebih segar" loading="lazy" class="mx-auto mt-10 w-full max-w-4xl rounded-[2rem] object-contain shadow-soft" />
+    </div>
+  </section>
+
+  <!-- AIR QUALITY INDICATOR (6 warna LED) -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl text-center">
+      <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Air Quality Indicator</p>
+      <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Nampak tahap udara melalui warna lampu</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-600">Fine Dust Sensor mengesan habuk halus, dan lampu indikator bertukar warna mengikut tahap kebersihan udara semasa — dari biru (baik) ke merah (sangat teruk). Anda bukan sekadar percaya, anda <em>tengok</em>.</p>
+      <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-indikator-kualiti-udara.webp`} alt="Indikator kualiti udara CUCKOO C+ dalam 6 warna — Biru (Baik), Teal, Hijau, Kuning, Ungu, Merah (Sangat Teruk)" loading="lazy" class="mx-auto mt-10 w-full max-w-4xl object-contain" />
+    </div>
+  </section>
+
+  <!-- 11 OPERATING MODES -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="flex items-end gap-3">
+        <span class="text-6xl font-black leading-none tracking-tight text-brand sm:text-7xl">11</span>
+        <div class="pb-1">
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">User Experience Made Easy</p>
+          <h2 class="text-2xl font-black tracking-tight text-brand-ink sm:text-3xl">Operating Modes</h2>
+        </div>
+      </div>
+      <p class="mt-4 max-w-2xl text-base leading-7 text-stone-600">Diprogram untuk penggunaan yang lebih fleksibel — keselesaan, kebersihan, kelembapan dan penjimatan tenaga. Semua dikawal melalui panel sentuh yang mudah.</p>
+
+      <div class="mt-8 overflow-hidden rounded-[2rem] bg-stone-900 shadow-soft">
+        <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-panel-kawalan.webp`} alt="Panel kawalan sentuh CUCKOO C+ dengan butang mode Auto, Sleep, Baby, Sterilization, Turbo dan paparan kelembapan" loading="lazy" class="mx-auto max-h-[420px] w-full object-cover" />
+      </div>
+
+      <div class="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+        {modes.map((m) => (
+          <div class="rounded-2xl bg-stone-50 p-4 ring-1 ring-stone-100 sm:p-5">
+            <span class="text-2xl">{m.emoji}</span>
+            <h3 class="mt-2 text-sm font-black text-brand-ink sm:text-base">{m.title}</h3>
+            <p class="mt-1 text-xs leading-5 text-stone-600 sm:text-sm sm:leading-6">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE GUIDE 4 BAHASA -->
+  <section class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl text-center">
+      <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">4-Language Voice Guide</p>
+      <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Panduan suara dalam 4 bahasa</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-stone-600">Memudahkan penggunaan harian untuk seisi keluarga — fahami status dan fungsi mesin melalui panduan suara.</p>
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {voiceLangs.map((v) => (
+          <div class="rounded-[1.75rem] bg-white p-7 shadow-soft ring-1 ring-brand-maroon/10">
+            <span class="text-4xl">{v.flag}</span>
+            <p class="mt-3 text-base font-black text-brand-ink">{v.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SESUAI UNTUK SIAPA -->
+  <section class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Sesuai Untuk Siapa</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Untuk bilik tidur, bilik anak &amp; apartment</h2>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {audience.map((a) => (
+          <div class="flex gap-4 rounded-[1.75rem] bg-brand-soft p-7 ring-1 ring-brand-maroon/10">
+            <span class="text-3xl">{a.emoji}</span>
+            <div>
+              <h3 class="text-base font-black text-brand-ink">{a.title}</h3>
+              <p class="mt-1.5 text-sm leading-6 text-stone-600">{a.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GALERI RUMAH SEBENAR (komponen kongsi) -->
+  <ProductGallerySlider
+    id="galeri-rumah"
+    eyebrow="Galeri Rumah Sebenar"
+    title="CUCKOO C+ Di Rumah Pelanggan"
+    description="Lihat contoh penggunaan sebenar penapis udara CUCKOO C+ Humidifier di rumah pelanggan. Swipe atau klik gambar untuk paparan penuh."
+    items={realGalleryItems}
+  />
+
+  <!-- TESTIMONI -->
+  <section id="review" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Testimoni Customer</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Apa kata customer yang pernah berurusan dengan saya</h2>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Ini antara feedback customer yang pernah saya bantu sebagai ejen CUCKOO.</p>
+      </div>
+
+      <div class="relative mt-12">
+        <div id="testiTrack" class="flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <div class="testi-slide w-[78%] shrink-0 snap-center overflow-hidden rounded-[2rem] bg-white p-4 shadow-soft ring-1 ring-stone-100 sm:w-[46%] lg:w-[31%]">
+              <div class="overflow-hidden rounded-[1.5rem] bg-stone-100">
+                <img src={`https://www.cuckoonano.com/wp-content/uploads/2026/05/testimoni-cuckoo-fadhil-cuckoonano.com-${n}.webp`} alt={`Testimoni customer CUCKOO berurusan dengan Fadhil ${n}`} class="pointer-events-none aspect-[4/5] w-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <button type="button" id="testiPrev" aria-label="Testimoni sebelumnya" class="absolute -left-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:left-3">‹</button>
+        <button type="button" id="testiNext" aria-label="Testimoni seterusnya" class="absolute -right-2 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl font-black text-brand-maroon shadow-lg ring-1 ring-stone-100 transition hover:bg-stone-50 sm:right-3">›</button>
+      </div>
+      <p class="mt-6 text-center text-sm font-semibold leading-6 text-stone-500">*Testimoni berdasarkan pengalaman customer yang pernah berurusan dengan saya sebagai ejen CUCKOO.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="harga" class="bg-brand-soft px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Harga & Pelan</p>
+        <h2 class="mt-4 text-balance text-3xl font-black tracking-tight sm:text-4xl">Pilih cara milik yang sesuai untuk anda</h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        <!-- Outright -->
+        <div class="flex flex-col rounded-[2rem] bg-white p-8 ring-1 ring-stone-200">
+          <p class="text-xs font-black uppercase tracking-widest text-stone-500">Beli Terus / Outright</p>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="text-4xl font-black text-brand-ink">RM{c.priceOutright.toLocaleString()}</span>
+          </div>
+          <p class="mt-2 text-sm font-semibold text-stone-600">Termasuk percuma 1 tahun servis & warranty.</p>
+          <ul class="mt-5 space-y-2 text-sm font-medium text-stone-600">
+            <li class="flex gap-2"><span class="text-cta-green">✓</span> Bayar sekali, terus milik</li>
+            <li class="flex gap-2"><span class="text-cta-green">✓</span> Penghantaran & pemasangan diuruskan CUCKOO</li>
+          </ul>
+        </div>
+
+        <!-- Rental (highlighted) -->
+        <div class="relative flex flex-col overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium">
+          <span class="absolute right-5 top-5 rounded-full bg-promo-gold px-3 py-1 text-xs font-black text-brand-ink">Paling Popular</span>
+          <p class="text-xs font-black uppercase tracking-widest text-rose-100">Pelan Rental ({c.rentalMonths} bulan)</p>
+          <div class="mt-3 flex items-baseline gap-1">
+            <span class="text-4xl font-black">RM{c.promoFirst6}</span>
+            <span class="text-sm font-bold text-rose-100">/bulan untuk 6 bulan pertama</span>
+          </div>
+          <div class="mt-4 space-y-1.5 text-sm font-semibold text-rose-100">
+            <p>🔥 Bulan 1–6: <strong class="text-promo-gold">RM{c.promoFirst6}/bulan</strong></p>
+            <p>Bulan 7–36: RM{c.rentalY1to3}/bulan</p>
+            <p>Bulan 37–60: RM{c.rentalY4to5}/bulan</p>
+          </div>
+          <ul class="mt-5 space-y-2 text-sm font-medium text-rose-50">
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Percuma 5 tahun servis & warranty</li>
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Servis & pertukaran filter mengikut pelan CUCKOO</li>
+            <li class="flex gap-2"><span class="text-promo-gold">✓</span> Penghantaran & pemasangan PERCUMA</li>
+          </ul>
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="mt-7 inline-flex items-center justify-center rounded-2xl bg-cta-green px-7 py-4 text-center text-base font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 Semak Kelayakan Promo RM{c.promoFirst6}</a>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-2xl bg-white p-5 text-center text-sm font-semibold text-stone-600 ring-1 ring-brand-maroon/10">
+        CUCKOO+ Care Service Package: <strong class="text-brand-maroon">RM{c.carePackage}/tahun</strong>. Promo tertakluk kepada stok, kawasan, kelulusan dan terma semasa.
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOTION TERKINI -->
+  <div data-promo></div>
+
+  <!-- SPECIFICATIONS -->
+  <section id="spesifikasi" class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">Spesifikasi Produk</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Detail teknikal CUCKOO C+ Model</h2>
+      </div>
+
+      <div class="mt-10 grid items-start gap-8 lg:grid-cols-[1fr_1.2fr]">
+        <div class="overflow-hidden rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-stone-200">
+          <img src={`${base}/penapis-udara-cuckoo-c-plus-humidifier-spesifikasi-dimensi.webp`} alt="Spesifikasi dan dimensi CUCKOO C+ Model — 430mm x 276mm x 550mm, 9.2kg" loading="lazy" class="h-full w-full object-contain" />
+        </div>
+        <div class="overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-soft">
+          <table class="w-full text-left text-sm sm:text-base">
+            <tbody class="divide-y divide-stone-200">
+              <tr><th class="w-2/5 bg-stone-50 p-4 font-black">Model</th><td class="p-4 font-semibold">C+ Model | Air Purifier + Humidifier</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Jenis Produk</th><td class="p-4 font-semibold">{c.type}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Coverage</th><td class="p-4 font-semibold">{c.coverage}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Humidifying Capability</th><td class="p-4 font-semibold">{c.humidify}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Water Tank Size</th><td class="p-4 font-semibold">{c.tank}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Sensor</th><td class="p-4 font-semibold">{c.sensor}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Modes</th><td class="p-4 font-semibold">11 Modes</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Filtration</th><td class="p-4 font-semibold">{c.stages} — {c.filters}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Voice Navigation</th><td class="p-4 font-semibold">{c.voice}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Power Consumption</th><td class="p-4 font-semibold">{c.power}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Saiz Produk</th><td class="p-4 font-semibold">{c.size}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Berat Produk</th><td class="p-4 font-semibold">{c.weight}</td></tr>
+              <tr><th class="bg-stone-50 p-4 font-black">Special Feature</th><td class="p-4 font-semibold">Air Purifier with Humidifier</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-sm font-semibold leading-7 text-stone-500">*Spesifikasi & harga tertakluk kepada maklumat rasmi dan kempen semasa. WhatsApp untuk semak promo dan kesesuaian ruang anda.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="text-sm font-black uppercase tracking-[0.24em] text-brand-maroon">FAQ</p>
+        <h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Soalan lazim tentang CUCKOO C+ Model</h2>
+      </div>
+      <div class="mt-10 space-y-4">
+        {faqs.map((f, i) => (
+          <details class="group rounded-2xl bg-stone-50 p-6 shadow-sm ring-1 ring-stone-100" open={i === 0}>
+            <summary class="cursor-pointer list-none text-lg font-black text-brand-dark">{f.q}</summary>
+            <p class="mt-4 leading-7 text-stone-600">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="bg-brand-soft px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#4B0715] via-brand-maroon to-[#2f0b10] p-8 text-white shadow-premium sm:p-12 lg:p-16">
+      <div class="mx-auto max-w-3xl">
+        <p class="inline-flex rounded-full bg-white/12 px-5 py-2 text-xs font-black uppercase tracking-[0.24em] text-rose-100 ring-1 ring-white/15">Ready Untuk Udara Lebih Bersih & Lembap?</p>
+        <h2 class="mt-6 text-balance text-3xl font-black leading-tight tracking-tight sm:text-5xl">Bawa pulang CUCKOO C+ hari ini</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-rose-100 sm:text-lg">Air purifier + humidifier 2-in-1. True HEPA H14. Promo dari RM{c.promoFirst6}/bulan. Klik WhatsApp untuk semak promo dan dapatkan consultation percuma.</p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#" onclick="this.href=rotatingWhatsapp()" class="inline-flex items-center justify-center rounded-2xl bg-cta-green px-9 py-5 text-lg font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">📲 WhatsApp Sekarang</a>
+          <a href="#harga" class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-9 py-5 text-lg font-black text-white backdrop-blur transition hover:bg-white/20">Tengok Harga</a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-bold text-rose-100">
+          <span>✓ Consultation Percuma</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ 2-in-1 Purifier + Humidifier</span>
+          <span class="hidden h-1 w-1 rounded-full bg-white/40 sm:inline-block"></span>
+          <span>✓ Pemasangan Diuruskan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zoom lightbox (galeri gambar produk) -->
+  <div id="zoomLightbox" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+    <button type="button" id="zoomClose" aria-label="Tutup gambar" class="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-2xl font-black text-brand-maroon shadow-lg">×</button>
+    <img id="zoomImage" src="" alt="" class="max-h-[90vh] w-auto max-w-[94vw] rounded-2xl object-contain shadow-premium" />
+  </div>
+
+  <!-- DYNAMIC COMPONENTS -->
+  <div data-product-selector data-initial="air-purifier"></div>
+  <div data-agent-block></div>
 </BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  .text-balance { text-wrap: balance; }
+  .product-blob { background: radial-gradient(circle at 40% 35%, rgba(216,166,74,.28), transparent 38%), radial-gradient(circle at 65% 58%, rgba(122,14,35,.18), transparent 42%), linear-gradient(145deg, #fff8f2, #ffffff); }
+  .accent-ring { box-shadow: 0 30px 80px rgba(20,20,20,.16); }
+</style>
+
+<script is:inline define:vars={{ gSlides: productPhotos.map((p) => ({ src: p.image, alt: p.alt })) }}>
+  // Galeri gambar produk — slider gambar besar + zoom
+  let gi = 0;
+  const gImg = document.getElementById('gImg');
+  const gDots = document.getElementById('gDots');
+  const gPrev = document.getElementById('gPrev');
+  const gNext = document.getElementById('gNext');
+
+  function renderG(index) {
+    gi = (index + gSlides.length) % gSlides.length;
+    if (gImg) { gImg.src = gSlides[gi].src; gImg.alt = gSlides[gi].alt; }
+    if (gDots) {
+      gDots.innerHTML = '';
+      gSlides.forEach((_, di) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Lihat gambar ' + (di + 1));
+        dot.className = di === gi ? 'h-3 w-8 rounded-full bg-brand-maroon transition' : 'h-3 w-3 rounded-full bg-stone-300 transition hover:bg-brand-maroon';
+        dot.addEventListener('click', () => renderG(di));
+        gDots.appendChild(dot);
+      });
+    }
+  }
+  if (gPrev) gPrev.addEventListener('click', () => renderG(gi - 1));
+  if (gNext) gNext.addEventListener('click', () => renderG(gi + 1));
+  if (gImg) {
+    renderG(0);
+    let sx = 0, swiped = false;
+    const stage = gImg.parentElement;
+    stage.addEventListener('touchstart', (e) => { sx = e.touches[0] ? e.touches[0].clientX : 0; swiped = false; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      const t = e.changedTouches[0]; if (!t) return;
+      const dx = t.clientX - sx;
+      if (Math.abs(dx) > 40) { swiped = true; renderG(gi + (dx < 0 ? 1 : -1)); }
+    }, { passive: true });
+    gImg.addEventListener('click', () => { if (swiped) { swiped = false; return; } openZoom(gImg.currentSrc || gImg.src, gImg.alt); });
+  }
+
+  // Zoom lightbox
+  const zoomLightbox = document.getElementById('zoomLightbox');
+  const zoomImage = document.getElementById('zoomImage');
+  function openZoom(src, alt) {
+    if (!zoomLightbox || !zoomImage || !src) return;
+    zoomImage.src = src; zoomImage.alt = alt || '';
+    zoomLightbox.classList.remove('hidden'); zoomLightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeZoom() {
+    if (!zoomLightbox) return;
+    zoomLightbox.classList.add('hidden'); zoomLightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  if (zoomLightbox) {
+    zoomLightbox.addEventListener('click', (e) => { if (e.target === zoomLightbox || e.target.id === 'zoomClose') closeZoom(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeZoom(); });
+  }
+
+  // Testimoni slider — butang + drag
+  const testiTrack = document.getElementById('testiTrack');
+  const testiPrev = document.getElementById('testiPrev');
+  const testiNext = document.getElementById('testiNext');
+  if (testiTrack) {
+    const stepWidth = () => {
+      const slide = testiTrack.querySelector('.testi-slide');
+      const gap = parseFloat(getComputedStyle(testiTrack).columnGap || '20') || 20;
+      return slide ? slide.getBoundingClientRect().width + gap : testiTrack.clientWidth * 0.8;
+    };
+    if (testiPrev) testiPrev.addEventListener('click', () => testiTrack.scrollBy({ left: -stepWidth(), behavior: 'smooth' }));
+    if (testiNext) testiNext.addEventListener('click', () => testiTrack.scrollBy({ left: stepWidth(), behavior: 'smooth' }));
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+    testiTrack.addEventListener('pointerdown', (e) => { isDown = true; moved = false; startX = e.clientX; startScroll = testiTrack.scrollLeft; testiTrack.classList.add('cursor-grabbing'); });
+    testiTrack.addEventListener('pointermove', (e) => { if (!isDown) return; const delta = e.clientX - startX; if (Math.abs(delta) > 4) moved = true; testiTrack.scrollLeft = startScroll - delta; });
+    const endDrag = () => { isDown = false; testiTrack.classList.remove('cursor-grabbing'); };
+    testiTrack.addEventListener('pointerup', endDrag);
+    testiTrack.addEventListener('pointerleave', endDrag);
+    testiTrack.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+  }
+
+  // Slider filter kotor — auto gerak + drag + klik untuk zoom
+  const dirtyTrack = document.getElementById('dirtyTrack');
+  const dirtyPrev = document.getElementById('dirtyPrev');
+  const dirtyNext = document.getElementById('dirtyNext');
+  if (dirtyTrack) {
+    const dStep = () => {
+      const slide = dirtyTrack.querySelector('.dirty-slide');
+      const gap = parseFloat(getComputedStyle(dirtyTrack).columnGap || '20') || 20;
+      return slide ? slide.getBoundingClientRect().width + gap : dirtyTrack.clientWidth * 0.8;
+    };
+    let autoTimer = null;
+    const stopAuto = () => { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } };
+    const startAuto = () => {
+      stopAuto();
+      autoTimer = setInterval(() => {
+        if (zoomLightbox && !zoomLightbox.classList.contains('hidden')) return; // jangan gerak masa zoom
+        const maxScroll = dirtyTrack.scrollWidth - dirtyTrack.clientWidth - 4;
+        if (dirtyTrack.scrollLeft >= maxScroll) dirtyTrack.scrollTo({ left: 0, behavior: 'smooth' });
+        else dirtyTrack.scrollBy({ left: dStep(), behavior: 'smooth' });
+      }, 3500);
+    };
+    const nudge = (dir) => { stopAuto(); dirtyTrack.scrollBy({ left: dir * dStep(), behavior: 'smooth' }); setTimeout(startAuto, 6000); };
+    if (dirtyPrev) dirtyPrev.addEventListener('click', () => nudge(-1));
+    if (dirtyNext) dirtyNext.addEventListener('click', () => nudge(1));
+    let dDown = false, dStart = 0, dScroll = 0, dMoved = false;
+    dirtyTrack.addEventListener('pointerdown', (e) => { dDown = true; dMoved = false; dStart = e.clientX; dScroll = dirtyTrack.scrollLeft; dirtyTrack.classList.add('cursor-grabbing'); stopAuto(); });
+    dirtyTrack.addEventListener('pointermove', (e) => { if (!dDown) return; const delta = e.clientX - dStart; if (Math.abs(delta) > 4) dMoved = true; dirtyTrack.scrollLeft = dScroll - delta; });
+    const dEnd = () => { if (!dDown) return; dDown = false; dirtyTrack.classList.remove('cursor-grabbing'); setTimeout(startAuto, 6000); };
+    dirtyTrack.addEventListener('pointerup', dEnd);
+    dirtyTrack.addEventListener('pointerleave', dEnd);
+    dirtyTrack.querySelectorAll('.dirty-img').forEach((img) => {
+      img.addEventListener('click', () => { if (dMoved) { dMoved = false; return; } openZoom(img.currentSrc || img.src, img.alt); });
+    });
+    dirtyTrack.addEventListener('mouseenter', stopAuto);
+    dirtyTrack.addEventListener('mouseleave', startAuto);
+    startAuto();
+  }
+</script>
