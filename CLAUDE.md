@@ -19,6 +19,7 @@ The owner is actively reorganising an old WordPress site into a cleaner Astro st
 
 ## Important SEO Decisions Already Made
 
+- Full SEO implementation guideline lives in `SEO_GUIDELINE.md`. Refer to it before creating or updating product, blog, location, service, redirect, sitemap, or schema-related pages.
 - Old WordPress URLs with SEO value should 301 redirect to the closest clean final URL.
 - Do not blindly keep long WordPress slugs as final URLs.
 - Product final URLs should generally follow:
@@ -234,6 +235,34 @@ SEO (already done — keep in sync if content changes):
 - JSON-LD: `Product` (image array, brand+manufacturer Samsung, model RS4000DC, sku/mpn, color, `additionalProperty` specs, dual `offers` rental RM85/month + outright RM4099, each with `itemCondition` NewCondition + `priceValidUntil`), `FAQPage` (8 Q&A), `BreadcrumbList`.
 - `priceValidUntil` is a constant in frontmatter — bump it when promo period changes.
 - Sitemap: URL present in `public/sitemap.xml` (removed an old duplicate laundry-combo entry while here).
+
+## CUCKOO INDUCTWO Hybrid Induction Hob Page
+
+Page: `src/pages/products/induction/inductwo/index.astro`
+Final URL: `/products/induction/inductwo/` (already in `public/sitemap.xml`).
+Assets: `public/assets/images/products/induction/inductwo/` (renamed to SEO slugs `dapur-induksi-cuckoo-inductwo-...-malaysia.webp`), plus shared `public/assets/images/products/induction/` (cooking-mode icons `pan-fry/grill/hot-pot/boil/keep-warm.webp`, `cooker-landing-02/04.webp`, 6 `kenapa-induction-...card-*.webp`), hero shot `Gambar Produk png/cuckoo inductwo.webp`, service assets `products/induction/servis/` + technician `service/Cuckoo-Servis copy.webp`.
+
+Product facts (single source of truth for this page):
+
+- Hybrid hob: 1 Induction zone + 1 Highlight zone. Dual Highlight Zone (expansion function). France Eurokera Ceramic Glass. Plug 13A. Quick Heating + Turbo Mode. Auto-cook: Pan Fry, Grill, Hot Pot, Boil, Keep Warm. ECO-Hybrid Power (has its own full section w/ `cooker-landing-04.webp`, `*INDUCTWO Only`).
+- Dimensions 588 × 508 × 67 mm, 9 kg (from the spec diagram image).
+- Pricing: Outright RM2,600. Rental RM91/bulan (tanpa casing = built-in) or RM101/bulan (dengan casing = free-standing), 5-year (60-month) contract. Promo hook RM12/bulan (tempoh kempen semasa — not tied to a fixed month count). CCSP (CUCKOO+ Care Service Package) RM493.50/year for INDUCTWO (NOT RM470; Inductrio is RM556.50 — do not mix).
+- WhatsApp CTAs: hardcoded `whatsappUrl` (api.whatsapp.com, so gtag click tracking fires). `priceValidUntil` constant in frontmatter.
+
+Deliberate exclusions / wording rules:
+
+- INDUCTRIO-only features NOT used here: Direct Touch Sensor (`cooker-landing-03.webp` avoided). Use "Turbo Mode" wording, not "IH-Booster".
+- "IH-Ultra" term appears on poster image `...poster-4.webp` (kept in gallery) but is NOT used in body copy; keep alt text neutral.
+- Removed poster `...poster-3.webp` (showed RM98/month, conflicts with RM91/RM101) — file deleted from folder.
+- Induction safety wording stays soft: no "100% selamat" / "tidak akan kebakaran" / "permukaan tidak panas". Note surface can still get hot from cookware.
+
+Section order: Hero (image before pricing on mobile via order-3) → "Kenapa Beralih Ke Induction" (6-card auto marquee) → gas problem → `cooker-landing-02` tech poster → 6 reasons → heat tech → ECO-Hybrid → benefits → cooking modes (big round icons) → poster gallery (7 square posters, custom lightbox) → real-photo gallery (`ProductGallerySlider`) → CUCKOO+ Care Service (intro + 4 cards + CCS 8-Point Check + 6-step process; grid on ≥sm, auto marquee on mobile; step file order is REVERSED vs process order) → spec → built-in vs free-standing → pricing → FAQ (14, incl. 4 service Q&A) → summary → shared `data-promo`/`data-product-selector`/`data-agent-block`.
+
+Reusable JS in the page's `is:inline` script: generic marquee runs on every `[data-marquee]` (kenapa cards + service steps), only animates when track is visible + overflowing (`offsetParent` + `scrollWidth > clientWidth`); duplicate the items so half the scrollWidth = one set. Poster lightbox keyed to `[data-poster-open]` / `[data-poster-lightbox]`.
+
+JSON-LD: `Product` (image array, brand+manufacturer CUCKOO, model INDUCTWO, dual `offers` rental RM12 + outright RM2600 with `itemCondition`+`priceValidUntil`), `FAQPage` (14 Q&A), `BreadcrumbList`.
+
+Service section is INDUCTWO-only — do NOT copy it onto other product pages.
 
 ## Design Guidance
 
