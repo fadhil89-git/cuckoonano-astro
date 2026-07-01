@@ -1,14 +1,902 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ProductGallerySlider from '../../../../components/ProductGallerySlider.astro';
+
+// ── Single source of truth ──────────────────────────────────────────────
+const pageUrl = 'https://www.cuckoonano.com/products/induction/inductrio/';
+const absoluteUrl = (path) => new URL(encodeURI(path), pageUrl).toString();
+
+const whatsappUrl =
+  'https://api.whatsapp.com/send?phone=60139916967&text=Salam%20Fadhil%2C%20saya%20berminat%20dengan%20CUCKOO%20INDUCTRIO%20Hybrid%20Induction%20Hob.%20Boleh%20bantu%20saya%20semak%20harga%20%26%20promo%3F';
+
+const priceValidUntil = '2026-12-31';
+
+const assetBase = '/assets/images/products/induction/inductrio';
+const indBase = '/assets/images/products/induction';
+const serviceBase = `${indBase}/servis`;
+const technicianImg = '/assets/images/service/Cuckoo-Servis copy.webp';
+
+const img = {
+  heroClean: '/assets/images/Gambar Produk png/cuckoo inductrio.webp',
+  render: `${assetBase}/dapur-induksi-cuckoo-inductrio-hybrid-hob-malaysia.webp`,
+  zones: `${assetBase}/cuckoo-inductrio-3-cooking-zones.webp`,
+  productImage: `${assetBase}/cuckoo-inductrio-product-image.webp`,
+  productAngle: `${assetBase}/cuckoo-inductrio-product-angle.webp`,
+  installedKitchen: `${assetBase}/cuckoo-inductrio-installed-kitchen.webp`,
+  directTouch: `${assetBase}/cuckoo-inductrio-direct-touch-sensor.webp`,
+  schott: `${assetBase}/cuckoo-inductrio-schott-ceran-glass.webp`,
+  smartIh: `${assetBase}/cuckoo-inductrio-smart-ih-surface.webp`,
+  ihUltra: `${assetBase}/cuckoo-inductrio-ih-ultra-high-temp.webp`,
+  ihBooster: `${assetBase}/cuckoo-inductrio-ih-booster-mode.webp`,
+  autoCookBanner: `${assetBase}/cuckoo-inductrio-auto-cook-banner.webp`,
+  controlPanel: `${assetBase}/cuckoo-inductrio-control-panel.webp`,
+  dimensions: `${assetBase}/cuckoo-inductrio-dimensions-spec.webp`,
+  install15a: `${assetBase}/cuckoo-inductrio-installation-15a.webp`
+};
+
+const heroThumbs = [
+  { src: img.heroClean, label: 'Produk' },
+  { src: img.render, label: 'Atas' },
+  { src: img.productAngle, label: 'Sisi' }
+];
+
+// "Kenapa beralih ke induction?" — 6 kad (wording lembut)
+const inductionCards = [
+  { img: `${indBase}/kenapa-induction-cuckoo-inductrio-inductwo-card-1-tiada-api-terbuka.webp`, title: 'Tiada Api Terbuka', copy: 'Dapur gas guna flame terbuka yang boleh menyambar kain, tisu atau minyak berdekatan. Induction memanaskan cookware tanpa nyalaan api terbuka.' },
+  { img: `${indBase}/kenapa-induction-cuckoo-inductrio-inductwo-card-2-risiko-kebocoran-gas.webp`, title: 'Kurang Risiko Kebocoran Gas', copy: 'Tanpa tong gas, hose atau regulator, anda boleh kurangkan kerisauan bau gas, regulator longgar atau hose merekah.' },
+  { img: `${indBase}/kenapa-induction-cuckoo-inductrio-inductwo-card-3-anak-kecil-children.webp`, title: 'Lebih Sesuai Untuk Rumah Ada Anak', copy: 'Tiada flame terbuka untuk anak main api. INDUCTRIO juga ada Safety Lock untuk bantu elak tetapan berubah secara tak sengaja.' },
+  { img: `${indBase}/kenapa-induction-cuckoo-inductrio-inductwo-card-4-kawalan-haba-lebih-tepat.webp`, title: 'Kawalan Haba Lebih Tepat', copy: 'Dengan heating level 1–10 dan Direct Touch Sensor, suhu lebih mudah dikawal mengikut jenis masakan.' },
+  { img: `${indBase}/kenapa-induction-cuckoo-inductrio-inductwo-card-5-dapur-kurang-bahang.webp`, title: 'Dapur Kurang Bahang', copy: 'Induction lebih fokus memanaskan cookware, bukan udara sekeliling. Ruang dapur terasa lebih selesa ketika memasak.' },
+  { img: `${indBase}/kenapa-induction-cuckoo-inductrio-inductwo-card-5-mudah-bersih-easy-clean.webp`, title: 'Lebih Mudah Dibersihkan', copy: 'Permukaan glass-ceramic yang rata lebih mudah dilap berbanding burner gas yang banyak celah dan perangkap minyak.' }
+];
+
+// Masalah yang produk selesaikan
+const problems = [
+  'Dapur gas biasa nampak besar, berminyak dan susah dibersihkan',
+  'Api terbuka buat rasa kurang tenang, terutama rumah ada anak kecil',
+  'Tong gas habis waktu tengah masak',
+  'Bau gas dan isu regulator / hose buat rasa risau',
+  'Nak masak lebih dari satu lauk dalam satu masa',
+  'Nak dapur moden yang nampak premium dan built-in',
+  'Nak kawalan haba lebih tepat untuk masakan harian',
+  'Nak dapur yang datang dengan servis berkala — bukan beli dan tinggal'
+];
+
+// Kenapa INDUCTRIO premium (6)
+const premiumPoints = [
+  { n: '01', t: '3 Zon Memasak Dalam Satu Dapur', d: 'Dengan 2 induction zone + 1 highlight zone, anda boleh masak beberapa hidangan serentak — sesuai untuk keluarga yang kerap memasak.' },
+  { n: '02', t: 'Firepower Lebih Kuat — IH Booster Mode', d: 'Setiap induction zone berkuasa sehingga 1800W dan boleh naik sehingga 2000W dengan Booster untuk memasak lebih pantas bila perlu.' },
+  { n: '03', t: 'Direct Touch Sensor', d: 'Direct Touch Sensor bantu suhu dikawal lebih tepat supaya masakan lebih konsisten, terutama hidangan yang perlukan haba stabil.' },
+  { n: '04', t: 'Surface Premium SCHOTT CERAN', d: 'Permukaan German glass-ceramic SCHOTT CERAN beri rupa moden, premium dan mudah dibersihkan — sesuai untuk kitchen cabinet & built-in.' },
+  { n: '05', t: 'Hybrid Untuk Lebih Fleksibiliti', d: 'Gabungan induction zone dan highlight zone beri pilihan lebih luas untuk gaya memasak dan jenis cookware berbeza.' },
+  { n: '06', t: 'Sokongan Servis Berkala CUCKOO', d: 'Pelan rental hadir dengan servis & warranty 5 tahun mengikut terma CUCKOO — bukan sekadar dapur moden, tapi datang dengan sokongan selepas jualan.' }
+];
+
+// Manfaat pelanggan
+const benefits = [
+  { e: '🍽️', t: '3 Zon Memasak', d: 'Lebih banyak hidangan dalam satu masa untuk keluarga.' },
+  { e: '⚡', t: 'Pemanasan Pantas', d: 'Induction heating + IH Booster jimatkan masa.' },
+  { e: '🧼', t: 'Kemas & Mudah Dilap', d: 'Surface premium rata, kelihatan moden.' },
+  { e: '🛡️', t: 'Servis Berkala', d: 'Pelan rental termasuk service & warranty 5 tahun.' }
+];
+
+// Cooking modes (emoji + brief)
+const cookingModes = [
+  { e: '🍳', t: 'Pan Fry', d: 'Menggoreng harian — telur, ikan, ayam dan lauk biasa.' },
+  { e: '🍤', t: 'Deep Fry', d: 'Sesuai untuk gorengan yang perlukan haba lebih tinggi.' },
+  { e: '🍚', t: 'White Rice', d: 'Masak nasi dengan tetapan haba yang lebih terkawal.' },
+  { e: '🥣', t: 'Porridge', d: 'Bubur lembut dengan haba rendah yang sekata.' },
+  { e: '🍜', t: 'Noodles', d: 'Rebus mi & masakan berkuah dengan lebih mudah.' },
+  { e: '♨️', t: 'Keep Warm', d: 'Pastikan makanan kekal panas sebelum dihidang.' }
+];
+
+// Feature list penuh (chips)
+const featureChips = [
+  'IH-Ultra High Temperature Mode', 'IH Booster Mode', 'Direct Touch Sensor',
+  '2 Induction Zone', '1 Highlight Zone', 'SCHOTT CERAN Glass-Ceramic',
+  'Heating Level 1–10', 'Voice Navigation', 'Touch Panel', 'Safety Lock',
+  'Timer Function', 'Smart Error Detection', 'Auto Power Saving', 'Voice Cooking Alarm'
+];
+
+// Installation note
+const installPoints = [
+  'Memerlukan 15A power plug',
+  'Disarankan direct wiring dari MCB',
+  'Minimum MCB 20A',
+  'Tidak disarankan menggunakan extension cable',
+  'Pemeriksaan lokasi mungkin diperlukan sebelum pemasangan',
+  'Kos tambahan untuk wiring / socket / MCB bergantung keadaan rumah'
+];
+
+// Servis
+const serviceCards = [
+  { icon: `${serviceBase}/kitchen-check-list-icon-natural-care-service-visit.webp`, t: 'Servis Berkala', d: 'Pasukan CUCKOO+ Care Service datang mengikut jadual untuk bantu periksa dan jaga induction hob anda.' },
+  { icon: `${serviceBase}/kitchen-check-list-icon-one-to-one.webp`, t: 'Servis Profesional 1-to-1', d: 'Servis dibuat secara profesional dan lebih teliti mengikut keadaan produk pelanggan.' },
+  { icon: `${serviceBase}/kitchen-check-list-icon-ncs-8.webp`, t: 'CCS 8-Point Check', d: 'Pemeriksaan pada bahagian penting seperti temperature, touch panel, touch sensor, power plug dan permukaan kaca.' },
+  { icon: `${serviceBase}/kitchen-check-list-icon-additional-care-service.webp`, t: 'Additional Care Service', d: 'Boleh termasuk penjagaan tambahan seperti steam sterilisation untuk chopping board dan sink mengikut pakej.' }
+];
+
+const ccsCheck = [
+  'Temperature Test', 'Tempered Glass Surface', 'Touch Sensor', 'Touch Panel',
+  'Service Card Explanation', 'On/Off Button', 'Power Plug', 'Pemeriksaan kebersihan & keadaan keseluruhan hob'
+];
+
+// Turutan fail step terbalik dari turutan proses
+const serviceSteps = [
+  { img: `${serviceBase}/kitchen-check-list-step-06.webp`, t: 'Prepare Steamer & Hygiene Kit', d: 'Pasukan servis menyediakan steamer dan hygiene kit sebelum proses penjagaan bermula.' },
+  { img: `${serviceBase}/kitchen-check-list-step-05.webp`, t: 'Remove Stubborn Stain', d: 'Kotoran atau stain pada permukaan hob dibersihkan menggunakan scraper yang sesuai.' },
+  { img: `${serviceBase}/kitchen-check-list-step-04.webp`, t: 'Wipe With Induction Cleaner', d: 'Permukaan hob dilap dengan induction cleaner supaya permukaan kaca lebih bersih dan kemas.' },
+  { img: `${serviceBase}/kitchen-check-list-step-03.webp`, t: 'Check Temperature', d: 'Suhu pada zon memasak diperiksa untuk memastikan fungsi pemanasan berada dalam keadaan baik.' },
+  { img: `${serviceBase}/kitchen-check-list-step-02.webp`, t: 'Sterilise Cookware / Kitchen Area', d: 'Boleh termasuk sterilisation untuk cookware, chopping board atau sink mengikut pakej servis.' },
+  { img: `${serviceBase}/kitchen-check-list-step-01.webp`, t: 'Update Service Card', d: 'Rekod servis dikemas kini pada service card supaya pelanggan tahu status lawatan servis.' }
+];
+
+// Siapa sesuai
+const suitableFor = [
+  'Keluarga yang kerap memasak di rumah',
+  'Pelanggan yang mahu dapur utama lebih premium',
+  'Rumah baru dengan kitchen cabinet / built-in kitchen',
+  'Pengguna yang mahu 3 zon memasak',
+  'Yang mahu kurangkan penggunaan gas',
+  'Pelanggan yang mahu induction hob dengan servis berkala',
+  'Yang sanggup buat setup elektrik 15A yang sesuai',
+  'Pengguna yang mahu kawalan haba lebih tepat',
+  'Yang mahu dapur nampak lebih moden, kemas dan mudah dibersihkan'
+];
+
+// Galeri gambar sebenar
+const galleryItems = [
+  { image: `${assetBase}/cuckoo-inductrio-installed-kitchen.webp`, title: 'Dipasang Dalam Dapur', copy: 'INDUCTRIO 3 zon dalam dapur rumah pelanggan.', alt: 'CUCKOO INDUCTRIO dipasang dalam dapur' },
+  { image: `${assetBase}/cuckoo-inductrio-built-in-kitchen.webp`, title: 'Built-In Kitchen', copy: 'Rupa kemas & premium untuk dapur built-in.', alt: 'CUCKOO INDUCTRIO built-in kitchen premium' },
+  { image: `${assetBase}/cuckoo-inductrio-kitchen-lifestyle.webp`, title: 'Dapur Moden', copy: 'Sesuai untuk kitchen cabinet dan dapur moden.', alt: 'CUCKOO INDUCTRIO dapur moden lifestyle' },
+  { image: `${assetBase}/cuckoo-inductrio-masak-hidangan-keluarga.webp`, title: 'Hidangan Keluarga', copy: 'Masak lauk & hidangan keluarga dengan lebih mudah.', alt: 'CUCKOO INDUCTRIO masak hidangan keluarga' },
+  { image: `${assetBase}/cuckoo-inductrio-masak-dua-zon.webp`, title: 'Masak Serentak', copy: 'Guna beberapa zon pada masa yang sama.', alt: 'CUCKOO INDUCTRIO masak serentak beberapa zon' },
+  { image: `${assetBase}/cuckoo-inductrio-steamboat-hot-pot.webp`, title: 'Steamboat & Hot Pot', copy: 'Sesuai untuk masakan berkuah ramai-ramai.', alt: 'CUCKOO INDUCTRIO steamboat hot pot' },
+  { image: `${assetBase}/cuckoo-inductrio-live-cooking-demo.webp`, title: 'Live Cooking Demo', copy: 'INDUCTRIO diuji dalam demo memasak sebenar.', alt: 'CUCKOO INDUCTRIO live cooking demo' },
+  { image: `${assetBase}/cuckoo-inductrio-product-angle.webp`, title: 'Reka Bentuk Premium', copy: 'Permukaan SCHOTT CERAN dengan 3 zon memasak.', alt: 'CUCKOO INDUCTRIO reka bentuk premium 3 zon' }
+];
+
+// FAQ (14)
+const faqItems = [
+  { q: 'Apa itu CUCKOO INDUCTRIO?', a: 'CUCKOO INDUCTRIO ialah hybrid induction hob premium dengan 2 induction zone dan 1 highlight zone.' },
+  { q: 'Berapa zon memasak INDUCTRIO?', a: 'INDUCTRIO mempunyai 3 zon memasak: 2 induction zone dan 1 highlight zone.' },
+  { q: 'Apa beza induction zone dan highlight zone?', a: 'Induction zone memanaskan cookware induction dengan cepat dan responsif. Highlight zone pula memberi pilihan tambahan untuk cookware tertentu yang tidak sesuai dengan induction.' },
+  { q: 'Berapa harga CUCKOO INDUCTRIO?', a: 'Harga outright ialah RM3,400. Rental tanpa casing ialah RM103/bulan, manakala rental dengan casing ialah RM113/bulan untuk kontrak 5 tahun.' },
+  { q: 'Adakah rental termasuk servis dan warranty?', a: 'Ya, pelan rental termasuk free 5-year service & warranty mengikut terma CUCKOO.' },
+  { q: 'Adakah INDUCTRIO perlukan plug khas?', a: 'Ya. INDUCTRIO memerlukan 15A power plug dan kesesuaian wiring/MCB. Pemeriksaan atau nasihat pemasangan mungkin diperlukan.' },
+  { q: 'Adakah INDUCTRIO sesuai untuk rumah biasa?', a: 'Ya, tetapi ia lebih sesuai untuk rumah yang boleh menyediakan power plug dan wiring yang sesuai. Jika tidak pasti, pelanggan boleh semak dahulu sebelum installation.' },
+  { q: 'Apa kelebihan Direct Touch Sensor?', a: 'Direct Touch Sensor membantu kawalan suhu menjadi lebih tepat dan konsisten, terutama untuk masakan yang memerlukan kawalan haba yang baik.' },
+  { q: 'Apa kelebihan SCHOTT CERAN glass?', a: 'SCHOTT CERAN ialah German glass-ceramic surface yang premium, tahan haba dan memberi rupa dapur yang kemas serta moden.' },
+  { q: 'Siapa paling sesuai guna CUCKOO INDUCTRIO?', a: 'Sesuai untuk keluarga yang kerap memasak, rumah baru dengan kitchen cabinet, pengguna yang mahu dapur built-in premium, dan pelanggan yang mahu 3 zon memasak dengan servis berkala CUCKOO.' },
+  { q: 'Boleh guna semua jenis periuk?', a: 'Untuk induction zone, cookware perlu sesuai dengan induction. Highlight zone memberi lebih fleksibiliti untuk beberapa jenis cookware lain, tetapi pengguna tetap perlu ikut panduan cookware yang sesuai dan selamat.' },
+  { q: 'Adakah induction lebih selamat daripada dapur gas?', a: 'Induction membantu mengurangkan risiko tertentu seperti api terbuka dan kebocoran gas kerana ia tidak menggunakan tong gas. Namun pengguna masih perlu berhati-hati kerana cookware dan permukaan dapur boleh menjadi panas.' },
+  { q: 'Adakah INDUCTRIO sesuai untuk masak banyak?', a: 'Ya. Dengan 3 zon memasak, INDUCTRIO lebih sesuai untuk keluarga yang kerap memasak beberapa hidangan dalam satu masa.' },
+  { q: 'Adakah INDUCTRIO ada servis berkala?', a: 'Ya, untuk pelanggan rental, servis berkala dan warranty disediakan mengikut terma pelan CUCKOO. CUCKOO+ Care Service Package (CCSP) untuk INDUCTRIO ialah RM556.50/tahun, tertakluk terma & harga semasa.' }
+];
+
+// ── JSON-LD ─────────────────────────────────────────────────────────────
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  '@id': `${pageUrl}#product`,
+  name: 'CUCKOO INDUCTRIO Hybrid Induction Hob / Dapur Induksi Hybrid 3 Zon',
+  alternateName: ['CUCKOO INDUCTRIO', 'INDUCTRIO Hybrid Hob', 'Dapur Induksi CUCKOO INDUCTRIO'],
+  url: pageUrl,
+  mainEntityOfPage: pageUrl,
+  brand: { '@type': 'Brand', name: 'CUCKOO' },
+  manufacturer: { '@type': 'Organization', name: 'CUCKOO' },
+  category: 'Hybrid induction hob / cooktop',
+  model: 'INDUCTRIO',
+  image: [absoluteUrl(img.render), absoluteUrl(img.zones), absoluteUrl(img.productImage), absoluteUrl(img.dimensions)],
+  description:
+    'CUCKOO INDUCTRIO ialah dapur induksi hybrid premium dengan 2 Induction zone dan 1 Highlight zone, permukaan SCHOTT CERAN German glass-ceramic, IH-Ultra High Temperature Mode, IH Booster Mode, Direct Touch Sensor, Heating Level 1–10 dan Voice Navigation.',
+  material: 'SCHOTT CERAN German Glass-Ceramic',
+  weight: { '@type': 'QuantitativeValue', value: '10.3', unitCode: 'KGM' },
+  additionalProperty: [
+    { '@type': 'PropertyValue', name: 'Cooking zones', value: '2 Induction zone + 1 Highlight zone (hybrid)' },
+    { '@type': 'PropertyValue', name: 'Surface', value: 'SCHOTT CERAN German Glass-Ceramic' },
+    { '@type': 'PropertyValue', name: 'Power consumption', value: '3300W max (Induction 1800W / 2000W Booster each)' },
+    { '@type': 'PropertyValue', name: 'Power supply', value: '220V / 60Hz, 15A power plug required' },
+    { '@type': 'PropertyValue', name: 'Heating level', value: 'Level 1–10' },
+    { '@type': 'PropertyValue', name: 'Special feature', value: 'Direct Touch Sensor' },
+    { '@type': 'PropertyValue', name: 'Voice navigation', value: 'English' },
+    { '@type': 'PropertyValue', name: 'Weight', value: '10.3 kg' }
+  ],
+  offers: [
+    {
+      '@type': 'Offer', '@id': `${pageUrl}#rental-offer`, url: pageUrl, name: 'CUCKOO INDUCTRIO Rental',
+      priceCurrency: 'MYR', price: '103', priceValidUntil,
+      availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'CUCKOO Nano' },
+      description: 'Rental dari RM103/bulan (tanpa casing) atau RM113/bulan (dengan casing) untuk kontrak 5 tahun, termasuk free 5-year service & warranty mengikut terma. Tertakluk kelayakan & promo semasa.'
+    },
+    {
+      '@type': 'Offer', '@id': `${pageUrl}#outright-offer`, url: pageUrl, name: 'CUCKOO INDUCTRIO Outright',
+      priceCurrency: 'MYR', price: '3400', priceValidUntil,
+      availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'CUCKOO Nano' },
+      description: 'Harga outright RM3,400, bayar sekali sahaja. Tertakluk kepada stok dan promosi semasa.'
+    }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.cuckoonano.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Produk', item: 'https://www.cuckoonano.com/products/' },
+    { '@type': 'ListItem', position: 3, name: 'Induction', item: 'https://www.cuckoonano.com/products/induction/' },
+    { '@type': 'ListItem', position: 4, name: 'CUCKOO INDUCTRIO', item: pageUrl }
+  ]
+};
 
 const meta = {
-  "title": "Inductrio CUCKOO | Induction",
-  "description": "Semak maklumat Inductrio CUCKOO, harga cash/rental, promo terkini dan cara order melalui ejen CUCKOO.",
-  "canonical": "https://www.cuckoonano.com/products/induction/inductrio/",
-  "ogImage": "https://www.cuckoonano.com/assets/images/products/inductrio.webp",
-  "ogType": "website"
+  title: 'CUCKOO INDUCTRIO Hybrid Induction Hob | Rental & Harga',
+  description:
+    'CUCKOO INDUCTRIO dapur induksi hybrid premium 3 zon — SCHOTT CERAN glass, Direct Touch Sensor & IH Booster. Rental dari RM103/bulan, outright RM3,400.',
+  canonical: pageUrl,
+  ogImage: absoluteUrl(img.render),
+  ogType: 'product',
+  preloadImages: [encodeURI(img.heroClean)]
 };
 ---
+
 <BaseLayout {...meta}>
-  <section class="hero-pattern px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center"><div><p class="font-bold text-brand">Induction</p><h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">Inductrio CUCKOO</h1><p class="mt-5 text-lg leading-8 text-muted">Semak maklumat Inductrio, harga cash atau rental bulanan, promo terkini dan kesesuaian produk untuk rumah anda.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><a href="https://wasap.my/60139916967" class="rounded-full bg-brand px-7 py-4 text-center font-bold text-white shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-brand-dark">WhatsApp Ejen</a><a href="/products/induction/" class="rounded-full border border-brand/20 bg-white px-7 py-4 text-center font-bold text-brand transition-all duration-300 hover:-translate-y-1 hover:bg-brand-soft">Produk lain</a></div></div><div class="rounded-[2rem] bg-white p-5 shadow-soft"><div class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-brand/10"><img src="/assets/images/Gambar%20Produk%20png/cuckoo%20inductrio.webp" alt="Inductrio" loading="lazy" class="h-full w-full object-contain p-6" /></div></div></div></section><section class="bg-white px-4 py-16 sm:px-6 lg:px-8"><div class="mx-auto max-w-7xl space-y-10"><article class="content"><h2>Kenapa pilih Inductrio?</h2><p>Bahagian ini ialah rangka awal untuk page produk Inductrio. Nanti boleh dimasukkan features, harga, plan bulanan, FAQ, gambar produk sebenar dan bukti pemasangan.</p><h2>Sesuai untuk siapa?</h2><ul><li>Customer yang mahu tahu harga sebelum order.</li><li>Customer yang mahu bandingkan model dalam kategori Induction.</li><li>Customer yang mahu bertanya dahulu sebelum buat keputusan.</li></ul></article></div></section><div data-promo></div><div data-product-selector data-initial="induction"></div><div data-agent-block></div>
+  <style is:inline>
+    html { scroll-behavior: smooth; }
+    .warm-blob { background: radial-gradient(circle at 40% 32%, rgba(122,14,35,.08), transparent 44%), radial-gradient(circle at 72% 64%, rgba(215,168,79,.16), transparent 46%), linear-gradient(145deg, #fff7f3, #ffffff); }
+    .ink-panel { background: radial-gradient(circle at 78% 12%, rgba(216,166,74,.16), transparent 34%), linear-gradient(135deg, #35040f 0%, #6f0b20 48%, #8E1830 100%); }
+    .floating { animation: floating 5.5s ease-in-out infinite; }
+    @keyframes floating { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .floating, .fade-up { animation: none; transition: none; opacity: 1; transform: none; } }
+  </style>
+
+  <div class="bg-brand-cream text-brand-ink antialiased">
+
+    <!-- ============================ 1 · HERO ============================ -->
+    <section id="hero" class="warm-blob relative overflow-hidden px-4 py-10 text-brand-ink sm:px-6 lg:px-8 lg:py-16">
+      <div class="pointer-events-none absolute -right-24 top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-brand-soft/50 blur-3xl"></div>
+      <div class="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-gold/10 blur-3xl"></div>
+
+      <div class="relative mx-auto grid max-w-7xl gap-7 lg:grid-cols-[1.04fr_.96fr] lg:items-start lg:gap-10">
+        <!-- A · Copy -->
+        <div class="order-1 text-center lg:col-start-1 lg:row-start-1 lg:text-left">
+          <div class="mb-5 flex max-w-full justify-center gap-2 overflow-x-auto px-1 whitespace-nowrap lg:justify-start">
+            <span class="shrink-0 rounded-full bg-white/85 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.13em] text-brand shadow-soft ring-1 ring-brand/10 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[.16em]">✨ Premium 3 Zon</span>
+            <span class="shrink-0 rounded-full bg-white/70 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.13em] text-brand-ink shadow-soft ring-1 ring-brand/10 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[.16em]">Hybrid Induction Hob</span>
+          </div>
+
+          <p class="text-xs font-black uppercase tracking-[.24em] text-brand-gold sm:text-sm">CUCKOO Induction Malaysia</p>
+
+          <h1 class="mt-3 text-[2.1rem] font-black leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-[3.4rem]">
+            CUCKOO INDUCTRIO — Dapur Induksi Hybrid 3 Zon
+            <span class="mt-1 block bg-gradient-to-r from-[#6f0b20] via-[#a3172d] to-[#4a0615] bg-clip-text text-transparent drop-shadow-[0_10px_22px_rgba(111,11,32,.18)]">Dari RM103/bulan</span>
+          </h1>
+
+          <p class="mx-auto mt-4 max-w-xl text-base leading-8 text-brand-muted sm:text-lg lg:mx-0">
+            Dapur induksi hybrid premium dengan <strong class="text-brand-ink">2 Induction Zone + 1 Highlight Zone</strong> dalam satu dapur — untuk masakan keluarga yang lebih cepat, lebih kemas dan lebih terkawal.
+          </p>
+
+          <ul class="mx-auto mt-5 grid max-w-xl gap-2 text-left text-sm font-bold text-brand-ink sm:grid-cols-2 lg:mx-0">
+            <li class="flex items-start gap-2"><span class="mt-0.5 text-cta-green">✓</span> 2 Induction + 1 Highlight Zone</li>
+            <li class="flex items-start gap-2"><span class="mt-0.5 text-cta-green">✓</span> IH-Ultra High Temperature Mode</li>
+            <li class="flex items-start gap-2"><span class="mt-0.5 text-cta-green">✓</span> IH Booster Mode</li>
+            <li class="flex items-start gap-2"><span class="mt-0.5 text-cta-green">✓</span> Direct Touch Sensor</li>
+            <li class="flex items-start gap-2"><span class="mt-0.5 text-cta-green">✓</span> SCHOTT CERAN German glass</li>
+            <li class="flex items-start gap-2"><span class="mt-0.5 text-cta-green">✓</span> Service & warranty 5 tahun (rental)</li>
+          </ul>
+        </div>
+
+        <!-- B · Product showcase -->
+        <div class="order-2 relative lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div class="absolute -inset-4 rounded-[2.8rem] bg-white/40 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[2.2rem] border border-white bg-white/70 p-4 shadow-premium backdrop-blur-xl sm:p-6">
+            <div class="mb-4 flex flex-wrap justify-center gap-2">
+              <span class="rounded-full bg-brand px-4 py-1.5 text-[11px] font-black uppercase tracking-wide text-white sm:text-xs">3 Cooking Zones</span>
+              <span class="rounded-full bg-white px-4 py-1.5 text-[11px] font-black uppercase tracking-wide text-brand-ink ring-1 ring-brand/15 sm:text-xs">SCHOTT CERAN</span>
+            </div>
+
+            <div class="relative flex min-h-[260px] items-center justify-center overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-white to-brand-soft p-5 sm:min-h-[360px]">
+              <div class="absolute bottom-8 h-16 w-3/5 rounded-full bg-brand/10 blur-2xl"></div>
+              <img id="heroImg" src={img.heroClean} alt="CUCKOO INDUCTRIO hybrid induction hob 3 zon dapur induksi Malaysia" fetchpriority="high" class="floating relative z-10 max-h-[240px] w-auto max-w-full object-contain drop-shadow-2xl transition duration-300 sm:max-h-[340px]" />
+            </div>
+
+            <div class="mt-4 flex flex-wrap justify-center gap-2">
+              {heroThumbs.map((thumb, index) => (
+                <button type="button" data-hero-thumb={thumb.src} class={`hero-thumb whitespace-nowrap rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-wide transition sm:text-xs ${index === 0 ? 'bg-white text-brand-ink ring-2 ring-brand' : 'bg-brand/5 text-brand-ink/60'}`}>{thumb.label}</button>
+              ))}
+            </div>
+
+            <div class="mt-4 grid grid-cols-3 gap-2">
+              <div class="rounded-2xl bg-white px-2 py-2.5 text-center shadow-soft ring-1 ring-brand/10"><p class="text-sm font-black text-brand-ink sm:text-base">3 Zon</p><p class="text-[9px] font-bold uppercase tracking-wide text-brand-muted sm:text-[10px]">2 IH + 1 Highlight</p></div>
+              <div class="rounded-2xl bg-white px-2 py-2.5 text-center shadow-soft ring-1 ring-brand/10"><p class="text-sm font-black text-brand-ink sm:text-base">2000W</p><p class="text-[9px] font-bold uppercase tracking-wide text-brand-muted sm:text-[10px]">Booster</p></div>
+              <div class="rounded-2xl bg-white px-2 py-2.5 text-center shadow-soft ring-1 ring-brand/10"><p class="text-sm font-black text-brand-ink sm:text-base">1–10</p><p class="text-[9px] font-bold uppercase tracking-wide text-brand-muted sm:text-[10px]">Heating Level</p></div>
+            </div>
+          </div>
+
+          <div class="ink-panel relative mx-auto mt-4 w-11/12 rounded-3xl px-5 py-3.5 text-center text-white shadow-glow">
+            <p class="text-[10px] font-bold uppercase tracking-[.14em] text-white/70 sm:text-[11px]">Direct Touch Sensor · Voice Navigation</p>
+            <p class="text-[13px] font-black sm:text-sm">Dapur Premium Untuk Keluarga Yang Kerap Memasak</p>
+          </div>
+        </div>
+
+        <!-- C · Pricing + CTA -->
+        <div class="order-3 lg:col-start-1 lg:row-start-2">
+          <div class="ink-panel rounded-[1.75rem] p-4 shadow-premium sm:p-5">
+            <div class="rounded-[1.4rem] p-5 text-ink shadow-glow" style="background: linear-gradient(135deg, #fff7de, #ffe7a8, #d6b679);">
+              <p class="text-center text-xs font-black uppercase tracking-[.2em] text-amber-800">Rental Plan</p>
+              <p class="mt-1 text-center font-black tracking-tight text-slate-950" style="line-height:1;">
+                <span style="font-size: clamp(3.2rem, 15vw, 5rem);">RM103</span><span class="font-bold text-slate-700" style="font-size: clamp(1.1rem, 4.5vw, 1.5rem);">/bulan</span>
+              </p>
+              <p class="mt-2 text-center text-sm font-bold text-amber-800">Dengan casing RM113/bulan · Outright RM3,400</p>
+            </div>
+            <div class="mt-3 grid gap-2 sm:grid-cols-2">
+              <div class="rounded-2xl bg-white/10 px-4 py-3 text-center text-sm font-bold text-white ring-1 ring-white/15">Kontrak rental 5 tahun</div>
+              <div class="rounded-2xl bg-white/10 px-4 py-3 text-center text-sm font-bold text-white ring-1 ring-white/15">Free 5-year service & warranty</div>
+            </div>
+            <p class="mt-3 text-center text-[11px] font-semibold leading-5 text-rose-200">Tertakluk kepada stok, kawasan, kelulusan & terma semasa CUCKOO.</p>
+          </div>
+
+          <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <a href={whatsappUrl} class="inline-flex items-center justify-center gap-2 rounded-full bg-cta-green px-7 py-4 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              Tempah Sekarang
+            </a>
+            <a href="#harga" class="inline-flex items-center justify-center rounded-full border border-brand/20 bg-white px-7 py-4 text-sm font-black text-brand-ink shadow-soft hover:border-brand/40">Semak Harga INDUCTRIO ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 2 · KENAPA BERALIH KE INDUCTION (marquee) ============================ -->
+    <section id="kenapa-induction" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Kenapa Beralih Ke Induction?</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Masak Lebih Tenang Tanpa Api Terbuka & Risiko Gas Bocor</h2>
+          <p class="mt-4 leading-8 text-brand-muted">Induction hob membantu mengurangkan beberapa risiko biasa dapur gas seperti api terbuka, tong gas, hose dan regulator — untuk pengalaman memasak yang lebih kemas, praktikal dan menenangkan.</p>
+        </div>
+
+        <div class="relative mt-8 fade-up" data-marquee>
+          <div class="flex gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-marquee-track>
+            {[...inductionCards, ...inductionCards].map((card, i) => (
+              <article class="w-[58vw] shrink-0 overflow-hidden rounded-[1.5rem] bg-white shadow-soft ring-1 ring-brand/10 sm:w-[280px] lg:w-[286px]" aria-hidden={i >= inductionCards.length ? 'true' : undefined}>
+                <div class="aspect-[4/3] overflow-hidden bg-brand-cream">
+                  <img src={card.img} alt={`${card.title} — CUCKOO INDUCTRIO dapur induksi`} loading="lazy" class="h-full w-full object-cover" />
+                </div>
+                <div class="p-4">
+                  <h3 class="text-base font-black leading-tight text-brand-ink">{card.title}</h3>
+                  <p class="mt-1.5 text-sm leading-6 text-brand-muted">{card.copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <p class="mx-auto mt-6 max-w-3xl text-center text-xs font-semibold leading-6 text-brand-muted">
+          Nota: Permukaan dapur masih boleh panas akibat haba daripada cookware. Sentiasa berhati-hati, jauhkan anak kecil dan jangan tinggalkan masakan tanpa pengawasan.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ 3 · MASALAH YANG DISELESAIKAN ============================ -->
+    <section id="masalah" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid items-center gap-8 rounded-[2rem] bg-white p-6 shadow-premium fade-up lg:grid-cols-[1fr_1fr] lg:p-10">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Masalah Dapur Harian</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Masak Banyak, Tapi Dapur Masih Nak Kemas?</h2>
+            <p class="mt-4 leading-8 text-brand-muted">CUCKOO INDUCTRIO direka untuk pelanggan yang mahukan dapur moden 3-zon dengan gabungan induction dan highlight — sesuai untuk keluarga yang kerap memasak dan mahu dapur lebih kemas, premium dan praktikal.</p>
+            <ul class="mt-6 grid gap-2.5 sm:grid-cols-2">
+              {problems.map((p) => (
+                <li class="flex items-start gap-2.5 text-sm font-bold text-brand-ink"><span class="mt-0.5 text-brand">•</span>{p}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="overflow-hidden rounded-[1.75rem] bg-brand-cream ring-1 ring-brand/10">
+            <img src={img.installedKitchen} alt="CUCKOO INDUCTRIO dapur induksi 3 zon dalam dapur keluarga" loading="lazy" class="h-full w-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 4 · KENAPA INDUCTRIO PREMIUM (6) ============================ -->
+    <section id="kenapa-inductrio" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Kenapa CUCKOO INDUCTRIO Premium</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Dapur Premium 3 Zon Untuk Keluarga Yang Kerap Memasak</h2>
+          <p class="mt-4 leading-8 text-brand-muted">Gabungan 3 zon memasak, permukaan premium dan kawalan haba yang lebih tepat — untuk dapur utama yang lebih kemas, berkuasa dan fleksibel.</p>
+        </div>
+
+        <div class="mt-10 grid gap-6 fade-up lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <div class="relative overflow-hidden rounded-[2.2rem] bg-white p-3 shadow-premium ring-1 ring-brand/10">
+            <div class="absolute inset-x-0 top-0 z-10 h-1.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
+            <div class="warm-blob rounded-[1.8rem] p-4 sm:p-6">
+              <img src={img.zones} alt="CUCKOO INDUCTRIO — 2 induction zone + 1 highlight zone dalam satu dapur" loading="lazy" class="w-full rounded-[1.25rem] object-contain" />
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {premiumPoints.map((f) => (
+              <article class="rounded-[1.5rem] bg-white p-5 shadow-soft ring-1 ring-brand/10 transition hover:-translate-y-1 hover:shadow-premium">
+                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-xs font-black text-white ring-4 ring-brand/10">{f.n}</div>
+                <h3 class="mt-3 text-base font-black leading-tight text-brand-ink">{f.t}</h3>
+                <p class="mt-1.5 text-sm leading-6 text-brand-muted">{f.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 5 · DETAIL CIRI (rows) ============================ -->
+    <section class="px-4 pb-2 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl space-y-6">
+        <div class="grid items-center gap-6 rounded-[2rem] bg-white p-5 shadow-soft ring-1 ring-brand/10 fade-up lg:grid-cols-[1.05fr_.95fr] lg:p-8">
+          <div class="overflow-hidden rounded-[1.5rem] bg-brand-cream ring-1 ring-brand/10"><img src={img.ihUltra} alt="IH-Ultra High Temperature Mode CUCKOO INDUCTRIO" loading="lazy" class="h-full w-full object-cover" /></div>
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">01 · Firepower</p>
+            <h3 class="mt-2 text-2xl font-black text-brand-ink sm:text-3xl">IH-Ultra High Temperature Mode</h3>
+            <p class="mt-3 leading-7 text-brand-muted">Firepower lebih kuat untuk masakan yang perlukan haba tinggi. Digabungkan dengan IH Booster Mode, setiap induction zone boleh naik sehingga 2000W untuk memasak lebih pantas bila perlu.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-700">Sehingga 2000W Booster</span>
+              <span class="rounded-full border border-brand/20 bg-brand-soft px-3 py-1.5 text-xs font-bold text-brand">IH Booster Mode</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid items-center gap-6 rounded-[2rem] bg-white p-5 shadow-soft ring-1 ring-brand/10 fade-up lg:grid-cols-[.95fr_1.05fr] lg:p-8">
+          <div class="order-2 lg:order-1">
+            <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">02 · Kawalan</p>
+            <h3 class="mt-2 text-2xl font-black text-brand-ink sm:text-3xl">Direct Touch Sensor</h3>
+            <p class="mt-3 leading-7 text-brand-muted">Direct Touch Sensor bantu suhu dikawal dengan lebih tepat supaya masakan lebih konsisten — terutama untuk hidangan yang memerlukan kawalan haba yang stabil. Digabungkan dengan Heating Level 1–10.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full bg-brand-cream px-3 py-1.5 text-xs font-bold text-brand-ink">Heating Level 1–10</span>
+              <span class="rounded-full bg-brand-cream px-3 py-1.5 text-xs font-bold text-brand-ink">Voice Navigation</span>
+            </div>
+          </div>
+          <div class="order-1 overflow-hidden rounded-[1.5rem] bg-brand-cream ring-1 ring-brand/10 lg:order-2"><img src={img.directTouch} alt="Direct Touch Sensor CUCKOO INDUCTRIO untuk kawalan haba tepat" loading="lazy" class="h-full w-full object-cover" /></div>
+        </div>
+
+        <div class="grid items-center gap-6 rounded-[2rem] bg-white p-5 shadow-soft ring-1 ring-brand/10 fade-up lg:grid-cols-[1.05fr_.95fr] lg:p-8">
+          <div class="overflow-hidden rounded-[1.5rem] bg-brand-cream ring-1 ring-brand/10"><img src={img.schott} alt="Permukaan SCHOTT CERAN German glass-ceramic CUCKOO INDUCTRIO" loading="lazy" class="h-full w-full object-cover" /></div>
+          <div>
+            <p class="text-xs font-black uppercase tracking-[.2em] text-brand-gold">03 · Surface Premium</p>
+            <h3 class="mt-2 text-2xl font-black text-brand-ink sm:text-3xl">SCHOTT CERAN German Glass-Ceramic</h3>
+            <p class="mt-3 leading-7 text-brand-muted">Permukaan German glass-ceramic SCHOTT CERAN memberi rupa moden, premium dan mudah dibersihkan — sesuai untuk kitchen cabinet dan dapur built-in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 6 · KELEBIHAN PELANGGAN ============================ -->
+    <section class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Kelebihan Untuk Pelanggan</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Masak Lebih Cepat, Kemas & Terkawal</h2>
+        </div>
+        <div class="mt-10 grid gap-4 fade-up sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((b) => (
+            <article class="rounded-[1.75rem] bg-white p-6 text-center shadow-soft ring-1 ring-brand/5 transition hover:-translate-y-1 hover:shadow-premium">
+              <span class="text-3xl">{b.e}</span>
+              <h3 class="mt-3 text-base font-black text-brand-ink">{b.t}</h3>
+              <p class="mt-1.5 text-sm leading-6 text-brand-muted">{b.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 7 · COOKING MODES ============================ -->
+    <section id="mod-masak" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Auto Cook</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Sesuai Untuk Pelbagai Masakan Harian</h2>
+          <p class="mt-4 leading-8 text-brand-muted">Dengan 2 induction zone dan 1 highlight zone, INDUCTRIO beri ruang lebih luas untuk masak lauk, nasi, sup, gorengan dan hidangan keluarga dalam satu masa.</p>
+        </div>
+
+        <div class="mt-10 overflow-hidden rounded-[2rem] bg-white p-3 shadow-premium ring-1 ring-brand/10 fade-up">
+          <img src={img.autoCookBanner} alt="CUCKOO INDUCTRIO Auto Cook — Pan Fry, Deep Fry, White Rice, Porridge, Noodles" loading="lazy" class="w-full rounded-[1.5rem] object-cover" />
+        </div>
+
+        <div class="mt-6 grid gap-4 fade-up grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+          {cookingModes.map((m) => (
+            <article class="flex flex-col items-center rounded-3xl bg-white p-5 text-center shadow-soft ring-1 ring-brand/5 transition hover:-translate-y-1 hover:shadow-premium">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-brand-cream text-3xl ring-1 ring-brand/10">{m.e}</div>
+              <h3 class="mt-3 text-sm font-black text-brand-ink">{m.t}</h3>
+              <p class="mt-1.5 text-xs leading-5 text-brand-muted">{m.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 8 · GALERI GAMBAR SEBENAR ============================ -->
+    <ProductGallerySlider
+      id="gambar-produk"
+      eyebrow="Gambar Produk Sebenar"
+      title="INDUCTRIO Dalam Dapur Sebenar"
+      description="Swipe untuk lihat CUCKOO INDUCTRIO digunakan dalam dapur pelanggan. Klik gambar untuk paparan penuh."
+      items={galleryItems}
+      aspectClass="aspect-[4/3]"
+    />
+
+    <!-- ============================ 9 · SPESIFIKASI ============================ -->
+    <section id="spec" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-brand-gold">Specifications</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl lg:text-5xl">Spesifikasi CUCKOO INDUCTRIO</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">Maklumat penuh untuk bantu anda semak kesesuaian saiz, kuasa dan keperluan pemasangan.</p>
+        </div>
+
+        <div class="grid gap-8 fade-up lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="ink-panel self-start overflow-hidden rounded-[2rem] p-6 shadow-premium sm:p-8">
+            <img src={img.dimensions} alt="Dimensi CUCKOO INDUCTRIO — 590mm x 510mm x 87mm" loading="lazy" class="mx-auto h-auto w-full max-w-[480px] rounded-[1.25rem] bg-white object-contain p-4" />
+            <p class="mt-4 text-center text-sm text-white/70">Stand Case 590mm (W) × 510mm (D) × 87mm (H)</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft"><p class="text-3xl font-black text-brand">3 Zon</p><p class="mt-1 text-sm font-bold text-brand-muted">2 Induction + 1 Highlight</p></div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft"><p class="text-3xl font-black text-brand">3300W</p><p class="mt-1 text-sm font-bold text-brand-muted">Kuasa Maksimum</p></div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft"><p class="text-3xl font-black text-brand">10.3kg</p><p class="mt-1 text-sm font-bold text-brand-muted">Berat Produk</p></div>
+              <div class="rounded-[1.5rem] bg-white p-5 shadow-soft"><p class="text-3xl font-black text-brand">15A</p><p class="mt-1 text-sm font-bold text-brand-muted">Power Plug</p></div>
+            </div>
+
+            <div class="overflow-hidden rounded-[2rem] bg-white shadow-premium">
+              {[
+                ['Model', 'CUCKOO INDUCTRIO'],
+                ['Jenis', 'Hybrid Induction Hob'],
+                ['Burner Zone', '2 Induction + 1 Highlight'],
+                ['Surface', 'SCHOTT CERAN German Glass-Ceramic'],
+                ['Power Consumption', '3300W max'],
+                ['Induction 1', '1800W / 2000W Booster'],
+                ['Induction 2', '1800W / 2000W Booster'],
+                ['Power Supply', '220V / 60Hz'],
+                ['Plug Requirement', '15A power plug required'],
+                ['Heating Level', 'Level 1–10'],
+                ['Special Feature', 'Direct Touch Sensor'],
+                ['Voice Navigation', 'English']
+              ].map(([label, value]) => (
+                <div class="grid grid-cols-2 border-b border-brand/10 last:border-b-0">
+                  <div class="p-4 font-black text-brand-ink sm:p-5">{label}</div>
+                  <div class="p-4 text-brand-muted sm:p-5">{value}</div>
+                </div>
+              ))}
+            </div>
+
+            <div class="rounded-[2rem] bg-brand-cream p-5 text-sm leading-7 text-brand-muted ring-1 ring-brand/10">
+              <p class="font-black text-brand-ink">Saiz</p>
+              <p class="mt-1">Built: 560mm (W) × 480mm (D) × 20–50mm (H)</p>
+              <p>Stand Case: 590mm (W) × 510mm (D) × 87mm (H)</p>
+              <p>Cut-out: 560mm ±1mm (W) × 480mm ±1mm (D) × 87mm ±1mm (H)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 10 · FEATURES (chips) ============================ -->
+    <section class="px-4 pb-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-brand/10 fade-up sm:p-8">
+          <div class="text-center">
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Features</p>
+            <h2 class="mt-2 text-2xl font-black text-brand-ink sm:text-3xl">Ciri-Ciri CUCKOO INDUCTRIO</h2>
+          </div>
+          <div class="mt-6 flex flex-wrap justify-center gap-2.5">
+            {featureChips.map((c) => (
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-cream px-4 py-2 text-sm font-bold text-brand-ink ring-1 ring-brand/10"><span class="text-cta-green">✓</span>{c}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 11 · INSTALLATION NOTE ============================ -->
+    <section id="pemasangan" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid items-center gap-8 rounded-[2rem] bg-white p-6 shadow-premium fade-up lg:grid-cols-2 lg:p-10">
+          <div class="overflow-hidden rounded-[1.75rem] bg-brand-cream ring-1 ring-brand/10">
+            <img src={img.install15a} alt="CUCKOO INDUCTRIO memerlukan setup elektrik 15A yang sesuai" loading="lazy" class="h-full w-full object-cover" />
+          </div>
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Installation Note</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Perlu Setup Elektrik Yang Sesuai</h2>
+            <p class="mt-4 leading-8 text-brand-muted">CUCKOO INDUCTRIO ialah dapur induction hybrid premium dengan kuasa sehingga 3300W. Oleh itu, ia memerlukan soket dan wiring yang sesuai untuk penggunaan yang stabil dan selamat.</p>
+            <ul class="mt-6 space-y-3">
+              {installPoints.map((p) => (
+                <li class="flex items-start gap-3 text-sm font-bold text-brand-ink"><span class="mt-0.5 text-brand">⚡</span>{p}</li>
+              ))}
+            </ul>
+            <p class="mt-5 rounded-2xl bg-brand-cream p-4 text-xs font-semibold leading-6 text-brand-muted ring-1 ring-brand/10">INDUCTRIO diposisikan sebagai dapur premium built-in. Semakan lokasi & nasihat pemasangan mungkin diperlukan sebelum installation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 12 · CUCKOO+ CARE SERVICE ============================ -->
+    <section id="servis" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid items-center gap-8 rounded-[2rem] bg-white p-6 shadow-premium fade-up lg:grid-cols-[1.1fr_.9fr] lg:p-10">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">CUCKOO+ Care Service</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Dapur Induction Dengan Servis Berkala CUCKOO</h2>
+            <p class="mt-4 leading-8 text-brand-muted">CUCKOO INDUCTRIO bukan sekadar induction hob. Ia hadir dengan sokongan servis berkala supaya dapur anda diperiksa, dibersihkan dan dijaga dengan lebih baik sepanjang tempoh penggunaan.</p>
+            <p class="mt-4 leading-8 text-brand-muted">Untuk pelanggan rental, INDUCTRIO hadir dengan free 5-year service & warranty mengikut terma pelan rental. Servis berkala membantu memastikan bahagian penting hob diperiksa oleh pasukan CUCKOO+ Care Service.</p>
+          </div>
+          <div class="warm-blob relative flex items-center justify-center overflow-hidden rounded-[1.75rem] p-6 ring-1 ring-brand/10">
+            <img src={technicianImg} alt="Pasukan CUCKOO+ Care Service untuk servis INDUCTRIO" loading="lazy" class="mx-auto h-auto w-full max-w-[360px] object-contain" />
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 fade-up sm:grid-cols-2 lg:grid-cols-4">
+          {serviceCards.map((c) => (
+            <article class="rounded-[1.75rem] bg-white p-6 text-center shadow-soft ring-1 ring-brand/5 transition hover:-translate-y-1 hover:shadow-premium">
+              <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-cream ring-1 ring-brand/10">
+                <img src={c.icon} alt={c.t} loading="lazy" class="h-11 w-11 object-contain" />
+              </div>
+              <h3 class="mt-4 text-base font-black text-brand-ink">{c.t}</h3>
+              <p class="mt-2 text-sm leading-6 text-brand-muted">{c.d}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-8 grid items-center gap-8 rounded-[2rem] bg-white p-6 shadow-premium fade-up lg:grid-cols-2 lg:p-10">
+          <div class="order-2 overflow-hidden rounded-[1.5rem] bg-brand-cream ring-1 ring-brand/10 lg:order-1">
+            <img src={img.controlPanel} alt="Pemeriksaan panel & permukaan INDUCTRIO semasa servis" loading="lazy" class="h-full w-full object-cover" />
+          </div>
+          <div class="order-1 lg:order-2">
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">CCS 8-Point Check</p>
+            <h3 class="mt-3 text-2xl font-black text-brand-ink sm:text-3xl">Apa Yang Diperiksa Semasa Servis?</h3>
+            <ul class="mt-5 grid gap-2.5 sm:grid-cols-2">
+              {ccsCheck.map((item, i) => (
+                <li class="flex items-start gap-2.5 rounded-2xl bg-brand-cream px-4 py-3 text-sm font-bold text-brand-ink">
+                  <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand text-[11px] font-black text-white">{i + 1}</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 fade-up">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Service Process</p>
+            <h3 class="mt-3 text-2xl font-black text-brand-ink sm:text-3xl">Bagaimana Servis INDUCTRIO Dibuat?</h3>
+          </div>
+          <div class="mt-8 hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+            {serviceSteps.map((s, i) => (
+              <article class="overflow-hidden rounded-[1.75rem] bg-white shadow-soft ring-1 ring-brand/10">
+                <div class="relative aspect-[3/2] overflow-hidden bg-brand-cream">
+                  <img src={s.img} alt={`Langkah ${i + 1} servis INDUCTRIO — ${s.t}`} loading="lazy" class="h-full w-full object-cover" />
+                  <span class="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-brand text-sm font-black text-white shadow-soft">{i + 1}</span>
+                </div>
+                <div class="p-5"><h4 class="text-base font-black text-brand-ink">{s.t}</h4><p class="mt-1.5 text-sm leading-6 text-brand-muted">{s.d}</p></div>
+              </article>
+            ))}
+          </div>
+          <div class="relative mt-8 sm:hidden" data-marquee>
+            <div class="flex gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-marquee-track>
+              {[...serviceSteps, ...serviceSteps].map((s, i) => (
+                <article class="w-[74vw] shrink-0 overflow-hidden rounded-[1.75rem] bg-white shadow-soft ring-1 ring-brand/10" aria-hidden={i >= serviceSteps.length ? 'true' : undefined}>
+                  <div class="relative aspect-[3/2] overflow-hidden bg-brand-cream">
+                    <img src={s.img} alt={`Langkah ${(i % serviceSteps.length) + 1} servis INDUCTRIO — ${s.t}`} loading="lazy" class="h-full w-full object-cover" />
+                    <span class="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-brand text-sm font-black text-white shadow-soft">{(i % serviceSteps.length) + 1}</span>
+                  </div>
+                  <div class="p-5"><h4 class="text-base font-black text-brand-ink">{s.t}</h4><p class="mt-1.5 text-sm leading-6 text-brand-muted">{s.d}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 fade-up lg:grid-cols-[1.4fr_1fr]">
+          <div class="rounded-[2rem] bg-white p-6 shadow-soft ring-1 ring-brand/10 sm:p-8">
+            <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">CUCKOO+ Care Service Package</p>
+            <div class="mt-3 flex flex-wrap items-end gap-3">
+              <p class="text-4xl font-black text-brand">RM556.50<span class="text-base font-black text-brand-muted">/tahun</span></p>
+              <span class="rounded-full bg-brand-cream px-3 py-1.5 text-xs font-black text-brand">Untuk INDUCTRIO</span>
+            </div>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">Pakej servis tahunan untuk penjagaan berkala INDUCTRIO. Untuk pelanggan rental, servis berkala & warranty disediakan mengikut terma pelan rental. Servis berkala berbeza daripada warranty — warranty tertakluk kepada terma pelan CUCKOO.</p>
+          </div>
+          <div class="ink-panel rounded-[2rem] p-6 text-white shadow-premium sm:p-8">
+            <p class="text-sm font-black">Kenapa servis penting?</p>
+            <ul class="mt-3 space-y-2 text-sm font-semibold text-white/85">
+              <li class="flex gap-2"><span class="text-brand-gold">✓</span> Permukaan glass-ceramic kekal bersih</li>
+              <li class="flex gap-2"><span class="text-brand-gold">✓</span> Pemeriksaan berkala oleh pasukan CUCKOO</li>
+              <li class="flex gap-2"><span class="text-brand-gold">✓</span> Anda tidak dibiarkan selepas pemasangan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 13 · HARGA (Outright vs Rental) ============================ -->
+    <section id="harga" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mx-auto max-w-3xl text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Harga CUCKOO INDUCTRIO</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl">Pilih Cara Bayaran Yang Sesuai</h2>
+          <p class="mt-5 leading-8 text-brand-muted">Dapur induction hybrid premium 3 zon dengan sokongan servis berkala CUCKOO. Rental untuk bayaran bulanan, atau outright untuk milik terus.</p>
+        </div>
+
+        <div class="mt-10 grid gap-5 fade-up lg:grid-cols-2">
+          <article class="relative rounded-[2rem] border-2 border-brand bg-white p-7 shadow-glow">
+            <div class="absolute -top-4 left-7 rounded-full bg-brand px-5 py-2 text-xs font-black uppercase tracking-[.14em] text-white shadow-soft">Rental Plan</div>
+            <p class="mt-3 text-sm font-black uppercase tracking-[.16em] text-brand-gold">Rental 5 Tahun</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">Dari RM103/bulan</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">Sesuai untuk pelanggan yang mahu bayaran bulanan dan sokongan servis CUCKOO sepanjang tempoh plan.</p>
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <div class="flex items-end justify-between gap-3">
+                <div>
+                  <p class="text-4xl font-black text-brand">RM103<span class="text-base font-black text-brand-muted">/bulan</span></p>
+                  <p class="mt-1 text-sm font-bold text-brand-muted">Tanpa casing</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-2xl font-black text-brand-ink">RM113<span class="text-sm font-black text-brand-muted">/bulan</span></p>
+                  <p class="mt-1 text-xs font-bold text-brand-muted">Dengan casing</p>
+                </div>
+              </div>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li class="flex gap-2.5"><span class="text-cta-green">✓</span> Kontrak rental 5 tahun</li>
+              <li class="flex gap-2.5"><span class="text-cta-green">✓</span> Free 5-year service & warranty</li>
+              <li class="flex gap-2.5"><span class="text-cta-green">✓</span> Sokongan servis berkala CUCKOO</li>
+            </ul>
+            <a href={whatsappUrl} class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-cta-green px-6 py-4 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Rental INDUCTRIO
+            </a>
+          </article>
+
+          <article class="rounded-[2rem] border border-brand/10 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Bayar sekali</p>
+            <h3 class="mt-4 text-3xl font-black text-brand-ink">Outright</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-muted">Sesuai untuk pelanggan yang mahu memiliki terus tanpa bayaran bulanan.</p>
+            <div class="mt-7 rounded-[1.5rem] bg-brand-cream p-5">
+              <p class="text-sm font-black uppercase tracking-[.16em] text-brand-gold">Harga Outright</p>
+              <p class="mt-2 text-5xl font-black text-brand">RM3,400</p>
+              <p class="mt-2 text-sm font-bold text-brand-muted">Bayar sekali sahaja</p>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
+              <li class="flex gap-2.5"><span class="text-cta-green">✓</span> Milik terus tanpa kontrak bulanan</li>
+              <li class="flex gap-2.5"><span class="text-cta-green">✓</span> Pilihan built-in atau free-standing</li>
+              <li class="flex gap-2.5"><span class="text-cta-green">✓</span> Pakej servis CCSP RM556.50/tahun (pilihan)</li>
+            </ul>
+            <a href={whatsappUrl} class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand px-6 py-4 text-sm font-black text-brand transition hover:-translate-y-0.5 hover:bg-brand-cream">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              WhatsApp Outright INDUCTRIO
+            </a>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-[2rem] bg-white p-5 text-center text-sm font-bold leading-7 text-brand-muted shadow-soft">
+          Harga dan kelayakan tertakluk kepada stok, kawasan, approval dan terma semasa CUCKOO. WhatsApp untuk semak kelayakan & promo terkini.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 14 · SIAPA SESUAI ============================ -->
+    <section id="sesuai-siapa" class="px-4 py-14 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] bg-white p-6 shadow-premium fade-up lg:p-10">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">Siapa Sesuai Guna?</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">CUCKOO INDUCTRIO Sesuai Untuk…</h2>
+        </div>
+        <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {suitableFor.map((s) => (
+            <div class="flex items-start gap-3 rounded-2xl bg-brand-cream p-4 text-sm font-bold text-brand-ink ring-1 ring-brand/10"><span class="mt-0.5 text-cta-green">✓</span>{s}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 15 · FAQ ============================ -->
+    <section id="faq" class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center fade-up">
+          <p class="text-sm font-black uppercase tracking-[.22em] text-brand-gold">FAQ</p>
+          <h2 class="mt-3 text-3xl font-black text-brand-ink sm:text-4xl">Soalan Yang Selalu Ditanya</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-base leading-8 text-brand-muted">Jawapan ringkas sebelum anda pilih plan atau semak kesesuaian pemasangan.</p>
+        </div>
+        <div class="mt-8 space-y-3 fade-up">
+          {faqItems.map((item) => (
+            <details class="group rounded-[1.35rem] bg-white shadow-soft ring-1 ring-brand/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-black text-brand-ink">
+                <span>{item.q}</span>
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream text-brand transition group-open:rotate-45">+</span>
+              </summary>
+              <div class="border-t border-brand/10 px-5 pb-5 pt-4 text-sm leading-7 text-brand-muted">{item.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 16 · RINGKASAN + CTA ============================ -->
+    <section class="px-4 pb-16 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-5xl">
+        <div class="ink-panel overflow-hidden rounded-[2.5rem] p-8 text-center text-white shadow-premium fade-up sm:p-12">
+          <h2 class="text-3xl font-black sm:text-4xl">Sedia Untuk Dapur Induction Premium?</h2>
+          <p class="mx-auto mt-4 max-w-2xl leading-8 text-white/80">CUCKOO INDUCTRIO — dapur induksi hybrid premium 3 zon dengan IH-Ultra High Temperature Mode, IH Booster, Direct Touch Sensor, SCHOTT CERAN German glass-ceramic dan servis berkala CUCKOO. Sesuai untuk keluarga yang mahu dapur moden, kemas dan praktikal.</p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href={whatsappUrl} class="inline-flex items-center justify-center gap-2 rounded-full bg-cta-green px-8 py-4 text-sm font-black text-white shadow-cta transition hover:-translate-y-0.5 hover:bg-cta-dark">
+              <img src="/assets/images/misc/whatsapp-png.webp" alt="" aria-hidden="true" class="h-5 w-5" />
+              Tempah INDUCTRIO Sekarang
+            </a>
+            <a href="#harga" class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-8 py-4 text-sm font-black text-white transition hover:bg-white/10">Semak Harga</a>
+          </div>
+          <p class="mt-5 text-xs font-semibold text-white/55">Rental dari RM103/bulan · Outright RM3,400 · tertakluk terma & kelayakan semasa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shared site sections (promo banner, product selector, agent/contact) -->
+    <div data-promo></div>
+    <div data-product-selector data-initial="induction"></div>
+    <div data-agent-block></div>
+  </div>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <script is:inline>
+    (function () {
+      const heroImg = document.getElementById('heroImg');
+      const btns = document.querySelectorAll('.hero-thumb');
+      btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (heroImg) { heroImg.style.opacity = '0'; setTimeout(() => { heroImg.src = btn.dataset.heroThumb; heroImg.style.opacity = '1'; }, 150); }
+          btns.forEach((b) => { b.classList.add('bg-brand/5', 'text-brand-ink/60'); b.classList.remove('bg-white', 'text-brand-ink', 'ring-2', 'ring-brand'); });
+          btn.classList.add('bg-white', 'text-brand-ink', 'ring-2', 'ring-brand'); btn.classList.remove('bg-brand/5', 'text-brand-ink/60');
+        });
+      });
+    })();
+
+    (function () {
+      const els = document.querySelectorAll('.fade-up');
+      if (!('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('visible')); return; }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+      }, { threshold: 0.1 });
+      els.forEach((el) => observer.observe(el));
+    })();
+
+    // Marquee auto-scroll berterusan (kad diduplikasi = separuh scrollWidth ialah 1 set)
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const initMarquee = (slider) => {
+        const track = slider.querySelector('[data-marquee-track]');
+        if (!track) return;
+        const speed = 0.5;
+        let paused = reduce;
+        const half = () => track.scrollWidth / 2;
+        const wrap = () => { const h = half(); if (h > 0 && track.scrollLeft >= h) track.scrollLeft -= h; };
+        const visible = () => track.offsetParent !== null && track.scrollWidth > track.clientWidth + 4;
+        const tick = () => {
+          if (!paused && visible()) { track.scrollLeft += speed; wrap(); }
+          window.requestAnimationFrame(tick);
+        };
+        const pause = () => { paused = true; };
+        const resume = () => { if (!reduce) paused = false; };
+        ['pointerenter', 'pointerdown', 'touchstart'].forEach((ev) => slider.addEventListener(ev, pause, { passive: true }));
+        ['pointerleave', 'pointercancel', 'touchend'].forEach((ev) => slider.addEventListener(ev, resume, { passive: true }));
+        track.addEventListener('scroll', wrap, { passive: true });
+        if (!reduce) window.requestAnimationFrame(tick);
+      };
+      document.querySelectorAll('[data-marquee]').forEach(initMarquee);
+    })();
+  </script>
 </BaseLayout>

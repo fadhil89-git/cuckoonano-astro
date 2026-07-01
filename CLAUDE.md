@@ -264,6 +264,26 @@ JSON-LD: `Product` (image array, brand+manufacturer CUCKOO, model INDUCTWO, dual
 
 Service section is INDUCTWO-only — do NOT copy it onto other product pages.
 
+## CUCKOO INDUCTRIO Hybrid Induction Hob Page
+
+Page: `src/pages/products/induction/inductrio/index.astro` (built full — replaced the old stub).
+Final URL: `/products/induction/inductrio/` (already in `public/sitemap.xml`).
+Assets: `public/assets/images/products/induction/inductrio/` (renamed 26 files to SEO slugs — hero = `dapur-induksi-cuckoo-inductrio-hybrid-hob-malaysia.webp`, rest `cuckoo-inductrio-<desc>.webp`, e.g. `-3-cooking-zones`, `-direct-touch-sensor`, `-schott-ceran-glass`, `-ih-ultra-high-temp`, `-ih-booster-mode`, `-auto-cook-banner`, `-control-panel`, `-dimensions-spec`, `-installation-15a`, plus lifestyle/gallery shots). Shared: `induction/` kenapa cards + `servis/` + technician `service/Cuckoo-Servis copy.webp`. Hero shot `Gambar Produk png/cuckoo inductrio.webp`.
+
+Product facts (single source of truth):
+
+- Premium hybrid hob, 3 zones: 2 Induction + 1 Highlight. SCHOTT CERAN German glass-ceramic surface.
+- Features (INDUCTRIO-specific, unlike INDUCTWO): IH-Ultra High Temperature Mode, IH Booster Mode, Direct Touch Sensor, Heating Level 1–10, Voice Navigation (English), Touch Panel, Safety Lock, Timer, Smart Error Detection, Auto Power Saving, Voice Cooking Alarm.
+- Power: 3300W max; Induction 1 & 2 each 1800W / 2000W Booster. 220V/60Hz. Weight 10.3kg.
+- Size: Built 560×480×20–50mm; Stand Case 590×510×87mm; Cut-out 560±1×480±1×87±1mm (dimension diagram = `-dimensions-spec.webp`).
+- Cooking modes (auto-cook): Pan Fry, Deep Fry, White Rice, Porridge, Noodles, Keep Warm — rendered as emoji-in-circle cards + official `-auto-cook-banner.webp` (no matching photo icons exist for these modes).
+- Pricing: Rental RM103/bulan (tanpa casing) or RM113/bulan (dengan casing), 5-year contract, free 5-year service & warranty in rental. Outright RM3,400. CCSP RM556.50/year (NOT RM493.50 — that's INDUCTWO; do not mix).
+- **Installation: 15A power plug required, direct wiring from MCB recommended, min MCB 20A, no extension cable, site check may be needed. Positioned as premium built-in — do NOT write "plug and play" (opposite of INDUCTWO's 13A easy-plug).**
+
+Content rules honored (from brief): NO comparison-with-INDUCTWO section (avoided `cooker-landing-02.webp`). NO "Dual Motion Packing" / rice-flavour / steam-leak copy. Soft induction safety wording (no "100% selamat" / "tak panas langsung" / "pasti tak kebakaran"). No new trust-agent section (shared `data-agent-block`).
+
+Section order: Hero (image before pricing on mobile, order-3) → Kenapa Beralih Ke Induction (6-card auto marquee, shared kenapa images) → Masalah diselesaikan → Kenapa INDUCTRIO Premium (6 points) → feature rows (IH-Ultra, Direct Touch, SCHOTT CERAN) → benefits → cooking modes (emoji + banner) → gallery (`ProductGallerySlider`) → spec (dimension diagram + table + size block) → features chips → **Installation note (15A/MCB)** → CUCKOO+ Care Service (4 cards + CCS 8-Point + 6-step process: grid ≥sm, marquee on mobile; step file order REVERSED) → pricing (rental RM103/RM113 + outright RM3,400) → siapa sesuai → FAQ (14) → summary → shared `data-promo`/`data-product-selector`/`data-agent-block`. Reuses same generic `[data-marquee]` JS as INDUCTWO. JSON-LD: Product (offers rental RM103 + outright RM3400) + FAQPage (14) + BreadcrumbList.
+
 ## Design Guidance
 
 - Follow the existing site style, especially product pages like:
