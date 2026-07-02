@@ -47,10 +47,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM95",
+          "highlight": "RM100",
           "rows": [
-            ["Tahun 1–3", "RM100/bln"],
-            ["Tahun 4–5", "RM95/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -97,10 +96,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM100",
+          "highlight": "RM105",
           "rows": [
-            ["Tahun 1–3", "RM105/bln"],
-            ["Tahun 4–5", "RM100/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -122,10 +120,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM105",
+          "highlight": "RM110",
           "rows": [
-            ["Tahun 1–3", "RM110/bln"],
-            ["Tahun 4–5", "RM105/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -147,10 +144,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM116",
+          "highlight": "RM121",
           "rows": [
-            ["Tahun 1–3", "RM121/bln"],
-            ["Tahun 4–5", "RM116/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -172,10 +168,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM114",
+          "highlight": "RM119",
           "rows": [
-            ["Tahun 1–3", "RM119/bln"],
-            ["Tahun 4–5", "RM114/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -197,10 +192,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM116",
+          "highlight": "RM121",
           "rows": [
-            ["Tahun 1–3", "RM121/bln"],
-            ["Tahun 4–5", "RM116/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -221,11 +215,10 @@ const SITE = {
       "badge": "Hot Tank Besar",
       "pricePlans": [
         {
-          "type": "Plan 7 Tahun",
-          "highlight": "RM66",
+          "type": "Plan 5 Tahun",
+          "highlight": "RM77",
           "rows": [
-            ["Tahun 1–5", "RM66/bln"],
-            ["Tahun 6–7", "RM61/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -263,10 +256,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM67",
+          "highlight": "RM72",
           "rows": [
-            ["Tahun 1–3", "RM72/bln"],
-            ["Tahun 4–5", "RM67/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -335,10 +327,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM100",
+          "highlight": "RM105",
           "rows": [
-            ["Tahun 1–3", "RM105/bln"],
-            ["Tahun 4–5", "RM100/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -366,10 +357,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM138",
+          "highlight": "RM143",
           "rows": [
-            ["Tahun 1–3", "RM143/bln"],
-            ["Tahun 4–5", "RM138/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -397,10 +387,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM72",
+          "highlight": "RM77",
           "rows": [
-            ["Tahun 1–3", "RM77/bln"],
-            ["Tahun 4–5", "RM72/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -428,10 +417,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM89",
+          "highlight": "RM94",
           "rows": [
-            ["Tahun 1–3", "RM94/bln"],
-            ["Tahun 4–5", "RM89/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -459,10 +447,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM116",
+          "highlight": "RM121",
           "rows": [
-            ["Tahun 1–3", "RM121/bln"],
-            ["Tahun 4–5", "RM116/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],
@@ -490,10 +477,9 @@ const SITE = {
       "pricePlans": [
         {
           "type": "Plan 5 Tahun",
-          "highlight": "RM122",
+          "highlight": "RM127",
           "rows": [
-            ["Tahun 1–3", "RM127/bln"],
-            ["Tahun 4–5", "RM122/bln"]
+            ["Kadar rata", "60 bulan"]
           ]
         }
       ],

@@ -158,7 +158,7 @@ const faqItems = [
   },
   {
     q: 'Berapa harga bulanan King Top 2?',
-    a: 'Good Plan King Top 2 ialah RM61/bulan untuk 84 bulan. Rental biasa pula RM86/bulan untuk tahun 1-3 dan RM81/bulan untuk tahun 4-5. Outright rujukan RM3,850 tertakluk kepada promosi semasa.'
+    a: 'Good Plan King Top 2 ialah RM61/bulan untuk 84 bulan. Rental biasa pula RM86/bulan (kadar rata). Outright rujukan RM3,850 tertakluk kepada promosi semasa.'
   },
   {
     q: 'Adakah King Top 2 ada Nano Positive Filtration?',
@@ -223,7 +223,7 @@ const schema = {
       priceCurrency: 'MYR',
       price: '61',
       availability: 'https://schema.org/InStock',
-      description: 'Good Plan RM61/bulan untuk 84 bulan. Promo RM12/bulan untuk 6 bulan pertama tertakluk kepada kelayakan dan kempen semasa.'
+      description: 'Good Plan RM61/bulan untuk 84 bulan. Promo RM12/bulan untuk 12 bulan pertama tertakluk kepada kelayakan dan kempen semasa.'
     },
     {
       '@type': 'Offer',
@@ -231,7 +231,7 @@ const schema = {
       priceCurrency: 'MYR',
       price: '86',
       availability: 'https://schema.org/InStock',
-      description: 'Rental biasa RM86/bulan untuk tahun 1-3 dan RM81/bulan untuk tahun 4-5 tertakluk kepada promo semasa.'
+      description: 'Rental biasa RM86/bulan (kadar rata) tertakluk kepada promo semasa.'
     },
     {
       '@type': 'Offer',
@@ -306,7 +306,7 @@ const faqSchema = {
 
           <div class="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4B0715_0%,#7A0E23_58%,#8E1830_100%)] px-4 py-3 text-white shadow-glow ring-1 ring-brand-gold/30 sm:gap-3 sm:px-5">
             <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[.14em] text-brand-gold">Promo Terkini</span>
-            <span class="text-sm font-black sm:text-base">RM12 x 6 bulan pertama</span>
+            <span class="text-sm font-black sm:text-base">RM12 x 12 bulan pertama</span>
           </div>
 
           <h1 class="max-w-3xl text-[2.35rem] font-black leading-[1.06] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
@@ -383,7 +383,7 @@ const faqSchema = {
                 <p class="mt-2 text-4xl font-black leading-none">
                   RM12<span class="text-sm font-black">/bulan</span>
                 </p>
-                <p class="mt-1 text-xs font-bold text-white/75">6 bulan pertama</p>
+                <p class="mt-1 text-xs font-bold text-white/75">12 bulan pertama</p>
               </div>
 
               <a
@@ -613,7 +613,7 @@ const faqSchema = {
               </p>
               <p class="mt-1 text-sm font-bold text-brand-muted">RM61/bulan untuk 84 bulan</p>
               <div class="mt-4 rounded-2xl bg-white p-4 text-sm font-black leading-6 text-brand">
-                Promo RM12/bulan untuk 6 bulan pertama tersedia untuk kedua-dua pakej rental.
+                Promo RM12/bulan untuk 12 bulan pertama tersedia untuk kedua-dua pakej rental.
               </div>
             </div>
             <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
@@ -638,19 +638,12 @@ const faqSchema = {
               <p class="text-4xl font-black text-brand">
                 RM86<span class="text-base font-black text-brand-muted">/bulan</span>
               </p>
-              <p class="mt-1 text-sm font-bold text-brand-muted">Tahun 1-3</p>
-
-              <div class="my-4 h-px bg-brand/10"></div>
-
-              <p class="text-3xl font-black text-brand">
-                RM81<span class="text-base font-black text-brand-muted">/bulan</span>
-              </p>
-              <p class="mt-1 text-sm font-bold text-brand-muted">Tahun 4-5</p>
+              <p class="mt-1 text-sm font-bold text-brand-muted">Kadar rata sepanjang tempoh</p>
             </div>
             <ul class="mt-6 space-y-3 text-sm font-bold text-brand-ink">
               <li>✓ Servis & tukar filter free hingga 5 tahun</li>
               <li>✓ Sesuai untuk rumah keluarga</li>
-              <li>✓ Promo RM12 untuk 6 bulan pertama tertakluk kelayakan</li>
+              <li>✓ Promo RM12 untuk 12 bulan pertama tertakluk kelayakan</li>
             </ul>
             <a href={whatsappKingTop2Url}
               class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(37,211,102,.24)] transition hover:-translate-y-0.5 hover:bg-[#1EBE5D]">

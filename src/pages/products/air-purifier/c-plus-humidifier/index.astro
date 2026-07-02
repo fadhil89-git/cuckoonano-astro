@@ -25,7 +25,7 @@ const c = {
   priceOutright: 3100,
   promoFirst6: 12,
   rentalY1to3: 121,
-  rentalY4to5: 116,
+  rentalY4to5: 121,
   rentalMonths: 60,
   carePackage: 660
 };
@@ -109,7 +109,7 @@ const faqs = [
   { q: 'Bila filter CUCKOO C+ perlu ditukar?', a: 'Pre-Filter perlu dibersihkan setiap 2 minggu. Harmful Gas Relax Filter dan Humidification Filter ditukar setiap 4 bulan. Deodorisation Filter dan True HEPA H14 Filter ditukar setiap 12 bulan.' },
   { q: 'Adakah CUCKOO C+ jimat elektrik?', a: 'CUCKOO C+ menggunakan kuasa 25W dan dilengkapi Energy Eye Mode untuk membantu penggunaan tenaga yang lebih bijak.' },
   { q: 'Adakah CUCKOO C+ sesuai untuk ruang besar?', a: 'CUCKOO C+ sesuai untuk ruang sekitar 402 sq ft. Untuk ruang yang sangat besar seperti pejabat besar atau ruang tamu besar, model lain seperti D Model atau K Model mungkin lebih sesuai.' },
-  { q: 'Berapa harga promo CUCKOO C+?', a: 'Untuk promo semasa, bayaran ialah RM12 sebulan untuk 6 bulan pertama, kemudian RM121 sebulan untuk bulan ke-7 hingga 36, dan RM116 sebulan untuk bulan ke-37 hingga 60. Tertakluk kepada stok, kawasan, kelulusan dan terma semasa.' }
+  { q: 'Berapa harga promo CUCKOO C+?', a: 'Untuk promo semasa, bayaran ialah RM12 sebulan untuk 6 bulan pertama, kemudian RM121 sebulan (kadar rata) untuk bulan ke-7 hingga 60. Tertakluk kepada stok, kawasan, kelulusan dan terma semasa.' }
 ];
 
 const faqSchema = {
@@ -725,8 +725,7 @@ const meta = {
           </div>
           <div class="mt-4 space-y-1.5 text-sm font-semibold text-rose-100">
             <p>🔥 Bulan 1–6: <strong class="text-promo-gold">RM{c.promoFirst6}/bulan</strong></p>
-            <p>Bulan 7–36: RM{c.rentalY1to3}/bulan</p>
-            <p>Bulan 37–60: RM{c.rentalY4to5}/bulan</p>
+            <p>Bulan 7–60: RM{c.rentalY1to3}/bulan (kadar rata)</p>
           </div>
           <ul class="mt-5 space-y-2 text-sm font-medium text-rose-50">
             <li class="flex gap-2"><span class="text-promo-gold">✓</span> Percuma 5 tahun servis & warranty</li>

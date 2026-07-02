@@ -23,7 +23,7 @@ const l = {
   filters: 'Pre-Filter · Allergen Filter · Ultra-Deo HEPA+ H13 (Copper Sulphide) · Deodorisation',
   priceOutright: 3200,
   rentalY1to3: 105,
-  rentalY4to5: 100,
+  rentalY4to5: 105,
   rentalMonths: 60,
   serviceInterval: '4 bulan',
   promoFirst6: 12,
@@ -108,7 +108,7 @@ const faqs = [
   { q: 'Berapa warna LED indicator CUCKOO L Model?', a: 'CUCKOO L Model mempunyai 8-colour LED Air Quality Indicator — Blue, Teal, Green, Light Green, Yellow, Orange, Purple dan Red.' },
   { q: 'Apa bahasa voice navigation CUCKOO L Model?', a: 'Voice navigation CUCKOO L Model menyokong English, Malay dan Mandarin.' },
   { q: 'Adakah CUCKOO L Model ada Child Lock?', a: 'Ya. CUCKOO L Model mempunyai Child Lock untuk mengelakkan tetapan diubah secara tidak sengaja.' },
-  { q: 'Berapa harga promo CUCKOO L Model?', a: 'Untuk promo semasa, bayaran ialah RM12 sebulan untuk 6 bulan pertama, kemudian RM105 sebulan untuk bulan ke-7 hingga 36, dan RM100 sebulan untuk bulan ke-37 hingga 60. Promo tertakluk kepada stok, kawasan, kelulusan dan terma semasa.' }
+  { q: 'Berapa harga promo CUCKOO L Model?', a: 'Untuk promo semasa, bayaran ialah RM12 sebulan untuk 6 bulan pertama, kemudian RM105 sebulan (kadar rata) untuk bulan ke-7 hingga 60. Promo tertakluk kepada stok, kawasan, kelulusan dan terma semasa.' }
 ];
 
 const faqSchema = {
@@ -562,7 +562,7 @@ const meta = {
             <span class="text-4xl font-black">RM12</span>
             <span class="text-sm font-bold text-rose-100">/bulan</span>
           </div>
-          <p class="mt-2 text-sm font-semibold text-rose-100">Bulan 7–36: RM{l.rentalY1to3}/bln · Bulan 37–60: RM{l.rentalY4to5}/bln</p>
+          <p class="mt-2 text-sm font-semibold text-rose-100">Bulan 7–60: RM{l.rentalY1to3}/bulan (kadar rata)</p>
           <p class="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-promo-gold px-3 py-1.5 text-xs font-black text-brand-ink">🔥 Promo RM{l.promoFirst6}/bulan untuk 6 bulan pertama (jimat RM{l.saving6})</p>
           <ul class="mt-5 space-y-2 text-sm font-medium text-rose-50">
             <li class="flex gap-2"><span class="text-promo-gold">✓</span> Percuma scheduled service & warranty</li>
